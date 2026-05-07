@@ -1,0 +1,226 @@
+/*--------------------------------------------------------------
+# Roadmap Layout
+--------------------------------------------------------------*/
+.roadmap-columns {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.roadmap-column {
+  flex: 1 1 30%;
+  min-width: 280px;
+}
+
+.roadmap-status {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: var(--heading-color);
+  padding-bottom: 4px;
+  margin-left: 22px;
+}
+
+/* Lista das ações */
+.roadmap-actions {
+  list-style: disc;
+  margin: 0;
+  padding-left: 40px;
+  /* mantém o alinhamento perfeito com o título */
+  line-height: 1.6;
+  color: var(--text-color);
+}
+
+/* Separador */
+.roadmap-divider {
+  border: none;
+  border-top: 1px solid #fff;
+  margin: 40px 0;
+}
+
+/* Responsividade */
+@media (max-width: 991px) {
+  .roadmap-columns {
+    gap: 20px;
+  }
+
+  .roadmap-column {
+    flex: 1 1 100%;
+  }
+}
+
+/* ============================= */
+/* Layout do Roadmap img         */
+/* ============================= */
+.roadmap {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.texto-esquerda-flex {
+  flex: 1.5;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.roadmap-img {
+  max-width: 240px;
+  height: auto;
+  border-radius: 12px;
+  object-fit: contain;
+  margin-left: 0;
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+  .roadmap {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .roadmap-img-container {
+    justify-content: center;
+  }
+
+  .roadmap-img {
+    max-width: 60%;
+    margin-top: 1rem;
+  }
+
+  .texto-esquerda-flex {
+    align-items: center;
+  }
+
+  .alinha-texto-esquerda {
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+
+  /* Oculta a imagem */
+  .roadmap-img {
+    display: none !important;
+  }
+
+  /* Centraliza título e texto principais */
+  .roadmap .section-title.texto-esquerda-flex {
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  .roadmap .section-title.texto-esquerda-flex h1 {
+    text-align: center !important;
+  }
+
+  .roadmap .section-title.texto-esquerda-flex p {
+    text-align: center !important;
+    max-width: 90% !important;
+  }
+
+  /* Centraliza subtítulo */
+  .subtitulo-roadmap h2 {
+    text-align: center !important;
+    margin-top: 2rem !important;
+  }
+
+  /* Centraliza nome dos eixos */
+  .nome-eixo {
+    text-align: center !important;
+    margin-top: 1.5rem !important;
+  }
+
+  .nome-eixo__titulo {
+    font-size: 1.3rem !important;
+    text-align: center !important;
+  }
+
+  /* Colunas empilhadas e centralizadas */
+  .roadmap-columns {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 1.5rem !important;
+    text-align: center !important;
+  }
+
+  .roadmap-column {
+    width: 90% !important;
+  }
+
+  .roadmap-status {
+    text-align: center !important;
+  }
+
+  /* Ações à esquerda */
+  .roadmap-actions {
+    list-style: disc !important;
+    padding-left: 1.5rem !important;
+    text-align: left !important;
+    margin: 0 auto !important;
+    width: fit-content !important;
+  }
+
+  .item-acao {
+    text-align: left !important;
+  }
+
+  .roadmap-divisor__eixo {
+    margin: 2rem auto !important;
+    width: 80% !important;
+  }
+}
+
+.roadmap-divisor {
+  border: 2px solid white;
+  width: 100%;
+}
+
+.subtitulo-roadmap {
+  margin-bottom: 5px;
+  margin-top: 5px;
+
+}
+
+.nome-eixo {
+  padding-bottom: 5px;
+  padding-top: 5px;
+  align-items: center !important;
+  background-color: #2a3e59;
+  margin-bottom: 30px !important;
+  margin-top: 30px !important;
+  border-radius: 20px;
+
+}
+
+.nome-eixo__titulo {
+  font-size: 1.5rem;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  padding-left: 6px;
+
+  margin-bottom: 0px !important;
+  margin-top: 0px !important;
+
+}
+
+.roadmap-divisor__eixo {
+  border: none;
+  border-top: 1.5px solid #ffffff;
+  opacity: 1;
+  background-color: #ffffff;
+  z-index: 2;
+}
+
+.item-acao {
+  margin-bottom: 10px !important;
+}
