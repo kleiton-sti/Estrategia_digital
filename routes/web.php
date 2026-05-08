@@ -24,4 +24,9 @@ Route::get('/produtos/stii-em-numeros', [ProdutosController::class, 'numeros'])-
 
 Route::get('/produtos/all-hands', [ProdutosController::class, 'allHands'])->name('produtos.all.hands');
 
-Route::view('/artigos', 'produtos.artigos')->name('produtos.artigos');
+// Route::view('/artigos', 'produtos.artigos')->name('produtos.artigos');
+
+Route::get('/artigos', function() {
+    $artigos = \App\Models\Artigo::with('categoria')->get();
+    return view('produtos.artigos', compact('artigos'));
+});

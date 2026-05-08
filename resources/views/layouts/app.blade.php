@@ -21,6 +21,7 @@
   <link href="{{ asset('assets/css/roadmap.css') }}" rel="stylesheet">
   <link href="{{ asset('assets/css/tabelas.css') }}" rel="stylesheet">
   <link href="{{ asset('assets/css/regulamentacoes.css') }}" rel="stylesheet">
+  <link href="{{ asset('assets/css/artigos.css') }}" rel="stylesheet">
   @stack('styles')
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-5C6J76BMYV"></script>
