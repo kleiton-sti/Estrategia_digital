@@ -12,9 +12,6 @@ class EixoController extends Controller
     // homepage: lista eixos
     public function index()
     {
-        // Carrega todos os eixos para o menu
-        $todosEixos = Eixo::select('id_eixos','titulo')->get();
-
         $eixos = Eixo::withCount(['objetivos as iniciativas_count' => function ($q) {
             $q->join('iniciativas', 'objetivos.id_objetivo', '=', 'iniciativas.id_objetivo');
         }])->get();
@@ -55,7 +52,6 @@ class EixoController extends Controller
             'concluidas' => $concluidas,
             'andamento' => $andamento,
             'naoIniciadas' => $naoIniciadas,
-            'todosEixos' => $todosEixos, // <-- garante que o menu funcione
         ]);
     }
 
@@ -65,9 +61,6 @@ class EixoController extends Controller
         $eixo = Eixo::where('id_eixos', $id)
                     ->with(['objetivos.iniciativas'])
                     ->firstOrFail();
-
-        // todos os eixos (para menu navegação)
-        $todosEixos = Eixo::select('id_eixos','titulo')->get();
 
         // prepara os dados para JS
         $objetivosData = $eixo->objetivos->map(function($o) {
@@ -117,6 +110,6 @@ class EixoController extends Controller
             18 => [['id' => 9, 'ext' => 'jpg'],  ['id' => 12, 'ext' => 'jpg']],
         ];
 
-        return view('eixos.show', compact('eixo', 'objetivosData', 'sidebar', 'odsMap', 'todosEixos'));
+        return view('eixos.show', compact('eixo', 'objetivosData', 'sidebar', 'odsMap'));
     }
 }

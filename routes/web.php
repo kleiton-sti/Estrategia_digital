@@ -23,3 +23,5 @@ Route::get('/regulamentacoes', [RegulamentacoesController::class, 'index'])->nam
 Route::get('/produtos/stii-em-numeros', [ProdutosController::class, 'numeros'])->name('produtos.stii.numeros');
 
 Route::get('/produtos/all-hands', [ProdutosController::class, 'allHands'])->name('produtos.all.hands');
+
+Route::view('/artigos', 'produtos.artigos')->name('produtos.artigos');

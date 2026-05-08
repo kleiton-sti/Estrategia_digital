@@ -3,14 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\AcoesInovacao;
-use App\Models\Eixo;
 
 class AcoesInovacaoController extends Controller
 {
     public function index()
     {
-        $todosEixos = Eixo::select('id_eixos', 'titulo')->get();
-
         $acoes = AcoesInovacao::all();
 
         $servicos_online = AcoesInovacao::where('categoria', 'servicos_online')
@@ -26,6 +23,7 @@ class AcoesInovacaoController extends Controller
             ->orderBy('realizado_2025', 'desc')
             ->orderBy('status_2025', 'desc')
             ->get();
+
         $adequacao = AcoesInovacao::where('categoria', 'adequacao_municipal')
             ->orderBy('realizado_2025', 'desc')
             ->orderBy('status_2025', 'desc')
@@ -40,7 +38,6 @@ class AcoesInovacaoController extends Controller
         $percentual = $totalAcoes > 0 ? round(($acoesFeitas / $totalAcoes) * 100) : 0;
 
         return view('tabelas', compact(
-            'todosEixos',
             'servicos_online',
             'sistemas_digitais',
             'participacao',
