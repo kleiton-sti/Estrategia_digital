@@ -1,6 +1,15 @@
 new FroalaEditor('#corpo', {
     language: 'pt_br',
     heightMin: 350,
+    imageUploadURL: 'http://localhost/estrategia_digital/public/painel/upload/imagem',
+    imageUploadMethod: 'POST',
+
+    requestHeaders: {
+        'X-CSRF-TOKEN': document
+            .querySelector('meta[name="csrf-token"]')
+            .getAttribute('content')
+    },
+
     toolbarButtons: {
         moreText: {
             buttons: ['bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript',

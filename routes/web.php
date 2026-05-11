@@ -9,6 +9,7 @@ use App\Http\Controllers\ProdutosController;
 use App\Http\Controllers\RegulamentacoesController;
 use App\Http\Controllers\AutenticacaoController;
 use App\Http\Controllers\PublicacaoController;
+use App\Http\Controllers\UploadController;
 
 /* Rotas públicas */
 Route::get('/', [EixoController::class, 'index'])->name('home');
@@ -38,4 +39,5 @@ Route::middleware('auth')->group(function () {
     Route::get('/painel/artigos/{id}/editar', [PublicacaoController::class, 'editar'])->name('artigos.editar');
     Route::put('/painel/artigos/{id}', [PublicacaoController::class, 'atualizar'])->name('artigos.atualizar');
     Route::delete('/painel/artigos/{id}', [PublicacaoController::class, 'excluir'])->name('artigos.excluir');
+    Route::post('/painel/upload/imagem', [UploadController::class, 'imagem'])->name('upload.imagem');
 });

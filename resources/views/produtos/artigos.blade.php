@@ -36,21 +36,21 @@
 
 
         @if(session('sucesso'))
-          <div class="alert alert-success">{{ session('sucesso') }}</div>
+          <div id="sucesso" class="alert alert-success">{{ session('sucesso') }}</div>
         @endif
 
         <!-- Grid de cards -->
-        <div class="row gy-4" id="grid-artigos">
+        <div class="row gy-4 h-100" id="grid-artigos">
 
           @forelse ($artigos as $artigo)
-            <div class="col-lg-4 col-md-6 h-100" data-categoria="{{ Str::slug($artigo->categoria->nome ?? '') }}">
+            <div class="col-lg-4 col-md-6" data-categoria="{{ Str::slug($artigo->categoria->nome ?? '') }}">
               <a href="{{ route('artigos.conteudo', $artigo->id) }}" class="artigo-card-link">
                 <div class="artigo-card">
                   <div class="artigo-card-img">
                     <img src="{{ asset('assets/img/misc/misc.png') }}" alt="Capa do artigo" class="img-fluid">
                     <span class="artigo-badge">{{ $artigo->categoria->nome ?? '-' }}</span>
                   </div>
-                  <div class="artigo-card-body d-flex flex-column p-3">
+                  <div class="artigo-card-body d-flex flex-column p-3 h-50">
                     <div class="artigo-data d-flex gap-3">
                       <span><i class="bi bi-calendar3"></i> {{ $artigo->created_at->format('d/m/Y') }}</span>
                     </div>
@@ -74,4 +74,13 @@
 
 @push('scripts')
   <script src="{{ asset('assets/js/filtro-categoria.js') }}"></script>
+  <script>
+    setTimeout(() => {
+      const message = document.getElementById('sucesso');
+
+      if (message) {
+        message.remove();
+      }
+    }, 3000);
+  </script>
 @endpush

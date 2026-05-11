@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Artigo;
 use App\Models\Eixo;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;

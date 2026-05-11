@@ -1,6 +1,14 @@
 @extends('layouts.app')
 
-@section('title', $artigo->titulo)
+@section('title', Str::slug($artigo->titulo))
+
+@section('meta')
+  <meta property="og:title" content="{{ $artigo->titulo }}">
+  <meta property="og:description" content="{{ $artigo->resumo }}">
+  <meta property="og:image" content="{{ asset('storage/artigos')}}">
+  <meta property="og:url" content="{{ url()->current() }}">
+  <meta property="og:type" content="article">
+@endsection
 
 @section('content')
 <main class="main">
