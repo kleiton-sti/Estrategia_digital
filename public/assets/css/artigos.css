@@ -18,6 +18,12 @@
 }
 
 /* ── Cards ── */
+.artigo-card-link {
+    text-decoration: none;
+    display: block;
+    height: 100%;
+}
+
 .artigo-card {
     border-radius: 12px;
     cursor: pointer;
@@ -27,6 +33,7 @@
     background-image: linear-gradient(to top, #88d3ce 0%, #6231e8 100%);
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
 
 .artigo-card-body {
@@ -69,8 +76,6 @@
     letter-spacing: 0.5px;
 }
 
-
-
 .artigo-data {
     font-size: 0.78rem;
     color: #212121;
@@ -109,11 +114,50 @@
     text-decoration: underline;
 }
 
+/* ── Painel autenticado ── */
+.artigos-header-auth {
+    background-color: var(--surface-color);
+    border-radius: 12px;
+    padding: 14px 20px;
+    border: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
+}
+
+.artigos-nome-usuario {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--heading-color);
+}
+
+.btn-publicar {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 22px;
+    border-radius: 50px;
+    background-color: var(--accent-color);
+    color: #fff;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    transition: background-color 0.25s;
+}
+
+.btn-publicar:hover {
+    background-color: color-mix(in srgb, var(--accent-color), #000 15%);
+    color: #fff;
+}
+
+.artigos-vazio {
+    color: color-mix(in srgb, var(--default-color), transparent 40%);
+    font-size: 1rem;
+    text-align: center;
+    padding: 40px 0;
+}
 
 @media (max-width: 768px) {
-
     .btn-pill {
-        font-size: 2.75rem;
+        font-size: 0.8rem;
     }
 
     .artigo-card {

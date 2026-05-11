@@ -22,17 +22,17 @@
   <link href="{{ asset('assets/css/tabelas.css') }}" rel="stylesheet">
   <link href="{{ asset('assets/css/regulamentacoes.css') }}" rel="stylesheet">
   <link href="{{ asset('assets/css/artigos.css') }}" rel="stylesheet">
+  <link href="{{ asset('assets/css/conteudo-artigo.css') }}" rel="stylesheet">
+  <link href="{{ asset('assets/css/publicacao.css') }}" rel="stylesheet">
+  <link href="{{ asset('assets/css/login.css') }}" rel="stylesheet">
   @stack('styles')
+
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-5C6J76BMYV"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-      dataLayer.push(arguments);
-    }
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-
     gtag('config', 'G-5C6J76BMYV');
   </script>
 </head>
@@ -40,8 +40,8 @@
 <body class="@yield('bodyclass','index-page')">
 
   <header id="header" class="header d-flex align-items-center sticky-top">
-    <div
-      class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+    <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+
       <a href="{{ route('home') }}" class="logo d-flex align-items-center me-auto me-xl-0">
         <img src="https://www.caraguatatuba.sp.gov.br/pmc/wp-content/themes/awesomepmc/assets/img/favicon.png" alt="">
         <h1 class="sitename">Secretaria de Tecnologia</h1>
@@ -49,46 +49,35 @@
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href={{ route('home') }}>Home</a></li>
+          <li><a href="{{ route('home') }}">Home</a></li>
 
           <li class="dropdown">
-            <a href="#">
-              <span>Eixos</span> <i class="bi bi-chevron-down"></i>
-            </a>
+            <a href="#"><span>Eixos</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               @foreach($todosEixos as $ex)
               <li class="@if(isset($eixo) && $ex->id_eixos == $eixo->id_eixos) active @endif">
-                <a href="{{ route('eixos.show', $ex->id_eixos) }}">
-                  <span>{{ $ex->titulo }}</span>
-                </a>
+                <a href="{{ route('eixos.show', $ex->id_eixos) }}"><span>{{ $ex->titulo }}</span></a>
               </li>
               @endforeach
             </ul>
           </li>
 
           <li class="dropdown">
-            <a href="#">
-              <span>Indicadores</span> <i class="bi bi-chevron-down"></i>
-            </a>
+            <a href="#"><span>Indicadores</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="{{ route('tabelas') }}"><span>Painel TCESP</span></a></li>
-              <!-- <li><a href="#"><span>IEGM</span></a></li> -->
             </ul>
           </li>
 
           <li class="dropdown">
-            <a href="#">
-              <span>Políticas</span> <i class="bi bi-chevron-down"></i>
-            </a>
+            <a href="#"><span>Políticas</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="{{ route('regulamentacoes') }}"><span>Regulamentação</span></a></li>
             </ul>
           </li>
 
           <li class="dropdown">
-            <a href="#">
-              <span>Produtos</span> <i class="bi bi-chevron-down"></i>
-            </a>
+            <a href="#"><span>Produtos</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a href="{{ route('produtos.all.hands') }}"><span>All Hands</span></a></li>
               <li><a href="{{ route('produtos.stii.numeros') }}"><span>STII em números</span></a></li>
@@ -98,6 +87,32 @@
           <li><a href="{{ route('plano') }}">PDTI</a></li>
 
           <li><a href="{{ route('roadmap') }}">Roadmap</a></li>
+
+          <li><a href="{{ route('artigos') }}">Artigos</a></li>
+
+          <!-- Botão de acesso -->
+          @auth
+            <li>
+              <form action="{{ route('sair') }}" method="POST">
+                @csrf
+                <button type="submit" class="btn-nav-sair">
+                  <i class="bi bi-box-arrow-right"></i> Sair
+                </button>
+              </form>
+            </li>
+          @else
+            @php
+              $ip = request()->ip();
+              $naRedeStii = str_starts_with($ip, '192.168.11.');
+            @endphp
+            @if($naRedeStii && !request()->routeIs('login'))
+              <li>
+                <a href="{{ route('login') }}" class="btn-nav-entrar">
+                  <i class="bi bi-person-circle"></i> Entrar
+                </a>
+              </li>
+            @endif
+          @endauth
 
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -109,7 +124,6 @@
 
   <footer id="footer" class="text-white">
 
-    <!-- Footer logo -->
     <div class="text-white text-center footer-back py-2">
       <a href="https://www.caraguatatuba.sp.gov.br/pmc/" title="Prefeitura Municipal de Caraguatatuba">
         <img class="img-fluid footer-logo mx-auto"
@@ -119,8 +133,6 @@
     </div>
 
     <div class="container py-5">
-
-      <!-- Links em colunas -->
       <div class="row">
 
         <div class="col-6 col-md-2 mb-4">
@@ -158,28 +170,9 @@
             <li><a href="https://www.caraguatatuba.sp.gov.br/pmc/servicos/servicos-a-empresa/baixa-de-inscricao/" class="text-white text-decoration-none">Baixa de Inscrição</a></li>
             <li><a href="https://www.caraguatatuba.sp.gov.br/pmc/servicos/servicos-a-empresa/sistema-de-emissao-de-notas-fiscais-eletronicas/" class="text-white text-decoration-none">ISS/NFE/ICMS</a></li>
             <li><a href="https://www.caraguatatuba.sp.gov.br/pmc/clube-do-servidor/" class="text-white text-decoration-none">Clube do Servidor</a></li>
-            <li><a href="https://www.caraguatatuba.sp.gov.br/pmc/servicos/servicos-a-empresa/licenciamento-ambiental/" class="text-white text-decoration-none">Licenciamento Ambiental</a></li>
             <li><a href="https://www.caraguatatuba.sp.gov.br/pmc/servicos/servicos-a-empresa/licitacoes/" class="text-white text-decoration-none">Licitações</a></li>
-            <li><a href="https://www.caraguatatuba.sp.gov.br/pmc/servicos/servicos-a-empresa/mineracao/" class="text-white text-decoration-none">Mineração</a></li>
-            <li><a href="https://www.caraguatatuba.sp.gov.br/pmc/servicos/servicos-a-empresa/plano-diretor/" class="text-white text-decoration-none">Plano Diretor</a></li>
-            <li><a href="https://www.caraguatatuba.sp.gov.br/pmc/servicos/servicos-a-empresa/plano-diretor-de-turismo/" class="text-white text-decoration-none">Plano Diretor de Turismo</a></li>
           </ul>
         </div>
-
-        <!-- <div class="col-6 col-md-2 mb-4">
-          <h6 class="fw-bold">SERVIDOR</h6>
-          <ul class="list-unstyled small">
-            <li><a href="https://www.caraguaprev.sp.gov.br/" class="text-white text-decoration-none">CaraguaPrev</a></li>
-            <li><a href="https://www.caraguatatuba.sp.gov.br/pmc/clube-do-servidor/" class="text-white text-decoration-none">Clube do Servidor</a></li>
-            <li><a href="https://caraguatatuba.geosiap.net.br/pmcaraguatatuba/websis/siapegov/login.php?redirect=//caraguatatuba.geosiap.net.br/pmcaraguatatuba/websis/siapegov/administrativo/processos/processos_index.php?" class="text-white text-decoration-none">Sistema de Protocolo</a></li>
-            <li><a href="https://caraguatatuba.legislacaocompilada.com.br/legislacao/norma.aspx?id=3341&termo=Lei+Complementar+25%2f2007#" class="text-white text-decoration-none">Lei Complementar 25/2007 (Estatuto do Servidor)</a></li>
-            <li><a href="https://siggeo.caraguatatuba.sp.gov.br/" class="text-white text-decoration-none">Sistema Municipal para Gestão da Geoinformação – SIGGEO</a></li>
-            <li><a href="https://www.caraguatatuba.sp.gov.br/pmc/departamento-de-recursos-humanos/" class="text-white text-decoration-none">Departamento de Recursos Humanos</a></li>
-            <li><a href="https://www.caraguatatuba.sp.gov.br/pmc/departamento-etico-disciplinar/" class="text-white text-decoration-none">Departamento Ético Disciplinar</a></li>
-            <li><a href="https://www.caraguatatuba.sp.gov.br/pmc/departamento-de-medicina-e-seguranca-do-trabalho-dmst/" class="text-white text-decoration-none">Departamento de Medicina e Segurança do Trabalho – DMST</a></li>
-            <li><a href="https://www.caraguatatuba.sp.gov.br/pmc/servicos/servidor/cipa/" class="text-white text-decoration-none">Comissão Interna de Prevenção de Acidentes – CIPA Documentos</a></li>
-          </ul>
-        </div> -->
 
         <div class="col-6 col-md-2 mb-4">
           <h6 class="fw-bold">MAIS</h6>
@@ -194,7 +187,7 @@
         <div class="col-6 col-md-2 mb-4">
           <h6 class="fw-bold">TELEFONES ÚTEIS</h6>
           <ul class="list-unstyled small">
-            <li><a href="#" class="text-white  text-decoration-none">Prefeitura: (12) 3897-8100</a></li>
+            <li><a href="#" class="text-white text-decoration-none">Prefeitura: (12) 3897-8100</a></li>
             <li><a href="#" class="text-white text-decoration-none">Ouvidoria/SIC: 0800-770-0678</a></li>
             <li><a href="#" class="text-white text-decoration-none">Ouvidoria Saúde: 0800-779-4545</a></li>
           </ul>
@@ -204,43 +197,16 @@
 
       <hr>
 
-      <!-- Parte inferior -->
       <div class="text-center mt-4">
-
-        <!-- Links de termos -->
-        <!-- <div class="mb-3">
-          <a href="#" class="me-3 text-white text-decoration-none small">Termos e Condições</a>
-          <a href="#" class="me-3 text-white text-decoration-none small">Política de LGPD</a>
-          <a href="#" class="me-3 text-white text-decoration-none small">Política de cookies</a>
-          <a href="#" class="me-3 text-white text-decoration-none small">Imprensa</a>
-          <a href="https://www.caraguatatuba.sp.gov.br/pmc/fale-conosco/" class="text-white text-decoration-none small">Fale Conosco</a>
-        </div> -->
-
-        <!-- Ícones + Copyright + Feito com lado a lado -->
         <div class="d-flex justify-content-center align-items-center footer-gap flex-wrap">
-
-          <!-- Ícones sociais -->
           <div class="d-flex gap-4 align-items-center">
-            <a href="https://www.facebook.com/prefeituradecaraguatatuba" class="text-white fs-5"><i
-                class="bi bi-facebook"></i></a>
-            <a href="https://www.instagram.com/caraguatatuba_oficial/" class="text-white fs-5"><i
-                class="bi bi-instagram"></i></a>
-            <a href="https://www.youtube.com/channel/UCH84Ukn-PabhE7vhXxhPUDw" class="text-white fs-5"><i
-                class="bi bi-youtube"></i></a>
-            <a href="https://www.flickr.com/photos/prefeituracaraguatatuba/albums" class="text-white fs-5"><i
-                class="bi bi-image"></i></a>
+            <a href="https://www.facebook.com/prefeituradecaraguatatuba" class="text-white fs-5"><i class="bi bi-facebook"></i></a>
+            <a href="https://www.instagram.com/caraguatatuba_oficial/" class="text-white fs-5"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.youtube.com/channel/UCH84Ukn-PabhE7vhXxhPUDw" class="text-white fs-5"><i class="bi bi-youtube"></i></a>
+            <a href="https://www.flickr.com/photos/prefeituracaraguatatuba/albums" class="text-white fs-5"><i class="bi bi-image"></i></a>
           </div>
-
-          <!-- Copyright -->
-          <p class="small mb-0">
-            © Copyright 2025 – Prefeitura Municipal de Caraguatatuba • CNPJ 46.482.840/0001-39
-          </p>
-
-          <!-- Feito com -->
-          <p class="small footer-p mb-0">
-            Feito com <i class="bi bi-heart heart-icon"></i> pela Secretaria de Tecnologia da Informação e Inovação
-          </p>
-
+          <p class="small mb-0">© Copyright 2025 – Prefeitura Municipal de Caraguatatuba • CNPJ 46.482.840/0001-39</p>
+          <p class="small footer-p mb-0">Feito com <i class="bi bi-heart heart-icon"></i> pela Secretaria de Tecnologia da Informação e Inovação</p>
         </div>
       </div>
     </div>

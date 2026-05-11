@@ -1,0 +1,41 @@
+contexto: estou implementando uma nova funcionalidade nesse projeto que começa pela blade de artigos.blade. Trata-se de uma página onde será exibido os artigos que os técnicos da STII irão escrever e publicar. Essa blade em específico é a blade de visualização desses artigos (para o publico em geral). 
+
+A realizar: 
+
+1 - estou usando uma rota que está buscando no model os artigos com relacionamento categoria e passando
+para a view 'produtos.artigos'. Comente essa rota e use o controller 'ProdutosController' para passar essa informação.
+
+2 - preciso que ainda em resource/views/produtos crie a blade de visualização do conteúdo desse artigo 'conteudo-artigo.blade' (para qual as pessoas serão direcionadas ao clicar em um artigo para abrir). Seguindo a estética presente já do portal, a blade deve exibir no main nessa ordem: perfil do autor com o seu nome e data de publicação ícone de usuário do lado; redes sociais a baixo para compartilhar (LinkedIn, facebokk, twitter, whatsapp e email); título, subtítulo e corpo. Lógica também implementada no controller 'ProdutosController'
+
+3 - em app.blade preciso adicionar no menu ao lado de Roadmap um botão em destaque 'Entrar'. O login será realizado pelos funcionários da prefeitura que serão registrados diretamente em banco de dados. A lógica que determina quando esse botão irá ou não aparecer será controlada por um middleware que irá proteger as próximas rotas a detalhar. Após login, no mesmo local termo muda para 'Sair'. 
+
+4 - o middleware verificará o ip que fez a requisição para acessar o portal exibindo o botão 'Entrar' quando verificar que está sendo acessado pela subrede da stii ex: meu pc na pref é 192.168.11.242  '11' é a subrede da STII. 
+
+5 - login dará acesso a uma blade salva em resources/views/autenticação. Preciso que tudo isso seja orquestrado por controller 'AutenticacaoController' e um Formrequest para autenticação. 
+
+6 - quero um design de login com base na imagem anexada mas sem a parte de perguntar se tem cadastro ou fazer login com outras redes. 
+
+7 - Após login, ele será direcionado a blade artigos.blade que nesse caso irá exibir ícone de usuário com nome do usuário autenticado no topo, somente os artigos publicados por aquele usuário (quando não, mensagem simples "nada publicado ainda") e botão do lado do nome  'Publicar'. Ao visualizar 'conteudo-artigo.blade' o usuário logado visualizará os botões 'excluir' e 'editar' salvos em resource/views/componentes e inseridos na blade via @include
+
+
+8 - publicar.blade será uma blade na pasta publicação. A blade terá uma integração com WYSSWYG editor seguindo a documentação https://froala.com/wysiwyg-editor/docs/overview/install-froala-cdn/, adaptar a estética do portal. 
+
+
+8 - 'PublicacaoController' irá orquestrar a lógica de publicação, edição e exclusão de artigos. Deverá conter formRequest para validação dos dados enviados. Ao publicar, será salvo na tabela 'artigos' os dados do artigo e o id do usuário que a publicou, ele será redirecionado para a blade artigos.blade. Ao editar 'conteudo-artigo.blade' deve ser reaberto com o todas informações preechidas. O novo dado atualiza a informação no banco. Ao clicar em excluir ele faz um soft dele no banco e redireciona para artigos.blade.
+
+
+obs: 
+
+1 - use bootstrap, realizando estilização com css quando necessário, mas nunca inline. Referencie novos arquivos.css
+em app.blade.
+
+2 - se uso de js referenciar na blade em questão mas fazer uso do stack para a balde principal (app.blade)
+
+3 - Embora não seja um padrão do projeto, para os novos controllers crie (se interação com banco) Services correspondente. (Faça o mesmo para ProdutosController). 
+
+4 - Terminilogias sempre em português-br e nunca o uso de emojis
+
+5 - evite longos comentários (manter código limpo o maximo). Padrão de comentário na blade deve ser "<!-- -->"
+
+6 - use try catch nas novas funções tanto em controller quanto em service. Por padrão, quando erro será exibido blade de abort(500) e registrado em Log do laravel.
+

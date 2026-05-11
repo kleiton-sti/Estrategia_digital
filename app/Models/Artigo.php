@@ -4,16 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Artigo extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
 
     protected $table = 'artigos';
 
     protected $fillable = [
         'user_id',
-        'categoria',
+        'categoria_id',
         'titulo',
         'subtitulo',
         'corpo',
@@ -28,5 +29,4 @@ class Artigo extends Model
     {
         return $this->belongsTo(Categoria::class, 'categoria_id');
     }
-
 }

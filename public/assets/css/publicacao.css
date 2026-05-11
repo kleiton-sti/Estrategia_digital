@@ -1,0 +1,108 @@
+/* ── Publicação ── */
+.publicacao-section {
+    min-height: calc(100vh - 200px);
+}
+
+.publicacao-card {
+    background-color: var(--surface-color);
+    border-radius: 16px;
+    padding: 36px 32px;
+    border: 1px solid color-mix(in srgb, var(--default-color), transparent 88%);
+}
+
+.publicacao-label {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--default-color);
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+.publicacao-input,
+.publicacao-select {
+    width: 100%;
+    background-color: #1e1f3a;
+    border: 1px solid #2e2f50;
+    border-radius: 8px;
+    padding: 10px 14px;
+    color: var(--default-color);
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.25s;
+}
+
+.publicacao-input:focus,
+.publicacao-select:focus {
+    border-color: var(--accent-color);
+}
+
+.publicacao-select option {
+    background-color: #1e1f3a;
+    color: var(--default-color);
+}
+
+/* Froala — adaptar ao tema */
+.fr-box.fr-basic .fr-wrapper {
+    background-color: #1e1f3a !important;
+    color: var(--default-color) !important;
+    border-color: #2e2f50 !important;
+    border-radius: 0 0 8px 8px;
+}
+
+.fr-toolbar {
+    background-color: #131428 !important;
+    border-color: #2e2f50 !important;
+    border-radius: 8px 8px 0 0 !important;
+}
+
+.fr-toolbar .fr-btn {
+    color: var(--default-color) !important;
+}
+
+.fr-toolbar .fr-btn:hover {
+    background-color: rgba(59, 130, 246, 0.15) !important;
+}
+
+.fr-element {
+    color: var(--default-color) !important;
+    min-height: 300px;
+}
+
+/* ── Botões da publicação ── */
+.btn-publicar-enviar {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 28px;
+    border-radius: 8px;
+    background-color: var(--accent-color);
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.25s;
+}
+
+.btn-publicar-enviar:hover {
+    background-color: color-mix(in srgb, var(--accent-color), #000 15%);
+}
+
+.btn-publicar-cancelar {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 22px;
+    border-radius: 8px;
+    background: transparent;
+    border: 2px solid color-mix(in srgb, var(--default-color), transparent 50%);
+    color: var(--default-color);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: border-color 0.25s, color 0.25s;
+}
+
+.btn-publicar-cancelar:hover {
+    border-color: var(--default-color);
+    color: var(--heading-color);
+}

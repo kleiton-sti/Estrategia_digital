@@ -11,7 +11,9 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        $middleware->alias([
+            'rede.stii' => \App\Http\Middleware\VerificaRedeStii::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

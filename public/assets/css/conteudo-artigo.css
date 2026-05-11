@@ -1,0 +1,128 @@
+/* ── Conteúdo do artigo ── */
+.conteudo-titulo {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--heading-color);
+    margin-bottom: 10px;
+    line-height: 1.3;
+}
+
+.conteudo-subtitulo {
+    font-size: 1.1rem;
+    color: color-mix(in srgb, var(--default-color), transparent 20%);
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.conteudo-divisor {
+    border-color: color-mix(in srgb, var(--default-color), transparent 75%);
+    margin-bottom: 28px;
+}
+
+.conteudo-corpo {
+    font-size: 1rem;
+    line-height: 1.85;
+    color: var(--default-color);
+}
+
+.conteudo-corpo img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin: 16px 0;
+}
+
+/* ── Autor ── */
+.autor-perfil {
+    padding: 12px 0;
+}
+
+.autor-icone {
+    font-size: 2.5rem;
+    color: var(--accent-color);
+}
+
+.autor-nome {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--heading-color);
+}
+
+.autor-data {
+    font-size: 0.8rem;
+    color: color-mix(in srgb, var(--default-color), transparent 35%);
+}
+
+/* ── Badge categoria ── */
+.artigo-badge-conteudo {
+    background-color: #B85F40;
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 4px 14px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ── Compartilhar ── */
+.compartilhar-label {
+    font-size: 0.875rem;
+    color: color-mix(in srgb, var(--default-color), transparent 30%);
+}
+
+.compartilhar-link {
+    font-size: 1.25rem;
+    color: color-mix(in srgb, var(--default-color), transparent 20%);
+    transition: color 0.2s;
+}
+
+.compartilhar-link:hover {
+    color: var(--accent-color);
+}
+
+/* ── Ações do autor ── */
+.acoes-artigo {
+    padding-top: 12px;
+    border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 80%);
+    margin-top: 32px;
+}
+
+.btn-acao-editar {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 20px;
+    border-radius: 8px;
+    background-color: var(--accent-color);
+    color: #fff;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    transition: background-color 0.25s;
+}
+
+.btn-acao-editar:hover {
+    background-color: color-mix(in srgb, var(--accent-color), #000 15%);
+    color: #fff;
+}
+
+.btn-acao-excluir {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 20px;
+    border-radius: 8px;
+    background-color: transparent;
+    color: #dc3545;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border: 2px solid #dc3545;
+    cursor: pointer;
+    transition: all 0.25s;
+}
+
+.btn-acao-excluir:hover {
+    background-color: #dc3545;
+    color: #fff;
+}

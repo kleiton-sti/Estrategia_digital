@@ -1,0 +1,119 @@
+/* ── Login ── */
+.login-section {
+    min-height: calc(100vh - 200px);
+    padding: 60px 16px;
+}
+
+.login-card {
+    background-color: #12132b;
+    border-radius: 18px;
+    padding: 44px 40px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.45);
+}
+
+.login-titulo {
+    text-align: center;
+    font-family: var(--heading-font);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--heading-color);
+    margin-bottom: 28px;
+}
+
+.login-erro {
+    background-color: rgba(220, 53, 69, 0.15);
+    border: 1px solid #dc3545;
+    color: #ff7070;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 0.875rem;
+    margin-bottom: 20px;
+}
+
+.login-campo {
+    margin-bottom: 20px;
+}
+
+.login-label {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--default-color);
+    margin-bottom: 6px;
+}
+
+.login-input {
+    width: 100%;
+    background-color: #1e1f3a;
+    border: 1px solid #2e2f50;
+    border-radius: 8px;
+    padding: 10px 14px;
+    color: var(--default-color);
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.25s;
+}
+
+.login-input:focus {
+    border-color: var(--accent-color);
+}
+
+.btn-login {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background-color: #a78bfa;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 24px;
+    transition: background-color 0.25s;
+}
+
+.btn-login:hover {
+    background-color: #8b5cf6;
+}
+
+/* ── Botões do menu ── */
+.btn-nav-entrar {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 18px;
+    border-radius: 50px;
+    background-color: var(--accent-color);
+    color: #ffffff;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.25s;
+}
+
+.btn-nav-entrar:hover {
+    background-color: color-mix(in srgb, var(--accent-color), #000 15%);
+    color: #ffffff;
+}
+
+.btn-nav-sair {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 18px;
+    border-radius: 50px;
+    background: transparent;
+    border: 2px solid #dc3545;
+    color: #dc3545;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s;
+}
+
+.btn-nav-sair:hover {
+    background-color: #dc3545;
+    color: #ffffff;
+}
