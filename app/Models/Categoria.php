@@ -13,10 +13,11 @@ class Categoria extends Model
 
     protected $fillable = [
         'nome',
+        'descricao',
     ];
 
     public function artigos()
     {
-        return $this->hasMany(Artigo::class, 'id');
-    } 
+        return $this->belongsToMany(Artigo::class, 'artigo_categoria');
+    }
 }

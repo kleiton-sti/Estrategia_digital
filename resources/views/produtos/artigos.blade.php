@@ -7,7 +7,7 @@
     <section id="artigos" class="primeira-sessao py-5">
       <div class="container">
 
-        <!-- Cabeçalho autenticado -->
+        <!-- Cabecalho exibido quando o usuario esta autenticado -->
         @auth
           <div class="artigos-header-auth d-flex align-items-center justify-content-between mb-4 flex-wrap gap-3">
             <div class="d-flex align-items-center gap-2">
@@ -22,11 +22,11 @@
 
         <div class="section-titulo mb-5 d-flex flex-column justify-content-start">
           <h1>Artigos</h1>
-          <p class="text-start">Explore conteúdos sobre transformação digital, inovação e gestão pública.</p>
+          <p class="text-start">Explore conteudos sobre transformacao digital, inovacao e gestao publica.</p>
         </div>
 
-        <!-- Pills de Categoria -->
-
+        <!-- Pills de categoria -->
+        <!-- data-categoria em cada pill deve bater com os slugs em data-categorias dos cards -->
         <div class="d-flex flex-wrap gap-2 mb-5" id="filtro-categorias">
           <button class="btn btn-pill active" data-categoria="todos">Todos</button>
           @foreach($categorias as $cat)
@@ -34,32 +34,43 @@
           @endforeach
         </div>
 
-
         @if(session('sucesso'))
           <div id="sucesso" class="alert alert-success">{{ session('sucesso') }}</div>
         @endif
 
         <!-- Grid de cards -->
-        <div class="row gy-4 h-100" id="grid-artigos">
+        <!-- data-categorias: slugs separados por espaco, usados pelo filtro JS -->
+        <div class="row gy-4" id="grid-artigos">
 
           @forelse ($artigos as $artigo)
-            <div class="col-lg-4 col-md-6" data-categoria="{{ Str::slug($artigo->categoria->nome ?? '') }}">
+
+            <div class="col-lg-4 col-md-6 artigo-col"
+                 data-categorias="{{ $artigo->categorias->map(fn($c) => Str::slug($c->nome))->join(' ') }}">
               <a href="{{ route('artigos.conteudo', $artigo->id) }}" class="artigo-card-link">
                 <div class="artigo-card">
-                  <div class="artigo-card-img">
-                    <img src="{{ asset('assets/img/misc/misc.png') }}" alt="Capa do artigo" class="img-fluid">
-                    <span class="artigo-badge">{{ $artigo->categoria->nome ?? '-' }}</span>
-                  </div>
-                  <div class="artigo-card-body d-flex flex-column p-3 h-50">
-                    <div class="artigo-data d-flex gap-3">
-                      <span><i class="bi bi-calendar3"></i> {{ $artigo->created_at->format('d/m/Y') }}</span>
+                  <div class="artigo-card-body">
+
+                    <!-- Badges de categoria -->
+                    <div class="artigo-badges-wrap">
+                      @foreach($artigo->categorias as $cat)
+                        <span class="artigo-badge">{{ $cat->nome }}</span>
+                      @endforeach
                     </div>
+
+                    <span class="artigo-data">
+                      <i class="bi bi-calendar3"></i> {{ $artigo->created_at->format('d/m/Y') }}
+                    </span>
                     <h5 class="artigo-titulo">{{ $artigo->titulo }}</h5>
-                    <p class="artigo-subtitulo mb-3 flex-grow-1">{{ $artigo->subtitulo }}</p>
+                    <p class="artigo-subtitulo">{{ Str::limit($artigo->subtitulo, 100) }}</p>
+                    <span class="artigo-leia-mais">
+                      Ler artigo <i class="bi bi-arrow-right"></i>
+                    </span>
+
                   </div>
                 </div>
               </a>
             </div>
+
           @empty
             <div class="col-12">
               <p class="artigos-vazio">Nada publicado ainda.</p>
@@ -75,12 +86,9 @@
 @push('scripts')
   <script src="{{ asset('assets/js/filtro-categoria.js') }}"></script>
   <script>
-    setTimeout(() => {
-      const message = document.getElementById('sucesso');
-
-      if (message) {
-        message.remove();
-      }
+    setTimeout(function () {
+      var el = document.getElementById('sucesso');
+      if (el) el.remove();
     }, 3000);
   </script>
 @endpush

@@ -1,11 +1,10 @@
 @extends('layouts.app')
 
-@section('title', Str::slug($artigo->titulo))
+@section('title', Str::limit($artigo->titulo, 60))
 
 @section('meta')
   <meta property="og:title" content="{{ $artigo->titulo }}">
-  <meta property="og:description" content="{{ $artigo->resumo }}">
-  <meta property="og:image" content="{{ asset('storage/artigos')}}">
+  <meta property="og:description" content="{{ $artigo->subtitulo }}">
   <meta property="og:url" content="{{ url()->current() }}">
   <meta property="og:type" content="article">
 @endsection
@@ -17,7 +16,7 @@
       <div class="row justify-content-center">
         <div class="col-lg-8">
 
-          <!-- Perfil do autor -->
+          <!-- Perfil do autor com icone, nome e data de publicacao -->
           <div class="autor-perfil d-flex align-items-center gap-3 mb-3">
             <i class="bi bi-person-circle autor-icone"></i>
             <div>
@@ -26,7 +25,7 @@
             </div>
           </div>
 
-          <!-- Compartilhamento -->
+          <!-- Botoes de compartilhamento nas redes sociais -->
           <!-- <div class="compartilhar d-flex align-items-center gap-3 mb-4 flex-wrap">
             <span class="compartilhar-label">Compartilhar:</span>
             <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ urlencode(url()->current()) }}"
@@ -51,21 +50,25 @@
             </a>
           </div> -->
 
-          <!-- Categoria -->
-          <span class="artigo-badge-conteudo mb-3 d-inline-block">{{ $artigo->categoria->nome ?? '-' }}</span>
+          <!-- Badges de categoria — multiplas por artigo (N:N) -->
+          <div class="artigo-badges-conteudo mb-3">
+            @foreach($artigo->categorias as $cat)
+              <span class="artigo-badge-conteudo">{{ $cat->nome }}</span>
+            @endforeach
+          </div>
 
-          <!-- Título e subtítulo -->
+          <!-- Titulo e subtitulo -->
           <h1 class="conteudo-titulo">{{ $artigo->titulo }}</h1>
           <p class="conteudo-subtitulo">{{ $artigo->subtitulo }}</p>
 
           <hr class="conteudo-divisor">
 
-          <!-- Corpo -->
+          <!-- Corpo do artigo renderizado como HTML (gerado pelo editor Froala) -->
           <div class="conteudo-corpo">
             {!! $artigo->corpo !!}
           </div>
 
-          <!-- Ações do usuário autenticado -->
+          <!-- Acoes de edicao e exclusao visiveis somente para o autor autenticado -->
           @auth
             @if(Auth::id() === $artigo->user_id)
               @include('componentes.acoes-artigo', ['artigo' => $artigo])

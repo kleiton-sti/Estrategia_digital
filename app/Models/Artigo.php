@@ -14,7 +14,6 @@ class Artigo extends Model
 
     protected $fillable = [
         'user_id',
-        'categoria_id',
         'titulo',
         'subtitulo',
         'corpo',
@@ -25,8 +24,8 @@ class Artigo extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function categoria()
+    public function categorias()
     {
-        return $this->belongsTo(Categoria::class, 'categoria_id');
+        return $this->belongsToMany(Categoria::class, 'artigo_categoria');
     }
 }

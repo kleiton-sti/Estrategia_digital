@@ -4,16 +4,21 @@
     padding: 6px 20px;
     font-size: 0.85rem;
     font-weight: 500;
-    border: 2px solid #0d6efd;
-    color: #0d6efd;
+    border: 1px solid color-mix(in srgb, var(--accent-color), transparent 40%);
+    color: var(--default-color);
     background: transparent;
-    transition: all 0.25s ease;
+    transition: all 0.2s ease;
 }
 
-.btn-pill:hover,
+.btn-pill:hover {
+    border-color: var(--accent-color);
+    color: var(--heading-color);
+    background: color-mix(in srgb, var(--accent-color), transparent 88%);
+}
+
 .btn-pill.active {
-    background: #0d6efd;
-    border: none;
+    background: var(--accent-color);
+    border-color: var(--accent-color);
     color: #fff;
 }
 
@@ -26,92 +31,97 @@
 
 .artigo-card {
     border-radius: 12px;
-    cursor: pointer;
     overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background-image: linear-gradient(to top, #88d3ce 0%, #6231e8 100%);
     display: flex;
     flex-direction: column;
     height: 100%;
-}
-
-.artigo-card-body {
-    background-color: #ffffff9f;
+    background-color: var(--surface-color);
+    border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .artigo-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+    transform: translateY(-4px);
+    border-color: color-mix(in srgb, var(--accent-color), transparent 55%);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.25);
 }
 
-.artigo-card-img {
-    position: relative;
-    overflow: hidden;
-    max-height: 200px;
-}
-
-.artigo-card-img img {
+/* Barra de acento lateral esquerda */
+.artigo-card::before {
+    content: '';
+    display: block;
+    height: 3px;
     width: 100%;
-    height: 200px;
-    object-fit: cover;
-    transition: transform 0.4s ease;
+    background: linear-gradient(90deg, var(--accent-color) 0%, color-mix(in srgb, var(--accent-color), #a78bfa 60%) 100%);
+    flex-shrink: 0;
 }
 
-.artigo-card:hover .artigo-card-img img {
-    transform: scale(1.05);
+/* Corpo do card */
+.artigo-card-body {
+    padding: 22px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+/* Badges de categoria */
+.artigo-badges-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 14px;
 }
 
 .artigo-badge {
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    background-color: #7c5ddb;
-    color: #fff;
-    font-size: 0.72rem;
+    font-size: 0.68rem;
     font-weight: 600;
-    padding: 4px 12px;
+    padding: 3px 10px;
     border-radius: 50px;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.4px;
+    background-color: color-mix(in srgb, var(--accent-color), transparent 82%);
+    color: var(--accent-color);
+    border: 1px solid color-mix(in srgb, var(--accent-color), transparent 65%);
 }
 
 .artigo-data {
-    font-size: 0.78rem;
-    color: #212121;
+    font-size: 0.76rem;
+    color: color-mix(in srgb, var(--default-color), transparent 40%);
     margin-bottom: 10px;
-}
-
-.artigo-data i {
-    margin-right: 4px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
 .artigo-titulo {
     font-size: 1rem;
     font-weight: 700;
-    line-height: 1.4;
-    margin-bottom: 10px;
-    color: #212121;
+    line-height: 1.45;
+    margin-bottom: 8px;
+    color: var(--heading-color);
 }
 
 .artigo-subtitulo {
-    font-size: 0.875rem;
-    color: #212121;
-    line-height: 1.6;
+    font-size: 0.855rem;
+    color: color-mix(in srgb, var(--default-color), transparent 25%);
+    line-height: 1.65;
+    flex-grow: 1;
+    margin-bottom: 18px;
 }
 
-.artigo-link {
-    font-size: 0.875rem;
+.artigo-leia-mais {
+    font-size: 0.82rem;
     font-weight: 600;
-    color: #034cb9;
-    text-decoration: none;
+    color: var(--accent-color);
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
     margin-top: auto;
-    transition: gap 0.2s;
+    transition: gap 0.2s ease;
 }
 
-.artigo-link:hover {
-    color: #0d6efd;
-    text-decoration: underline;
+.artigo-card:hover .artigo-leia-mais {
+    gap: 9px;
 }
 
 /* ── Painel autenticado ── */
@@ -134,7 +144,7 @@
     gap: 6px;
     padding: 8px 22px;
     border-radius: 50px;
-    background-color: #7c5ddb;
+    background-color: var(--accent-color);
     color: #fff;
     font-size: 0.875rem;
     font-weight: 600;
@@ -144,7 +154,7 @@
 }
 
 .btn-publicar:hover {
-    background-color: #5d33c2;
+    background-color: color-mix(in srgb, var(--accent-color), #000 15%);
     color: #fff;
 }
 
@@ -155,12 +165,62 @@
     padding: 40px 0;
 }
 
+/* ── Badges multiplas na pagina de conteudo ── */
+.artigo-badges-conteudo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.artigo-badge-conteudo {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 4px 14px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background-color: color-mix(in srgb, var(--accent-color), transparent 82%);
+    color: var(--accent-color);
+    border: 1px solid color-mix(in srgb, var(--accent-color), transparent 65%);
+}
+
+/* ── Checkboxes de categoria no formulario ── */
+.categorias-checkboxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 6px;
+}
+
+.categoria-check-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    cursor: pointer;
+    font-size: 0.88rem;
+    color: var(--default-color);
+    background-color: transparent;
+    border: 1px solid color-mix(in srgb, var(--default-color), transparent 75%);
+    border-radius: 8px;
+    padding: 7px 14px;
+    transition: border-color 0.2s, background-color 0.2s;
+}
+
+.categoria-check-label:has(.categoria-check-input:checked) {
+    border-color: var(--accent-color);
+    background-color: color-mix(in srgb, var(--accent-color), transparent 88%);
+    color: var(--heading-color);
+}
+
+.categoria-check-input {
+    accent-color: var(--accent-color);
+}
+
 @media (max-width: 768px) {
     .btn-pill {
         font-size: 0.8rem;
-    }
-
-    .artigo-card {
-        flex-direction: column;
+        padding: 5px 14px;
     }
 }

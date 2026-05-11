@@ -21,12 +21,12 @@ class PublicacaoController extends Controller
     public function painel(): View
     {
         try {
-            $artigos = $this->produtosService->listarArtigos();
+            $artigos    = $this->publicacaoService->listarPorUsuario(Auth::id());
             $categorias = $this->produtosService->listarCategorias();
 
             return view('produtos.artigos', compact('artigos', 'categorias'));
         } catch (\Throwable $e) {
-            Log::error('Erro ao carregar painel: ' . $e->getMessage());
+            Log::error('PublicacaoController@painel: ' . $e->getMessage());
             abort(500);
         }
     }
@@ -38,7 +38,7 @@ class PublicacaoController extends Controller
 
             return view('publicacao.publicar', compact('categorias'));
         } catch (\Throwable $e) {
-            Log::error('Erro ao exibir formulário de publicação: ' . $e->getMessage());
+            Log::error('PublicacaoController@criar: ' . $e->getMessage());
             abort(500);
         }
     }
@@ -50,7 +50,7 @@ class PublicacaoController extends Controller
 
             return redirect()->route('artigos.painel')->with('sucesso', 'Artigo publicado com sucesso.');
         } catch (\Throwable $e) {
-            Log::error('Erro ao salvar artigo: ' . $e->getMessage());
+            Log::error('PublicacaoController@salvar: ' . $e->getMessage());
             abort(500);
         }
     }
@@ -58,12 +58,12 @@ class PublicacaoController extends Controller
     public function editar(int $id): View
     {
         try {
-            $artigo     = Artigo::findOrFail($id);
+            $artigo     = Artigo::with('categorias')->findOrFail($id);
             $categorias = $this->produtosService->listarCategorias();
 
             return view('publicacao.publicar', compact('artigo', 'categorias'));
         } catch (\Throwable $e) {
-            Log::error('Erro ao carregar edição: ' . $e->getMessage());
+            Log::error('PublicacaoController@editar: ' . $e->getMessage());
             abort(500);
         }
     }
@@ -76,7 +76,7 @@ class PublicacaoController extends Controller
 
             return redirect()->route('artigos.conteudo', $id)->with('sucesso', 'Artigo atualizado com sucesso.');
         } catch (\Throwable $e) {
-            Log::error('Erro ao atualizar artigo: ' . $e->getMessage());
+            Log::error('PublicacaoController@atualizar: ' . $e->getMessage());
             abort(500);
         }
     }
@@ -89,7 +89,7 @@ class PublicacaoController extends Controller
 
             return redirect()->route('artigos.painel')->with('sucesso', 'Artigo removido.');
         } catch (\Throwable $e) {
-            Log::error('Erro ao excluir artigo: ' . $e->getMessage());
+            Log::error('PublicacaoController@excluir: ' . $e->getMessage());
             abort(500);
         }
     }

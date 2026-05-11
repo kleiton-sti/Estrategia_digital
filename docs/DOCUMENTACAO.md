@@ -1,24 +1,26 @@
-# Documentação — Implementação: Artigos, Autenticação e Publicação
+# Documentacao — Portal Estrategia Digital (STII)
 
-## Visão geral
+## Visao geral
 
-Funcionalidade implementada no portal **Estratégia Digital** da Secretaria de Tecnologia da Informação e Inovação (STII) de Caraguatatuba. Cobre listagem pública de artigos, visualização de conteúdo, autenticação por subrede, painel do técnico e CRUD completo de artigos com editor WYSIWYG.
+Funcionalidade implementada no portal **Estrategia Digital** da Secretaria de Tecnologia da Informacao e Inovacao (STII) de Caraguatatuba. Cobre listagem publica de artigos, visualizacao de conteudo, autenticacao por subrede, painel do tecnico e CRUD completo de artigos com editor WYSIWYG.
 
 ---
 
-## 1. Arquivos criados / modificados
+## Historico de versoes
 
-### Rotas — `routes/web.php`
-- Rota `/artigos` pública substituída pela rota nomeada `artigos` apontando para `ProdutosController@artigos`.
-- Rota `/artigos/{id}` pública para `ProdutosController@conteudoArtigo`, nomeada `artigos.conteudo`.
-- Grupo `middleware('rede.stii')` protege as rotas de login (`/entrar`).
-- Grupo `middleware('auth')` protege o painel e o CRUD de publicação.
-- Rota `POST /sair` com middleware `auth` para encerrar sessão.
+| Versao | Branch | Descricao |
+|---|---|---|
+| 1.0.0 | main | Implementacao inicial: artigos, autenticacao, publicacao |
+| 1.1.0 | versao-1.1.0 | Campo descricao em categorias; relacao N:N artigo-categoria; redesign dos cards |
+
+---
+
+## 1. Rotas — `routes/web.php`
 
 ```
-GET  /artigos                     → artigos (público)
-GET  /artigos/{id}                → artigos.conteudo (público)
-GET  /entrar                      → login (restrito à 192.168.11.x)
+GET  /artigos                     → artigos (publico)
+GET  /artigos/{id}                → artigos.conteudo (publico)
+GET  /entrar                      → login (restrito a 192.168.11.x)
 POST /entrar                      → autenticar
 POST /sair                        → sair (auth)
 GET  /painel/artigos              → artigos.painel (auth)
@@ -27,159 +29,180 @@ POST /painel/publicar             → artigos.salvar (auth)
 GET  /painel/artigos/{id}/editar  → artigos.editar (auth)
 PUT  /painel/artigos/{id}         → artigos.atualizar (auth)
 DELETE /painel/artigos/{id}       → artigos.excluir (auth)
+POST /painel/upload/imagem        → upload.imagem (auth)
 ```
 
 ---
 
-### Middleware — `app/Http/Middleware/VerificaRedeStii.php`
-Verifica se o IP da requisição pertence à subrede `192.168.11.x`. Retorna `abort(403)` caso contrário. Registrado com o alias `rede.stii` em `bootstrap/app.php`.
+## 2. Middleware
+
+**`app/Http/Middleware/VerificaRedeStii.php`**
+Verifica se o IP da requisicao pertence a subrede `192.168.11.x`.
+Retorna `abort(403)` caso contrario.
+Registrado com alias `rede.stii` em `bootstrap/app.php`.
 
 ---
 
-### Models
+## 3. Models
 
 **`app/Models/Artigo.php`**
-- Adicionado `SoftDeletes`.
-- Relacionamentos: `belongsTo(User)` e `belongsTo(Categoria, 'categoria_id')`.
-- Campo `categoria` (string simples) removido do `$fillable`; mantido apenas `categoria_id`.
+- Usa `SoftDeletes`.
+- Fillable: `user_id`, `titulo`, `subtitulo`, `corpo`.
+- O campo `categoria_id` foi removido na versao 1.1.0.
+- Relacionamentos:
+  - `belongsTo(User::class)`
+  - `belongsToMany(Categoria::class, 'artigo_categoria')` — relacao N:N
+
+**`app/Models/Categoria.php`**
+- Fillable: `nome`, `descricao` (adicionado na versao 1.1.0).
+- Relacionamentos:
+  - `belongsToMany(Artigo::class, 'artigo_categoria')` — relacao N:N
 
 **`app/Models/User.php`**
-- Adicionado `SoftDeletes`.
-- `$fillable` expandido para incluir `registro`, `nome`, `cpf`, `grupo_id`, `setor_id` (compatível com o seeder existente).
+- Usa `SoftDeletes`.
+- Fillable inclui: `registro`, `nome`, `cpf`, `grupo_id`, `setor_id`.
 
 ---
 
-### Services
+## 4. Services
 
-| Arquivo | Responsabilidade |
+| Arquivo | Metodos |
 |---|---|
-| `app/Services/ProdutosService.php` | `listarArtigos`, `buscarArtigo`, `listarCategorias` |
-| `app/Services/AutenticacaoService.php` | `autenticar` (Auth::attempt), `encerrarSessao` |
-| `app/Services/PublicacaoService.php` | `publicar`, `atualizar`, `excluir` (soft delete), `artigosPorUsuario` |
+| `ProdutosService` | `listarArtigos`, `buscarArtigo`, `listarCategorias` |
+| `AutenticacaoService` | `autenticar`, `encerrarSessao` |
+| `PublicacaoService` | `publicar`, `atualizar`, `excluir`, `listarPorUsuario` |
 
-Todos os métodos possuem `try/catch` com `Log::error` e `abort(500)`.
+Todos os metodos possuem `try/catch` com `Log::error` e `abort(500)`.
 
----
-
-### Controllers
-
-**`app/Http/Controllers/ProdutosController.php`**
-- Injeta `ProdutosService`.
-- Métodos adicionados: `artigos()` → view `produtos.artigos`; `conteudoArtigo($id)` → view `produtos.conteudo-artigo`.
-- Métodos existentes (`numeros`, `allHands`) mantidos com `try/catch`.
-
-**`app/Http/Controllers/AutenticacaoController.php`** *(novo)*
-- Injeta `AutenticacaoService`.
-- `exibirLogin()` → view `autenticacao.login`.
-- `autenticar(AutenticacaoRequest)` → valida, autentica, redireciona para `artigos.painel`.
-- `sair(Request)` → encerra sessão, redireciona para `home`.
-
-**`app/Http/Controllers/PublicacaoController.php`** *(novo)*
-- Injeta `PublicacaoService` e `ProdutosService`.
-- `painel()` → lista artigos do usuário autenticado → view `produtos.artigos`.
-- `criar()` → view `publicacao.publicar` com categorias.
-- `salvar(PublicacaoRequest)` → publica e redireciona.
-- `editar($id)` → abre `produtos.conteudo-artigo` com dados preenchidos.
-- `atualizar(PublicacaoRequest, $id)` → atualiza e redireciona.
-- `excluir($id)` → soft delete e redireciona para painel.
+Em `publicar` e `atualizar`, as categorias sao sincronizadas via `$artigo->categorias()->sync($dados['categorias'])`.
 
 ---
 
-### FormRequests
+## 5. Controllers
 
-**`app/Http/Requests/AutenticacaoRequest.php`**
-- Campos: `email` (required, email), `password` (required, min:6).
+**`ProdutosController`**
+- `artigos()` — exibe todos os artigos com relacao `categorias` (plural, N:N).
+- `conteudoArtigo($id)` — busca artigo com `categorias` e `user`.
 
-**`app/Http/Requests/PublicacaoRequest.php`**
-- Campos: `titulo`, `subtitulo`, `corpo` (required, string), `categoria_id` (required, exists:categorias,id).
+**`AutenticacaoController`**
+- `exibirLogin()` → `autenticacao.login`
+- `autenticar(AutenticacaoRequest)` → autentica, redireciona para `artigos.painel`
+- `sair(Request)` → encerra sessao, redireciona para `home`
 
----
-
-## 2. Blades
-
-### `resources/views/layouts/app.blade.php` (modificado)
-- Item **Artigos** adicionado no menu principal (ao lado de Roadmap).
-- Botão **Entrar** exibido apenas quando o IP é da subrede `192.168.11.x` e o usuário não está autenticado.
-- Botão **Sair** exibido quando autenticado (formulário POST para `/sair`).
-- CSS `conteudo-artigo.css`, `publicacao.css` e `login.css` referenciados (já estavam presentes; confirmados).
-
-### `resources/views/produtos/artigos.blade.php` (reescrita)
-- **Modo público:** exibe pills de categoria com filtro JS e grid de cards clicáveis.
-- **Modo autenticado:** exibe cabeçalho com nome do usuário, ícone e botão "Publicar". Filtra artigos do usuário. Exibe "Nada publicado ainda." quando vazio.
-
-### `resources/views/produtos/conteudo-artigo.blade.php` (novo)
-Ordem de exibição no `<main>`:
-1. Perfil do autor: ícone `bi-person-circle` + nome + data de publicação.
-2. Redes sociais para compartilhamento: LinkedIn, Facebook, Twitter/X, WhatsApp, E-mail.
-3. Badge de categoria.
-4. Título (`<h1>`), subtítulo, divisor horizontal.
-5. Corpo do artigo (renderizado com `{!! !!}` para suportar HTML do Froala).
-6. Ações (editar / excluir) via `@include('componentes.acoes-artigo')` — exibidas apenas para o autor autenticado.
-
-### `resources/views/autenticacao/login.blade.php` (novo)
-Design inspirado na imagem de referência (card escuro, fundo `#12132b`, inputs `#1e1f3a`, botão roxo `#a78bfa`). Sem opção de cadastro ou login social.
-
-### `resources/views/publicacao/publicar.blade.php` (novo)
-- Formulário com campos: categoria (select), título, subtítulo, corpo.
-- Editor Froala carregado via CDN (conforme documentação oficial).
-- Reutilizado para edição: quando `$artigo` existe, preenche os campos e usa método `PUT`.
-- JS do Froala empilhado via `@push('scripts')`.
-
-### `resources/views/componentes/acoes-artigo.blade.php` (novo)
-Componente com botões **Editar** (link) e **Excluir** (formulário DELETE com confirmação JS). Incluído via `@include` em `conteudo-artigo.blade.php`.
+**`PublicacaoController`**
+- `painel()` → lista artigos do usuario autenticado via `PublicacaoService@listarPorUsuario`
+- `criar()` → `publicacao.publicar` com categorias
+- `salvar(PublicacaoRequest)` → publica e sincroniza categorias
+- `editar($id)` → carrega artigo com `categorias` para preenchimento do formulario
+- `atualizar(PublicacaoRequest, $id)` → atualiza e sincroniza categorias
+- `excluir($id)` → soft delete, redireciona para painel
 
 ---
 
-## 3. CSS
+## 6. FormRequests
 
-| Arquivo | Conteúdo |
+**`AutenticacaoRequest`**
+- `email`: required, email
+- `password`: required, min:6
+
+**`PublicacaoRequest`** (atualizado na versao 1.1.0)
+- `titulo`: required, string, max:255
+- `subtitulo`: required, string, max:255
+- `corpo`: required, string
+- `categorias`: required, array, min:1
+- `categorias.*`: exists:categorias,id
+
+---
+
+## 7. Migrations
+
+| Arquivo | Descricao |
 |---|---|
-| `public/assets/css/login.css` | Card de login, inputs, botão roxo, `.btn-nav-entrar`, `.btn-nav-sair` |
-| `public/assets/css/conteudo-artigo.css` | Autor, compartilhamento, badge, título/subtítulo/corpo, ações editar/excluir |
-| `public/assets/css/publicacao.css` | Card do formulário, inputs, select, adaptação do tema Froala (escuro), botões publicar/cancelar |
-| `public/assets/css/artigos.css` | Atualizado com `.artigos-header-auth`, `.btn-publicar`, `.artigos-vazio`, `.artigo-card-link` |
-
----
-
-## 4. Migrations
-
-| Arquivo | Alteração |
-|---|---|
-| `2026_05_10_000001_add_soft_delete_artigos.php` | Adiciona `deleted_at` na tabela `artigos` |
-| `2026_05_10_000002_add_soft_delete_users.php` | Adiciona `deleted_at` na tabela `users` |
+| `2026_05_08_105725_create_categorias_table.php` | Cria tabela `categorias` com `nome` |
+| `2026_05_08_105726_create_artigos_table.php` | Cria tabela `artigos` com `categoria_id` (FK legada) |
+| `2026_05_08_123022_alter_users_table.php` | Altera tabela `users` |
+| `2026_05_10_000001_add_soft_delete_artigos.php` | Adiciona `deleted_at` em `artigos` |
+| `2026_05_11_000001_add_descricao_to_categorias_table.php` | Adiciona coluna `descricao` em `categorias` |
+| `2026_05_11_000002_create_artigo_categoria_table.php` | Cria tabela pivot `artigo_categoria` (N:N) |
+| `2026_05_11_000003_remove_categoria_id_from_artigos_table.php` | Remove FK `categoria_id` de `artigos` |
 
 > Executar: `php artisan migrate`
 
 ---
 
-## 5. Configuração necessária
+## 8. Blades
 
-### `bootstrap/app.php`
-Alias do middleware registrado:
+**`layouts/app.blade.php`**
+- Menu com botao Entrar (visivel apenas na subrede `192.168.11.x`, usuario nao autenticado).
+- Botao Sair exibido quando autenticado (formulario POST `/sair`).
+- CSS `artigos.css`, `conteudo-artigo.css`, `publicacao.css` e `login.css` referenciados.
+
+**`produtos/artigos.blade.php`** (redesenhado na versao 1.1.0)
+- Modo publico: pills de categoria com filtro JS e grid de cards sem imagem.
+- Modo autenticado: cabecalho com nome do usuario, icone e botao Publicar. Lista artigos do proprio usuario.
+- Cada card usa `data-categorias` com slugs separados por espaco (N:N).
+- Cards sem imagem: topo com gradiente, letra inicial decorativa, badges de categoria, titulo, subtitulo truncado, link "Ler artigo".
+
+**`produtos/conteudo-artigo.blade.php`**
+- Perfil do autor (icone + nome + data).
+- Botoes de compartilhamento: LinkedIn, Facebook, Twitter/X, WhatsApp, E-mail.
+- Badges de categorias multiplas (loop sobre `$artigo->categorias`).
+- Titulo, subtitulo, divisor, corpo HTML.
+- Botoes editar/excluir via `@include('componentes.acoes-artigo')` apenas para o autor autenticado.
+
+**`publicacao/publicar.blade.php`** (atualizado na versao 1.1.0)
+- Selecao de categorias substituida por checkboxes multiplos (`name="categorias[]"`).
+- Edicao: categorias ja associadas aparecem marcadas.
+- Editor Froala via CDN.
+
+**`autenticacao/login.blade.php`**
+- Card escuro, inputs escuros, botao roxo.
+- Sem opcao de cadastro ou login social.
+
+**`componentes/acoes-artigo.blade.php`**
+- Botoes Editar (link) e Excluir (formulario DELETE com confirmacao JS).
+
+---
+
+## 9. CSS
+
+| Arquivo | Conteudo |
+|---|---|
+| `artigos.css` | Cards sem imagem, topo gradiente, inicial decorativa, badges N:N, pills, checkboxes de categoria, painel autenticado |
+| `conteudo-artigo.css` | Autor, compartilhamento, badges multiplas, titulo/subtitulo/corpo, acoes editar/excluir |
+| `publicacao.css` | Card formulario, inputs, tema escuro Froala, botoes publicar/cancelar |
+| `login.css` | Card de login, inputs, botao roxo, `.btn-nav-entrar`, `.btn-nav-sair` |
+
+---
+
+## 10. JavaScript
+
+**`public/assets/js/filtro-categoria.js`** (atualizado na versao 1.1.0)
+- Cada coluna do grid usa `data-categorias` com lista de slugs separados por espaco.
+- Filtro verifica se o slug selecionado esta contido na lista do card (compativel com N:N).
+
+---
+
+## 11. Configuracao necessaria
+
+**`bootstrap/app.php`**
 ```php
 $middleware->alias([
     'rede.stii' => \App\Http\Middleware\VerificaRedeStii::class,
 ]);
 ```
 
-### `config/auth.php`
-Verificar se o guard `web` aponta para o model `User` e usa o campo `email` como identificador. O padrão do Laravel já cobre isso.
+**`config/auth.php`**
+Guard `web` deve apontar para o model `User` com identificador `email`. O padrao do Laravel ja cobre isso.
 
 ---
 
-## 6. Passos para rodar após o merge
+## 12. Passos para rodar apos o merge
 
 ```bash
-# Instalar dependências (se necessário)
 composer install
-
-# Rodar migrations
 php artisan migrate
-
-# Popular banco (se necessário)
 php artisan db:seed
-
-# Limpar caches
 php artisan cache:clear
 php artisan config:clear
 php artisan route:clear
@@ -188,29 +211,32 @@ php artisan view:clear
 
 ---
 
-## 7. Fluxo de uso
+## 13. Fluxo de uso
 
-### Acesso público
-1. Qualquer usuário acessa `/artigos`.
+**Acesso publico**
+1. Usuario acessa `/artigos`.
 2. Filtra por categoria via pills.
-3. Clica em um card → abre `/artigos/{id}` com conteúdo completo e opções de compartilhamento.
+3. Clica em um card → abre `/artigos/{id}` com conteudo completo e compartilhamento.
 
-### Acesso da rede STII (192.168.11.x)
-1. Botão **Entrar** aparece no menu.
+**Acesso da rede STII (192.168.11.x)**
+1. Botao Entrar aparece no menu.
 2. Acessa `/entrar`, informa e-mail e senha.
-3. Após autenticação, é redirecionado para `/painel/artigos`.
-4. Vê seus artigos, botão **Publicar** e seu nome no topo.
-5. Publica em `/painel/publicar` com editor Froala.
-6. Ao visualizar um artigo próprio (`/artigos/{id}`), vê botões **Editar** e **Excluir**.
-7. Editar reabre `/painel/artigos/{id}/editar` com dados preenchidos.
+3. Apos autenticacao, e redirecionado para `/painel/artigos`.
+4. Ve seus artigos, botao Publicar e seu nome no topo.
+5. Publica em `/painel/publicar` selecionando uma ou mais categorias e usando o editor Froala.
+6. Ao visualizar um artigo proprio, ve botoes Editar e Excluir.
+7. Editar reabre `/painel/artigos/{id}/editar` com dados preenchidos e categorias marcadas.
 8. Excluir realiza soft delete e redireciona para o painel.
-9. **Sair** encerra a sessão e redireciona para Home.
+9. Sair encerra a sessao e redireciona para Home.
 
 ---
 
-## 8. Observações
+## 14. Observacoes
 
-- O campo `nome` é usado nos models/blades (compatível com o seeder). O guard de autenticação continua usando `email` + `password`.
-- O corpo do artigo é salvo como HTML (gerado pelo Froala) e renderizado com `{!! !!}`. Certifique-se de que apenas usuários internos autenticados possam publicar para evitar XSS.
-- O middleware `VerificaRedeStii` bloqueia a exibição da rota de login para IPs externos. Usuários já autenticados que saem da rede continuam com sessão ativa até fazer logout.
-- O Froala CDN utiliza a versão `latest`. Para produção, fixar em uma versão estável.
+- O campo `nome` e usado nos models/blades. O guard de autenticacao usa `email` + `password`.
+- O corpo do artigo e salvo como HTML (gerado pelo Froala) e renderizado com `{!! !!}`. Apenas usuarios internos autenticados podem publicar.
+- O middleware `VerificaRedeStii` bloqueia a rota de login para IPs externos. Sessoes ativas continuam validas apos sair da rede ate o logout.
+- O Froala CDN usa versao `latest`. Para producao, fixar em uma versao estavel.
+- A coluna `descricao` em `categorias` e nullable para compatibilidade com registros existentes.
+- A tabela `artigo_categoria` possui indice unico em `(artigo_id, categoria_id)` para evitar duplicatas.
+- O metodo `sync` do Eloquent remove categorias desvinculadas automaticamente na edicao.

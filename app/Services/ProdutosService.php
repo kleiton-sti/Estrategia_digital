@@ -11,32 +11,30 @@ class ProdutosService
     public function listarArtigos()
     {
         try {
-            return Artigo::with(['categoria'])->latest()->get();
+            return Artigo::with(['categorias', 'user'])->latest()->get();
         } catch (\Throwable $e) {
-            Log::error('Erro ao listar artigos: ' . $e->getMessage());
+            Log::error('ProdutosService@listarArtigos: ' . $e->getMessage());
             abort(500);
         }
     }
-    
+
     public function listarCategorias()
     {
         try {
             return Categoria::all();
         } catch (\Throwable $e) {
-            Log::error('Erro ao listar categorias: ' . $e->getMessage());
+            Log::error('ProdutosService@listarCategorias: ' . $e->getMessage());
             abort(500);
         }
     }
-
 
     public function buscarArtigo(int $id): Artigo
     {
         try {
-            return Artigo::with(['categoria', 'user'])->findOrFail($id);
+            return Artigo::with(['categorias', 'user'])->findOrFail($id);
         } catch (\Throwable $e) {
-            Log::error('Erro ao buscar artigo: ' . $e->getMessage());
+            Log::error('ProdutosService@buscarArtigo: ' . $e->getMessage());
             abort(500);
         }
     }
-
 }

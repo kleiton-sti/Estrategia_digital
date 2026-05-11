@@ -35,34 +35,56 @@
             @method('PUT')
           @endisset
 
+          <!-- Selecao de multiplas categorias — relacao N:N -->
+          <!-- O name usa array (categorias[]) para enviar varios ids -->
           <div class="publicacao-campo mb-3">
-            <label for="categoria_id" class="publicacao-label">Categoria</label>
-            <select name="categoria_id" id="categoria_id" class="publicacao-select">
-              <option value="">Selecione...</option>
+            <label class="publicacao-label">Categorias</label>
+            <div class="categorias-checkboxes">
               @foreach($categorias as $cat)
-                <option value="{{ $cat->id }}"
-                  {{ (isset($artigo) && $artigo->categoria_id == $cat->id) ? 'selected' : '' }}>
-                  {{ $cat->nome }}
-                </option>
+                @php
+                  $selecionada = isset($artigo) && $artigo->categorias->contains($cat->id);
+                @endphp
+                <label class="categoria-check-label">
+                  <input
+                    type="checkbox"
+                    name="categorias[]"
+                    value="{{ $cat->id }}"
+                    {{ $selecionada ? 'checked' : '' }}
+                    class="categoria-check-input"
+                  >
+                  <span>{{ $cat->nome }}</span>
+                </label>
               @endforeach
-            </select>
+            </div>
+            @error('categorias')
+              <span class="publicacao-erro">{{ $message }}</span>
+            @enderror
           </div>
 
           <div class="publicacao-campo mb-3">
-            <label for="titulo" class="publicacao-label">Título</label>
+            <label for="titulo" class="publicacao-label">Titulo</label>
             <input type="text" id="titulo" name="titulo" class="publicacao-input"
               value="{{ isset($artigo) ? $artigo->titulo : old('titulo') }}" required>
+            @error('titulo')
+              <span class="publicacao-erro">{{ $message }}</span>
+            @enderror
           </div>
 
           <div class="publicacao-campo mb-3">
-            <label for="subtitulo" class="publicacao-label">Subtítulo</label>
+            <label for="subtitulo" class="publicacao-label">Subtitulo</label>
             <input type="text" id="subtitulo" name="subtitulo" class="publicacao-input"
               value="{{ isset($artigo) ? $artigo->subtitulo : old('subtitulo') }}" required>
+            @error('subtitulo')
+              <span class="publicacao-erro">{{ $message }}</span>
+            @enderror
           </div>
 
           <div class="publicacao-campo mb-4">
-            <label for="corpo" class="publicacao-label">Conteúdo</label>
+            <label for="corpo" class="publicacao-label">Conteudo</label>
             <textarea id="corpo" name="corpo">{{ isset($artigo) ? $artigo->corpo : old('corpo') }}</textarea>
+            @error('corpo')
+              <span class="publicacao-erro">{{ $message }}</span>
+            @enderror
           </div>
 
           <div class="d-flex gap-3">
