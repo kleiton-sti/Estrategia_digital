@@ -31,7 +31,8 @@ class AutenticacaoController extends Controller
             if (!$autenticado) {
                 return back()->withErrors(['email' => 'E-mail ou senha incorretos.'])->withInput();
             }
-
+            
+            //evita session fixation atack
             $request->session()->regenerate();
 
             return redirect()->route('artigos.painel');

@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>@yield('title','Estratégia Digital')</title>
+  <title>@yield('title', 'Estratégia Digital')</title>
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="{{ asset('assets/img/favicon.png') }}">
@@ -37,10 +37,11 @@
   </script>
 </head>
 
-<body class="@yield('bodyclass','index-page')">
+<body class="@yield('bodyclass', 'index-page')">
 
   <header id="header" class="header d-flex align-items-center sticky-top">
-    <div class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+    <div
+      class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
       <a href="{{ route('home') }}" class="logo d-flex align-items-center me-auto me-xl-0">
         <img src="https://www.caraguatatuba.sp.gov.br/pmc/wp-content/themes/awesomepmc/assets/img/favicon.png" alt="">
@@ -55,9 +56,9 @@
             <a href="#"><span>Eixos</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               @foreach($todosEixos as $ex)
-              <li class="@if(isset($eixo) && $ex->id_eixos == $eixo->id_eixos) active @endif">
-                <a href="{{ route('eixos.show', $ex->id_eixos) }}"><span>{{ $ex->titulo }}</span></a>
-              </li>
+                <li class="@if(isset($eixo) && $ex->id_eixos == $eixo->id_eixos) active @endif">
+                  <a href="{{ route('eixos.show', $ex->id_eixos) }}"><span>{{ $ex->titulo }}</span></a>
+                </li>
               @endforeach
             </ul>
           </li>
@@ -79,6 +80,7 @@
           <li class="dropdown">
             <a href="#"><span>Produtos</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
+              <li><a href="{{ route('artigos') }}">Artigos</a></li>
               <li><a href="{{ route('produtos.all.hands') }}"><span>All Hands</span></a></li>
               <li><a href="{{ route('produtos.stii.numeros') }}"><span>STII em números</span></a></li>
             </ul>
@@ -87,8 +89,6 @@
           <li><a href="{{ route('plano') }}">PDTI</a></li>
 
           <li><a href="{{ route('roadmap') }}">Roadmap</a></li>
-
-          <li><a href="{{ route('artigos') }}">Artigos</a></li>
 
           <!-- Botão de acesso -->
           @auth
@@ -103,13 +103,16 @@
           @else
             @php
               $ip = request()->ip();
-              $naRedeStii = str_starts_with($ip, '192.168.11.');
+              $naRedeStii = str_starts_with($ip, env('REDE_STII'));
             @endphp
-            @if($naRedeStii && !request()->routeIs('login'))
+            @if($naRedeStii)
               <li>
-                <a href="{{ route('login') }}" class="btn-nav-entrar">
+                <form action="{{ route('login') }}" method="GET">
+               
+                <button type="submit" class="btn-nav-entrar">
                   <i class="bi bi-person-circle"></i> Entrar
-                </a>
+                </button>
+                </form>
               </li>
             @endif
           @endauth
@@ -138,11 +141,15 @@
         <div class="col-6 col-md-2 mb-4">
           <h6 class="fw-bold">PRINCIPAIS SERVIÇOS</h6>
           <ul class="list-unstyled small">
-            <li><a href="https://www.caraguatatuba.sp.gov.br/pmc/agenda-do-prefeito" class="text-white text-decoration-none">Agenda do Prefeito</a></li>
-            <li><a href="https://www.caraguatatuba.sp.gov.br/pmc/category/diario-oficial/" class="text-white text-decoration-none">Diário Oficial</a></li>
+            <li><a href="https://www.caraguatatuba.sp.gov.br/pmc/agenda-do-prefeito"
+                class="text-white text-decoration-none">Agenda do Prefeito</a></li>
+            <li><a href="https://www.caraguatatuba.sp.gov.br/pmc/category/diario-oficial/"
+                class="text-white text-decoration-none">Diário Oficial</a></li>
             <li><a href="https://fundacc.sp.gov.br/" class="text-white text-decoration-none">Fundacc</a></li>
-            <li><a href="https://www.caraguatatuba.sp.gov.br/pmc/" class="text-white text-decoration-none">Notícias</a></li>
-            <li><a href="https://portaldatransparencia.caraguatatuba.sp.gov.br/home" class="text-white text-decoration-none">Transparência</a></li>
+            <li><a href="https://www.caraguatatuba.sp.gov.br/pmc/" class="text-white text-decoration-none">Notícias</a>
+            </li>
+            <li><a href="https://portaldatransparencia.caraguatatuba.sp.gov.br/home"
+                class="text-white text-decoration-none">Transparência</a></li>
             <li><a href="https://www.caragua.tur.br/" class="text-white text-decoration-none">Turismo</a></li>
           </ul>
         </div>
@@ -150,37 +157,58 @@
         <div class="col-6 col-md-2 mb-4">
           <h6 class="fw-bold">CIDADÃO</h6>
           <ul class="list-unstyled small">
-            <li><a href="https://www.caraguatatuba.sp.gov.br/pmc/servicos/servicos-ao-cidadao/concursos-e-processos-seletivos/" class="text-white text-decoration-none">Concursos e Processos</a></li>
-            <li><a href="https://www.caraguatatuba.sp.gov.br/pmc/servicos/servicos-ao-cidadao/conselhos/" class="text-white text-decoration-none">Conselhos</a></li>
-            <li><a href="https://www.caraguatatuba.sp.gov.br/pmc/servicos/servicos-ao-cidadao/minha-casa-minha-vida/" class="text-white text-decoration-none">Habitação</a></li>
-            <li><a href="https://www.caraguatatuba.sp.gov.br/pmc/meio-ambiente/" class="text-white text-decoration-none">Meio Ambiente</a></li>
-            <li><a href="https://pmcaraguatatuba.geosiap.net.br/pmcaraguatatuba/websis/siapegov/administrativo/gpro/gpro_index.php" class="text-white text-decoration-none">Portal do Cidadão</a></li>
-            <li><a href="https://www.caraguatatuba.sp.gov.br/pmc/servicos/servicos-ao-cidadao/saude/" class="text-white text-decoration-none">Saúde</a></li>
-            <li><a href="https://www.caraguatatuba.sp.gov.br/pmc/servicos/servicos-ao-cidadao/social/" class="text-white text-decoration-none">Social</a></li>
-            <li><a href="https://www.caraguatatuba.sp.gov.br/pmc/servicos/servicos-ao-cidadao/trabalho/" class="text-white text-decoration-none">Trabalho</a></li>
-            <li><a href="https://www.caraguatatuba.sp.gov.br/pmc/servicos/servicos-ao-cidadao/consultas/" class="text-white text-decoration-none">Tributos</a></li>
-            <li><a href="https://www.caraguatatuba.sp.gov.br/pmc/servicos/servicos-ao-cidadao/transito/" class="text-white text-decoration-none">Trânsito</a></li>
+            <li><a
+                href="https://www.caraguatatuba.sp.gov.br/pmc/servicos/servicos-ao-cidadao/concursos-e-processos-seletivos/"
+                class="text-white text-decoration-none">Concursos e Processos</a></li>
+            <li><a href="https://www.caraguatatuba.sp.gov.br/pmc/servicos/servicos-ao-cidadao/conselhos/"
+                class="text-white text-decoration-none">Conselhos</a></li>
+            <li><a href="https://www.caraguatatuba.sp.gov.br/pmc/servicos/servicos-ao-cidadao/minha-casa-minha-vida/"
+                class="text-white text-decoration-none">Habitação</a></li>
+            <li><a href="https://www.caraguatatuba.sp.gov.br/pmc/meio-ambiente/"
+                class="text-white text-decoration-none">Meio Ambiente</a></li>
+            <li><a
+                href="https://pmcaraguatatuba.geosiap.net.br/pmcaraguatatuba/websis/siapegov/administrativo/gpro/gpro_index.php"
+                class="text-white text-decoration-none">Portal do Cidadão</a></li>
+            <li><a href="https://www.caraguatatuba.sp.gov.br/pmc/servicos/servicos-ao-cidadao/saude/"
+                class="text-white text-decoration-none">Saúde</a></li>
+            <li><a href="https://www.caraguatatuba.sp.gov.br/pmc/servicos/servicos-ao-cidadao/social/"
+                class="text-white text-decoration-none">Social</a></li>
+            <li><a href="https://www.caraguatatuba.sp.gov.br/pmc/servicos/servicos-ao-cidadao/trabalho/"
+                class="text-white text-decoration-none">Trabalho</a></li>
+            <li><a href="https://www.caraguatatuba.sp.gov.br/pmc/servicos/servicos-ao-cidadao/consultas/"
+                class="text-white text-decoration-none">Tributos</a></li>
+            <li><a href="https://www.caraguatatuba.sp.gov.br/pmc/servicos/servicos-ao-cidadao/transito/"
+                class="text-white text-decoration-none">Trânsito</a></li>
           </ul>
         </div>
 
         <div class="col-6 col-md-2 mb-4">
           <h6 class="fw-bold">EMPRESA</h6>
           <ul class="list-unstyled small">
-            <li><a href="https://www.comprascaragua.com.br/home.jsf?windowId=490" class="text-white text-decoration-none">Portal de Compras</a></li>
-            <li><a href="https://www.caraguatatuba.sp.gov.br/pmc/servicos/servicos-a-empresa/baixa-de-inscricao/" class="text-white text-decoration-none">Baixa de Inscrição</a></li>
-            <li><a href="https://www.caraguatatuba.sp.gov.br/pmc/servicos/servicos-a-empresa/sistema-de-emissao-de-notas-fiscais-eletronicas/" class="text-white text-decoration-none">ISS/NFE/ICMS</a></li>
-            <li><a href="https://www.caraguatatuba.sp.gov.br/pmc/clube-do-servidor/" class="text-white text-decoration-none">Clube do Servidor</a></li>
-            <li><a href="https://www.caraguatatuba.sp.gov.br/pmc/servicos/servicos-a-empresa/licitacoes/" class="text-white text-decoration-none">Licitações</a></li>
+            <li><a href="https://www.comprascaragua.com.br/home.jsf?windowId=490"
+                class="text-white text-decoration-none">Portal de Compras</a></li>
+            <li><a href="https://www.caraguatatuba.sp.gov.br/pmc/servicos/servicos-a-empresa/baixa-de-inscricao/"
+                class="text-white text-decoration-none">Baixa de Inscrição</a></li>
+            <li><a
+                href="https://www.caraguatatuba.sp.gov.br/pmc/servicos/servicos-a-empresa/sistema-de-emissao-de-notas-fiscais-eletronicas/"
+                class="text-white text-decoration-none">ISS/NFE/ICMS</a></li>
+            <li><a href="https://www.caraguatatuba.sp.gov.br/pmc/clube-do-servidor/"
+                class="text-white text-decoration-none">Clube do Servidor</a></li>
+            <li><a href="https://www.caraguatatuba.sp.gov.br/pmc/servicos/servicos-a-empresa/licitacoes/"
+                class="text-white text-decoration-none">Licitações</a></li>
           </ul>
         </div>
 
         <div class="col-6 col-md-2 mb-4">
           <h6 class="fw-bold">MAIS</h6>
           <ul class="list-unstyled small">
-            <li><a href="https://www.caraguatatuba.sp.gov.br/pmc/governo-municipal/" class="text-white text-decoration-none">Governo Municipal</a></li>
-            <li><a href="https://caraguatatuba.legislacaocompilada.com.br/" class="text-white text-decoration-none">Legislação</a></li>
+            <li><a href="https://www.caraguatatuba.sp.gov.br/pmc/governo-municipal/"
+                class="text-white text-decoration-none">Governo Municipal</a></li>
+            <li><a href="https://caraguatatuba.legislacaocompilada.com.br/"
+                class="text-white text-decoration-none">Legislação</a></li>
             <li><a href="https://mail.caraguatatuba.sp.gov.br/" class="text-white text-decoration-none">WebMail</a></li>
-            <li><a href="https://www.caraguatatuba.sp.gov.br/pmc/category/clipping/" class="text-white text-decoration-none">Clipping</a></li>
+            <li><a href="https://www.caraguatatuba.sp.gov.br/pmc/category/clipping/"
+                class="text-white text-decoration-none">Clipping</a></li>
           </ul>
         </div>
 
@@ -200,13 +228,18 @@
       <div class="text-center mt-4">
         <div class="d-flex justify-content-center align-items-center footer-gap flex-wrap">
           <div class="d-flex gap-4 align-items-center">
-            <a href="https://www.facebook.com/prefeituradecaraguatatuba" class="text-white fs-5"><i class="bi bi-facebook"></i></a>
-            <a href="https://www.instagram.com/caraguatatuba_oficial/" class="text-white fs-5"><i class="bi bi-instagram"></i></a>
-            <a href="https://www.youtube.com/channel/UCH84Ukn-PabhE7vhXxhPUDw" class="text-white fs-5"><i class="bi bi-youtube"></i></a>
-            <a href="https://www.flickr.com/photos/prefeituracaraguatatuba/albums" class="text-white fs-5"><i class="bi bi-image"></i></a>
+            <a href="https://www.facebook.com/prefeituradecaraguatatuba" class="text-white fs-5"><i
+                class="bi bi-facebook"></i></a>
+            <a href="https://www.instagram.com/caraguatatuba_oficial/" class="text-white fs-5"><i
+                class="bi bi-instagram"></i></a>
+            <a href="https://www.youtube.com/channel/UCH84Ukn-PabhE7vhXxhPUDw" class="text-white fs-5"><i
+                class="bi bi-youtube"></i></a>
+            <a href="https://www.flickr.com/photos/prefeituracaraguatatuba/albums" class="text-white fs-5"><i
+                class="bi bi-image"></i></a>
           </div>
           <p class="small mb-0">© Copyright 2025 – Prefeitura Municipal de Caraguatatuba • CNPJ 46.482.840/0001-39</p>
-          <p class="small footer-p mb-0">Feito com <i class="bi bi-heart heart-icon"></i> pela Secretaria de Tecnologia da Informação e Inovação</p>
+          <p class="small footer-p mb-0">Feito com <i class="bi bi-heart heart-icon"></i> pela Secretaria de Tecnologia
+            da Informação e Inovação</p>
         </div>
       </div>
     </div>

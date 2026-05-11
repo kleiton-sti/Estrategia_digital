@@ -21,9 +21,10 @@ class PublicacaoController extends Controller
     public function painel(): View
     {
         try {
-            $artigos = $this->publicacaoService->artigosPorUsuario(Auth::id());
+            $artigos = $this->produtosService->listarArtigos();
+            $categorias = $this->produtosService->listarCategorias();
 
-            return view('produtos.artigos', compact('artigos'));
+            return view('produtos.artigos', compact('artigos', 'categorias'));
         } catch (\Throwable $e) {
             Log::error('Erro ao carregar painel: ' . $e->getMessage());
             abort(500);
@@ -60,7 +61,7 @@ class PublicacaoController extends Controller
             $artigo     = Artigo::findOrFail($id);
             $categorias = $this->produtosService->listarCategorias();
 
-            return view('produtos.conteudo-artigo', compact('artigo', 'categorias'));
+            return view('publicacao.publicar', compact('artigo', 'categorias'));
         } catch (\Throwable $e) {
             Log::error('Erro ao carregar edição: ' . $e->getMessage());
             abort(500);

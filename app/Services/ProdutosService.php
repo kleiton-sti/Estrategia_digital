@@ -11,12 +11,23 @@ class ProdutosService
     public function listarArtigos()
     {
         try {
-            return Artigo::with(['categoria', 'user'])->latest()->get();
+            return Artigo::with(['categoria'])->latest()->get();
         } catch (\Throwable $e) {
             Log::error('Erro ao listar artigos: ' . $e->getMessage());
             abort(500);
         }
     }
+    
+    public function listarCategorias()
+    {
+        try {
+            return Categoria::all();
+        } catch (\Throwable $e) {
+            Log::error('Erro ao listar categorias: ' . $e->getMessage());
+            abort(500);
+        }
+    }
+
 
     public function buscarArtigo(int $id): Artigo
     {
@@ -28,13 +39,4 @@ class ProdutosService
         }
     }
 
-    public function listarCategorias()
-    {
-        try {
-            return Categoria::all();
-        } catch (\Throwable $e) {
-            Log::error('Erro ao listar categorias: ' . $e->getMessage());
-            abort(500);
-        }
-    }
 }

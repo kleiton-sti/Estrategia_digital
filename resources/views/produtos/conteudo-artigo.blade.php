@@ -19,7 +19,7 @@
           </div>
 
           <!-- Compartilhamento -->
-          <div class="compartilhar d-flex align-items-center gap-3 mb-4 flex-wrap">
+          <!-- <div class="compartilhar d-flex align-items-center gap-3 mb-4 flex-wrap">
             <span class="compartilhar-label">Compartilhar:</span>
             <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ urlencode(url()->current()) }}"
                target="_blank" class="compartilhar-link" title="LinkedIn">
@@ -41,7 +41,7 @@
                class="compartilhar-link" title="E-mail">
               <i class="bi bi-envelope"></i>
             </a>
-          </div>
+          </div> -->
 
           <!-- Categoria -->
           <span class="artigo-badge-conteudo mb-3 d-inline-block">{{ $artigo->categoria->nome ?? '-' }}</span>

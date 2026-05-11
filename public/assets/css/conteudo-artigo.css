@@ -22,7 +22,7 @@
 .conteudo-corpo {
     font-size: 1rem;
     line-height: 1.85;
-    color: var(--default-color);
+    color: #e8e7f7;
 }
 
 .conteudo-corpo img {
@@ -54,7 +54,7 @@
 
 /* ── Badge categoria ── */
 .artigo-badge-conteudo {
-    background-color: #B85F40;
+    background-color: #5d33c2;
     color: #fff;
     font-size: 0.72rem;
     font-weight: 600;

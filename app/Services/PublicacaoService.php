@@ -49,16 +49,4 @@ class PublicacaoService
         }
     }
 
-    public function artigosPorUsuario(int $userId)
-    {
-        try {
-            return Artigo::with('categoria')
-                ->where('user_id', $userId)
-                ->latest()
-                ->get();
-        } catch (\Throwable $e) {
-            Log::error('Erro ao buscar artigos do usuário: ' . $e->getMessage());
-            abort(500);
-        }
-    }
 }

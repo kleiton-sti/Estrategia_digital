@@ -23,8 +23,7 @@
             name="email"
             class="login-input"
             value="{{ old('email') }}"
-            autocomplete="email"
-            required>
+            autocomplete="email">
         </div>
 
         <div class="login-campo">
@@ -34,8 +33,7 @@
             id="password"
             name="password"
             class="login-input"
-            autocomplete="current-password"
-            required>
+            autocomplete="current-password">
         </div>
 
         <button type="submit" class="btn-login">Entrar</button>

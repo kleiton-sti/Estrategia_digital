@@ -12,7 +12,7 @@ class VerificaRedeStii
     {
         $ip = $request->ip();
 
-        if (!str_starts_with($ip, '192.168.11.')) {
+        if (!str_starts_with($ip, env('REDE_STII'))) {
             abort(403, 'Acesso restrito à rede da STII.');
         }
 

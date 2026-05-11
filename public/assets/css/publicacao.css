@@ -55,12 +55,16 @@
     border-radius: 8px 8px 0 0 !important;
 }
 
-.fr-toolbar .fr-btn {
-    color: var(--default-color) !important;
+.fr-toolbar .fr-btn:hover {
+    background-color: #1e1f3a !important;
 }
 
-.fr-toolbar .fr-btn:hover {
-    background-color: rgba(59, 130, 246, 0.15) !important;
+.fr-command.fr-btn svg path {
+    fill: #8e8e93 !important;
+}
+
+.fr-toolbar .fr-command.fr-btn.fr-active svg path {
+    fill: #3B82F6 !important;
 }
 
 .fr-element {
