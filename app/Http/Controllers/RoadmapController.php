@@ -2,17 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Eixo;
+use App\Services\RoadmapService;
+use Illuminate\Support\Facades\Log;
 
 class RoadmapController extends Controller
 {
+    public function __construct(protected RoadmapService $roadmapService) {}
+
     public function index()
     {
-        // Pega todos os eixos com seus roadmap ordenados por status
-        $eixos = Eixo::with(['roadmaps' => function($query) {
-            $query->orderByRaw("FIELD(status, 'entregue_recentemente', 'em_andamento', 'explorando')");
-        }])->get();
+        try {
+            $eixos = $this->roadmapService->listarEixosComRoadmap();
 
-        return view('roadmap', compact('eixos'));
+            return view('roadmap', compact('eixos'));
+        } catch (\Throwable $e) {
+            Log::error('Erro ao carregar roadmap: ' . $e->getMessage());
+            abort(500);
+        }
     }
 }
