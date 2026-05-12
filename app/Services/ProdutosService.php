@@ -4,14 +4,23 @@ namespace App\Services;
 
 use App\Models\Artigo;
 use App\Models\Categoria;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Log;
 
 class ProdutosService
 {
-    public function listarArtigos()
+    public function listarArtigos(?string $categoriaSlug = null): LengthAwarePaginator
     {
         try {
-            return Artigo::with(['categorias', 'user'])->latest()->get();
+            $query = Artigo::with(['categorias', 'user'])->latest();
+
+            if ($categoriaSlug) {
+                $query->whereHas('categorias', function ($q) use ($categoriaSlug) {
+                    $q->whereRaw('LOWER(REPLACE(nome, " ", "-")) = ?', [$categoriaSlug]);
+                });
+            }
+
+            return $query->paginate(6)->withQueryString();
         } catch (\Throwable $e) {
             Log::error('ProdutosService@listarArtigos: ' . $e->getMessage());
             abort(500);
@@ -21,7 +30,7 @@ class ProdutosService
     public function listarCategorias()
     {
         try {
-            return Categoria::all();
+            return Categoria::orderBy('nome')->get();
         } catch (\Throwable $e) {
             Log::error('ProdutosService@listarCategorias: ' . $e->getMessage());
             abort(500);

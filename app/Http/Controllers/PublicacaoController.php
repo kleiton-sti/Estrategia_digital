@@ -7,6 +7,7 @@ use App\Models\Artigo;
 use App\Services\PublicacaoService;
 use App\Services\ProdutosService;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\View\View;
@@ -18,13 +19,14 @@ class PublicacaoController extends Controller
         protected ProdutosService $produtosService,
     ) {}
 
-    public function painel(): View
+    public function painel(Request $request): View
     {
         try {
-            $artigos    = $this->publicacaoService->listarPorUsuario(Auth::id());
-            $categorias = $this->produtosService->listarCategorias();
+            $categoriaSlug = $request->query('categoria');
+            $artigos       = $this->produtosService->listarArtigos($categoriaSlug);
+            $categorias    = $this->produtosService->listarCategorias();
 
-            return view('produtos.artigos', compact('artigos', 'categorias'));
+            return view('produtos.artigos', compact('artigos', 'categorias', 'categoriaSlug'));
         } catch (\Throwable $e) {
             Log::error('PublicacaoController@painel: ' . $e->getMessage());
             abort(500);

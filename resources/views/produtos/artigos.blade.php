@@ -25,46 +25,66 @@
           <p class="text-start">Explore conteudos sobre transformacao digital, inovacao e gestao publica.</p>
         </div>
 
-        <!-- Pills de categoria -->
-        <!-- data-categoria em cada pill deve bater com os slugs em data-categorias dos cards -->
-        <div class="d-flex flex-wrap gap-2 mb-5" id="filtro-categorias">
-          <button class="btn btn-pill active" data-categoria="todos">Todos</button>
+        <!-- Pills de filtro por categoria -->
+        <!-- Cada pill e um link que recarrega a pagina com ?categoria=slug -->
+        <!-- O filtro e aplicado no servidor para compatibilidade com a paginacao -->
+        <div class="d-flex flex-wrap gap-2 mb-5">
+
+          @php
+            $rotaBase = Auth::check() ? 'artigos.painel' : 'artigos';
+          @endphp
+
+          <a href="{{ route($rotaBase) }}" class="btn btn-pill {{ !$categoriaSlug ? 'active' : '' }}">
+            Todos
+          </a>
+
           @foreach($categorias as $cat)
-            <button class="btn btn-pill" data-categoria="{{ Str::slug($cat->nome) }}">{{ $cat->nome }}</button>
+            @php $slug = Str::slug($cat->nome); @endphp
+            <a href="{{ route($rotaBase, ['categoria' => $slug]) }}"
+              class="btn btn-pill {{ $categoriaSlug === $slug ? 'active' : '' }}">
+              {{ $cat->nome }}
+            </a>
           @endforeach
+
         </div>
 
         @if(session('sucesso'))
-          <div id="sucesso" class="alert alert-success">{{ session('sucesso') }}</div>
+          <div id="aviso-sucesso" class="alert alert-success">{{ session('sucesso') }}</div>
         @endif
 
         <!-- Grid de cards -->
-        <!-- data-categorias: slugs separados por espaco, usados pelo filtro JS -->
-        <div class="row gy-4" id="grid-artigos">
+        <div class="row gy-4">
 
           @forelse ($artigos as $artigo)
 
-            <div class="col-lg-4 col-md-6 artigo-col"
-                 data-categorias="{{ $artigo->categorias->map(fn($c) => Str::slug($c->nome))->join(' ') }}">
+            <div class="col-10">
               <a href="{{ route('artigos.conteudo', $artigo->id) }}" class="artigo-card-link">
                 <div class="artigo-card">
                   <div class="artigo-card-body">
 
+                    <!-- Perfil do autor com icone, nome e data de publicacao -->
+                    <div class="autor-perfil d-flex align-items-center gap-3 mb-3">
+                      <i class="bi bi-person-circle autor-icone"></i>
+                      <div>
+                        <span class="autor-nome">{{ $artigo->user->nome ?? 'Autor desconhecido' }}</span>
+                        <span class="autor-data d-block">{{ $artigo->created_at->format('d/m/Y') }}</span>
+                      </div>
+                    </div>
+
+                    <h5 class="artigo-titulo">{{ $artigo->titulo }}</h5>
+                    <p class="artigo-subtitulo">{{ Str::limit($artigo->subtitulo, 100) }}</p>
+
                     <!-- Badges de categoria -->
-                    <div class="artigo-badges-wrap">
+                    <div class="artigo-badges-wrap text-end">
                       @foreach($artigo->categorias as $cat)
                         <span class="artigo-badge">{{ $cat->nome }}</span>
                       @endforeach
                     </div>
 
-                    <span class="artigo-data">
-                      <i class="bi bi-calendar3"></i> {{ $artigo->created_at->format('d/m/Y') }}
-                    </span>
-                    <h5 class="artigo-titulo">{{ $artigo->titulo }}</h5>
-                    <p class="artigo-subtitulo">{{ Str::limit($artigo->subtitulo, 100) }}</p>
                     <span class="artigo-leia-mais">
                       Ler artigo <i class="bi bi-arrow-right"></i>
                     </span>
+
 
                   </div>
                 </div>
@@ -78,16 +98,24 @@
           @endforelse
 
         </div>
+
+        <!-- Paginacao -->
+        <!-- withQueryString() preserva o parametro ?categoria= ao navegar entre paginas -->
+        @if($artigos->hasPages())
+          <div class="d-flex mr-2 justify-content-center mt-5">
+            {{ $artigos->links('pagination::bootstrap-5') }}
+          </div>
+        @endif
+
       </div>
     </section>
   </main>
 @endsection
 
 @push('scripts')
-  <script src="{{ asset('assets/js/filtro-categoria.js') }}"></script>
   <script>
     setTimeout(function () {
-      var el = document.getElementById('sucesso');
+      var el = document.getElementById('aviso-sucesso');
       if (el) el.remove();
     }, 3000);
   </script>

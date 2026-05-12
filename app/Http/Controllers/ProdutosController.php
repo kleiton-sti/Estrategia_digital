@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Eixo;
 use App\Services\ProdutosService;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
 class ProdutosController extends Controller
@@ -38,13 +39,14 @@ class ProdutosController extends Controller
         }
     }
 
-    public function artigos()
+    public function artigos(Request $request)
     {
         try {
-            $artigos    = $this->produtosService->listarArtigos();
-            $categorias = $this->produtosService->listarCategorias();
+            $categoriaSlug = $request->query('categoria');
+            $artigos       = $this->produtosService->listarArtigos($categoriaSlug);
+            $categorias    = $this->produtosService->listarCategorias();
 
-            return view('produtos.artigos', compact('artigos', 'categorias'));
+            return view('produtos.artigos', compact('artigos', 'categorias', 'categoriaSlug'));
         } catch (\Throwable $e) {
             Log::error('Erro ao exibir artigos: ' . $e->getMessage());
             abort(500);

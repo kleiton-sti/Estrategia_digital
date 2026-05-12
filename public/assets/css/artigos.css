@@ -8,6 +8,7 @@
     color: var(--default-color);
     background: transparent;
     transition: all 0.2s ease;
+    text-decoration: none;
 }
 
 .btn-pill:hover {
@@ -46,7 +47,6 @@
     box-shadow: 0 8px 28px rgba(0, 0, 0, 0.25);
 }
 
-/* Barra de acento lateral esquerda */
 .artigo-card::before {
     content: '';
     display: block;
@@ -56,7 +56,6 @@
     flex-shrink: 0;
 }
 
-/* Corpo do card */
 .artigo-card-body {
     padding: 22px 20px 20px;
     display: flex;
@@ -64,7 +63,6 @@
     flex: 1;
 }
 
-/* Badges de categoria */
 .artigo-badges-wrap {
     display: flex;
     flex-wrap: wrap;
@@ -165,7 +163,7 @@
     padding: 40px 0;
 }
 
-/* ── Badges multiplas na pagina de conteudo ── */
+/* ── Badges na pagina de conteudo ── */
 .artigo-badges-conteudo {
     display: flex;
     flex-wrap: wrap;
@@ -216,6 +214,39 @@
 
 .categoria-check-input {
     accent-color: var(--accent-color);
+}
+
+/* ── Paginacao ── */
+.pagination {
+    gap: 4px;
+}
+
+.pagination .page-item .page-link {
+    background-color: var(--surface-color);
+    border-color: color-mix(in srgb, var(--default-color), transparent 85%);
+    color: var(--default-color);
+    border-radius: 8px;
+    padding: 7px 14px;
+    font-size: 0.875rem;
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.pagination .page-item .page-link:hover {
+    background-color: color-mix(in srgb, var(--accent-color), transparent 85%);
+    border-color: color-mix(in srgb, var(--accent-color), transparent 50%);
+    color: var(--heading-color);
+}
+
+.pagination .page-item.active .page-link {
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
+    color: #fff;
+}
+
+.pagination .page-item.disabled .page-link {
+    background-color: var(--surface-color);
+    border-color: color-mix(in srgb, var(--default-color), transparent 90%);
+    color: color-mix(in srgb, var(--default-color), transparent 60%);
 }
 
 @media (max-width: 768px) {

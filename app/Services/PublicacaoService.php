@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Artigo;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
@@ -12,10 +13,10 @@ class PublicacaoService
     {
         try {
             $artigo = Artigo::create([
-                'user_id'  => Auth::id(),
-                'titulo'   => $dados['titulo'],
+                'user_id'   => Auth::id(),
+                'titulo'    => $dados['titulo'],
                 'subtitulo' => $dados['subtitulo'],
-                'corpo'    => $dados['corpo'],
+                'corpo'     => $dados['corpo'],
             ]);
 
             /* Associa as categorias via tabela associativa */
@@ -55,16 +56,4 @@ class PublicacaoService
         }
     }
 
-    public function listarPorUsuario(int $userId)
-    {
-        try {
-            return Artigo::with(['categorias', 'user'])
-                ->where('user_id', $userId)
-                ->latest()
-                ->get();
-        } catch (\Throwable $e) {
-            Log::error('PublicacaoService@listarPorUsuario: ' . $e->getMessage());
-            abort(500);
-        }
-    }
 }

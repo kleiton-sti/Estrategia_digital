@@ -1,25 +1,26 @@
-document.addEventListener('DOMContentLoaded', function () {
+// document.addEventListener('DOMContentLoaded', function () {
 
-    var pills = document.querySelectorAll('#filtro-categorias .btn-pill');
-    var colunas = document.querySelectorAll('#grid-artigos .artigo-col');
+//     let pills = document.querySelectorAll('#filtro-categorias .btn-pill');
+//     let colunas = document.querySelectorAll('#grid-artigos .artigo-col');
 
-    pills.forEach(function (btn) {
-        btn.addEventListener('click', function () {
-            pills.forEach(function (b) { b.classList.remove('active'); });
-            this.classList.add('active');
+//     pills.forEach(function (btn) {
+//         btn.addEventListener('click', function () {
+//             pills.forEach(function (b) { b.classList.remove('active'); });
+//             this.classList.add('active');
 
-            var cat = this.dataset.categoria;
+//             let cat = this.dataset.categoria;
+            
+//             // para garantir que todos serão vistos
+//             colunas.forEach(function (col) {
+//                 if (cat === 'todos') {
+//                     col.style.display = '';
+//                     return;
+//                 }
 
-            colunas.forEach(function (col) {
-                if (cat === 'todos') {
-                    col.style.display = '';
-                    return;
-                }
+//                 let slugs = (col.dataset.categorias || '').split(' ').filter(Boolean);
+//                 col.style.display = slugs.indexOf(cat) !== -1 ? '' : 'none';
+//             });
+//         });
+//     });
 
-                var slugs = (col.dataset.categorias || '').split(' ').filter(Boolean);
-                col.style.display = slugs.indexOf(cat) !== -1 ? '' : 'none';
-            });
-        });
-    });
-
-});
+// });
