@@ -110,3 +110,16 @@
     border-color: var(--default-color);
     color: var(--heading-color);
 }
+
+
+@media (max-width: 767px) {
+.fr-toolbar .fr-btn-grp {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    justify-content: space-around !important;
+    width: 100% !important;
+    float: none !important;
+}
+}
+

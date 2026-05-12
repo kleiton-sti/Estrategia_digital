@@ -9,23 +9,20 @@ use Illuminate\Database\Seeder;
 
 class ArtigosSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-
-    public function run()
+    public function run(): void
     {
-       
-            foreach (Categoria::all() as $categoria) {
-                Artigo::create([
-                    'user_id' => User::all()->random()->id,
-                    'categoria_id' => $categoria->id,
-                    'titulo' => fake()->sentence(),
-                    'subtitulo' => fake()->sentence(),
-                    'corpo' => fake()->paragraph(),
-                ]);
-            }
+        $categorias = Categoria::all();
+        $users      = User::all();
+
+        foreach ($categorias as $categoria) {
+            $artigo = Artigo::create([
+                'user_id'  => $users->random()->id,
+                'titulo'   => fake()->sentence(),
+                'subtitulo'=> fake()->sentence(),
+                'corpo'    => fake()->paragraph(),
+            ]);
+
+            $artigo->categorias()->attach($categoria->id);
+        }
     }
 }

@@ -9,7 +9,7 @@
 @section('content')
 <main class="main">
   <section class="publicacao-section py-5">
-    <div class="container">
+    <div class="container" data-aos="fade-up">
 
       <div class="section-titulo mb-4">
         <h1>{{ isset($artigo) ? 'Editar Artigo' : 'Novo Artigo' }}</h1>

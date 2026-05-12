@@ -5,7 +5,7 @@
 @section('content')
   <main class="main">
     <section id="artigos" class="primeira-sessao py-5">
-      <div class="container">
+      <div class="container" data-aos="fade-up">
 
         <!-- Cabecalho exibido quando o usuario esta autenticado -->
         @auth
@@ -26,13 +26,9 @@
         </div>
 
         <!-- Pills de filtro por categoria -->
-        <!-- Cada pill e um link que recarrega a pagina com ?categoria=slug -->
-        <!-- O filtro e aplicado no servidor para compatibilidade com a paginacao -->
         <div class="d-flex flex-wrap gap-2 mb-5">
 
-          @php
-            $rotaBase = Auth::check() ? 'artigos.painel' : 'artigos';
-          @endphp
+          @php $rotaBase = Auth::check() ? 'artigos.painel' : 'artigos'; @endphp
 
           <a href="{{ route($rotaBase) }}" class="btn btn-pill {{ !$categoriaSlug ? 'active' : '' }}">
             Todos
@@ -56,41 +52,42 @@
         <div class="row gy-4">
 
           @forelse ($artigos as $artigo)
-
-            <div class="col-10">
+            <div class="col-lg-6 col-12">
               <a href="{{ route('artigos.conteudo', $artigo->id) }}" class="artigo-card-link">
                 <div class="artigo-card">
                   <div class="artigo-card-body">
 
-                    <!-- Perfil do autor com icone, nome e data de publicacao -->
-                    <div class="autor-perfil d-flex align-items-center gap-3 mb-3">
-                      <i class="bi bi-person-circle autor-icone"></i>
-                      <div>
-                        <span class="autor-nome">{{ $artigo->user->nome ?? 'Autor desconhecido' }}</span>
-                        <span class="autor-data d-block">{{ $artigo->created_at->format('d/m/Y') }}</span>
+                    <!-- Linha superior: badges e data -->
+                    <div class="d-flex align-items-start justify-content-between gap-2 mb-3">
+                      <div class="artigo-badges-wrap">
+                        @foreach($artigo->categorias as $cat)
+                          <span class="artigo-badge">{{ $cat->nome }}</span>
+                        @endforeach
                       </div>
+                      <span class="artigo-data flex-shrink-0">
+                        <i class="bi bi-calendar3"></i> {{ $artigo->created_at->format('d/m/Y') }}
+                      </span>
                     </div>
 
+                    <!-- Título e subtítulo -->
                     <h5 class="artigo-titulo">{{ $artigo->titulo }}</h5>
-                    <p class="artigo-subtitulo">{{ Str::limit($artigo->subtitulo, 100) }}</p>
+                    <p class="artigo-subtitulo">{{ Str::limit($artigo->subtitulo, 130) }}</p>
 
-                    <!-- Badges de categoria -->
-                    <div class="artigo-badges-wrap text-end">
-                      @foreach($artigo->categorias as $cat)
-                        <span class="artigo-badge">{{ $cat->nome }}</span>
-                      @endforeach
+                    <!-- Rodapé: autor e leia mais -->
+                    <div class="artigo-rodape d-flex align-items-center justify-content-between mt-auto pt-3">
+                      <div class="d-flex align-items-center gap-2">
+                        <i class="bi bi-person-circle artigo-autor-icone"></i>
+                        <span class="artigo-autor-nome">{{ $artigo->user->nome ?? 'Autor desconhecido' }}</span>
+                      </div>
+                      <span class="artigo-leia-mais">
+                        Ler artigo <i class="bi bi-arrow-right"></i>
+                      </span>
                     </div>
-
-                    <span class="artigo-leia-mais">
-                      Ler artigo <i class="bi bi-arrow-right"></i>
-                    </span>
-
 
                   </div>
                 </div>
               </a>
             </div>
-
           @empty
             <div class="col-12">
               <p class="artigos-vazio">Nada publicado ainda.</p>
@@ -100,9 +97,8 @@
         </div>
 
         <!-- Paginacao -->
-        <!-- withQueryString() preserva o parametro ?categoria= ao navegar entre paginas -->
         @if($artigos->hasPages())
-          <div class="d-flex mr-2 justify-content-center mt-5">
+          <div class="d-flex justify-content-center mt-5">
             {{ $artigos->links('pagination::bootstrap-5') }}
           </div>
         @endif

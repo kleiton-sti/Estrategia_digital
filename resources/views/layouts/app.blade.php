@@ -104,21 +104,6 @@
                 </button>
               </form>
             </li>
-          @else
-            @php
-              $ip = request()->ip();
-              $naRedeStii = str_starts_with($ip, env('REDE_STII'));
-            @endphp
-            @if($naRedeStii)
-              <li>
-                <form action="{{ route('login') }}" method="GET">
-
-                  <button type="submit" class="btn-nav-entrar">
-                    <i class="bi bi-person-circle"></i> Entrar
-                  </button>
-                </form>
-              </li>
-            @endif
           @endauth
 
         </ul>

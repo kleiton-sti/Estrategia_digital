@@ -31,7 +31,7 @@
 }
 
 .artigo-card {
-    border-radius: 12px;
+    border-radius: 14px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -43,8 +43,8 @@
 
 .artigo-card:hover {
     transform: translateY(-4px);
-    border-color: color-mix(in srgb, var(--accent-color), transparent 55%);
-    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.25);
+    border-color: color-mix(in srgb, var(--accent-color), transparent 50%);
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.28);
 }
 
 .artigo-card::before {
@@ -57,17 +57,18 @@
 }
 
 .artigo-card-body {
-    padding: 22px 20px 20px;
+    padding: 26px 24px 22px;
     display: flex;
     flex-direction: column;
     flex: 1;
+    min-height: 220px;
 }
 
+/* ── Badges ── */
 .artigo-badges-wrap {
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
-    margin-bottom: 14px;
 }
 
 .artigo-badge {
@@ -82,29 +83,47 @@
     border: 1px solid color-mix(in srgb, var(--accent-color), transparent 65%);
 }
 
+/* ── Data ── */
 .artigo-data {
     font-size: 0.76rem;
     color: color-mix(in srgb, var(--default-color), transparent 40%);
-    margin-bottom: 10px;
     display: flex;
     align-items: center;
     gap: 5px;
+    white-space: nowrap;
 }
 
+/* ── Título e subtítulo ── */
 .artigo-titulo {
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 700;
     line-height: 1.45;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     color: var(--heading-color);
 }
 
 .artigo-subtitulo {
-    font-size: 0.855rem;
-    color: color-mix(in srgb, var(--default-color), transparent 25%);
-    line-height: 1.65;
+    font-size: 0.88rem;
+    color: color-mix(in srgb, var(--default-color), transparent 22%);
+    line-height: 1.7;
     flex-grow: 1;
-    margin-bottom: 18px;
+    margin-bottom: 0;
+}
+
+/* ── Rodapé do card ── */
+.artigo-rodape {
+    border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+}
+
+.artigo-autor-icone {
+    font-size: 1.15rem;
+    color: color-mix(in srgb, var(--default-color), transparent 35%);
+}
+
+.artigo-autor-nome {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: color-mix(in srgb, var(--default-color), transparent 25%);
 }
 
 .artigo-leia-mais {
@@ -114,8 +133,8 @@
     display: inline-flex;
     align-items: center;
     gap: 5px;
-    margin-top: auto;
     transition: gap 0.2s ease;
+    white-space: nowrap;
 }
 
 .artigo-card:hover .artigo-leia-mais {
@@ -253,5 +272,9 @@
     .btn-pill {
         font-size: 0.8rem;
         padding: 5px 14px;
+    }
+
+    .artigo-card-body {
+        min-height: unset;
     }
 }
