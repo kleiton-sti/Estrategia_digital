@@ -113,7 +113,7 @@
 }
 
 .principios h4 a {
-  color: var(--heading-color);
+   color:rgba(254, 254, 254, 0.729);
   text-decoration: none;
 }
 
@@ -198,6 +198,7 @@
   .principios .principios-icon {
     width: 70px;
     height: 70px;
+    color:rgba(254, 254, 254, 0.729);
     margin-bottom: 20px;
   }
 

@@ -18,8 +18,8 @@
   <link href="{{ asset('assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
   <link href="{{ asset('assets/vendor/aos/aos.css') }}" rel="stylesheet">
   <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
-  <link href="{{ asset('assets/css/hero.css') }}" rel="stylesheet">
   <link href="{{ asset('assets/css/menu.css') }}" rel="stylesheet">
+  <link href="{{ asset('assets/css/hero.css') }}" rel="stylesheet">
   <link href="{{ asset('assets/css/objetivos.css') }}" rel="stylesheet">
   <link href="{{ asset('assets/css/principios.css') }}" rel="stylesheet">
   <link href="{{ asset('assets/css/roadmap.css') }}" rel="stylesheet">
@@ -125,7 +125,7 @@
     </div>
 
     <div class="container py-5">
-      <div class="row">
+      <div class="row justify-content-center">
 
         <div class="col-6 col-md-2 mb-4">
           <h6 class="fw-bold">PRINCIPAIS SERVIÇOS</h6>
