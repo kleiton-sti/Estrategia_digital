@@ -3,12 +3,13 @@
 namespace App\Services;
 
 use App\Models\Artigo;
-use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
 class PublicacaoService
 {
+    public function __construct(protected LogService $logService) {}
+
     public function publicar(array $dados): Artigo
     {
         try {
@@ -19,8 +20,15 @@ class PublicacaoService
                 'corpo'     => $dados['corpo'],
             ]);
 
-            /* Associa as categorias via tabela associativa */
             $artigo->categorias()->sync($dados['categorias']);
+
+            $this->logService->registrar(
+                'info',
+                'Artigo publicado.',
+                'artigos',
+                $artigo->id,
+                ['titulo' => $artigo->titulo]
+            );
 
             return $artigo;
         } catch (\Throwable $e) {
@@ -38,8 +46,15 @@ class PublicacaoService
                 'corpo'     => $dados['corpo'],
             ]);
 
-            /* Sincroniza categorias — remove as desvinculadas e insere as novas */
             $artigo->categorias()->sync($dados['categorias']);
+
+            $this->logService->registrar(
+                'info',
+                'Artigo atualizado.',
+                'artigos',
+                $artigo->id,
+                ['titulo' => $artigo->titulo]
+            );
         } catch (\Throwable $e) {
             Log::error('PublicacaoService@atualizar: ' . $e->getMessage());
             abort(500);
@@ -49,11 +64,18 @@ class PublicacaoService
     public function excluir(Artigo $artigo): void
     {
         try {
+            $this->logService->registrar(
+                'warning',
+                'Artigo excluído.',
+                'artigos',
+                $artigo->id,
+                ['titulo' => $artigo->titulo]
+            );
+
             $artigo->delete();
         } catch (\Throwable $e) {
             Log::error('PublicacaoService@excluir: ' . $e->getMessage());
             abort(500);
         }
     }
-
 }
