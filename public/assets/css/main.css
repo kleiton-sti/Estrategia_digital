@@ -224,6 +224,7 @@ h6 {
   }
 }
 
+
 /*--------------------------------------------------------------
 # Global Footer
 --------------------------------------------------------------*/
@@ -481,13 +482,16 @@ h6 {
 /*--------------------------------------------------------------
 # Global Sections
 --------------------------------------------------------------*/
-section,
-.section {
+section {
   color: var(--default-color);
   background-color: var(--background-color);
   padding: 30px 0;
   scroll-margin-top: 90px;
   overflow: clip;
+}
+
+section #principios {
+  background-color: blue !important;
 }
 
 @media (max-width: 1199px) {

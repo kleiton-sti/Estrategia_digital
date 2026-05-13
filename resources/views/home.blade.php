@@ -55,6 +55,10 @@
             <div class="hero-visual">
               <div class="hero-image">
                 <img src="assets/img/misc/misc.png" alt="Digital Agency Hero" class="img-fluid">
+                <div id="reflexo-img-1"></div>
+                <div id="reflexo-img-2"></div>
+                <div id="reflexo-img-3"></div>
+                <div id="reflexo-img-4"></div>
               </div>
             </div>
           </div>
@@ -63,8 +67,8 @@
       </div>
 
       <div class="hero-bg-elements">
-        <div class="bg-shape shape-1"></div>
-        <div class="bg-shape shape-2"></div>
+        <!-- <div class="bg-shape shape-1"></div>
+        <div class="bg-shape shape-2"></div> -->
         <div class="bg-particles"></div>
       </div>
 
