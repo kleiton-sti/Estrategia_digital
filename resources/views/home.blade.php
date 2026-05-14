@@ -21,7 +21,7 @@
                 <a href="#footer" class="btn btn-outline">Fale Conosco</a>
               </div>
 
-              <div class="hero-stats d-flex justify-content-start">
+              <div class="hero-stats justify-content-between">
                 <div class="stat-item">
                   <h4 class="stat-number purecounter" data-purecounter-start="0"
                     data-purecounter-end="{{ $totalIniciativas }}" data-purecounter-duration="3"></h4>
@@ -59,6 +59,9 @@
                 <div id="reflexo-img-2"></div>
                 <div id="reflexo-img-3"></div>
                 <div id="reflexo-img-4"></div>
+                <div id="reflexo-img-5"></div>
+                <div id="reflexo-img-6"></div>
+                <div id="reflexo-img-7"></div>
               </div>
             </div>
           </div>
@@ -77,33 +80,36 @@
 
     <!-- Eixos Section -->
     <section id="principios" class="principios section">
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Eixos</h2>
-        <p>Cada eixo reúne iniciativas pensadas especialmente para você, cidadão de Caraguatatuba, aproximando a
-          transformação digital da sua vida e do seu dia a dia.</p>
-      </div>
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <div class="row gy-4">
-          @foreach($eixos as $eixo)
-            <div class="col-lg-4 col-md-6" data-aos="fade-up">
-              <div class="principios-card">
-                <h4>
-                  <span class="principios-icon">
-                    <i class="{{ $eixosIcons[$eixo->id_eixos] ?? 'bi-question-circle' }}"></i>
-                  </span>
-                  <a href="{{ route('eixos.show', $eixo->id_eixos) }}" class="principio-btn text-decoration-none">
-                    {{ $eixo->titulo }}
-                  </a>
-                </h4>
-                <p class="small">{{ $eixo->descricao }}</p>
-                <div class="principios-leia-mais">
-                  <a href="{{ route('eixos.show', $eixo->id_eixos) }}" class="principios-link">
-                    <span>Ler Mais</span><i class="bi bi-arrow-right ms-1"></i>
-                  </a>
+      <div class="container">
+        <div class="reflexo-01"></div>
+        <div class="section-title" data-aos="fade-up">
+          <h2>Eixos</h2>
+          <p>Cada eixo reúne iniciativas pensadas especialmente para você, cidadão de Caraguatatuba, aproximando a
+            transformação digital da sua vida e do seu dia a dia.</p>
+        </div>
+        <div data-aos="fade-up" data-aos-delay="100">
+          <div class="row gy-4">
+            @foreach($eixos as $eixo)
+              <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                <div class="principios-card">
+                  <h4>
+                    <span class="principios-icon">
+                      <i class="{{ $eixosIcons[$eixo->id_eixos] ?? 'bi-question-circle' }}"></i>
+                    </span>
+                    <a href="{{ route('eixos.show', $eixo->id_eixos) }}" class="principio-btn text-decoration-none">
+                      {{ $eixo->titulo }}
+                    </a>
+                  </h4>
+                  <p class="small">{{ $eixo->descricao }}</p>
+                  <div class="principios-leia-mais">
+                    <a href="{{ route('eixos.show', $eixo->id_eixos) }}" class="principios-link">
+                      <span>Ler Mais</span><i class="bi bi-arrow-right ms-1"></i>
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
-          @endforeach
+            @endforeach
+          </div>
         </div>
       </div>
     </section>

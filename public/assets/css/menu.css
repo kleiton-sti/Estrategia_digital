@@ -31,7 +31,7 @@
   .navmenu a,
   .navmenu a:focus {
     color: var(--heading-color);
-    font-size: 15px;
+    font-size: 14px;
     padding: 0 2px;
     font-family: var(--nav-font);
     font-weight: 400;

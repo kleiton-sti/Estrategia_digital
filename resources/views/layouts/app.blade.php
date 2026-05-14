@@ -6,9 +6,9 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   @yield('meta')
-  
+
   <title>@yield('title', 'Estratégia Digital')</title>
-  
+
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="{{ asset('assets/img/favicon.png') }}">
@@ -43,9 +43,13 @@
 
 <body class="@yield('bodyclass', 'index-page')">
 
-  <header id="header" class="header d-flex align-items-center sticky-top">
-    <div
-      class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
+  <header id="header" class="header d-flex align-items-center">
+
+    <div class="hero-bg-elements">
+      <div class="bg-particles"></div>
+    </div>
+
+    <div class="header-container container-fluid container-xl  d-flex align-items-center justify-content-between sticky-top">
 
       <a href="{{ route('home') }}" class="logo d-flex align-items-center me-auto me-xl-0">
         <img src="https://www.caraguatatuba.sp.gov.br/pmc/wp-content/themes/awesomepmc/assets/img/favicon.png" alt="">
@@ -57,7 +61,9 @@
           <li><a href="{{ route('home') }}">Home</a></li>
 
           <li class="dropdown">
-            <a href="#"><span>Eixos</span> <i class="bi bi-chevron-down"></i></a>
+            <a href="#"><span>Eixos</span>
+              <i class="bi bi-chevron-down"></i>
+            </a>
             <ul>
               @foreach($todosEixos as $ex)
                 <li class="@if(isset($eixo) && $ex->id_eixos == $eixo->id_eixos) active @endif">
