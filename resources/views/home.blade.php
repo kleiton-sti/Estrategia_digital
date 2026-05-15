@@ -84,6 +84,7 @@
       <div class="container">
         <div class="reflexo-01"></div>
         <div class="reflexo-02"></div>
+        <div class="reflexo-03"></div>
         <div class="section-title" data-aos="fade-up">
           <h2>Eixos</h2>
           <p>Cada eixo reúne iniciativas pensadas especialmente para você, cidadão de Caraguatatuba, aproximando a
@@ -114,6 +115,7 @@
           </div>
         </div>
       </div>
+
     </section>
   </main>
 @endsection
