@@ -39,6 +39,19 @@
   }
 }
 
+#objetivos h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+#objetivos .container h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
 .objetivos .objetivos-filters li::before {
   content: "";
   position: absolute;
@@ -657,11 +670,13 @@
     text-align: center;
   }
 }
+
 .objetivo-detalhes {
   display: flex;
   flex-direction: row;
   gap: 20px;
 }
+
 .objetivo-iniciativas {
   border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 70%);
   padding-top: 10px;
@@ -675,7 +690,8 @@
    Altura fixa
 -------------------------------------------------------------- */
 .objetivos .objetivos-wrapper {
-  height: 100%; /* altura fixa */
+  height: 100%;
+  /* altura fixa */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -700,6 +716,6 @@
 
 @media (max-width: 576px) {
   .objetivos .objetivos-wrapper {
-    height: auto; 
+    height: auto;
   }
 }

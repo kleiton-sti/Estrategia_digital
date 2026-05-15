@@ -22,30 +22,35 @@
               </div>
 
               <div class="hero-stats justify-content-between">
-                <div class="stat-item">
+
+                <div class="stat-item stat-item--laranja">
                   <h4 class="stat-number purecounter" data-purecounter-start="0"
                     data-purecounter-end="{{ $totalIniciativas }}" data-purecounter-duration="3"></h4>
                   <p class="badge color-laranja">Iniciativas</p>
-                  <div class="blur-laranja"></div>
+                  <!-- <div class="blur-laranja"></div> -->
                 </div>
-                <div class="stat-item">
+
+                <div class="stat-item stat-item--verde">
                   <h4 class="stat-number purecounter" data-purecounter-start="0" data-purecounter-end="{{ $concluidas }}"
                     data-purecounter-duration="3"></h4>
                   <p class="badge color-verde">Concluídas</p>
-                  <div class="blur-verde"></div>
+                  <!-- <div class="blur-verde"></div> -->
                 </div>
-                <div class="stat-item">
+
+                <div class="stat-item stat-item--amarelo">
                   <h4 class="stat-number purecounter" data-purecounter-start="0" data-purecounter-end="{{ $andamento }}"
                     data-purecounter-duration="3"></h4>
                   <p class="badge color-amarelo">Em execução</p>
-                  <div class="blur-amarelo"></div>
+                  <!-- <div class="blur-amarelo"></div> -->
                 </div>
-                <div class="stat-item">
+
+                <div class="stat-item stat-item--vermelho">
                   <h4 class="stat-number purecounter" data-purecounter-start="0"
                     data-purecounter-end="{{ $naoIniciadas }}" data-purecounter-duration="3"></h4>
-                  <p class="badge color-cinza">Não iniciadas</p>
-                  <div class="blur-cinza"></div>
+                  <p class="badge color-vermelho">Não iniciadas</p>
+                  <!-- <div class="blur-vermelho"></div> -->
                 </div>
+
               </div>
 
             </div>

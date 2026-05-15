@@ -23,7 +23,7 @@
     </div>
 
     <div class="container" data-aos="fade-up">
-      <h1>Objetivos</h1>
+      <h2>Objetivos</h2>
       <div class="row gy-4 isotope-container">
         @foreach($eixo->objetivos as $objetivo)
           <div class="col-xl-4 col-lg-6 objetivos-item" data-objetivo-id="{{ $objetivo->id_objetivo }}">

@@ -308,43 +308,53 @@
   position: relative;
 }
 
-.principios-details .principios-process .process-steps .step-item:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  left: 1.2rem;
-  top: 2.9rem;
-  width: 2px;
-  height: 1.5rem;
-  background: color-mix(in srgb, var(--accent-color), transparent 70%);
-  transform: translateX(-50%);
-}
+
 
 /*bolinha*/
 .principios-details .principios-process .process-steps .step-item .step-number {
   background: var(--accent-color);
   color: var(--contrast-color);
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 0.8rem;
+  height: 0.8rem;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 700;
-  font-size: 1.0rem;
+  font-size: 1rem;
   flex-shrink: 0;
+  animation: step-number 3s ease-in-out infinite;
 }
 
-/* Mobile: remove linha e diminui bolinha e fonte do título */
-@media (max-width: 768px) {
-  .principios-details .principios-process .process-steps .step-item:not(:last-child)::after {
-    display: none; /* remove a linha */
+@keyframes step-number {
+  0% {
+    transform: scale(1.2);
+   
   }
+  20% {
+    transform: scale(1.4);
+    filter: blur(2px);
+  }
+  40% {
+    transform: scale(1.6);
+    filter: blur(3px);
+  }
+  60% {
+    transform: scale(1.4);
+    filter: blur(2px);
+  }
+  80% {
+    transform: scale(1.2);
+    filter: blur(2px);
+  }
+  100% {
+    transform: scale(1.2);
+    filter: blur(1px);
+  }
+}
 
-  .principios-details .principios-process .process-steps .step-item .step-number {
-    width: 2rem;
-    height: 2rem;
-    font-size: 0.9rem;
-  }
+
+
 
   .principios-details .principios-process .process-steps .step-item .step-content h5 {
     font-size: 0.9rem;
