@@ -1,7 +1,7 @@
 new FroalaEditor('#corpo', {
     language: 'pt_br',
     heightMin: 350,
-    imageUploadURL: 'http://localhost/estrategia_digital/public/painel/upload/imagem',
+    imageUploadURL: 'https://estrategiadigital.caraguatatuba.sp.gov.br/public/painel/upload/imagem',
     imageUploadMethod: 'POST',
 
     requestHeaders: {
