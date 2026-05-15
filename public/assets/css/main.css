@@ -67,9 +67,34 @@
 # General Styling & Shared Classes
 --------------------------------------------------------------*/
 body {
+  position: relative;
   color: var(--default-color);
   background-color: var(--background-color);
   font-family: var(--default-font);
+}
+
+body .hero-bg-elements {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, color-mix(in srgb, #1482bd, transparent 75%) 2px, transparent 1px);
+  background-size: 50px 50px;
+  -webkit-mask-image: linear-gradient(to right,
+      rgba(0, 0, 0, 0.1) 0%,
+      rgba(0, 0, 0, 1) 50%,
+      rgba(0, 0, 0, 0.1) 100%);
+  mask-image: linear-gradient(to right,
+      rgba(0, 0, 0, 0.1) 0%,
+      rgba(0, 0, 0, 1) 50%,
+      rgba(0, 0, 0, 0.1) 100%);
+
+  /* a máscara é bem maior que o elemento para ela "correr" */
+  -webkit-mask-size: 200% 100%;
+  mask-size: 200% 100%;
+
+  /* a máscara da esquerda para a direita */
+  animation: ondaLuz 4s linear infinite;
+  z-index: 0;
 }
 
 a {
@@ -154,29 +179,7 @@ h6 {
   justify-content: center;
 }
 
-header .hero-bg-elements {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background-image: radial-gradient(circle, color-mix(in srgb, #1482bd, transparent 75%) 2px, transparent 1px);
-  background-size: 50px 50px;
-  -webkit-mask-image: linear-gradient(to right,
-      rgba(0, 0, 0, 0.1) 0%,
-      rgba(0, 0, 0, 1) 50%,
-      rgba(0, 0, 0, 0.1) 100%);
-  mask-image: linear-gradient(to right,
-      rgba(0, 0, 0, 0.1) 0%,
-      rgba(0, 0, 0, 1) 50%,
-      rgba(0, 0, 0, 0.1) 100%);
 
-  /* a máscara é bem maior que o elemento para ela "correr" */
-  -webkit-mask-size: 200% 100%;
-  mask-size: 200% 100%;
-
-  /* a máscara da esquerda para a direita */
-  animation: ondaLuz 4s linear infinite;
-  z-index: 0;
-}
 
 .header .header-container {
   position: fixed;
@@ -264,8 +267,8 @@ header .hero-bg-elements {
 /*--------------------------------------------------------------
 # Global Footer
 --------------------------------------------------------------*/
-.footer {
-  background-color: black;
+#footer {
+   position: relative;
 }
 
 .footer-links {
@@ -290,8 +293,8 @@ header .hero-bg-elements {
 }
 
 .footer-back {
-  background-color: rgb(42, 62, 89);
-  margin-top: 100px;
+  background-color: #02345f;
+  z-index: 1000;
 }
 
 .footer-logo {
@@ -520,7 +523,6 @@ header .hero-bg-elements {
 --------------------------------------------------------------*/
 section#hero {
   color: var(--default-color);
-  background-color: var(--background-color);
   min-height: 100dvh;
   display: flex;
   align-items: center;
@@ -539,19 +541,19 @@ section.principios {
   align-items: center;
   padding: 20px 0;
   min-height: 100dvh;
-  background-color: transparent;
 }
 
 .principios .container {
 
   flex-direction: column;
   color: var(--default-color);
+  background-color: var(--background-color);
   border-radius: 60px;
   position: relative;
   max-width: 80dvw;
   display: flex;
   align-items: center;
-  padding: 150px 80px;
+  padding: 80px 80px;
   overflow: clip;
 }
 
@@ -560,16 +562,16 @@ section.principios {
   position: absolute;
   top: -9%;
   left:50%;
-  width:150%;
+  width:145%;
   height: 200px;
   transform: translateX(-30%);
   background: radial-gradient(circle, #04C4D9 0%, 
-    rgba(255, 255, 255, 0) 10%);
+    rgba(255, 255, 255, 0) 20%);
   filter: blur(60px);
   pointer-events: none;
 }
 
-@media (min-width: 1400px) {
+@media (min-width: 3000px) {
   .principios .container::before {
     transform: translateX(-40%);
   }

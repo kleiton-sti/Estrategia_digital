@@ -70,30 +70,24 @@
         </div>
       </div>
 
-      <div class="hero-bg-elements">
-        <!-- <div class="bg-shape shape-1"></div>
-        <div class="bg-shape shape-2"></div> -->
-        <div class="bg-particles"></div>
-      </div>
-
     </section>
     <!-- /Hero Section -->
 
     <!-- Eixos Section -->
     <section id="principios" class="principios section">
-      <div class="container">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
         <div class="reflexo-01"></div>
         <div class="reflexo-02"></div>
         <div class="reflexo-03"></div>
-        <div class="section-title" data-aos="fade-up">
+        <div class="section-title">
           <h2>Eixos</h2>
           <p>Cada eixo reúne iniciativas pensadas especialmente para você, cidadão de Caraguatatuba, aproximando a
             transformação digital da sua vida e do seu dia a dia.</p>
         </div>
-        <div data-aos="fade-up" data-aos-delay="100">
+        <div>
           <div class="row gy-4">
             @foreach($eixos as $eixo)
-              <div class="col-lg-4 col-md-6" data-aos="fade-up">
+              <div class="col-lg-4 col-md-6">
                 <div class="principios-card">
                   <h4>
                     <span class="principios-icon">
