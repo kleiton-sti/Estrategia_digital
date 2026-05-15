@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
 
             /* Artigos dependem de usuários e categorias */
-            ArtigosSeeder::class,
+            // ArtigosSeeder::class,
         ]);
     }
 }
