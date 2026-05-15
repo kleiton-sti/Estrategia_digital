@@ -18,11 +18,11 @@ class UserSeeder extends Seeder
     {
         // Usuário de teste 1
         User::create([
-            'registro' => '2025001',
-            'nome' => 'João Silva',
-            'email' => 'joao@example.com',
-            'cpf' => '12345678901',
-            'password' => Hash::make('password123'),
+            'registro' => '28544',
+            'nome' => 'Rubens Costa',
+            'email' => 'rubens.costa@caraguatatuba.sp.gov.br',
+            'cpf' => '37723454848',
+            'password' => Hash::make('Costa28523'),
             'email_verified_at' => now(),
             'created_at' => now(),
             'updated_at' => now(),
@@ -34,11 +34,11 @@ class UserSeeder extends Seeder
 
         // Usuário de teste 2
         User::create([
-            'registro' => '2025002',
-            'nome' => 'Maria Santos',
+            'registro' => '28523',
+            'nome' => 'Tiago Santos Braun',
             'email' => 'maria@example.com',
-            'cpf' => '98765432109',
-            'password' => Hash::make('password123'),
+            'cpf' => '30045994811',
+            'password' => Hash::make('Braun23599'),
             'email_verified_at' => now(),
             'created_at' => now(),
             'updated_at' => now(),
@@ -50,11 +50,11 @@ class UserSeeder extends Seeder
 
         // Usuário de teste 3
         User::create([
-            'registro' => '2025003',
-            'nome' => 'Pedro Oliveira',
-            'email' => 'pedro@example.com',
-            'cpf' => '55544433322',
-            'password' => Hash::make('password123'),
+            'registro' => '07717',
+            'nome' => 'Marcio Luis Rodrigues de Paula Lima',
+            'email' => 'marcio.paula@caraguatatuba.sp.gov.br',
+            'cpf' => '16162931870',
+            'password' => Hash::make('Rodrigues17931'),
             'email_verified_at' => now(),
             'created_at' => now(),
             'updated_at' => now(),
@@ -66,11 +66,11 @@ class UserSeeder extends Seeder
 
         // Usuário admin
         User::create([
-            'registro' => '2025000',
-            'nome' => 'Admin User',
-            'email' => 'admin@example.com',
-            'cpf' => '11111111111',
-            'password' => Hash::make('admin123'),
+            'registro' => '13174',
+            'nome' => 'Alexandre Gudin Novak',
+            'email' => 'alexandre.novak@caraguatatuba.sp.gov.br',
+            'cpf' => '21571501886',
+            'password' => Hash::make('Novak74501'),
             'email_verified_at' => now(),
             'created_at' => now(),
             'updated_at' => now(),
@@ -82,11 +82,11 @@ class UserSeeder extends Seeder
 
         // Usuário de teste 4
         User::create([
-            'registro' => '2025004',
-            'nome' => 'Ana Costa',
-            'email' => 'ana@example.com',
-            'cpf' => '99988877766',
-            'password' => Hash::make('password123'),
+            'registro' => '25606',
+            'nome' => 'Kleiton Silva Ferreira',
+            'email' => 'kleiton.silva@caraguatatuba.gov.br',
+            'cpf' => '09906847417',
+            'password' => Hash::make('Kleiton123'),
             'email_verified_at' => now(),
             'created_at' => now(),
             'updated_at' => now(),
