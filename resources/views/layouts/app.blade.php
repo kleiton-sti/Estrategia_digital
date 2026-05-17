@@ -29,6 +29,7 @@
   <link href="{{ asset('assets/css/conteudo-artigo.css') }}" rel="stylesheet">
   <link href="{{ asset('assets/css/publicacao.css') }}" rel="stylesheet">
   <link href="{{ asset('assets/css/login.css') }}" rel="stylesheet">
+  <link href="{{ asset('assets/css/responsive.css') }}" rel="stylesheet">
   @stack('styles')
 
   <!-- Google tag (gtag.js) -->

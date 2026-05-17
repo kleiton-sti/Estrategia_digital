@@ -1,49 +1,32 @@
 @charset "UTF-8";
 
-/*--------------------------------------------------------------
-# Font & Color Variables
-# Help: https://bootstrapmade.com/color-system/
---------------------------------------------------------------*/
-/* Fonts */
+/* ============================================================
+   Variáveis globais
+   ============================================================ */
 :root {
-  --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
   --heading-font: "Quicksand", sans-serif;
   --nav-font: "Poppins", sans-serif;
 }
 
-/* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
 :root {
   --background-color: #05071e;
-  /* Background color for the entire website, including individual sections */
   --default-color: #e8e7f7;
-  /* Default color used for the majority of the text content across the entire website */
   --heading-color: #E8E7F7;
-  /* Color for headings, subheadings and title throughout the website */
   --accent-color: #023E73;
-  /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
   --surface-color: #131428;
-  /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
   --contrast-color: #ffffff;
-  /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
 }
 
-/* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
 :root {
   --nav-color: #c8c6e3;
-  /* The default color of the main navmenu links */
   --nav-hover-color: #ffffff;
-  /* Applied to main navmenu links when they are hovered over or active */
   --nav-mobile-background-color: #03051f;
-  /* Used as the background color for mobile navigation menu */
   --nav-dropdown-background-color: #1f2240;
-  /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
   --nav-dropdown-color: #c8c6e3;
-  /* Used for navigation links of the dropdown items in the navigation menu. */
   --nav-dropdown-hover-color: #ffffff;
-  /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
 }
-
-/* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
 
 .light-background {
   --background-color: #0c114a;
@@ -58,14 +41,13 @@
   --contrast-color: #ffffff;
 }
 
-/* Smooth scroll */
 :root {
   scroll-behavior: smooth;
 }
 
-/*--------------------------------------------------------------
-# General Styling & Shared Classes
---------------------------------------------------------------*/
+/* ============================================================
+   Base
+   ============================================================ */
 body {
   position: relative;
   color: var(--default-color);
@@ -73,28 +55,16 @@ body {
   font-family: var(--default-font);
 }
 
-
-
 body .hero-bg-elements {
   position: absolute;
   inset: 0;
   pointer-events: none;
   background-image: radial-gradient(circle, color-mix(in srgb, #1482bd, transparent 75%) 2px, transparent 1px);
   background-size: 50px 50px;
-  -webkit-mask-image: linear-gradient(to right,
-      rgba(0, 0, 0, 0.1) 0%,
-      rgba(0, 0, 0, 1) 50%,
-      rgba(0, 0, 0, 0.1) 100%);
-  mask-image: linear-gradient(to right,
-      rgba(0, 0, 0, 0.1) 0%,
-      rgba(0, 0, 0, 1) 50%,
-      rgba(0, 0, 0, 0.1) 100%);
-
-  /* a máscara é bem maior que o elemento para ela "correr" */
+  -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0.1) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0.1) 100%);
+  mask-image: linear-gradient(to right, rgba(0,0,0,0.1) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0.1) 100%);
   -webkit-mask-size: 200% 100%;
   mask-size: 200% 100%;
-
-  /* a máscara da esquerda para a direita */
   animation: ondaLuz 4s linear infinite;
   z-index: 0;
 }
@@ -107,15 +77,9 @@ a {
 
 a:hover {
   color: color-mix(in srgb, var(--accent-color), transparent 25%);
-  text-decoration: none;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
   color: var(--heading-color);
   font-family: var(--heading-font);
 }
@@ -124,416 +88,13 @@ h5.mb-1 {
   font-size: 1.1rem !important;
 }
 
-
-
-/* PHP Email Form Messages
-------------------------------*/
-.php-email-form .error-message {
-  display: none;
-  background: #df1529;
-  color: #ffffff;
-  text-align: left;
-  padding: 15px;
-  margin-bottom: 24px;
-  font-weight: 600;
-}
-
-.php-email-form .sent-message {
-  display: none;
-  color: #ffffff;
-  background: #059652;
-  text-align: center;
-  padding: 15px;
-  margin-bottom: 24px;
-  font-weight: 600;
-}
-
-.php-email-form .loading {
-  display: none;
-  background: var(--surface-color);
-  text-align: center;
-  padding: 15px;
-  margin-bottom: 24px;
-}
-
-.php-email-form .loading:before {
-  content: "";
-  display: inline-block;
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
-  margin: 0 10px -6px 0;
-  border: 3px solid var(--accent-color);
-  border-top-color: var(--surface-color);
-  animation: php-email-form-loading 1s linear infinite;
-}
-
-@keyframes php-email-form-loading {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-/*--------------------------------------------------------------
-# Global Header
---------------------------------------------------------------*/
-.header {
-  color: var(--default-color);
-  transition: all 0.5s;
-  justify-content: center;
-}
-
-
-
-.header .header-container {
-  position: fixed;
-  background-color: #023E73;
-  border-radius: 50px;
-  width: 70%;
-  margin-top: 20px;
-  padding: 0px 26px;
-  box-shadow: 0px 2px 15px rgba(149, 146, 146, 0);
-  z-index: 1000;
-}
-
-@media (max-width: 768px) {
-  .header .header-container {
-    width: 80%;
-  }
-}
-
-@media (min-width: 1800px) {
-  .header .header-container {
-    width: 50%;
-  }
-}
-
-.header .logo {
-  line-height: 1;
-}
-
-.header .logo img {
-  max-height: 36px;
-  margin-right: 8px;
-}
-
-.header .logo h1 {
-  font-size: 16px;
-  margin: 0;
-  font-weight: 500;
-  color: var(--heading-color);
-}
-
-.header .btn-getstarted,
-.header .btn-getstarted:focus {
-  color: var(--contrast-color);
-  background: var(--accent-color);
-  font-size: 14px;
-  padding: 8px 20px;
-  margin: 0 0 0 30px;
-  border-radius: 50px;
-  transition: 0.3s;
-}
-
-.header .btn-getstarted:hover,
-.header .btn-getstarted:focus:hover {
-  color: var(--contrast-color);
-  background: color-mix(in srgb, var(--accent-color), transparent 15%);
-}
-
-@media (max-width: 1200px) {
-  .header {
-    padding-top: 10px;
-  }
-
-  .header .header-container {
-    margin-left: 10px;
-    margin-right: 10px;
-    padding: 10px 5px 10px 15px;
-  }
-
-  .header .logo {
-    order: 1;
-  }
-
-  .header .btn-getstarted {
-    order: 2;
-    margin: 0 10px 0 0;
-    padding: 6px 15px;
-  }
-
-  .header .navmenu {
-    order: 3;
-  }
-}
-
-
-/*--------------------------------------------------------------
-# Global Footer
---------------------------------------------------------------*/
-#footer {
-  position: relative;
-}
-
-.footer-links {
-  border-left: 1px solid rgba(255, 255, 255, 0.5);
-  border-right: 1px solid rgba(255, 255, 255, 0.5);
-}
-
-.footer a.text-white {
-  font-size: 1rem;
-  text-decoration: none;
-}
-
-.footer-details {
-  background-color: #000;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-}
-
-.footer .bi {
-  vertical-align: middle;
-}
-
-.footer-back {
-  background-color: #02345f;
-  z-index: 1000;
-}
-
-.footer-logo {
-  max-width: 350px;
-  /* ajusta conforme necessário */
-  height: auto;
-  /* mantém proporção */
-}
-
-.footer-gap {
-  gap: 80px;
-}
-
-.footer-p {
-  max-width: 190px;
-}
-
-/*coração*/
-.heart-icon {
-  color: red;
-  transition: transform 0.3s, color 0.3s;
-  cursor: pointer;
-  display: inline-block;
-}
-
-.heart-icon:hover {
-  animation: pulse 1s infinite;
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.3);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
-
-/* Ajustes mobile para o footer */
-@media (max-width: 767.98px) {
-
-  /* Remover bordas laterais */
-  .footer-links {
-    border-left: none;
-    border-right: none;
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  /* Colunas do footer ficam uma abaixo da outra */
-  .footer .row>[class*="col-"] {
-    flex: 0 0 100%;
-    max-width: 100%;
-    margin-bottom: 1.5rem;
-  }
-
-  /* Centralizar textos de título e links */
-  .footer h6 {
-    text-align: center;
-  }
-
-  .footer ul {
-    text-align: center;
-    padding-left: 0;
-  }
-
-  .footer ul li {
-    display: block;
-    margin-bottom: 0.5rem;
-  }
-
-  /* Centralizar logo */
-  .footer-logo {
-    margin: 0 auto 1rem;
-    display: block;
-    max-width: 250px;
-  }
-
-  /* Centralizar ícones e textos da parte inferior */
-  .footer .footer-gap {
-    flex-direction: column !important;
-    gap: 1rem;
-    text-align: center;
-  }
-
-  .footer .footer-gap p {
-    text-align: center;
-  }
-
-  .footer .footer-gap .d-flex.gap-4 {
-    justify-content: center;
-    margin-bottom: 0.5rem;
-  }
-}
-
-/*--------------------------------------------------------------
-# Preloader
---------------------------------------------------------------*/
-#preloader {
-  position: fixed;
-  inset: 0;
-  z-index: 999999;
-  overflow: hidden;
-  background: var(--background-color);
-  transition: all 0.6s ease-out;
-}
-
-#preloader:before {
-  content: "";
-  position: fixed;
-  top: calc(50% - 30px);
-  left: calc(50% - 30px);
-  border: 6px solid #ffffff;
-  border-color: var(--accent-color) transparent var(--accent-color) transparent;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  animation: animate-preloader 1.5s linear infinite;
-}
-
-@keyframes animate-preloader {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-/*--------------------------------------------------------------
-# Disable aos animation delay on mobile devices
---------------------------------------------------------------*/
-@media screen and (max-width: 768px) {
-  [data-aos-delay] {
-    transition-delay: 0 !important;
-  }
-}
-
-/*--------------------------------------------------------------
-# Global Page Titles & Breadcrumbs
---------------------------------------------------------------*/
-.page-title {
-  text-align: center;
-  padding: 20px 0;
-}
-
-.page-title .breadcrumbs .breadcrumb {
-  justify-content: center;
-  margin: 0;
-  padding: 0;
-  background: none;
-}
-
-.page-title .breadcrumbs .breadcrumb .breadcrumb-item {
-  font-size: 0.9rem;
-  color: color-mix(in srgb, var(--default-color), transparent 30%);
-}
-
-.page-title .breadcrumbs .breadcrumb .breadcrumb-item.active {
-  color: var(--accent-color);
-}
-
-.page-title .breadcrumbs .breadcrumb .breadcrumb-item a {
-  color: inherit;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.page-title .breadcrumbs .breadcrumb .breadcrumb-item a:hover {
-  color: var(--accent-color);
-}
-
-.page-title .breadcrumbs .breadcrumb .breadcrumb-item a i {
-  font-size: 0.9rem;
-  margin-right: 0.2rem;
-}
-
-.page-title .breadcrumbs .breadcrumb .breadcrumb-item+.breadcrumb-item::before {
-  color: color-mix(in srgb, var(--default-color), transparent 50%);
-}
-
-.page-title .title-wrapper {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 1rem 0;
-}
-
-.page-title .title-wrapper h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  font-weight: 700;
-  color: var(--heading-color);
-}
-
-.page-title .title-wrapper p {
-  font-size: 1.1rem;
-  color: color-mix(in srgb, var(--default-color), transparent 20%);
-  margin: 0;
-  line-height: 1.6;
-}
-
-@media (max-width: 768px) {
-  .page-title .title-wrapper h1 {
-    font-size: 2rem;
-  }
-
-  .page-title .title-wrapper p {
-    font-size: 1rem;
-  }
-}
-
-@media (max-width: 576px) {
-  .page-title .title-wrapper h1 {
-    font-size: 1.75rem;
-  }
-}
-
-/*--------------------------------------------------------------
-# Global Sections
---------------------------------------------------------------*/
+/* ============================================================
+   Seções globais
+   ============================================================ */
 section {
   padding: 250px 0 160px;
   overflow: hidden;
 }
-
 
 section#hero {
   color: var(--default-color);
@@ -544,12 +105,6 @@ section#hero {
   scroll-margin-top: 90px;
 }
 
-@media (max-width: 768px) {
-  section#hero {
-    padding: 150px 0;
-  }
-}
-
 section.principios {
   justify-content: center;
   align-items: center;
@@ -558,7 +113,6 @@ section.principios {
 }
 
 .principios .container {
-
   flex-direction: column;
   color: var(--default-color);
   background-color: var(--background-color);
@@ -579,16 +133,9 @@ section.principios {
   width: 145%;
   height: 200px;
   transform: translateX(-30%);
-  background: radial-gradient(circle, #04C4D9 0%,
-      rgba(255, 255, 255, 0) 20%);
+  background: radial-gradient(circle, #04C4D9 0%, rgba(255,255,255,0) 20%);
   filter: blur(60px);
   pointer-events: none;
-}
-
-@media (min-width: 3000px) {
-  .principios .container::before {
-    transform: translateX(-40%);
-  }
 }
 
 .principios .container::after {
@@ -599,8 +146,7 @@ section.principios {
   width: 150%;
   height: 300px;
   transform: translateX(-40%);
-  background: radial-gradient(circle, #04C4D9 3%,
-      rgba(255, 255, 255, 0) 100%);
+  background: radial-gradient(circle, #04C4D9 3%, rgba(255,255,255,0) 100%);
   filter: blur(300px);
   pointer-events: none;
 }
@@ -611,8 +157,7 @@ section.principios {
   left: -70%;
   width: 88%;
   height: 20%;
-  background: radial-gradient(circle, #04C4D9 0%,
-      rgba(255, 255, 255, 0) 70%);
+  background: radial-gradient(circle, #04C4D9 0%, rgba(255,255,255,0) 70%);
   filter: blur(100px);
   pointer-events: none;
 }
@@ -623,8 +168,7 @@ section.principios {
   left: -40%;
   width: 100%;
   height: 8px;
-  background: radial-gradient(circle, #04C4D9 0%,
-      rgba(255, 255, 255, 0) 70%);
+  background: radial-gradient(circle, #04C4D9 0%, rgba(255,255,255,0) 70%);
   filter: blur(100px);
   pointer-events: none;
 }
@@ -635,23 +179,14 @@ section.principios {
   right: -5%;
   width: 100%;
   height: 1px;
-  background: radial-gradient(circle, #04c4d99d 0%,
-      rgba(255, 255, 255, 0) 70%);
+  background: radial-gradient(circle, #04c4d99d 0%, rgba(255,255,255,0) 70%);
   filter: blur(5px);
   pointer-events: none;
 }
 
-@media (max-width: 1199px) {
-
-  section,
-  .section {
-    scroll-margin-top: 66px;
-  }
-}
-
-/*--------------------------------------------------------------
-# Global Section Titles
---------------------------------------------------------------*/
+/* ============================================================
+   Section Titles
+   ============================================================ */
 .section-title-obj {
   padding-bottom: 60px;
   position: relative;
@@ -667,12 +202,6 @@ section.principios {
   margin-bottom: 0;
   width: 100%;
   max-width: 600px;
-}
-
-@media (max-width: 768px) {
-  .section-title-obj p {
-    width: 90%;
-  }
 }
 
 .section-title {
@@ -692,13 +221,15 @@ section.principios {
 }
 
 .section-title p {
-  font-size: 1.0rem;
+  font-size: 1rem;
   margin-bottom: 0;
   max-width: 600px;
   text-align: center;
 }
 
-
+/* ============================================================
+   Utilitários compartilhados
+   ============================================================ */
 .status-legend {
   margin-top: 1rem;
   margin-bottom: 2rem;
@@ -740,26 +271,19 @@ span.badge {
   padding: 20px;
   overflow-y: auto;
   border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
-
-  /* suaviza o scroll */
   scroll-behavior: smooth;
-
   scrollbar-width: thin;
-  scrollbar-color: var(--default-color) rgba(0, 0, 0, 0.1);
-
+  scrollbar-color: var(--default-color) rgba(0,0,0,0.1);
 }
 
-/* Força fundo das tabelas para surface-color */
 .table,
 .table th,
 .table td {
   background-color: var(--surface-color) !important;
   color: var(--default-color) !important;
   border-color: #2c2c4a;
-  /* borda um pouco mais clara que o fundo */
 }
 
-/* Cabeçalho da tabela pode ter um tom mais escuro para destaque */
 .table thead th {
   background-color: #1f1f3b !important;
   color: var(--contrast-color) !important;
@@ -771,7 +295,11 @@ span.badge {
   margin-top: 20px;
 }
 
-/* cor das tags */
+.desc strong {
+  font-weight: bold;
+  display: inline;
+}
+
 .color-laranja {
   background-color: rgba(198, 88, 9, 0.49);
   color: #d65f0a !important;
@@ -796,14 +324,6 @@ span.badge {
   z-index: 1;
 }
 
-
-
-.desc strong {
-  font-weight: bold;
-  display: inline;
-}
-
-
 #fechar-iniciativas {
   transition: 0.2s;
 }
@@ -812,4 +332,141 @@ span.badge {
   background-color: #dc3545;
   color: #fff;
   border-color: #dc3545;
+}
+
+/* ============================================================
+   Header
+   ============================================================ */
+.header {
+  color: var(--default-color);
+  transition: all 0.5s;
+  justify-content: center;
+}
+
+.header .header-container {
+  position: fixed;
+  background-color: #023E73;
+  border-radius: 50px;
+  width: 70%;
+  margin-top: 20px;
+  padding: 0px 26px;
+  box-shadow: 0px 2px 15px rgba(149,146,146,0);
+  z-index: 1000;
+}
+
+.header .logo {
+  line-height: 1;
+}
+
+.header .logo img {
+  max-height: 36px;
+  margin-right: 8px;
+}
+
+.header .logo h1 {
+  font-size: 16px;
+  margin: 0;
+  font-weight: 500;
+  color: var(--heading-color);
+}
+
+/* ============================================================
+   Footer
+   ============================================================ */
+#footer {
+  position: relative;
+}
+
+.footer-links {
+  border-left: 1px solid rgba(255,255,255,0.5);
+  border-right: 1px solid rgba(255,255,255,0.5);
+}
+
+.footer a.text-white {
+  font-size: 1rem;
+  text-decoration: none;
+}
+
+.footer-details {
+  background-color: #000;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.footer .bi {
+  vertical-align: middle;
+}
+
+.footer-back {
+  background-color: #02345f;
+  z-index: 1000;
+}
+
+.footer-logo {
+  max-width: 350px;
+  height: auto;
+}
+
+.footer-gap {
+  gap: 80px;
+}
+
+.footer-p {
+  max-width: 190px;
+}
+
+.heart-icon {
+  color: red;
+  transition: transform 0.3s, color 0.3s;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.heart-icon:hover {
+  animation: pulse 1s infinite;
+}
+
+/* ============================================================
+   Preloader
+   ============================================================ */
+#preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  overflow: hidden;
+  background: var(--background-color);
+  transition: all 0.6s ease-out;
+}
+
+#preloader:before {
+  content: "";
+  position: fixed;
+  top: calc(50% - 30px);
+  left: calc(50% - 30px);
+  border: 6px solid #ffffff;
+  border-color: var(--accent-color) transparent var(--accent-color) transparent;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: animate-preloader 1.5s linear infinite;
+}
+
+/* ============================================================
+   Keyframes
+   ============================================================ */
+@keyframes pulse {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.3); }
+  100% { transform: scale(1); }
+}
+
+@keyframes animate-preloader {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes ondaLuz {
+  from { -webkit-mask-position: 150% 0%; mask-position: 150% 0%; }
+  to   { -webkit-mask-position: -50% 0%; mask-position: -50% 0%; }
 }

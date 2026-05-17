@@ -7,29 +7,24 @@
   padding: 30px 20px;
   position: relative;
   height: 100%;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
   border: 1px solid color-mix(in srgb, var(--default-color), transparent 92%);
   transition: all 0.3s ease;
-
-  /* Centralização total do conteúdo */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  text-align: flex-start;
 }
 
 .principios .principios-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
   border-color: color-mix(in srgb, var(--accent-color), transparent 70%);
 }
 
-/* Ícone ao lado do título */
 .principios .principios-card h4 {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
   font-size: 1.25rem;
   margin-bottom: 0.5rem;
   gap: 10px;
@@ -44,20 +39,15 @@
   transition: transform 0.3s ease;
 }
 
-.principios .principios-card:hover .principios-icon {
-  transform: scale(1.1);
-}
+.principios .principios-card:hover .principios-icon { transform: scale(1.1); }
 
-/* Texto abaixo do título */
 .principios .principios-card p {
   font-size: 0.8rem;
   margin-bottom: 1rem;
-  text-align: flex-start;
   max-width: 38rem;
   width: 100%;
 }
 
-/* ---- Ler Mais ---- */
 .principios .principios-leia-mais {
   display: flex;
   justify-content: center;
@@ -78,22 +68,14 @@
   font-size: 0.95rem;
 }
 
-.principios .principios-link i {
-  font-size: 1rem;
-}
-
 .principios .principios-link:hover {
   color: var(--accent-color);
   text-decoration: underline;
-  transform: none;
-  background: none;
 }
 
-/* Badge decorativo */
 .principios .principios-badge {
   position: absolute;
-  top: -10px;
-  right: 20px;
+  top: -10px; right: 20px;
   background: linear-gradient(135deg, #ff6b6b, #ff8e53);
   color: var(--contrast-color);
   padding: 6px 16px;
@@ -102,10 +84,9 @@
   font-weight: 600;
   letter-spacing: 0.5px;
   text-transform: uppercase;
-  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+  box-shadow: 0 4px 15px rgba(255,107,107,0.3);
 }
 
-/* Título e parágrafo */
 .principios h4 {
   margin-bottom: 15px;
   font-size: 22px;
@@ -113,13 +94,11 @@
 }
 
 .principios h4 a {
-   color:rgba(254, 254, 254, 0.729);
+  color: rgba(254, 254, 254, 0.729);
   text-decoration: none;
 }
 
-.principios h4 a:hover {
-  color: var(--accent-color);
-}
+.principios h4 a:hover { color: var(--accent-color); }
 
 .principios p {
   color: color-mix(in srgb, var(--default-color), transparent 30%);
@@ -128,11 +107,8 @@
   font-size: 15px;
 }
 
-/* CTA (bloco destacado no final da seção) */
 .principios .principios-cta {
-  background: linear-gradient(135deg,
-      var(--surface-color),
-      color-mix(in srgb, var(--surface-color), var(--accent-color) 3%));
+  background: linear-gradient(135deg, var(--surface-color), color-mix(in srgb, var(--surface-color), var(--accent-color) 3%));
   border-radius: 24px;
   padding: 50px 40px;
   border: 1px solid color-mix(in srgb, var(--accent-color), transparent 85%);
@@ -155,9 +131,7 @@
 }
 
 .principios .principios-cta .btn {
-  background: linear-gradient(135deg,
-      var(--accent-color),
-      color-mix(in srgb, var(--accent-color), #8b5cf6 30%));
+  background: linear-gradient(135deg, var(--accent-color), color-mix(in srgb, var(--accent-color), #8b5cf6 30%));
   border: none;
   border-radius: 50px;
   padding: 14px 32px;
@@ -167,53 +141,29 @@
   text-decoration: none;
   display: inline-block;
   transition: all 0.3s ease;
-  box-shadow: 0 8px 25px rgba(54, 144, 231, 0.3);
+  box-shadow: 0 8px 25px rgba(54,144,231,0.3);
 }
 
 .principios .principios-cta .btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 35px rgba(54, 144, 231, 0.4);
+  box-shadow: 0 12px 35px rgba(54,144,231,0.4);
   color: var(--contrast-color);
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
-  .principios .principios-cta {
-    padding: 40px 30px;
-  }
-
-  .principios .principios-cta h3 {
-    font-size: 24px;
-  }
-
-  .principios .principios-cta p {
-    font-size: 15px;
-  }
-
-  .principios .principios-card {
-    padding: 30px 25px;
-    margin-bottom: 20px;
-  }
-
-  .principios .principios-icon {
-    width: 70px;
-    height: 70px;
-    color:rgba(254, 254, 254, 0.729);
-    margin-bottom: 20px;
-  }
-
-  .principios .principios-icon i {
-    font-size: 32px;
-  }
-
-  .principios h4 {
-    font-size: 20px;
-  }
-
-  .principios p {
-    font-size: 14px;
-  }
+.principios-leia-mais {
+  padding-top: 15px;
+  bottom: 15px;
 }
+
+.principios-link {
+  position: absolute;
+  bottom: 15px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.principios-card { cursor: pointer; }
 
 /*--------------------------------------------------------------
 # Principios Details Section
@@ -230,16 +180,6 @@
   color: color-mix(in srgb, var(--default-color), transparent 20%);
   margin-bottom: 2rem;
   line-height: 1.6;
-}
-
-.principios-details .principios-content .principios-image {
-  margin: 2.5rem 0;
-}
-
-.principios-details .principios-content .principios-image img {
-  width: 100%;
-  height: auto;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .principios-details .principios-content p {
@@ -288,10 +228,6 @@
   color: color-mix(in srgb, var(--default-color), transparent 20%);
 }
 
-.principios-details .principios-process {
-  margin: 3rem 0;
-}
-
 .principios-details .principios-process h4 {
   color: var(--heading-color);
   margin-bottom: 2.5rem;
@@ -299,23 +235,18 @@
   font-weight: 600;
 }
 
-/*bolinha*/
 .principios-details .principios-process .process-steps .step-item {
   display: flex;
   align-items: center;
-  gap: 1.0rem;
-  margin-bottom: 2.0rem;
+  gap: 1rem;
+  margin-bottom: 2rem;
   position: relative;
 }
 
-
-
-/*bolinha*/
 .principios-details .principios-process .process-steps .step-item .step-number {
   background: var(--accent-color);
   color: var(--contrast-color);
-  width: 0.8rem;
-  height: 0.8rem;
+  width: 0.8rem; height: 0.8rem;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -327,43 +258,17 @@
 }
 
 @keyframes step-number {
-  0% {
-    transform: scale(1.2);
-   
-  }
-  20% {
-    transform: scale(1.4);
-    filter: blur(2px);
-  }
-  40% {
-    transform: scale(1.6);
-    filter: blur(3px);
-  }
-  60% {
-    transform: scale(1.4);
-    filter: blur(2px);
-  }
-  80% {
-    transform: scale(1.2);
-    filter: blur(2px);
-  }
-  100% {
-    transform: scale(1.2);
-    filter: blur(1px);
-  }
-}
-
-
-
-
-  .principios-details .principios-process .process-steps .step-item .step-content h5 {
-    font-size: 0.9rem;
-  }
+  0%   { transform: scale(1.2); }
+  20%  { transform: scale(1.4); filter: blur(2px); }
+  40%  { transform: scale(1.6); filter: blur(3px); }
+  60%  { transform: scale(1.4); filter: blur(2px); }
+  80%  { transform: scale(1.2); filter: blur(2px); }
+  100% { transform: scale(1.2); filter: blur(1px); }
 }
 
 .principios-details .principios-process .process-steps .step-item .step-content h5 {
   color: var(--heading-color);
-  margin-bottom: 0.60rem;
+  margin-bottom: 0.6rem;
   font-size: 1.2rem;
   font-weight: 600;
 }
@@ -393,8 +298,7 @@
 
 .principios-details .principios-facts {
   list-style: none;
-  padding: 0;
-  margin: 0;
+  padding: 0; margin: 0;
 }
 
 .principios-details .principios-facts li {
@@ -405,9 +309,7 @@
   border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
 }
 
-.principios-details .principios-facts li:last-child {
-  border-bottom: none;
-}
+.principios-details .principios-facts li:last-child { border-bottom: none; }
 
 .principios-details .principios-facts li .fact-label {
   font-weight: 500;
@@ -419,163 +321,6 @@
   color: var(--heading-color);
 }
 
-.principios-details .principios-testimonial .testimonial-content p {
-  font-style: italic;
-  margin-bottom: 1.5rem;
-  color: color-mix(in srgb, var(--default-color), transparent 20%);
-  line-height: 1.6;
-}
-
-.principios-details .principios-testimonial .testimonial-content .testimonial-author {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.principios-details .principios-testimonial .testimonial-content .testimonial-author .author-image {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.principios-details .principios-testimonial .testimonial-content .testimonial-author .author-info h5 {
-  margin: 0;
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--heading-color);
-}
-
-.principios-details .principios-testimonial .testimonial-content .testimonial-author .author-info span {
-  font-size: 0.9rem;
-  color: color-mix(in srgb, var(--default-color), transparent 40%);
-}
-
-.principios-details .inquiry-form .form-control {
-  margin-bottom: 1rem;
-  border: 1px solid color-mix(in srgb, var(--default-color), transparent 80%);
-  border-radius: 8px;
-  padding: 0.75rem 1rem;
-  font-size: 0.95rem;
-}
-
-.principios-details .inquiry-form .form-control:focus {
-  border-color: var(--accent-color);
-  box-shadow: 0 0 0 0.2rem color-mix(in srgb, var(--accent-color), transparent 80%);
-}
-
-.principios-details .inquiry-form input[type=text],
-.principios-details .inquiry-form input[type=email],
-.principios-details .inquiry-form input[type=tel],
-.principios-details .inquiry-form textarea {
-  color: var(--default-color);
-  background-color: var(--surface-color);
-  font-size: 14px;
-  border-color: color-mix(in srgb, var(--default-color), transparent 80%);
-}
-
-.principios-details .inquiry-form input[type=text]:focus,
-.principios-details .inquiry-form input[type=email]:focus,
-.principios-details .inquiry-form input[type=tel]:focus,
-.principios-details .inquiry-form textarea:focus {
-  border-color: var(--accent-color);
-}
-
-.principios-details .inquiry-form input[type=text]::placeholder,
-.principios-details .inquiry-form input[type=email]::placeholder,
-.principios-details .inquiry-form input[type=tel]::placeholder,
-.principios-details .inquiry-form textarea::placeholder {
-  color: color-mix(in srgb, var(--default-color), transparent 70%);
-}
-
-.principios-details .inquiry-form .btn-submit {
-  background: var(--accent-color);
-  color: var(--contrast-color);
-  border: none;
-  padding: 0.875rem 2rem;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 0.95rem;
-  transition: all 0.3s ease;
-}
-
-.principios-details .inquiry-form .btn-submit:hover {
-  background: color-mix(in srgb, var(--accent-color), transparent 15%);
-  transform: translateY(-2px);
-}
-
-@media (max-width: 768px) {
-  .principios-details .principios-content h2 {
-    font-size: 2rem;
-  }
-
-  .principios-details .principios-content .principios-image {
-    margin: 2rem 0;
-  }
-
-  .principios-details .principios-features {
-    padding: 1.5rem;
-    margin: 2rem 0;
-  }
-
-  .principios-details {
-    margin-top: 3rem;
-  }
-
-  .principios-details .principios-info,
-  .principios-details .principios-testimonial,
-  .principios-details .inquiry-form {
-    padding: 1.5rem;
-  }
-
-  .principios-details .process-steps .step-item .step-number {
-    width: 2.5rem;
-    height: 2.5rem;
-    font-size: 1rem;
-  }
-
-  .principios-details .process-steps .step-item:not(:last-child)::after {
-    left: 1.25rem;
-    top: 3rem;
-    height: 1.5rem;
-  }
-}
-
-/* Centraliza a seção toda */
-#principios-details .row {
-  justify-content: center;
-}
-
-/* Sidebar estreita */
-#principios-details .sidebar {
-  max-width: 150px;
-  /* largura fixa menor */
-}
-
-/* Mantém os cards compactos */
-#principios-details .sidebar .card {
-  min-width: 100%;
-}
-
-#principios-details .iniciativas {
-  flex: 1;
-  /* ocupa o restante */
-}
-
-.principios-leia-mais {
-  padding-top: 15px;
-  bottom: 15px;
-}
-
-.principios-link {
-
-  position: absolute;
-  bottom: 15px;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.principios-card {
-  cursor: pointer;
-}
+#principios-details .row { justify-content: center; }
+#principios-details .sidebar { max-width: 150px; }
+#principios-details .iniciativas { flex: 1; }

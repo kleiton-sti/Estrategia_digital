@@ -1,0 +1,456 @@
+/*
+ * responsive.css
+ *
+ * Breakpoints:
+ *   576px  — mobile grande
+ *   768px  — tablet
+ *   992px  — desktop médio
+ *   1200px — desktop
+ *   1600px — ultrawide
+ *
+ * Ordem: mobile-first (max-width) seguido de min-width para ajustes ultrawide.
+ */
+
+/* ============================================================
+   576px — mobile grande
+   ============================================================ */
+@media (max-width: 576px) {
+
+  /* Hero */
+  .hero .hero-stats {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .hero .hero-stats .stat-item {
+    flex: 1 1 100%;
+    max-width: 100%;
+    text-align: center;
+  }
+
+  /* Objetivos */
+  .objetivos .objetivos-wrapper {
+    height: auto;
+  }
+
+  /* Regulamentacoes */
+  .timeline {
+    margin-left: 0.5rem;
+    padding-left: 30px;
+  }
+
+  .timeline-date,
+  .timeline-content {
+    margin-left: 30px;
+    width: calc(100% - 30px);
+  }
+
+  .timeline-item::before {
+    left: 5px;
+    top: 8px;
+  }
+
+  .timeline::before {
+    left: 5px;
+  }
+
+  /* Tabelas */
+  .progress {
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+  }
+}
+
+/* ============================================================
+   768px — tablet
+   ============================================================ */
+@media (max-width: 768px) {
+
+  /* Global */
+  section#hero {
+    padding: 150px 0;
+  }
+
+  [data-aos-delay] {
+    transition-delay: 0 !important;
+  }
+
+  /* Header */
+  .header .header-container {
+    width: 90%;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 10px 5px 10px 15px;
+  }
+
+  /* Hero */
+  .hero {
+    padding: 0px 0px 60px;
+  }
+
+  .hero .hero-content {
+    padding: 0 20px;
+  }
+
+  .hero .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero .hero-content p {
+    text-align: justify;
+  }
+
+  .hero .hero-buttons {
+    justify-content: center;
+  }
+
+  .hero .hero-stats .stat-item .stat-number {
+    font-size: 2rem;
+  }
+
+  .hero .hero-visual .hero-image {
+    display: none;
+  }
+
+  /* Principios */
+  .principios .principios-cta {
+    padding: 40px 30px;
+  }
+
+  .principios .principios-cta h3 {
+    font-size: 24px;
+  }
+
+  .principios .principios-cta p {
+    font-size: 15px;
+  }
+
+  .principios .principios-card {
+    padding: 30px 25px;
+    margin-bottom: 20px;
+  }
+
+  .principios h4 {
+    font-size: 20px;
+  }
+
+  .principios p {
+    font-size: 14px;
+  }
+
+  .principios-details .principios-content h2 {
+    font-size: 2rem;
+  }
+
+  .principios-details .principios-features {
+    padding: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .principios-details .principios-info,
+  .principios-details .principios-testimonial,
+  .principios-details .inquiry-form {
+    padding: 1.5rem;
+  }
+
+  /* Objetivos */
+  .objetivos .objetivos-filters {
+    gap: 6px;
+    margin-bottom: 30px;
+  }
+
+  .objetivos .objetivos-filters li {
+    padding: 10px 18px;
+    font-size: 0.8rem;
+  }
+
+  .objetivos .objetivos-wrapper {
+    height: 190px;
+  }
+
+  .section-title-obj p {
+    width: 90%;
+  }
+
+  /* Roadmap */
+  .roadmap-img {
+    display: none;
+  }
+
+  .roadmap .section-title.texto-esquerda-flex {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .subtitulo-roadmap h2 {
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  .nome-eixo {
+    text-align: center;
+    margin-top: 1.5rem;
+  }
+
+  .nome-eixo__titulo {
+    font-size: 1.3rem;
+    text-align: center;
+  }
+
+  .roadmap-columns {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    text-align: center;
+  }
+
+  .roadmap-column {
+    width: 90%;
+  }
+
+  .roadmap-status {
+    text-align: center;
+  }
+
+  .roadmap-actions {
+    padding-left: 1.5rem;
+    text-align: left;
+    margin: 0 auto;
+    width: fit-content;
+  }
+
+  .item-acao {
+    text-align: left;
+  }
+
+  .roadmap-divisor__eixo {
+    margin: 2rem auto;
+    width: 80%;
+  }
+
+  /* Regulamentacoes */
+  .timeline {
+    margin-left: 1rem;
+    padding-left: 40px;
+  }
+
+  .timeline-date,
+  .timeline-content {
+    margin-left: 40px;
+    width: calc(100% - 40px);
+  }
+
+  .timeline-item::before {
+    left: 5px;
+  }
+
+  .timeline::before {
+    left: 10px;
+  }
+
+  /* Footer */
+  .footer-links {
+    border-left: none;
+    border-right: none;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .footer .row > [class*="col-"] {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-bottom: 1.5rem;
+  }
+
+  .footer h6,
+  .footer ul {
+    text-align: center;
+    padding-left: 0;
+  }
+
+  .footer ul li {
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-logo {
+    margin: 0 auto 1rem;
+    display: block;
+    max-width: 250px;
+  }
+
+  .footer .footer-gap {
+    flex-direction: column !important;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .footer .footer-gap p {
+    text-align: center;
+  }
+
+  .footer .footer-gap .d-flex.gap-4 {
+    justify-content: center;
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* ============================================================
+   992px — desktop médio
+   ============================================================ */
+@media (max-width: 992px) {
+
+  /* Hero */
+  .hero .hero-content {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .hero .hero-visual .hero-image {
+    display: none;
+  }
+
+  .hero .hero-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+  }
+
+  .hero .hero-stats .stat-item {
+    flex: 1 1 45%;
+    max-width: 45%;
+    text-align: center;
+  }
+
+  /* Objetivos */
+  .objetivos .objetivos-wrapper {
+    height: 210px;
+  }
+
+  /* Roadmap */
+  .roadmap {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .roadmap-img {
+    max-width: 60%;
+    margin-top: 1rem;
+  }
+
+  .texto-esquerda-flex {
+    align-items: center;
+  }
+
+  .alinha-texto-esquerda {
+    text-align: center;
+  }
+
+  .roadmap-columns {
+    gap: 20px;
+  }
+
+  .roadmap-column {
+    flex: 1 1 100%;
+  }
+
+  /* Objetivos Details */
+  .objetivos-details .objetivos-details-content {
+    padding: 2rem 0 0 0;
+  }
+
+  .objetivos-details .objetivos-details-content .cta-buttons {
+    margin-top: 2rem;
+  }
+}
+
+/* ============================================================
+   1200px — desktop
+   ============================================================ */
+@media (max-width: 1200px) {
+
+  /* Header */
+  .header {
+    padding-top: 10px;
+  }
+
+  .header .header-container {
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 10px 5px 10px 15px;
+  }
+
+  /* Objetivos Details */
+  .objetivos-details .objetivos-details-content {
+    padding-left: 1rem;
+  }
+
+  /* Principios container */
+  .principios .container {
+    max-width: 90dvw;
+    padding: 60px 40px;
+  }
+}
+
+/* ============================================================
+   1600px — ultrawide
+   ============================================================ */
+@media (min-width: 3000px) {
+
+  /* Header */
+  .header .header-container {
+    width: 55%;
+  }
+
+  /* Hero */
+  .hero .hero-content h1 {
+    font-size: 3rem;
+  }
+
+  .hero .hero-stats {
+    gap: 11rem;
+  }
+
+  .hero .hero-stats .stat-item .stat-number {
+    font-size: 2.4rem;
+  }
+
+  /* Principios */
+  .principios .container {
+    max-width: 70dvw;
+    padding: 100px 120px;
+  }
+
+  .principios .container::before {
+    transform: translateX(-40%);
+  }
+
+  /* Section titles */
+  .section-title h2 {
+    font-size: 2.4rem;
+  }
+
+  .section-title-obj h2 {
+    font-size: 2.4rem;
+  }
+
+  /* Roadmap */
+  .roadmap-columns {
+    gap: 60px;
+  }
+
+  .nome-eixo__titulo {
+    font-size: 1.75rem;
+  }
+
+  /* Timeline */
+  .timeline {
+    max-width: 1100px;
+  }
+} 

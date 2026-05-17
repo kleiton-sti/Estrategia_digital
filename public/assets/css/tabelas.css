@@ -1,15 +1,6 @@
-/* Status */
-.status-sim {
-  color: green;
-}
+.status-sim { color: green; }
+.status-nao { color: red; }
 
-.status-nao {
-  color: red;
-}
-
-/* ============================= */
-/* Barra de Progresso */
-/* ============================= */
 .progress {
   height: 25px;
   background-color: #2c2c4a;
@@ -27,8 +18,8 @@
   color: #fff;
   font-weight: bold;
   display: flex;
-  align-items: center; 
-  justify-content: center; 
+  align-items: center;
+  justify-content: center;
   padding-left: 10px;
   height: 100%;
   border-radius: 15px 0 0 15px;
@@ -39,29 +30,12 @@
   z-index: 2;
 }
 
-@media (max-width: 768px) {
-  .progress {
-    margin-left: auto;
-    margin-right: auto;
-    width: 80%; 
-  }
-}
-
-/* Divider entre eixos */
 .roadmap-divider {
   margin: 2rem 0;
   border-top: 1px solid #333;
 }
 
-/* Título da seção */
-.section-title h1 {
-  color: var(--heading-color);
-}
-
-/* Garantir espaço entre os cards da direita */
-.col-lg-4.d-flex.flex-column.gap-4 > .card-tabela-pequena:not(:last-child) {
-  margin-bottom: 1rem;
-}
+.section-title h1 { color: var(--heading-color); }
 
 html, body {
   scroll-behavior: auto !important;
