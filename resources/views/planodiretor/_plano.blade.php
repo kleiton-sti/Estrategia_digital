@@ -36,7 +36,7 @@
 </style>
 
 @section('content')
-<main class="main principios-details-page">
+<main class="main principios-details-page pagina-interna">
     <section id="objetivos" class="objetivos section">
         <div class="container" data-aos="fade-up">
             <div class="section-title mb-4 text-center">

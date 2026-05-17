@@ -3,7 +3,7 @@
 @section('title', 'Artigos')
 
 @section('content')
-  <main class="main">
+  <main class="main pagina-interna">
     <section id="artigos" class="primeira-sessao py-5">
       <div class="container" data-aos="fade-up">
 

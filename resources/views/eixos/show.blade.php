@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<main class="main principios-details-page">
+<main class="main principios-details-page pagina-interna">
   <!-- Breadcrumbs -->
   <!-- <div class="page-title">
     <div class="breadcrumbs">

@@ -12,7 +12,7 @@
 
 </main> -->
 
-<main class="main principios-details-page">
+<main class="main principios-details-page pagina-interna">
     <div class="container">
         <section id="objetivos" class="objetivos section dash">
         </section>

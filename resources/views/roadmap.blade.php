@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-<main class="main">
+<main class="main pagina-interna">
     <section id="roadmap" class="section objetivos">
         <div class="container" data-aos="fade-up">
 
             <div class="row roadmap">
                 <div class="col-lg-8 section-title texto-esquerda-flex mb-4">
                     <h1>Roadmap</h1>
-                    <p class="alinha-texto-esquerda" style="text-align: left;">
+                    <p class="alinha-texto-esquerda">
                         Conecta Caraguatatuba é o portal digital do Governo Municipal de Caraguatatuba.
                         É desenvolvido e mantido pela Secretaria de Tecnologia da Informação e Inovação (STII),
                         com o objetivo de aproximar cidadãos, dados e serviços em um só lugar.
@@ -24,36 +24,27 @@
                 </div>
             </div>
 
-
             <div class="row">
                 <div class="subtitulo-roadmap col-12">
-                    <h2><b>No que estamos trabalhando?</b></h2>
+                    <h2>No que estamos trabalhando?</h2>
                 </div>
             </div>
 
             <hr class="roadmap-divisor__eixo">
-
-
 
             @foreach($todosEixos as $eixo)
             <div class="nome-eixo">
                 <h3 class="nome-eixo__titulo">{{ $eixo->titulo }}</h3>
             </div>
 
-
             <div class="roadmap-columns">
                 @php
-                $ordemDesejada = ['entregue_recentemente', 'em_andamento', 'explorando'];
-
-                // Agrupa as ações existentes por status
-                $gruposExistentes = $eixo->roadmaps->groupBy('status');
-
-                // Cria uma collection ordenada com todas as chaves na ordem desejada,
-                // pegando o grupo existente ou uma collection vazia quando não existir.
-                $grupos = collect();
-                foreach ($ordemDesejada as $status) {
-                $grupos->put($status, $gruposExistentes->get($status, collect()));
-                }
+                    $ordemDesejada    = ['entregue_recentemente', 'em_andamento', 'explorando'];
+                    $gruposExistentes = $eixo->roadmaps->groupBy('status');
+                    $grupos           = collect();
+                    foreach ($ordemDesejada as $status) {
+                        $grupos->put($status, $gruposExistentes->get($status, collect()));
+                    }
                 @endphp
 
                 @foreach($grupos as $status => $acoes)
@@ -61,13 +52,12 @@
                     <h5 class="roadmap-status">{{ ucwords(str_replace('_', ' ', $status)) }}</h5>
                     <ul class="roadmap-actions">
                         @foreach($acoes as $acao)
-                        <li class="item-acao">{{ $acao->acao }}</li>
+                            <li class="item-acao">{{ $acao->acao }}</li>
                         @endforeach
                     </ul>
                 </div>
                 @endforeach
             </div>
-
 
             @endforeach
         </div>

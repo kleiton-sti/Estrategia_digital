@@ -3,7 +3,7 @@
 @section('title', 'Entrar')
 
 @section('content')
-<main class="main">
+<main class="main pagina-interna">
   <section class="login-section d-flex align-items-center justify-content-center">
     <div class="login-card">
       <h2 class="login-titulo">Entrar</h2>

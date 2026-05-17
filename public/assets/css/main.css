@@ -28,11 +28,12 @@
   --nav-dropdown-hover-color: #ffffff;
 }
 
-/* Espaçamento global das seções — valor único aplicado em todos os arquivos */
 :root {
   --section-padding-y: 80px;
   --section-gap: 60px;
   --title-gap: 40px;
+  /* Altura do header fixo + margem superior dele */
+  --header-offset: 110px;
 }
 
 .light-background {
@@ -98,8 +99,6 @@ h5.mb-1 {
 /* ============================================================
    Seções globais
    ============================================================ */
-
-/* Todas as seções com padding uniforme — menor para revelar a próxima */
 section {
   padding: var(--section-padding-y) 0;
   overflow: hidden;
@@ -120,6 +119,15 @@ section.principios {
   align-items: center;
   padding: var(--section-padding-y) 0;
   min-height: auto;
+}
+
+/*
+  Compensa o header fixo nas páginas secundárias (tudo exceto a home).
+  A home usa o hero que já tem padding suficiente.
+  Aplique a classe .pagina-interna no <main> das blades que não são home.
+*/
+.pagina-interna {
+  padding-top: var(--header-offset);
 }
 
 .principios .container {
@@ -245,7 +253,6 @@ section.principios {
   line-height: 1.6;
 }
 
-/* Variação alinhada à esquerda usada em roadmap e objetivos */
 .section-titulo {
   padding-bottom: var(--title-gap);
 }
