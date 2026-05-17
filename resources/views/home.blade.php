@@ -6,7 +6,7 @@
     <!-- Hero Section -->
     <section id="hero" class="hero section">
       <div class="container">
-        <div class="row align-items-center">
+        <div class="row align-items-start">
           <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
             <div class="hero-content">
               <h1>Estratégia Digital</h1>
@@ -21,34 +21,30 @@
                 <a href="#footer" class="btn btn-outline">Fale Conosco</a>
               </div>
 
-              <div class="hero-stats justify-content-between">
+              <div class="hero-stats">
 
                 <div class="stat-item stat-item--laranja">
                   <h4 class="stat-number purecounter" data-purecounter-start="0"
                     data-purecounter-end="{{ $totalIniciativas }}" data-purecounter-duration="3"></h4>
                   <p class="badge color-laranja">Iniciativas</p>
-                  <!-- <div class="blur-laranja"></div> -->
                 </div>
 
                 <div class="stat-item stat-item--verde">
                   <h4 class="stat-number purecounter" data-purecounter-start="0" data-purecounter-end="{{ $concluidas }}"
                     data-purecounter-duration="3"></h4>
                   <p class="badge color-verde">Concluídas</p>
-                  <!-- <div class="blur-verde"></div> -->
                 </div>
 
                 <div class="stat-item stat-item--amarelo">
                   <h4 class="stat-number purecounter" data-purecounter-start="0" data-purecounter-end="{{ $andamento }}"
                     data-purecounter-duration="3"></h4>
                   <p class="badge color-amarelo">Em execução</p>
-                  <!-- <div class="blur-amarelo"></div> -->
                 </div>
 
                 <div class="stat-item stat-item--vermelho">
                   <h4 class="stat-number purecounter" data-purecounter-start="0"
                     data-purecounter-end="{{ $naoIniciadas }}" data-purecounter-duration="3"></h4>
                   <p class="badge color-vermelho">Não iniciadas</p>
-                  <!-- <div class="blur-vermelho"></div> -->
                 </div>
 
               </div>
@@ -74,7 +70,6 @@
 
         </div>
       </div>
-
     </section>
     <!-- /Hero Section -->
 
@@ -114,7 +109,8 @@
           </div>
         </div>
       </div>
-
     </section>
+    <!-- /Eixos Section -->
+
   </main>
 @endsection

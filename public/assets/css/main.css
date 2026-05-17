@@ -28,6 +28,13 @@
   --nav-dropdown-hover-color: #ffffff;
 }
 
+/* Espaçamento global das seções — valor único aplicado em todos os arquivos */
+:root {
+  --section-padding-y: 80px;
+  --section-gap: 60px;
+  --title-gap: 40px;
+}
+
 .light-background {
   --background-color: #0c114a;
   --surface-color: #131b76;
@@ -91,25 +98,28 @@ h5.mb-1 {
 /* ============================================================
    Seções globais
    ============================================================ */
+
+/* Todas as seções com padding uniforme — menor para revelar a próxima */
 section {
-  padding: 250px 0 160px;
+  padding: var(--section-padding-y) 0;
   overflow: hidden;
 }
 
 section#hero {
   color: var(--default-color);
-  min-height: 100dvh;
+  min-height: 92dvh;
   display: flex;
   align-items: center;
   overflow: hidden;
   scroll-margin-top: 90px;
+  padding: var(--section-padding-y) 0;
 }
 
 section.principios {
   justify-content: center;
   align-items: center;
-  padding: 20px 0;
-  min-height: 100dvh;
+  padding: var(--section-padding-y) 0;
+  min-height: auto;
 }
 
 .principios .container {
@@ -121,7 +131,7 @@ section.principios {
   max-width: 80dvw;
   display: flex;
   align-items: center;
-  padding: 80px 80px;
+  padding: var(--section-padding-y) 80px;
   overflow: clip;
 }
 
@@ -185,27 +195,32 @@ section.principios {
 }
 
 /* ============================================================
-   Section Titles
+   Section Titles — padrão unificado
    ============================================================ */
 .section-title-obj {
-  padding-bottom: 60px;
+  padding-bottom: var(--title-gap);
   position: relative;
 }
 
 .section-title-obj h2 {
-  font-size: 32px;
+  font-size: 1.8rem;
   font-weight: 700;
-  margin-bottom: 15px;
+  color: rgba(232, 231, 247, 0.73);
+  margin-bottom: 12px;
+  font-family: var(--heading-font);
 }
 
 .section-title-obj p {
   margin-bottom: 0;
   width: 100%;
   max-width: 600px;
+  font-size: 0.95rem;
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  line-height: 1.6;
 }
 
 .section-title {
-  padding-bottom: 60px;
+  padding-bottom: var(--title-gap);
   position: relative;
   text-align: center;
   display: flex;
@@ -214,17 +229,41 @@ section.principios {
 }
 
 .section-title h2 {
-  font-size: 2rem;
-  font-weight: 600;
-  color: rgba(254, 254, 254, 0.729);
-  margin-bottom: 15px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: rgba(232, 231, 247, 0.73);
+  margin-bottom: 12px;
+  font-family: var(--heading-font);
 }
 
 .section-title p {
-  font-size: 1rem;
+  font-size: 0.95rem;
   margin-bottom: 0;
   max-width: 600px;
   text-align: center;
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  line-height: 1.6;
+}
+
+/* Variação alinhada à esquerda usada em roadmap e objetivos */
+.section-titulo {
+  padding-bottom: var(--title-gap);
+}
+
+.section-titulo h1,
+.section-titulo h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: rgba(232, 231, 247, 0.73);
+  margin-bottom: 12px;
+  font-family: var(--heading-font);
+}
+
+.section-titulo p {
+  font-size: 0.95rem;
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  line-height: 1.6;
+  margin-bottom: 0;
 }
 
 /* ============================================================

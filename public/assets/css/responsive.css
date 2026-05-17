@@ -7,8 +7,6 @@
  *   992px  — desktop médio
  *   1200px — desktop
  *   1600px — ultrawide
- *
- * Ordem: mobile-first (max-width) seguido de min-width para ajustes ultrawide.
  */
 
 /* ============================================================
@@ -16,25 +14,26 @@
    ============================================================ */
 @media (max-width: 576px) {
 
-  /* Hero */
+  :root {
+    --section-padding-y: 50px;
+    --title-gap: 28px;
+  }
+
   .hero .hero-stats {
-    flex-direction: column;
+    flex-wrap: wrap;
     gap: 1rem;
-    align-items: center;
+    justify-content: center;
   }
 
   .hero .hero-stats .stat-item {
-    flex: 1 1 100%;
-    max-width: 100%;
+    flex: 1 1 45%;
     text-align: center;
   }
 
-  /* Objetivos */
   .objetivos .objetivos-wrapper {
     height: auto;
   }
 
-  /* Regulamentacoes */
   .timeline {
     margin-left: 0.5rem;
     padding-left: 30px;
@@ -55,7 +54,6 @@
     left: 5px;
   }
 
-  /* Tabelas */
   .progress {
     margin-left: auto;
     margin-right: auto;
@@ -68,16 +66,15 @@
    ============================================================ */
 @media (max-width: 768px) {
 
-  /* Global */
-  section#hero {
-    padding: 150px 0;
+  :root {
+    --section-padding-y: 60px;
+    --title-gap: 32px;
   }
 
   [data-aos-delay] {
     transition-delay: 0 !important;
   }
 
-  /* Header */
   .header .header-container {
     width: 90%;
     margin-left: 10px;
@@ -85,17 +82,18 @@
     padding: 10px 5px 10px 15px;
   }
 
-  /* Hero */
   .hero {
-    padding: 0px 0px 60px;
+    padding: 60px 0;
   }
 
   .hero .hero-content {
     padding: 0 20px;
+    text-align: center;
+    margin-bottom: 2rem;
   }
 
   .hero .hero-content h1 {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 
   .hero .hero-content p {
@@ -106,63 +104,52 @@
     justify-content: center;
   }
 
+  .hero .hero-stats {
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    justify-content: center;
+  }
+
+  .hero .hero-stats .stat-item {
+    flex: 1 1 45%;
+    text-align: center;
+  }
+
   .hero .hero-stats .stat-item .stat-number {
-    font-size: 2rem;
+    font-size: 1.6rem;
   }
 
   .hero .hero-visual .hero-image {
     display: none;
   }
 
-  /* Principios */
-  .principios .principios-cta {
-    padding: 40px 30px;
-  }
-
-  .principios .principios-cta h3 {
-    font-size: 24px;
-  }
-
-  .principios .principios-cta p {
-    font-size: 15px;
-  }
-
   .principios .principios-card {
-    padding: 30px 25px;
-    margin-bottom: 20px;
-  }
-
-  .principios h4 {
-    font-size: 20px;
-  }
-
-  .principios p {
-    font-size: 14px;
+    padding: 24px 20px;
+    margin-bottom: 16px;
   }
 
   .principios-details .principios-content h2 {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   .principios-details .principios-features {
-    padding: 1.5rem;
-    margin: 2rem 0;
+    padding: 1.25rem;
+    margin: 1.5rem 0;
   }
 
   .principios-details .principios-info,
   .principios-details .principios-testimonial,
   .principios-details .inquiry-form {
-    padding: 1.5rem;
+    padding: 1.25rem;
   }
 
-  /* Objetivos */
   .objetivos .objetivos-filters {
     gap: 6px;
-    margin-bottom: 30px;
+    margin-bottom: 24px;
   }
 
   .objetivos .objetivos-filters li {
-    padding: 10px 18px;
+    padding: 8px 16px;
     font-size: 0.8rem;
   }
 
@@ -174,7 +161,6 @@
     width: 90%;
   }
 
-  /* Roadmap */
   .roadmap-img {
     display: none;
   }
@@ -197,14 +183,14 @@
   }
 
   .nome-eixo__titulo {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     text-align: center;
   }
 
   .roadmap-columns {
     flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1.2rem;
     text-align: center;
   }
 
@@ -228,11 +214,10 @@
   }
 
   .roadmap-divisor__eixo {
-    margin: 2rem auto;
+    margin: 1.5rem auto;
     width: 80%;
   }
 
-  /* Regulamentacoes */
   .timeline {
     margin-left: 1rem;
     padding-left: 40px;
@@ -252,7 +237,6 @@
     left: 10px;
   }
 
-  /* Footer */
   .footer-links {
     border-left: none;
     border-right: none;
@@ -304,10 +288,9 @@
    ============================================================ */
 @media (max-width: 992px) {
 
-  /* Hero */
   .hero .hero-content {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
   }
 
   .hero .hero-visual .hero-image {
@@ -315,7 +298,6 @@
   }
 
   .hero .hero-stats {
-    display: flex;
     flex-wrap: wrap;
     gap: 1.5rem;
     justify-content: center;
@@ -327,12 +309,10 @@
     text-align: center;
   }
 
-  /* Objetivos */
   .objetivos .objetivos-wrapper {
     height: 210px;
   }
 
-  /* Roadmap */
   .roadmap {
     flex-direction: column;
     align-items: center;
@@ -360,7 +340,6 @@
     flex: 1 1 100%;
   }
 
-  /* Objetivos Details */
   .objetivos-details .objetivos-details-content {
     padding: 2rem 0 0 0;
   }
@@ -375,7 +354,6 @@
    ============================================================ */
 @media (max-width: 1200px) {
 
-  /* Header */
   .header {
     padding-top: 10px;
   }
@@ -386,12 +364,10 @@
     padding: 10px 5px 10px 15px;
   }
 
-  /* Objetivos Details */
   .objetivos-details .objetivos-details-content {
     padding-left: 1rem;
   }
 
-  /* Principios container */
   .principios .container {
     max-width: 90dvw;
     padding: 60px 40px;
@@ -403,25 +379,22 @@
    ============================================================ */
 @media (min-width: 3000px) {
 
-  /* Header */
   .header .header-container {
     width: 55%;
   }
 
-  /* Hero */
   .hero .hero-content h1 {
-    font-size: 3rem;
+    font-size: 2.6rem;
   }
 
   .hero .hero-stats {
-    gap: 11rem;
+    gap: 4rem;
   }
 
   .hero .hero-stats .stat-item .stat-number {
-    font-size: 2.4rem;
+    font-size: 2.2rem;
   }
 
-  /* Principios */
   .principios .container {
     max-width: 70dvw;
     padding: 100px 120px;
@@ -431,26 +404,23 @@
     transform: translateX(-40%);
   }
 
-  /* Section titles */
   .section-title h2 {
-    font-size: 2.4rem;
+    font-size: 2rem;
   }
 
   .section-title-obj h2 {
-    font-size: 2.4rem;
+    font-size: 2rem;
   }
 
-  /* Roadmap */
   .roadmap-columns {
     gap: 60px;
   }
 
   .nome-eixo__titulo {
-    font-size: 1.75rem;
+    font-size: 1.6rem;
   }
 
-  /* Timeline */
   .timeline {
     max-width: 1100px;
   }
-} 
+}

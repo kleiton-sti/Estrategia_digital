@@ -4,39 +4,39 @@
 .hero {
   position: relative;
   overflow: hidden;
-  padding: 250px 0 160px;
+  padding: 80px 0;
 }
 
 .hero .hero-content h1 {
-  font-size: 2.5rem;
-  font-weight: 600;
-  line-height: 1.2;
-  color: rgba(254, 254, 254, 0.729);
-  margin-bottom: 1.5rem;
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: rgba(232, 231, 247, 0.73);
+  margin-bottom: 1.2rem;
+  font-family: var(--heading-font);
 }
 
 .hero .hero-content p {
-  font-size: 1rem;
-  word-spacing: normal;
-  color: color-mix(in srgb, var(--default-color), transparent 20%);
+  font-size: 0.95rem;
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
   margin-bottom: 2rem;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 .hero .hero-buttons {
   display: flex;
   gap: 1rem;
-  margin-bottom: 6rem;
+  margin-bottom: 3.5rem;
   flex-wrap: wrap;
 }
 
 .hero .hero-buttons .btn {
-  padding: 15px 30px;
+  padding: 12px 28px;
   font-weight: 600;
   border-radius: 50px;
   text-decoration: none;
   transition: all 0.3s ease;
-  font-size: 1rem;
+  font-size: 0.95rem;
 }
 
 .hero .hero-buttons .btn.btn-primary {
@@ -63,28 +63,32 @@
 }
 
 /*--------------------------------------------------------------
-# Stats
+# Stats — lado a lado em telas grandes
 --------------------------------------------------------------*/
 .hero .hero-stats {
   display: flex;
-  gap: 9rem;
-  flex-wrap: wrap;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 2.5rem;
+  align-items: center;
 }
 
 .hero .hero-stats .stat-item {
   position: relative;
   text-align: center;
+  flex: 0 0 auto;
 }
 
 .hero .hero-stats .stat-item .stat-number {
-  font-size: 2rem;
-  font-weight: 600;
-  line-height: 3;
+  font-size: 1.9rem;
+  font-weight: 700;
+  line-height: 2.4;
   letter-spacing: -1px;
   color: rgba(249, 249, 249, 0.657) !important;
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
   background-clip: text;
+  font-family: var(--heading-font);
 }
 
 .stat-item--laranja .stat-number {
@@ -179,22 +183,25 @@
 
 .hero .hero-stats .stat-item .stat-label {
   display: block;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: color-mix(in srgb, var(--default-color), transparent 30%);
-  margin-top: 0.5rem;
+  margin-top: 0.3rem;
 }
 
 /*--------------------------------------------------------------
-# Visual / Imagem
+# Visual / Imagem — alinhada ao topo do texto
 --------------------------------------------------------------*/
 .hero .hero-visual {
   position: relative;
+  display: flex;
+  align-items: flex-start;
 }
 
 .hero .hero-visual .hero-image {
   position: relative;
   text-align: end;
   z-index: 2;
+  width: 100%;
 }
 
 .hero .hero-visual .hero-image #reflexo-img-1 {

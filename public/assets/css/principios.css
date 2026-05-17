@@ -4,10 +4,9 @@
 .principios .principios-card {
   background: var(--surface-color);
   border-radius: 20px;
-  padding: 30px 20px;
+  padding: 28px 24px;
   position: relative;
   height: 100%;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
   border: 1px solid color-mix(in srgb, var(--default-color), transparent 92%);
   transition: all 0.3s ease;
   display: flex;
@@ -17,32 +16,39 @@
 }
 
 .principios .principios-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.18);
   border-color: color-mix(in srgb, var(--accent-color), transparent 70%);
 }
 
 .principios .principios-card h4 {
   display: inline-flex;
   align-items: center;
-  font-size: 1.25rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
   gap: 10px;
   width: auto;
+  font-family: var(--heading-font);
+  color: rgba(232, 231, 247, 0.73);
 }
 
 .principios .principios-icon {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   transition: transform 0.3s ease;
 }
 
-.principios .principios-card:hover .principios-icon { transform: scale(1.1); }
+.principios .principios-card:hover .principios-icon {
+  transform: scale(1.1);
+}
 
 .principios .principios-card p {
-  font-size: 0.8rem;
+  font-size: 0.88rem;
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  line-height: 1.65;
   margin-bottom: 1rem;
   max-width: 38rem;
   width: 100%;
@@ -65,7 +71,7 @@
   align-items: center;
   gap: 5px;
   color: var(--accent-color);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
 }
 
 .principios .principios-link:hover {
@@ -73,81 +79,27 @@
   text-decoration: underline;
 }
 
-.principios .principios-badge {
-  position: absolute;
-  top: -10px; right: 20px;
-  background: linear-gradient(135deg, #ff6b6b, #ff8e53);
-  color: var(--contrast-color);
-  padding: 6px 16px;
-  border-radius: 20px;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  box-shadow: 0 4px 15px rgba(255,107,107,0.3);
-}
-
 .principios h4 {
-  margin-bottom: 15px;
-  font-size: 22px;
+  margin-bottom: 12px;
+  font-size: 1.1rem;
   font-weight: 700;
+  font-family: var(--heading-font);
 }
 
 .principios h4 a {
-  color: rgba(254, 254, 254, 0.729);
+  color: rgba(232, 231, 247, 0.73);
   text-decoration: none;
 }
 
-.principios h4 a:hover { color: var(--accent-color); }
+.principios h4 a:hover {
+  color: var(--accent-color);
+}
 
 .principios p {
   color: color-mix(in srgb, var(--default-color), transparent 30%);
-  line-height: 1.6;
-  margin-bottom: 25px;
-  font-size: 15px;
-}
-
-.principios .principios-cta {
-  background: linear-gradient(135deg, var(--surface-color), color-mix(in srgb, var(--surface-color), var(--accent-color) 3%));
-  border-radius: 24px;
-  padding: 50px 40px;
-  border: 1px solid color-mix(in srgb, var(--accent-color), transparent 85%);
-}
-
-.principios .principios-cta h3 {
-  font-size: 28px;
-  font-weight: 700;
-  margin-bottom: 15px;
-  color: var(--heading-color);
-}
-
-.principios .principios-cta p {
-  font-size: 16px;
-  color: color-mix(in srgb, var(--default-color), transparent 30%);
-  margin-bottom: 30px;
-  max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.principios .principios-cta .btn {
-  background: linear-gradient(135deg, var(--accent-color), color-mix(in srgb, var(--accent-color), #8b5cf6 30%));
-  border: none;
-  border-radius: 50px;
-  padding: 14px 32px;
-  font-weight: 600;
-  font-size: 16px;
-  color: var(--contrast-color);
-  text-decoration: none;
-  display: inline-block;
-  transition: all 0.3s ease;
-  box-shadow: 0 8px 25px rgba(54,144,231,0.3);
-}
-
-.principios .principios-cta .btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 35px rgba(54,144,231,0.4);
-  color: var(--contrast-color);
+  line-height: 1.65;
+  margin-bottom: 20px;
+  font-size: 0.88rem;
 }
 
 .principios-leia-mais {
@@ -169,37 +121,41 @@
 # Principios Details Section
 --------------------------------------------------------------*/
 .principios-details .principios-content h2 {
-  color: var(--heading-color);
-  font-size: 2.5rem;
+  font-size: 1.8rem;
   font-weight: 700;
+  font-family: var(--heading-font);
+  color: rgba(232, 231, 247, 0.73);
   margin-bottom: 1rem;
 }
 
 .principios-details .principios-content .lead {
-  font-size: 1.1rem;
-  color: color-mix(in srgb, var(--default-color), transparent 20%);
-  margin-bottom: 2rem;
-  line-height: 1.6;
+  font-size: 1rem;
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  margin-bottom: 1.5rem;
+  line-height: 1.65;
 }
 
 .principios-details .principios-content p {
-  margin-bottom: 1.5rem;
-  line-height: 1.8;
+  font-size: 0.93rem;
+  color: color-mix(in srgb, var(--default-color), transparent 20%);
+  margin-bottom: 1.2rem;
+  line-height: 1.75;
 }
 
 .principios-details .principios-features {
   background: var(--surface-color);
-  padding: 2.5rem;
+  padding: 2rem;
   border-radius: 12px;
-  margin: 3rem 0;
+  margin: 2.5rem 0;
   border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
 }
 
 .principios-details .principios-features h4 {
-  color: var(--heading-color);
-  margin-bottom: 2rem;
-  font-size: 1.5rem;
+  color: rgba(232, 231, 247, 0.73);
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
   font-weight: 600;
+  font-family: var(--heading-font);
 }
 
 .principios-details .principios-features .feature-item {
@@ -209,37 +165,39 @@
 }
 
 .principios-details .principios-features .feature-item i {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   color: var(--accent-color);
-  margin-top: 0.25rem;
+  margin-top: 0.2rem;
 }
 
 .principios-details .principios-features .feature-item h5 {
-  color: var(--heading-color);
-  margin-bottom: 0.5rem;
-  font-size: 1.1rem;
+  color: rgba(232, 231, 247, 0.73);
+  margin-bottom: 0.4rem;
+  font-size: 1rem;
   font-weight: 600;
+  font-family: var(--heading-font);
 }
 
 .principios-details .principios-features .feature-item p {
   margin: 0;
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: color-mix(in srgb, var(--default-color), transparent 20%);
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
 }
 
 .principios-details .principios-process h4 {
-  color: var(--heading-color);
-  margin-bottom: 2.5rem;
-  font-size: 1.5rem;
+  color: rgba(232, 231, 247, 0.73);
+  margin-bottom: 2rem;
+  font-size: 1.2rem;
   font-weight: 600;
+  font-family: var(--heading-font);
 }
 
 .principios-details .principios-process .process-steps .step-item {
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   position: relative;
 }
 
@@ -267,33 +225,36 @@
 }
 
 .principios-details .principios-process .process-steps .step-item .step-content h5 {
-  color: var(--heading-color);
-  margin-bottom: 0.6rem;
-  font-size: 1.2rem;
+  color: rgba(232, 231, 247, 0.73);
+  margin-bottom: 0.4rem;
+  font-size: 1rem;
   font-weight: 600;
+  font-family: var(--heading-font);
 }
 
 .principios-details .principios-process .process-steps .step-item .step-content p {
   margin: 0;
-  line-height: 1.6;
-  color: color-mix(in srgb, var(--default-color), transparent 20%);
+  line-height: 1.65;
+  font-size: 0.88rem;
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
 }
 
 .principios-details .principios-info,
 .principios-details .principios-testimonial,
 .principios-details .inquiry-form {
   background: var(--surface-color);
-  padding: 2rem;
+  padding: 1.75rem;
   border-radius: 12px;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
 }
 
 .principios-details h4 {
-  color: var(--heading-color);
-  margin-bottom: 1.5rem;
-  font-size: 1.3rem;
+  color: rgba(232, 231, 247, 0.73);
+  margin-bottom: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 600;
+  font-family: var(--heading-font);
 }
 
 .principios-details .principios-facts {
@@ -305,8 +266,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.75rem 0;
+  padding: 0.6rem 0;
   border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  font-size: 0.9rem;
 }
 
 .principios-details .principios-facts li:last-child { border-bottom: none; }
@@ -318,7 +280,7 @@
 
 .principios-details .principios-facts li .fact-value {
   font-weight: 600;
-  color: var(--heading-color);
+  color: rgba(232, 231, 247, 0.73);
 }
 
 #principios-details .row { justify-content: center; }
