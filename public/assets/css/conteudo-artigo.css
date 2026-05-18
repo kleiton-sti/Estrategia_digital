@@ -31,25 +31,23 @@
     margin: 16px 0;
 }
 
-/* ── Autor ── */
-.autor-perfil {
-    padding: 12px 0;
-}
-
-.autor-icone {
-    font-size: 2.5rem;
-    color: var(--accent-color);
-}
-
-.autor-nome {
-    font-weight: 600;
-    font-size: 1rem;
-    color: var(--heading-color);
-}
-
-.autor-data {
+/* ── Aviso informativo no topo ── */
+.conteudo-aviso {
     font-size: 0.8rem;
-    color: color-mix(in srgb, var(--default-color), transparent 35%);
+    color: color-mix(in srgb, var(--default-color), transparent 40%);
+    border-left: 3px solid color-mix(in srgb, var(--accent-color), transparent 50%);
+    padding: 10px 14px;
+    background-color: color-mix(in srgb, var(--surface-color), transparent 30%);
+    border-radius: 0 6px 6px 0;
+    line-height: 1.6;
+}
+
+/* ── Autoria em itálico no rodapé ── */
+.conteudo-autoria {
+    font-size: 0.82rem;
+    color: color-mix(in srgb, var(--default-color), transparent 45%);
+    border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
+    padding-top: 16px;
 }
 
 /* ── Badge categoria ── */
