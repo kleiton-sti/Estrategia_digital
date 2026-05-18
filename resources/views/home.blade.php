@@ -10,49 +10,48 @@
           <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
             <div class="hero-content">
               <h1>Estratégia Digital</h1>
-              <p>A Estratégia Digital 2025–2027 orienta as ações do Município, promovendo a transformação pelo digital e
-                garantindo serviços mais simples, transparentes e acessíveis ao cidadão. O projeto fortalece a
-                participação social, empodera os munícipes por meio da transparência e está estruturado em 6 eixos, 18
-                objetivos e 81 iniciativas.
-              </p>
+              <p>Transformação digital que garante serviços mais simples.</p>
 
-              <div class="hero-buttons">
-                <a href="#principios" class="btn btn-primary">Conhecer Iniciativas</a>
-                <a href="#footer" class="btn btn-outline">Fale Conosco</a>
-              </div>
+              <!-- <div class="hero-buttons">
+                            <a href="#principios" class="btn btn-primary">Conhecer Iniciativas</a>
+                            <a href="#footer" class="btn btn-outline">Fale Conosco</a>
+                          </div> -->
 
-              <div class="hero-stats">
+              <!-- <div class="hero-stats">
 
-                <div class="stat-item stat-item--laranja">
-                  <h4 class="stat-number purecounter" data-purecounter-start="0"
-                    data-purecounter-end="{{ $totalIniciativas }}" data-purecounter-duration="3"></h4>
-                  <p class="badge color-laranja">Iniciativas</p>
-                </div>
+                            <div class="stat-item stat-item--laranja">
+                              <h4 class="stat-number purecounter" data-purecounter-start="0"
+                                data-purecounter-end="{{ $totalIniciativas }}" data-purecounter-duration="3"></h4>
+                              <p class="badge color-laranja">Iniciativas</p>
+                            </div>
 
-                <div class="stat-item stat-item--verde">
-                  <h4 class="stat-number purecounter" data-purecounter-start="0" data-purecounter-end="{{ $concluidas }}"
-                    data-purecounter-duration="3"></h4>
-                  <p class="badge color-verde">Concluídas</p>
-                </div>
+                            <div class="stat-item stat-item--verde">
+                              <h4 class="stat-number purecounter" data-purecounter-start="0" data-purecounter-end="{{ $concluidas }}"
+                                data-purecounter-duration="3"></h4>
+                              <p class="badge color-verde">Concluídas</p>
+                            </div>
 
-                <div class="stat-item stat-item--amarelo">
-                  <h4 class="stat-number purecounter" data-purecounter-start="0" data-purecounter-end="{{ $andamento }}"
-                    data-purecounter-duration="3"></h4>
-                  <p class="badge color-amarelo">Em execução</p>
-                </div>
+                            <div class="stat-item stat-item--amarelo">
+                              <h4 class="stat-number purecounter" data-purecounter-start="0" data-purecounter-end="{{ $andamento }}"
+                                data-purecounter-duration="3"></h4>
+                              <p class="badge color-amarelo">Em execução</p>
+                            </div>
 
-                <div class="stat-item stat-item--vermelho">
-                  <h4 class="stat-number purecounter" data-purecounter-start="0"
-                    data-purecounter-end="{{ $naoIniciadas }}" data-purecounter-duration="3"></h4>
-                  <p class="badge color-vermelho">Não iniciadas</p>
-                </div>
+                            <div class="stat-item stat-item--vermelho">
+                              <h4 class="stat-number purecounter" data-purecounter-start="0"
+                                data-purecounter-end="{{ $naoIniciadas }}" data-purecounter-duration="3"></h4>
+                              <p class="badge color-vermelho">Não iniciadas</p>
+                            </div>
 
-              </div>
+                          </div> -->
 
             </div>
           </div>
 
-          <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200">
+          <div class="col-lg-6 colunaImg" data-aos="fade-left" data-aos-delay="200">
+
+
+
             <div class="hero-visual">
               <div class="hero-image">
                 <img src="assets/img/misc/misc.png" alt="Digital Agency Hero" class="img-fluid">
@@ -63,7 +62,12 @@
                 <div id="reflexo-img-5"></div>
                 <div id="reflexo-img-6"></div>
                 <div id="reflexo-img-7"></div>
-                <div id="reflexo-img-8"></div>
+                <!-- <div id="reflexo-img-8"></div> -->
+
+                <div class="satelite-eixos">
+                </div>
+                <div class="satelite-objetivos"></div>
+                <div class="satelite-iniciativas"></div>
               </div>
             </div>
           </div>
@@ -75,7 +79,7 @@
 
     <!-- Eixos Section -->
     <section id="principios" class="principios section">
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
+      <div class="container">
         <div class="reflexo-01"></div>
         <div class="reflexo-02"></div>
         <div class="reflexo-03"></div>

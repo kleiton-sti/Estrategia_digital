@@ -106,12 +106,11 @@ section {
 
 section#hero {
   color: var(--default-color);
-  min-height: 92dvh;
+  min-height: 87dvh;
   display: flex;
   align-items: center;
   overflow: hidden;
   scroll-margin-top: 90px;
-  padding: var(--section-padding-y) 0;
 }
 
 section.principios {
@@ -148,12 +147,14 @@ section.principios {
   position: absolute;
   top: -9%;
   left: 50%;
-  width: 145%;
+  width: 150%;
   height: 200px;
-  transform: translateX(-30%);
+  transform: translateX(-33%);
   background: radial-gradient(circle, #04C4D9 0%, rgba(255,255,255,0) 20%);
   filter: blur(60px);
   pointer-events: none;
+  /* animation: spreadLight 4s ease-in-out; */
+  animation: moveLight 2s;
 }
 
 .principios .container::after {
@@ -167,6 +168,7 @@ section.principios {
   background: radial-gradient(circle, #04C4D9 3%, rgba(255,255,255,0) 100%);
   filter: blur(300px);
   pointer-events: none;
+  animation: spreadLight 7s ease-in-out;
 }
 
 .principios .container .reflexo-01 {
@@ -178,6 +180,7 @@ section.principios {
   background: radial-gradient(circle, #04C4D9 0%, rgba(255,255,255,0) 70%);
   filter: blur(100px);
   pointer-events: none;
+  animation: spreadLight 7s ease-in-out;
 }
 
 .principios .container .reflexo-02 {
@@ -189,6 +192,7 @@ section.principios {
   background: radial-gradient(circle, #04C4D9 0%, rgba(255,255,255,0) 70%);
   filter: blur(100px);
   pointer-events: none;
+  animation: spreadLight 7s ease-in-out;
 }
 
 .principios .container .reflexo-03 {
@@ -200,6 +204,7 @@ section.principios {
   background: radial-gradient(circle, #04c4d99d 0%, rgba(255,255,255,0) 70%);
   filter: blur(5px);
   pointer-events: none;
+  animation: spreadLight 7s ease-in-out;
 }
 
 /* ============================================================
@@ -393,7 +398,7 @@ span.badge {
   position: fixed;
   background-color: #023E73;
   border-radius: 50px;
-  width: 70%;
+  width: 49%;
   margin-top: 20px;
   padding: 0px 26px;
   box-shadow: 0px 2px 15px rgba(149,146,146,0);
@@ -515,4 +520,15 @@ span.badge {
 @keyframes ondaLuz {
   from { -webkit-mask-position: 150% 0%; mask-position: 150% 0%; }
   to   { -webkit-mask-position: -50% 0%; mask-position: -50% 0%; }
+}
+
+@keyframes spreadLight {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes moveLight {
+  from { transform: translateX(-0%); opacity: 0; }
+  25%  { transform: translateX(-0%); opacity: 0; }
+  to   { transform: translateX(-33%); opacity: 1;}
 }
