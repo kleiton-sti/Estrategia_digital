@@ -53,10 +53,10 @@ class ProdutosController extends Controller
         }
     }
 
-    public function conteudoArtigo(int $id)
+    public function conteudoArtigo(string $slug)
     {
         try {
-            $artigo = $this->produtosService->buscarArtigo($id);
+            $artigo = $this->produtosService->buscarArtigo($slug);
 
             return view('produtos.conteudo-artigo', compact('artigo'));
         } catch (\Throwable $e) {

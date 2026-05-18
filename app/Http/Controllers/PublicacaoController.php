@@ -48,7 +48,7 @@ class PublicacaoController extends Controller
     public function salvar(PublicacaoRequest $request): RedirectResponse
     {
         try {
-            $this->publicacaoService->publicar($request->validated());
+            $artigo = $this->publicacaoService->publicar($request->validated());
 
             return redirect()->route('artigos.painel')->with('sucesso', 'Artigo publicado com sucesso.');
         } catch (\Throwable $e) {
@@ -57,10 +57,10 @@ class PublicacaoController extends Controller
         }
     }
 
-    public function editar(int $id): View
+    public function editar(string $slug): View
     {
         try {
-            $artigo     = Artigo::with('categorias')->findOrFail($id);
+            $artigo     = Artigo::with('categorias')->where('slug', $slug)->firstOrFail();
             $categorias = $this->produtosService->listarCategorias();
 
             return view('publicacao.publicar', compact('artigo', 'categorias'));
@@ -70,23 +70,24 @@ class PublicacaoController extends Controller
         }
     }
 
-    public function atualizar(PublicacaoRequest $request, int $id): RedirectResponse
+    public function atualizar(PublicacaoRequest $request, string $slug): RedirectResponse
     {
         try {
-            $artigo = Artigo::findOrFail($id);
+            $artigo = Artigo::where('slug', $slug)->firstOrFail();
             $this->publicacaoService->atualizar($artigo, $request->validated());
 
-            return redirect()->route('artigos.conteudo', $id)->with('sucesso', 'Artigo atualizado com sucesso.');
+            return redirect()->route('artigos.conteudo', $artigo->fresh()->slug)
+                ->with('sucesso', 'Artigo atualizado com sucesso.');
         } catch (\Throwable $e) {
             Log::error('PublicacaoController@atualizar: ' . $e->getMessage());
             abort(500);
         }
     }
 
-    public function excluir(int $id): RedirectResponse
+    public function excluir(string $slug): RedirectResponse
     {
         try {
-            $artigo = Artigo::findOrFail($id);
+            $artigo = Artigo::where('slug', $slug)->firstOrFail();
             $this->publicacaoService->excluir($artigo);
 
             return redirect()->route('artigos.painel')->with('sucesso', 'Artigo removido.');
