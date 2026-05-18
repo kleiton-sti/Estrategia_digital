@@ -84,11 +84,12 @@
           <li class="dropdown">
             <a href="#"><span>Produtos</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="{{ route('artigos') }}">Artigos</a></li>
               <li><a href="{{ route('produtos.all.hands') }}"><span>All Hands</span></a></li>
               <li><a href="{{ route('produtos.stii.numeros') }}"><span>STII em números</span></a></li>
             </ul>
           </li>
+
+          <li><a href="{{ route('artigos') }}">Artigos</a></li>
 
           <li><a href="{{ route('plano') }}">PDTI</a></li>
 
