@@ -37,10 +37,10 @@ class ProdutosService
         }
     }
 
-    public function buscarArtigo(string $slug): Artigo
+    public function buscarArtigo(int $id): Artigo
     {
         try {
-            return Artigo::with(['categorias', 'user'])->where('slug', $slug)->firstOrFail();
+            return Artigo::with(['categorias', 'user'])->findOrFail($id);
         } catch (\Throwable $e) {
             Log::error('ProdutosService@buscarArtigo: ' . $e->getMessage());
             abort(500);

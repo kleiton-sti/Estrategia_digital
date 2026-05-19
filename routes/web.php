@@ -21,7 +21,7 @@ Route::get('/regulamentacoes', [RegulamentacoesController::class, 'index'])->nam
 Route::get('/produtos/stii-em-numeros', [ProdutosController::class, 'numeros'])->name('produtos.stii.numeros');
 Route::get('/produtos/all-hands', [ProdutosController::class, 'allHands'])->name('produtos.all.hands');
 Route::get('/artigos', [ProdutosController::class, 'artigos'])->name('artigos');
-Route::get('/artigos/{slug}', [ProdutosController::class, 'conteudoArtigo'])->name('artigos.conteudo');
+Route::get('/artigos/{slug}/{id}', [ProdutosController::class, 'conteudoArtigo'])->name('artigos.conteudo');
 
 /* Autenticação — acesso restrito à subrede 192.168.11.x */
 Route::middleware('rede.stii')->group(function () {
@@ -36,8 +36,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/painel/artigos', [PublicacaoController::class, 'painel'])->name('artigos.painel');
     Route::get('/painel/publicar', [PublicacaoController::class, 'criar'])->name('artigos.criar');
     Route::post('/painel/publicar', [PublicacaoController::class, 'salvar'])->name('artigos.salvar');
-    Route::get('/painel/artigos/{slug}/editar', [PublicacaoController::class, 'editar'])->name('artigos.editar');
-    Route::put('/painel/artigos/{slug}', [PublicacaoController::class, 'atualizar'])->name('artigos.atualizar');
-    Route::delete('/painel/artigos/{slug}', [PublicacaoController::class, 'excluir'])->name('artigos.excluir');
+    Route::get('/painel/artigos/{slug}/editar/{id}', [PublicacaoController::class, 'editar'])->name('artigos.editar');
+    Route::put('/painel/artigos/{slug}/{id}', [PublicacaoController::class, 'atualizar'])->name('artigos.atualizar');
+    Route::delete('/painel/artigos/{slug}/{id}', [PublicacaoController::class, 'excluir'])->name('artigos.excluir');
     Route::post('/painel/upload/imagem', [UploadController::class, 'imagem'])->name('upload.imagem');
 });

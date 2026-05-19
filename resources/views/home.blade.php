@@ -12,38 +12,43 @@
               <h1>Estratégia Digital</h1>
               <p>Transformação digital que garante serviços mais simples.</p>
 
+              <div class="satelite-eixos">
+              </div>
+              <div class="satelite-objetivos"></div>
+              <div class="satelite-iniciativas"></div>
+
               <!-- <div class="hero-buttons">
-                            <a href="#principios" class="btn btn-primary">Conhecer Iniciativas</a>
-                            <a href="#footer" class="btn btn-outline">Fale Conosco</a>
-                          </div> -->
+                              <a href="#principios" class="btn btn-primary">Conhecer Iniciativas</a>
+                              <a href="#footer" class="btn btn-outline">Fale Conosco</a>
+                            </div> -->
 
               <!-- <div class="hero-stats">
 
-                            <div class="stat-item stat-item--laranja">
-                              <h4 class="stat-number purecounter" data-purecounter-start="0"
-                                data-purecounter-end="{{ $totalIniciativas }}" data-purecounter-duration="3"></h4>
-                              <p class="badge color-laranja">Iniciativas</p>
-                            </div>
+                              <div class="stat-item stat-item--laranja">
+                                <h4 class="stat-number purecounter" data-purecounter-start="0"
+                                  data-purecounter-end="{{ $totalIniciativas }}" data-purecounter-duration="3"></h4>
+                                <p class="badge color-laranja">Iniciativas</p>
+                              </div>
 
-                            <div class="stat-item stat-item--verde">
-                              <h4 class="stat-number purecounter" data-purecounter-start="0" data-purecounter-end="{{ $concluidas }}"
-                                data-purecounter-duration="3"></h4>
-                              <p class="badge color-verde">Concluídas</p>
-                            </div>
+                              <div class="stat-item stat-item--verde">
+                                <h4 class="stat-number purecounter" data-purecounter-start="0" data-purecounter-end="{{ $concluidas }}"
+                                  data-purecounter-duration="3"></h4>
+                                <p class="badge color-verde">Concluídas</p>
+                              </div>
 
-                            <div class="stat-item stat-item--amarelo">
-                              <h4 class="stat-number purecounter" data-purecounter-start="0" data-purecounter-end="{{ $andamento }}"
-                                data-purecounter-duration="3"></h4>
-                              <p class="badge color-amarelo">Em execução</p>
-                            </div>
+                              <div class="stat-item stat-item--amarelo">
+                                <h4 class="stat-number purecounter" data-purecounter-start="0" data-purecounter-end="{{ $andamento }}"
+                                  data-purecounter-duration="3"></h4>
+                                <p class="badge color-amarelo">Em execução</p>
+                              </div>
 
-                            <div class="stat-item stat-item--vermelho">
-                              <h4 class="stat-number purecounter" data-purecounter-start="0"
-                                data-purecounter-end="{{ $naoIniciadas }}" data-purecounter-duration="3"></h4>
-                              <p class="badge color-vermelho">Não iniciadas</p>
-                            </div>
+                              <div class="stat-item stat-item--vermelho">
+                                <h4 class="stat-number purecounter" data-purecounter-start="0"
+                                  data-purecounter-end="{{ $naoIniciadas }}" data-purecounter-duration="3"></h4>
+                                <p class="badge color-vermelho">Não iniciadas</p>
+                              </div>
 
-                          </div> -->
+                            </div> -->
 
             </div>
           </div>
@@ -63,11 +68,6 @@
                 <div id="reflexo-img-6"></div>
                 <div id="reflexo-img-7"></div>
                 <!-- <div id="reflexo-img-8"></div> -->
-
-                <div class="satelite-eixos">
-                </div>
-                <div class="satelite-objetivos"></div>
-                <div class="satelite-iniciativas"></div>
               </div>
             </div>
           </div>

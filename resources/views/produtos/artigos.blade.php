@@ -7,7 +7,6 @@
     <section id="artigos" class="primeira-sessao py-5">
       <div class="container" data-aos="fade-up">
 
-        <!-- Cabecalho exibido quando o usuario esta autenticado -->
         @auth
           <div class="artigos-header-auth d-flex align-items-center justify-content-between mb-4 flex-wrap gap-3">
             <div class="d-flex align-items-center gap-2">
@@ -53,11 +52,10 @@
 
           @forelse ($artigos as $artigo)
             <div class="col-lg-6 col-12">
-              <a href="{{ route('artigos.conteudo', $artigo->slug) }}" class="artigo-card-link">
+              <a href="{{ route('artigos.conteudo', ['slug' => $artigo->slug, 'id' => $artigo->id]) }}" class="artigo-card-link">
                 <div class="artigo-card">
                   <div class="artigo-card-body">
 
-                    <!-- Linha superior: badges e data -->
                     <div class="d-flex align-items-start justify-content-between gap-2 mb-3">
                       <div class="artigo-badges-wrap">
                         @foreach($artigo->categorias as $cat)
@@ -69,11 +67,9 @@
                       </span>
                     </div>
 
-                    <!-- Título e subtítulo -->
                     <h5 class="artigo-titulo">{{ $artigo->titulo }}</h5>
                     <p class="artigo-subtitulo">{{ Str::limit($artigo->subtitulo, 130) }}</p>
 
-                    <!-- Rodapé: autor e leia mais -->
                     <div class="artigo-rodape d-flex align-items-center justify-content-between mt-auto pt-3">
                       <div class="d-flex align-items-center gap-2">
                         <i class="bi bi-person-circle artigo-autor-icone"></i>
@@ -96,7 +92,6 @@
 
         </div>
 
-        <!-- Paginacao -->
         @if($artigos->hasPages())
           <div class="d-flex justify-content-center mt-5">
             {{ $artigos->links('pagination::bootstrap-5') }}
