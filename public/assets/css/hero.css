@@ -431,18 +431,18 @@
  }
 
  .hero .hero-visual .hero-image #reflexo-img-8 {
-    content: "";
-    position: absolute;
-    bottom: -53%;
-    left: 36%;
-    width: 150%;
-    height: 200px;
-    transform: translateX(-33%);
-    background: radial-gradient(circle, #04C4D9 0%, rgba(255, 255, 255, 0) 20%);
-    filter: blur(60px);
-    /* z-index: 10; */
-    pointer-events: none;
-    animation: moveLight 2s;
+   content: "";
+   position: absolute;
+   bottom: -82%;
+   left: 21%;
+   clip-path : inset(50% 0 0 0);
+   width: 261%;
+   height: 463px;
+   transform: translateX(-33%);
+   background: radial-gradient(circle, #04C4D9 0%, rgba(255, 255, 255, 0) 20%);
+   filter: blur(60px);
+   z-index: 5;
+   pointer-events: none;
  }
 
  .hero .hero-visual .hero-image img {
@@ -477,7 +477,7 @@
    mask-image: linear-gradient(to right, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0.1) 100%);
    -webkit-mask-size: 200% 100%;
    mask-size: 200% 100%;
-   animation: ondaLuz 4s linear infinite;
+   animation: ondaLuz 1s linear infinite;
  }
 
  /*--------------------------------------------------------------

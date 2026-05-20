@@ -64,7 +64,6 @@
 
           <li class="dropdown">
             <a href="#"><span>Eixos</span>
-              <i class="bi bi-chevron-down"></i>
             </a>
             <ul>
               @foreach($todosEixos as $ex)
@@ -76,21 +75,21 @@
           </li>
 
           <li class="dropdown">
-            <a href="#"><span>Indicadores</span> <i class="bi bi-chevron-down"></i></a>
+            <a href="#"><span>Indicadores</span></i></a>
             <ul>
               <li><a href="{{ route('tabelas') }}"><span>Painel TCESP</span></a></li>
             </ul>
           </li>
 
           <li class="dropdown">
-            <a href="#"><span>Políticas</span> <i class="bi bi-chevron-down"></i></a>
+            <a href="#"><span>Políticas</span></i></a>
             <ul>
               <li><a href="{{ route('regulamentacoes') }}"><span>Regulamentação</span></a></li>
             </ul>
           </li>
 
           <li class="dropdown">
-            <a href="#"><span>Produtos</span> <i class="bi bi-chevron-down"></i></a>
+            <a href="#"><span>Produtos</span></a>
             <ul>
               <li><a href="{{ route('artigos') }}">Artigos</a></li>
               <li><a href="{{ route('produtos.all.hands') }}"><span>All Hands</span></a></li>

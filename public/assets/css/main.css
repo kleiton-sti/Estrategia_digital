@@ -110,9 +110,9 @@ section#hero {
   min-height: 87dvh;
   display: flex;
   align-items: center;
-  overflow: hidden;
+  overflow: visible !important;
   scroll-margin-top: 90px;
-  z-index: 1;
+  z-index: 2;
 }
 
 section#hero .container {
@@ -121,6 +121,8 @@ section#hero .container {
 
 section.principios {
   padding-top: 0px !important;
+  position: relative;
+  z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -148,7 +150,7 @@ section.principios {
   display: flex;
   align-items: center;
   padding: var(--section-padding-y) 80px;
-  overflow: clip;
+  overflow-x: clip; overflow-y:clip;
     box-shadow:
      0 1px 0px rgba(4, 196, 217, 0.08),
      inset 0 1px 0 rgba(255, 255, 255, 0.06);

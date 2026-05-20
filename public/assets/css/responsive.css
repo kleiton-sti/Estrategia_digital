@@ -68,6 +68,10 @@
     grid-column: 1;
   }
 
+  .principios .container::after{
+    background: #04C4D9;
+  }
+
 }
 
 /* ============================================================
@@ -130,6 +134,10 @@
 
   .hero .hero-visual .hero-image {
     display: none;
+  }
+
+  .principios .container::after{
+    background: radial-gradient(circle, #04C4D9 50%, rgba(255, 255, 255, 0) 100%);
   }
 
   .principios .principios-card {
@@ -290,6 +298,8 @@
     justify-content: center;
     margin-bottom: 0.5rem;
   }
+
+
 }
 
 /* ============================================================
@@ -363,6 +373,11 @@
    ============================================================ */
 @media (max-width: 1600px) {
 
+   .hero .hero-visual .hero-image #reflexo-img-8 {
+    clip-path: inset(38% 15% 0 15%);
+    width: 251%;
+   }
+
   .header {
     padding-top: 10px;
   }
@@ -381,10 +396,12 @@
     padding-top: 15px !important;
   }
 
+
   .principios .container {
     max-width: 90dvw;
     padding: 60px 40px;
   }
+
 }
 
 /* ============================================================

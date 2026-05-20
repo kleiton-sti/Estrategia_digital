@@ -144,11 +144,6 @@
                     </a>
                   </h4>
                   <p class="small">{{ $eixo->descricao }}</p>
-                  <div class="principios-leia-mais">
-                    <a href="{{ route('eixos.show', $eixo->id_eixos) }}" class="principios-link">
-                      <span>Ler Mais</span><i class="bi bi-arrow-right ms-1"></i>
-                    </a>
-                  </div>
                 </div>
               </div>
             @endforeach

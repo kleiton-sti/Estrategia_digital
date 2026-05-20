@@ -50,13 +50,13 @@
   <section id="principios-details" class="principios-details section" style="display:none;">
     <div class="container">
 
-     <!-- Título e botão Fechar -->
+     <!-- Título e botão Fechar
     <div class="d-flex justify-content-between align-items-center mb-3">
       <h6 class="iniciativas-titulo mb-0" style="font-size: 20px;">Iniciativas</h6>
       <button id="fechar-iniciativas" class="btn btn-outline-secondary btn-sm d-flex align-items-center">
         <i class="bi bi-x-lg me-1"></i> Fechar
       </button>
-    </div>
+    </div> -->
 
       <!-- Conteúdo das Iniciativas -->
       <div class="row justify-content-center align-items-start gx-3">
