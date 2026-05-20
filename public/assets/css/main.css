@@ -105,19 +105,28 @@ section {
 }
 
 section#hero {
+  position: relative;
   color: var(--default-color);
   min-height: 87dvh;
   display: flex;
   align-items: center;
   overflow: hidden;
   scroll-margin-top: 90px;
+  z-index: 1;
+}
+
+section#hero .container {
+  padding-top: 60px;
 }
 
 section.principios {
+  padding-top: 0px !important;
+  display: flex;
   justify-content: center;
   align-items: center;
   padding: var(--section-padding-y) 0;
   min-height: auto;
+  
 }
 
 /*
@@ -140,9 +149,12 @@ section.principios {
   align-items: center;
   padding: var(--section-padding-y) 80px;
   overflow: clip;
+    box-shadow:
+     0 1px 0px rgba(4, 196, 217, 0.08),
+     inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
-.principios .container::before {
+/* .principios .container::before {
   content: "";
   position: absolute;
   top: -9%;
@@ -153,9 +165,8 @@ section.principios {
   background: radial-gradient(circle, #04C4D9 0%, rgba(255,255,255,0) 20%);
   filter: blur(60px);
   pointer-events: none;
-  /* animation: spreadLight 4s ease-in-out; */
   animation: moveLight 2s;
-}
+} */
 
 .principios .container::after {
   content: "";

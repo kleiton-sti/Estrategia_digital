@@ -10,53 +10,95 @@
           <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
             <div class="hero-content">
               <h1>Estratégia Digital</h1>
-              <p>Transformação digital que garante serviços mais simples.</p>
+              <p>Promovendo a transformação pelo digital e
+                garantindo serviços mais simples, transparentes e acessíveis ao cidadão.</p>
 
-              <div class="satelite-eixos">
+              <!-- Cards glassmorphism -->
+              <div class="hero-glass-cards">
+
+                <!-- linha superior: Eixos + Objetivos -->
+                <div class="glass-cards-row">
+                  <div class="glass-card glass-card--eixos" data-aos="fade-up" data-aos-delay="250">
+                    <div class="glass-card-numero">6</div>
+                    <div class="glass-card-texto">
+                      <span class="glass-card-titulo">Eixos</span>
+                      <span class="glass-card-desc">Estruturas estratégicas de atuação</span>
+                    </div>
+                  </div>
+
+                  <div class="glass-card glass-card--objetivos" data-aos="fade-up" data-aos-delay="350">
+                    <div class="glass-card-numero">18</div>
+                    <div class="glass-card-texto">
+                      <span class="glass-card-titulo">Objetivos</span>
+                      <span class="glass-card-desc">Metas orientadas à transformação</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- card grande de iniciativas -->
+                <div class="glass-card glass-card--iniciativas" data-aos="fade-up" data-aos-delay="450">
+
+                  <!-- cabeçalho: total -->
+                  <div class="glass-card-texto--iniciativas">
+                    <div class="glass-card-numero">81</div>
+                    <div class="glass-card-inform">
+                      <span class="glass-card-titulo">Iniciativas</span>
+                      <span class="glass-card-desc">Ações concretas em andamento</span>
+                    </div>
+                  </div>
+
+                  <!-- linha de stats -->
+                  <div class="iniciativas-stat-row">
+
+                    <!-- concluídas dentro do anel -->
+                    <div class="ring-wrap">
+                      <svg class="iniciativas-ring" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                        <circle class="ring-track" cx="60" cy="60" r="52" />
+                        <circle class="ring-progress" cx="60" cy="60" r="52" id="ringProgress" />
+                      </svg>
+                      <div class="ring-inner">
+                        <span class="ist-num ist-num--verde purecounter"
+                          data-purecounter-start="0"
+                          data-purecounter-end="{{ $concluidas }}"
+                          data-purecounter-duration="3"></span>
+                      </div>
+                    </div>
+
+                    <!-- coluna de texto do anel -->
+                    <div class="ring-label-col">
+                      <span class="ist-pill ist-pill--verde">Concluídas</span>
+                      <span class="ist-desc">de 81 iniciativas entregues</span>
+                    </div>
+
+                    <!-- divisor -->
+                    <div class="stat-divisor"></div>
+
+                    <!-- em execução -->
+                    <div class="stat-col">
+                      <span class="ist-num ist-num--amarelo purecounter"
+                        data-purecounter-start="0"
+                        data-purecounter-end="{{ $andamento }}"
+                        data-purecounter-duration="3"></span>
+                      <span class="ist-pill ist-pill--amarelo">Em execução</span>
+                    </div>
+
+                    <!-- não iniciadas -->
+                    <div class="stat-col">
+                      <span class="ist-num ist-num--vermelho purecounter"
+                        data-purecounter-start="0"
+                        data-purecounter-end="{{ $naoIniciadas }}"
+                        data-purecounter-duration="3"></span>
+                      <span class="ist-pill ist-pill--vermelho">Não iniciadas</span>
+                    </div>
+
+                  </div>
+                </div>
+
               </div>
-              <div class="satelite-objetivos"></div>
-              <div class="satelite-iniciativas"></div>
-
-              <!-- <div class="hero-buttons">
-                              <a href="#principios" class="btn btn-primary">Conhecer Iniciativas</a>
-                              <a href="#footer" class="btn btn-outline">Fale Conosco</a>
-                            </div> -->
-
-              <!-- <div class="hero-stats">
-
-                              <div class="stat-item stat-item--laranja">
-                                <h4 class="stat-number purecounter" data-purecounter-start="0"
-                                  data-purecounter-end="{{ $totalIniciativas }}" data-purecounter-duration="3"></h4>
-                                <p class="badge color-laranja">Iniciativas</p>
-                              </div>
-
-                              <div class="stat-item stat-item--verde">
-                                <h4 class="stat-number purecounter" data-purecounter-start="0" data-purecounter-end="{{ $concluidas }}"
-                                  data-purecounter-duration="3"></h4>
-                                <p class="badge color-verde">Concluídas</p>
-                              </div>
-
-                              <div class="stat-item stat-item--amarelo">
-                                <h4 class="stat-number purecounter" data-purecounter-start="0" data-purecounter-end="{{ $andamento }}"
-                                  data-purecounter-duration="3"></h4>
-                                <p class="badge color-amarelo">Em execução</p>
-                              </div>
-
-                              <div class="stat-item stat-item--vermelho">
-                                <h4 class="stat-number purecounter" data-purecounter-start="0"
-                                  data-purecounter-end="{{ $naoIniciadas }}" data-purecounter-duration="3"></h4>
-                                <p class="badge color-vermelho">Não iniciadas</p>
-                              </div>
-
-                            </div> -->
-
             </div>
           </div>
 
           <div class="col-lg-6 colunaImg" data-aos="fade-left" data-aos-delay="200">
-
-
-
             <div class="hero-visual">
               <div class="hero-image">
                 <img src="assets/img/misc/misc.png" alt="Digital Agency Hero" class="img-fluid">
@@ -67,7 +109,7 @@
                 <div id="reflexo-img-5"></div>
                 <div id="reflexo-img-6"></div>
                 <div id="reflexo-img-7"></div>
-                <!-- <div id="reflexo-img-8"></div> -->
+                <div id="reflexo-img-8"></div>
               </div>
             </div>
           </div>
@@ -117,4 +159,8 @@
     <!-- /Eixos Section -->
 
   </main>
+
+  @push('scripts')
+    <script src="{{ asset('./assets/js/charge.js') }}"></script>
+  @endpush
 @endsection

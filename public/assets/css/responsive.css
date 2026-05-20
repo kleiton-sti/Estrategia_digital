@@ -5,8 +5,8 @@
  *   576px  — mobile grande
  *   768px  — tablet
  *   992px  — desktop médio
- *   1200px — desktop
- *   1600px — ultrawide
+ *   1600px — desktop
+ *   2000px — ultrawide
  */
 
 /* ============================================================
@@ -59,6 +59,15 @@
     margin-right: auto;
     width: 80%;
   }
+
+  .hero-glass-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .glass-card--participacao {
+    grid-column: 1;
+  }
+
 }
 
 /* ============================================================
@@ -244,7 +253,7 @@
     padding-right: 0;
   }
 
-  .footer .row > [class*="col-"] {
+  .footer .row>[class*="col-"] {
     flex: 0 0 100%;
     max-width: 100%;
     margin-bottom: 1.5rem;
@@ -352,7 +361,7 @@
 /* ============================================================
    1200px — desktop
    ============================================================ */
-@media (max-width: 1200px) {
+@media (max-width: 1600px) {
 
   .header {
     padding-top: 10px;
@@ -361,11 +370,15 @@
   .header .header-container {
     margin-left: 10px;
     margin-right: 10px;
-    padding: 10px 5px 10px 15px;
+    width: 60%;
   }
 
   .objetivos-details .objetivos-details-content {
     padding-left: 1rem;
+  }
+
+  section.principios {
+    padding-top: 15px !important;
   }
 
   .principios .container {
@@ -393,6 +406,10 @@
 
   .hero .hero-stats .stat-item .stat-number {
     font-size: 2.2rem;
+  }
+
+  section#hero {
+    padding-top: 15px !important;
   }
 
   .principios .container {
