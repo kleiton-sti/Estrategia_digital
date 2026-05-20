@@ -59,9 +59,19 @@ class EixoService
                 }
             }
 
+            /* progresso por eixo para a home */
+            $progressoPorEixo = $eixos->mapWithKeys(function ($eixo) {
+                $total      = $eixo->objetivos->sum(fn($o) => $o->iniciativas->count());
+                $concluidas = $eixo->objetivos->sum(fn($o) => $o->iniciativas->where('status', 'Concluída')->count());
+                return [
+                    $eixo->id_eixos => $total > 0 ? round($concluidas / $total, 4) : 0.0,
+                ];
+            })->toArray();
+
             return array_merge($totais, [
-                'eixos'      => $eixos,
-                'eixosIcons' => self::EIXOS_ICONS,
+                'eixos'            => $eixos,
+                'eixosIcons'       => self::EIXOS_ICONS,
+                'progressoPorEixo' => $progressoPorEixo,
             ]);
         } catch (\Throwable $e) {
             Log::error('Erro ao carregar dados da home: ' . $e->getMessage());
@@ -89,18 +99,26 @@ class EixoService
                 ])->toArray(),
             ])->toArray();
 
+            $total      = $eixo->objetivos->sum(fn($o) => $o->iniciativas->count());
+            $concluidas = $eixo->objetivos->sum(fn($o) => $o->iniciativas->where('status', 'Concluída')->count());
+
             $sidebar = [
-                'total'      => $eixo->objetivos->sum(fn($o) => $o->iniciativas->count()),
-                'concluidas' => $eixo->objetivos->sum(fn($o) => $o->iniciativas->where('status', 'Concluída')->count()),
+                'total'      => $total,
+                'concluidas' => $concluidas,
                 'andamento'  => $eixo->objetivos->sum(fn($o) => $o->iniciativas->where('status', 'Em execução')->count()),
                 'nao'        => $eixo->objetivos->sum(fn($o) => $o->iniciativas->where('status', 'Não iniciada')->count()),
             ];
 
+            $progresso    = $total > 0 ? round($concluidas / $total, 4) : 0.0;
+            $constelacao  = \App\Services\ConstellationService::porEixo($id);
+
             return [
-                'eixo'         => $eixo,
-                'objetivosData'=> $objetivosData,
-                'sidebar'      => $sidebar,
-                'odsMap'       => self::ODS_MAP,
+                'eixo'          => $eixo,
+                'objetivosData' => $objetivosData,
+                'sidebar'       => $sidebar,
+                'odsMap'        => self::ODS_MAP,
+                'progresso'     => $progresso,
+                'constelacao'   => $constelacao,
             ];
         } catch (\Throwable $e) {
             Log::error('Erro ao carregar eixo #' . $id . ': ' . $e->getMessage());

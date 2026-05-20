@@ -69,8 +69,8 @@ body .hero-bg-elements {
   pointer-events: none;
   background-image: radial-gradient(circle, color-mix(in srgb, #1482bd, transparent 75%) 2px, transparent 1px);
   background-size: 50px 50px;
-  -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0.1) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0.1) 100%);
-  mask-image: linear-gradient(to right, rgba(0,0,0,0.1) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0.1) 100%);
+  -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0.1) 100%);
+  mask-image: linear-gradient(to right, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0.1) 100%);
   -webkit-mask-size: 200% 100%;
   mask-size: 200% 100%;
   animation: ondaLuz 4s linear infinite;
@@ -87,7 +87,12 @@ a:hover {
   color: color-mix(in srgb, var(--accent-color), transparent 25%);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: var(--heading-color);
   font-family: var(--heading-font);
 }
@@ -128,7 +133,7 @@ section.principios {
   align-items: center;
   padding: var(--section-padding-y) 0;
   min-height: auto;
-  
+
 }
 
 /*
@@ -150,10 +155,11 @@ section.principios {
   display: flex;
   align-items: center;
   padding: var(--section-padding-y) 80px;
-  overflow-x: clip; overflow-y:clip;
-    box-shadow:
-     0 1px 0px rgba(4, 196, 217, 0.08),
-     inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  overflow-x: clip;
+  overflow-y: clip;
+  box-shadow:
+    0 1px 0px rgba(4, 196, 217, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
 /* .principios .container::before {
@@ -178,7 +184,7 @@ section.principios {
   width: 150%;
   height: 300px;
   transform: translateX(-40%);
-  background: radial-gradient(circle, #04C4D9 3%, rgba(255,255,255,0) 100%);
+  background: radial-gradient(circle, #04C4D9 3%, rgba(255, 255, 255, 0) 100%);
   filter: blur(300px);
   pointer-events: none;
   animation: spreadLight 7s ease-in-out;
@@ -190,7 +196,7 @@ section.principios {
   left: -70%;
   width: 88%;
   height: 20%;
-  background: radial-gradient(circle, #04C4D9 0%, rgba(255,255,255,0) 70%);
+  background: radial-gradient(circle, #04C4D9 0%, rgba(255, 255, 255, 0) 70%);
   filter: blur(100px);
   pointer-events: none;
   animation: spreadLight 7s ease-in-out;
@@ -202,7 +208,7 @@ section.principios {
   left: -40%;
   width: 100%;
   height: 8px;
-  background: radial-gradient(circle, #04C4D9 0%, rgba(255,255,255,0) 70%);
+  background: radial-gradient(circle, #04C4D9 0%, rgba(255, 255, 255, 0) 70%);
   filter: blur(100px);
   pointer-events: none;
   animation: spreadLight 7s ease-in-out;
@@ -214,7 +220,7 @@ section.principios {
   right: -5%;
   width: 100%;
   height: 1px;
-  background: radial-gradient(circle, #04c4d99d 0%, rgba(255,255,255,0) 70%);
+  background: radial-gradient(circle, #04c4d99d 0%, rgba(255, 255, 255, 0) 70%);
   filter: blur(5px);
   pointer-events: none;
   animation: spreadLight 7s ease-in-out;
@@ -224,7 +230,6 @@ section.principios {
    Section Titles — padrão unificado
    ============================================================ */
 .section-title-obj {
-  padding-bottom: var(--title-gap);
   position: relative;
 }
 
@@ -317,15 +322,19 @@ section.principios {
 }
 
 .badge {
-  margin-bottom: 20px;
-  color: var(--heading-color);
+    color: #04c4d9;
+    background: #04c4d938;
+    border-color: #04C4D9;
 }
 
 span.badge {
-  font-size: 1rem;
-  font-weight: bold;
-  display: inline;
-  padding: 0;
+  align-items: center;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 50px;
+  border: 1px solid;
+  white-space: nowrap;
 }
 
 .iniciativas {
@@ -337,7 +346,7 @@ span.badge {
   border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
   scroll-behavior: smooth;
   scrollbar-width: thin;
-  scrollbar-color: var(--default-color) rgba(0,0,0,0.1);
+  scrollbar-color: var(--default-color) rgba(0, 0, 0, 0.1);
 }
 
 .table,
@@ -414,7 +423,7 @@ span.badge {
   width: 49%;
   margin-top: 20px;
   padding: 0px 26px;
-  box-shadow: 0px 2px 15px rgba(149,146,146,0);
+  box-shadow: 0px 2px 15px rgba(149, 146, 146, 0);
   z-index: 1000;
 }
 
@@ -442,8 +451,8 @@ span.badge {
 }
 
 .footer-links {
-  border-left: 1px solid rgba(255,255,255,0.5);
-  border-right: 1px solid rgba(255,255,255,0.5);
+  border-left: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 .footer a.text-white {
@@ -453,7 +462,7 @@ span.badge {
 
 .footer-details {
   background-color: #000;
-  border-top: 1px solid rgba(255,255,255,0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
 }
@@ -520,28 +529,64 @@ span.badge {
    Keyframes
    ============================================================ */
 @keyframes pulse {
-  0%   { transform: scale(1); }
-  50%  { transform: scale(1.3); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.3);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
 
 @keyframes animate-preloader {
-  0%   { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes ondaLuz {
-  from { -webkit-mask-position: 150% 0%; mask-position: 150% 0%; }
-  to   { -webkit-mask-position: -50% 0%; mask-position: -50% 0%; }
+  from {
+    -webkit-mask-position: 150% 0%;
+    mask-position: 150% 0%;
+  }
+
+  to {
+    -webkit-mask-position: -50% 0%;
+    mask-position: -50% 0%;
+  }
 }
 
 @keyframes spreadLight {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes moveLight {
-  from { transform: translateX(-0%); opacity: 0; }
-  25%  { transform: translateX(-0%); opacity: 0; }
-  to   { transform: translateX(-33%); opacity: 1;}
+  from {
+    transform: translateX(-0%);
+    opacity: 0;
+  }
+
+  25% {
+    transform: translateX(-0%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(-33%);
+    opacity: 1;
+  }
 }

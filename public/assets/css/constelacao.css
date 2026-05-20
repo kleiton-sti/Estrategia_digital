@@ -1,0 +1,114 @@
+/*--------------------------------------------------------------
+# Constelação Neural
+--------------------------------------------------------------*/
+section#objetivos {
+    gap: 0px !important;
+}
+
+div.container .section-title-obj {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.section-title-obj {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.section-title-obj-texto {
+    min-width: 0;
+}
+
+.constelacao-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    position: relative;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+    width: 561px;
+}
+
+.constelacao-absolute {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.constelacao-svg {
+    width: 335px;
+    height: 202px;
+    overflow: visible;
+}
+
+.constelacao-pct {
+    font-size: 1rem;
+    font-weight: 600;
+    color: color-mix(in srgb, var(--default-color), transparent 40%);
+    white-space: nowrap;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 0.5px;
+}
+
+/* nós inativos */
+.cst-no {
+    transition: fill 0.4s ease, opacity 0.4s ease;
+    opacity: 0;
+}
+
+/* nós revelados pelo JS com atraso escalonado */
+.cst-no.cst-visivel {
+    opacity: 1;
+}
+
+.cst-no--ativo.cst-visivel {
+    animation: cstPulse 3s ease-in-out infinite;
+}
+
+.cst-no--principal.cst-no--ativo.cst-visivel {
+    animation: cstPulsePrincipal 2.5s ease-in-out infinite;
+}
+
+/* arestas */
+.cst-aresta {
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.cst-aresta.cst-visivel {
+    opacity: 1;
+}
+
+@keyframes cstPulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.55; }
+}
+
+@keyframes cstPulsePrincipal {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.65; }
+}
+
+@media (max-width: 768px) {
+    .section-title-obj {
+        flex-direction: column;
+    }
+
+    .constelacao-wrap {
+        width: 120px;
+        align-self: flex-end;
+    }
+
+    .constelacao-svg {
+        width: 120px;
+    }
+}

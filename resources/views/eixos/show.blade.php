@@ -17,9 +17,21 @@
   <!-- Objetivos -->
   <section id="objetivos" class="objetivos section">
     <div class="container section-title-obj" data-aos="fade-up">
-      <!-- <h5>Eixo</h5> -->
-      <h1>{{ $eixo->titulo }}</h1>
-      <p>{{ $eixo->descricao }}</p>
+      <div class="section-title-obj-texto">
+        <h1>{{ $eixo->titulo }}</h1>
+        <p>{{ $eixo->descricao }}</p>
+      </div>
+      <!-- constelação neural de progresso -->
+        <div class="constelacao-wrap">
+          <div id="contelacao-absolute">
+            @include('componentes.constelacao', [
+                'constelacao' => $constelacao,
+                'progresso'   => $progresso,
+                'eixoId'      => $eixo->id_eixos,
+            ])
+            <span class="constelacao-pct">{{ round($progresso * 100) }}% concluído</span>
+          </div>
+        </div>
     </div>
 
     <div class="container" data-aos="fade-up">
@@ -31,7 +43,7 @@
               <div class="objetivos-content d-flex align-items-center justify-content-between">
                 <div>
                   <h6 class="objetivo-titulo mb-2">{{ $objetivo->titulo }}</h6>
-                  <span class="badge color-azul"><strong>{{ $objetivo->iniciativas->count() }}</strong> Iniciativas</span>
+                  <span class="badge color-azul"><strong>{{ $objetivo->iniciativas->count() }}</strong>  Iniciativas</span>
                 </div>
                 <i class="bi bi-chevron-down objetivo-toggle" style="font-size: 1.5rem; cursor: pointer;"></i>
               </div>
@@ -129,6 +141,32 @@
 @push('scripts')
 <script>
     window.objetivosData = @json($objetivosData);
+</script>
+<script>
+(function () {
+    /* anima a constelação revelando nós e arestas escalonadamente no load */
+    window.addEventListener('load', function () {
+        var svg = document.querySelector('.constelacao-svg');
+        if (!svg) return;
+
+        var nos     = svg.querySelectorAll('.cst-no');
+        var arestas = svg.querySelectorAll('.cst-aresta');
+
+        /* revela arestas primeiro com delay base */
+        arestas.forEach(function (el, i) {
+            setTimeout(function () {
+                el.classList.add('cst-visivel');
+            }, 200 + i * 80);
+        });
+
+        /* revela nós após as arestas */
+        nos.forEach(function (el, i) {
+            setTimeout(function () {
+                el.classList.add('cst-visivel');
+            }, 400 + i * 120);
+        });
+    });
+})();
 </script>
 @endpush
 

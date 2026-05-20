@@ -71,6 +71,7 @@
 
 .objetivos .objetivos-wrapper {
     border-radius: 16px;
+    color: color-mix(in srgb, var(--default-color), transparent 30%);
     position: relative;
     overflow: hidden;
     margin-bottom: 15px;
