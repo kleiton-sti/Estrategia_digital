@@ -2,8 +2,9 @@
 # Roadmap — Hero
 --------------------------------------------------------------*/
 .roadmap-hero {
-  min-height: 70dvh;
+  min-height: 100dvh;
   display: flex;
+  padding-top: 0;
   align-items: center;
   position: relative;
 }
@@ -15,7 +16,9 @@
   gap: 48px;
 }
 
-.roadmap-hero__texto { text-align: center; }
+.roadmap-hero__texto {
+  text-align: center;
+}
 
 .roadmap-hero__label {
   font-size: 0.75rem;
@@ -73,16 +76,29 @@
 }
 
 @keyframes rdScrollBounce {
-  0%, 100% { transform: translateY(0);    opacity: 1;   }
-  50%       { transform: translateY(8px); opacity: 0.6; }
+
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  50% {
+    transform: translateY(8px);
+    opacity: 0.6;
+  }
 }
 
 /*--------------------------------------------------------------
 # Roadmap — Seção conteúdo
 --------------------------------------------------------------*/
-.roadmap-content { padding-top: 0; }
+.roadmap-content {
+  padding-top: 0;
+}
 
-.roadmap-section-titulo { margin-bottom: 48px; }
+.roadmap-section-titulo {
+  margin-bottom: 48px;
+}
 
 .roadmap-section-titulo h2 {
   font-size: 1.6rem;
@@ -127,27 +143,39 @@
   stroke: url(#rdGrad);
   stroke-width: 2;
   stroke-linecap: round;
-  filter: drop-shadow(0 0 4px #04C4D9) drop-shadow(0 0 12px rgba(4,196,217,0.4));
+  filter: drop-shadow(0 0 4px #04C4D9) drop-shadow(0 0 12px rgba(4, 196, 217, 0.4));
   stroke-dasharray: 6 4;
   animation: rdDash 3s linear infinite;
 }
 
 @keyframes rdDash {
-  to { stroke-dashoffset: -40; }
+  to {
+    stroke-dashoffset: -40;
+  }
 }
 
-.rd-particula { fill: #fff; filter: drop-shadow(0 0 4px #04C4D9); }
-.rd-particula--1 { fill: #04C4D9; }
-.rd-particula--2 { fill: rgba(255,255,255,0.7); }
+.rd-particula {
+  fill: #fff;
+  filter: drop-shadow(0 0 4px #04C4D9);
+}
+
+.rd-particula--1 {
+  fill: #04C4D9;
+}
+
+.rd-particula--2 {
+  fill: rgba(255, 255, 255, 0.7);
+}
 
 /*--------------------------------------------------------------
-# Linha vertical central (section #trilha)
+# Linha vertical central
 --------------------------------------------------------------*/
 .rd-timeline-wrap {
   position: relative;
+  max-width: 1140px;
+  margin: 0 auto;
 }
 
-/* linha contínua que atravessa todos os eixos */
 .rd-trilha-vertical {
   position: absolute;
   left: 50%;
@@ -156,158 +184,254 @@
   width: 2px;
   transform: translateX(-50%);
   background: linear-gradient(180deg,
-    transparent 0%,
-    rgba(4, 196, 217, 0.6) 5%,
-    rgba(4, 196, 217, 0.4) 50%,
-    rgba(4, 196, 217, 0.6) 95%,
-    transparent 100%
-  );
-  filter: drop-shadow(0 0 4px rgba(4, 196, 217, 0.5));
+      transparent 0%,
+      rgba(4, 196, 217, 0.55) 4%,
+      rgba(4, 196, 217, 0.35) 50%,
+      rgba(4, 196, 217, 0.55) 96%,
+      transparent 100%);
+  filter: drop-shadow(0 0 4px rgba(4, 196, 217, 0.45));
   z-index: 0;
   pointer-events: none;
 }
 
 /*--------------------------------------------------------------
-# Bloco de cada eixo
+# Marcador do eixo — planeta + título ao lado
 --------------------------------------------------------------*/
-.rd-eixo-bloco {
-  position: relative;
-  display: grid;
-  /* coluna dos cards | espaço do planeta | coluna oposta */
-  grid-template-columns: 1fr 120px 1fr;
-  grid-template-rows: auto auto;
-  align-items: start;
-  gap: 0 0;
-  margin-bottom: 60px;
-}
-
-/* planeta sempre na coluna central, linha 1 */
-.rd-eixo-bloco .rd-planeta {
-  grid-column: 2;
-  grid-row: 1;
-  z-index: 2;
-  margin: 0;
-}
-
-/* eixo à esquerda: cards na coluna 1, planeta na 2 */
-.rd-eixo-bloco--esquerda .rd-eixo {
-  grid-column: 1;
-  grid-row: 1 / 3;
-  padding-right: 36px;
-  align-self: start;
-}
-
-/* eixo à direita: cards na coluna 3, planeta na 2 */
-.rd-eixo-bloco--direita .rd-eixo {
-  grid-column: 3;
-  grid-row: 1 / 3;
-  padding-left: 36px;
-  align-self: start;
-}
-
-/* coluna vazia do lado oposto aos cards */
-.rd-eixo-bloco--esquerda .rd-planeta { justify-items: center; }
-.rd-eixo-bloco--direita  .rd-planeta { justify-items: center; }
-
-/*--------------------------------------------------------------
-# Planetas (marcadores de eixo)
---------------------------------------------------------------*/
-.rd-planeta {
+.rd-eixo-marcador {
   position: relative;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   align-items: center;
-  padding-top: 8px;
-  gap: 12px;
+  justify-content: center;
+  gap: 16px;
+  margin: 48px 0 28px;
+  z-index: 2;
 }
 
-.rd-planeta__nucleo {
-  width: 64px;
-  height: 64px;
+.rd-eixo-marcador__titulo {
+  font-size: 1rem;
+  font-weight: 700;
+  color: rgba(232, 231, 247, 0.85);
+  font-family: var(--heading-font);
+  margin: 0;
+  max-width: 220px;
+  line-height: 1.35;
+}
+
+.rd-eixo-marcador .rd-planeta__nucleo {
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   z-index: 2;
+  flex-shrink: 0;
 }
 
-.rd-planeta--1 .rd-planeta__nucleo { background: radial-gradient(circle at 35% 35%, #1e3a5f, #05071e); box-shadow: 0 0 0 2px rgba(4,196,217,0.5),   0 0 24px rgba(4,196,217,0.4);   }
-.rd-planeta--2 .rd-planeta__nucleo { background: radial-gradient(circle at 35% 35%, #2d1e5f, #05071e); box-shadow: 0 0 0 2px rgba(124,110,240,0.5), 0 0 24px rgba(124,110,240,0.4); }
-.rd-planeta--3 .rd-planeta__nucleo { background: radial-gradient(circle at 35% 35%, #1e4a2f, #05071e); box-shadow: 0 0 0 2px rgba(0,219,121,0.5),   0 0 24px rgba(0,219,121,0.4);   }
-.rd-planeta--4 .rd-planeta__nucleo { background: radial-gradient(circle at 35% 35%, #4a2e1e, #05071e); box-shadow: 0 0 0 2px rgba(255,160,50,0.5),  0 0 24px rgba(255,160,50,0.4);  }
-.rd-planeta--5 .rd-planeta__nucleo { background: radial-gradient(circle at 35% 35%, #1e2e4a, #05071e); box-shadow: 0 0 0 2px rgba(59,130,246,0.5),  0 0 24px rgba(59,130,246,0.4);  }
-.rd-planeta--6 .rd-planeta__nucleo { background: radial-gradient(circle at 35% 35%, #3a1e3a, #05071e); box-shadow: 0 0 0 2px rgba(217,70,239,0.5),  0 0 24px rgba(217,70,239,0.4);  }
+.rd-planeta--1 .rd-planeta__nucleo {
+  background: radial-gradient(circle at 35% 35%, #1e3a5f, #05071e);
+  box-shadow: 0 0 0 2px rgba(4, 196, 217, 0.5), 0 0 20px rgba(4, 196, 217, 0.4);
+}
+
+.rd-planeta--2 .rd-planeta__nucleo {
+  background: radial-gradient(circle at 35% 35%, #2d1e5f, #05071e);
+  box-shadow: 0 0 0 2px rgba(124, 110, 240, 0.5), 0 0 20px rgba(124, 110, 240, 0.4);
+}
+
+.rd-planeta--3 .rd-planeta__nucleo {
+  background: radial-gradient(circle at 35% 35%, #1e4a2f, #05071e);
+  box-shadow: 0 0 0 2px rgba(0, 219, 121, 0.5), 0 0 20px rgba(0, 219, 121, 0.4);
+}
+
+.rd-planeta--4 .rd-planeta__nucleo {
+  background: radial-gradient(circle at 35% 35%, #4a2e1e, #05071e);
+  box-shadow: 0 0 0 2px rgba(255, 160, 50, 0.5), 0 0 20px rgba(255, 160, 50, 0.4);
+}
+
+.rd-planeta--5 .rd-planeta__nucleo {
+  background: radial-gradient(circle at 35% 35%, #1e2e4a, #05071e);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5), 0 0 20px rgba(59, 130, 246, 0.4);
+}
+
+.rd-planeta--6 .rd-planeta__nucleo {
+  background: radial-gradient(circle at 35% 35%, #3a1e3a, #05071e);
+  box-shadow: 0 0 0 2px rgba(217, 70, 239, 0.5), 0 0 20px rgba(217, 70, 239, 0.4);
+}
 
 .rd-planeta__num {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 800;
   font-family: 'Courier New', monospace;
-  color: rgba(232,231,247,0.85);
+  color: rgba(232, 231, 247, 0.85);
   letter-spacing: 1px;
 }
 
-.rd-planeta__anel {
+.rd-eixo-marcador .rd-planeta__anel {
   position: absolute;
-  top: 50%; left: 50%;
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%) rotateX(70deg);
-  width: 96px; height: 96px;
+  width: 84px;
+  height: 84px;
   border-radius: 50%;
-  border: 1.5px solid rgba(4,196,217,0.25);
+  border: 1.5px solid rgba(4, 196, 217, 0.25);
   z-index: 1;
   animation: rdGirar 12s linear infinite;
+  pointer-events: none;
 }
 
-.rd-planeta--2 .rd-planeta__anel { border-color: rgba(124,110,240,0.3); }
-.rd-planeta--3 .rd-planeta__anel { border-color: rgba(0,219,121,0.3);   animation-duration: 9s;  }
-.rd-planeta--4 .rd-planeta__anel { border-color: rgba(255,160,50,0.3);  animation-duration: 15s; }
-.rd-planeta--5 .rd-planeta__anel { border-color: rgba(59,130,246,0.3);  animation-duration: 10s; }
-.rd-planeta--6 .rd-planeta__anel { border-color: rgba(217,70,239,0.3);  animation-duration: 7s;  }
+.rd-planeta--2 .rd-planeta__anel {
+  border-color: rgba(124, 110, 240, 0.3);
+}
+
+.rd-planeta--3 .rd-planeta__anel {
+  border-color: rgba(0, 219, 121, 0.3);
+  animation-duration: 9s;
+}
+
+.rd-planeta--4 .rd-planeta__anel {
+  border-color: rgba(255, 160, 50, 0.3);
+  animation-duration: 15s;
+}
+
+.rd-planeta--5 .rd-planeta__anel {
+  border-color: rgba(59, 130, 246, 0.3);
+  animation-duration: 10s;
+}
+
+.rd-planeta--6 .rd-planeta__anel {
+  border-color: rgba(217, 70, 239, 0.3);
+  animation-duration: 7s;
+}
 
 @keyframes rdGirar {
-  to { transform: translate(-50%,-50%) rotateX(70deg) rotateZ(360deg); }
+  to {
+    transform: translate(-50%, -50%) rotateX(70deg) rotateZ(360deg);
+  }
 }
 
-.rd-planeta__halo {
+.rd-eixo-marcador .rd-planeta__halo {
   position: absolute;
-  top: 50%; left: 50%;
+  top: 68%;
+  left: 49%;
   transform: translate(-50%, -50%);
-  width: 120px; height: 120px;
+  width: 110px;
+  height: 110px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(4,196,217,0.12) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(4, 196, 217, 0.12) 0%, transparent 70%);
   z-index: 0;
   animation: rdHaloPulse 4s ease-in-out infinite;
+  pointer-events: none;
 }
 
-.rd-planeta--2 .rd-planeta__halo { background: radial-gradient(circle, rgba(124,110,240,0.14) 0%, transparent 70%); }
-.rd-planeta--3 .rd-planeta__halo { background: radial-gradient(circle, rgba(0,219,121,0.14)   0%, transparent 70%); }
-.rd-planeta--4 .rd-planeta__halo { background: radial-gradient(circle, rgba(255,160,50,0.14)  0%, transparent 70%); }
-.rd-planeta--5 .rd-planeta__halo { background: radial-gradient(circle, rgba(59,130,246,0.14)  0%, transparent 70%); }
-.rd-planeta--6 .rd-planeta__halo { background: radial-gradient(circle, rgba(217,70,239,0.14)  0%, transparent 70%); }
+.rd-planeta--2 .rd-planeta__halo {
+  background: radial-gradient(circle, rgba(124, 110, 240, 0.14) 0%, transparent 70%);
+}
+
+.rd-planeta--3 .rd-planeta__halo {
+  background: radial-gradient(circle, rgba(0, 219, 121, 0.14) 0%, transparent 70%);
+}
+
+.rd-planeta--4 .rd-planeta__halo {
+  background: radial-gradient(circle, rgba(255, 160, 50, 0.14) 0%, transparent 70%);
+}
+
+.rd-planeta--5 .rd-planeta__halo {
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.14) 0%, transparent 70%);
+}
+
+.rd-planeta--6 .rd-planeta__halo {
+  background: radial-gradient(circle, rgba(217, 70, 239, 0.14) 0%, transparent 70%);
+}
 
 @keyframes rdHaloPulse {
-  0%, 100% { opacity: 0.7; transform: translate(-50%,-50%) scale(1);    }
-  50%       { opacity: 1;   transform: translate(-50%,-50%) scale(1.15); }
-}
 
-.rd-planeta__titulo {
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: rgba(232,231,247,0.8);
-  text-align: center;
-  margin: 0;
-  font-family: var(--heading-font);
-  max-width: 100px;
-  line-height: 1.35;
+  0%,
+  100% {
+    opacity: 0.7;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.15);
+  }
 }
 
 /*--------------------------------------------------------------
-# Eixo — grid de nebulosas
+# Linha de card alternado
 --------------------------------------------------------------*/
-.rd-eixo {
+.rd-card-linha {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
+  grid-template-columns: 1fr 28px 1fr;
+  align-items: start;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.rd-card-linha__ponto {
+  display: flex;
+  justify-content: center;
+  padding-top: 18px;
+  z-index: 2;
+}
+
+.rd-ponto {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--background-color);
+  flex-shrink: 0;
+}
+
+.rd-ponto--verde {
+  background: #00db79;
+  box-shadow: 0 0 0 3px rgba(0, 219, 121, 0.2), 0 0 8px rgba(0, 219, 121, 0.4);
+}
+
+.rd-ponto--amarelo {
+  background: #ffd232;
+  box-shadow: 0 0 0 3px rgba(255, 210, 50, 0.2), 0 0 8px rgba(255, 210, 50, 0.4);
+}
+
+.rd-ponto--roxo {
+  background: #7c6ef0;
+  box-shadow: 0 0 0 3px rgba(124, 110, 240, 0.2), 0 0 8px rgba(124, 110, 240, 0.4);
+}
+
+.rd-card-linha--esquerda .rd-card-linha__vazio {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.rd-card-linha--esquerda .rd-card-linha__ponto {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.rd-card-linha--esquerda .rd-card-linha__card {
+  grid-column: 1;
+  grid-row: 1;
+  padding-right: 24px;
+}
+
+.rd-card-linha--direita .rd-card-linha__vazio {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.rd-card-linha--direita .rd-card-linha__ponto {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.rd-card-linha--direita .rd-card-linha__card {
+  grid-column: 3;
+  grid-row: 1;
+  padding-left: 24px;
 }
 
 /*--------------------------------------------------------------
@@ -315,27 +439,36 @@
 --------------------------------------------------------------*/
 .rd-nebulosa {
   position: relative;
-  border-radius: 18px;
-  padding: 4px;
-  min-height: 180px;
+  border-radius: 16px;
+  padding: 3px;
 }
 
 .rd-nebulosa__glow {
   position: absolute;
   inset: 0;
-  border-radius: 18px;
-  filter: blur(28px);
-  opacity: 0.35;
+  border-radius: 16px;
+  filter: blur(24px);
+  opacity: 0.3;
   pointer-events: none;
   z-index: 0;
   transition: opacity 0.4s ease;
 }
 
-.rd-nebulosa:hover .rd-nebulosa__glow { opacity: 0.55; }
+.rd-nebulosa:hover .rd-nebulosa__glow {
+  opacity: 0.5;
+}
 
-.rd-nebulosa--verde   .rd-nebulosa__glow { background: radial-gradient(ellipse at 40% 40%, #00db79 0%, transparent 70%); }
-.rd-nebulosa--amarelo .rd-nebulosa__glow { background: radial-gradient(ellipse at 60% 30%, #ffd232 0%, transparent 70%); }
-.rd-nebulosa--roxo    .rd-nebulosa__glow { background: radial-gradient(ellipse at 50% 60%, #7c6ef0 0%, transparent 70%); }
+.rd-nebulosa--verde .rd-nebulosa__glow {
+  background: radial-gradient(ellipse at 40% 40%, #00db79 0%, transparent 70%);
+}
+
+.rd-nebulosa--amarelo .rd-nebulosa__glow {
+  background: radial-gradient(ellipse at 60% 30%, #ffd232 0%, transparent 70%);
+}
+
+.rd-nebulosa--roxo .rd-nebulosa__glow {
+  background: radial-gradient(ellipse at 50% 60%, #7c6ef0 0%, transparent 70%);
+}
 
 /*--------------------------------------------------------------
 # Cards
@@ -343,33 +476,58 @@
 .rd-card {
   position: relative;
   z-index: 1;
-  height: 100%;
-  border-radius: 14px;
-  padding: 16px;
-  background: rgba(5, 7, 30, 0.55);
+  border-radius: 13px;
+  padding: 16px 18px;
+  background: rgba(5, 7, 30, 0.6);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.07);
-  transition: border-color 0.3s;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  transition: border-color 0.3s, transform 0.2s;
 }
 
-.rd-nebulosa--verde:hover  .rd-card { border-color: rgba(0,219,121,0.3);   }
-.rd-nebulosa--amarelo:hover .rd-card { border-color: rgba(255,210,50,0.3); }
-.rd-nebulosa--roxo:hover   .rd-card { border-color: rgba(124,110,240,0.3); }
+.rd-card:hover {
+  transform: translateY(-3px);
+}
+
+.rd-nebulosa--verde:hover .rd-card {
+  border-color: rgba(0, 219, 121, 0.3);
+}
+
+.rd-nebulosa--amarelo:hover .rd-card {
+  border-color: rgba(255, 210, 50, 0.3);
+}
+
+.rd-nebulosa--roxo:hover .rd-card {
+  border-color: rgba(124, 110, 240, 0.3);
+}
 
 .rd-card__header {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 14px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid rgba(255,255,255,0.07);
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
 }
 
-.rd-card__icone { font-size: 0.95rem; }
-.rd-card__icone--verde   { color: #00db79; filter: drop-shadow(0 0 4px rgba(0,219,121,0.5));   }
-.rd-card__icone--amarelo { color: #ffd232; filter: drop-shadow(0 0 4px rgba(255,210,50,0.5));  }
-.rd-card__icone--roxo    { color: #7c6ef0; filter: drop-shadow(0 0 4px rgba(124,110,240,0.5)); }
+.rd-card__icone {
+  font-size: 0.9rem;
+}
+
+.rd-card__icone--verde {
+  color: #00db79;
+  filter: drop-shadow(0 0 4px rgba(0, 219, 121, 0.5));
+}
+
+.rd-card__icone--amarelo {
+  color: #ffd232;
+  filter: drop-shadow(0 0 4px rgba(255, 210, 50, 0.5));
+}
+
+.rd-card__icone--roxo {
+  color: #7c6ef0;
+  filter: drop-shadow(0 0 4px rgba(124, 110, 240, 0.5));
+}
 
 .rd-card__titulo {
   font-size: 0.72rem;
@@ -378,20 +536,29 @@
   letter-spacing: 0.7px;
 }
 
-.rd-card__titulo--verde   { color: #00db79; }
-.rd-card__titulo--amarelo { color: #ffd232; }
-.rd-card__titulo--roxo    { color: #7c6ef0; }
+.rd-card__titulo--verde {
+  color: #00db79;
+}
+
+.rd-card__titulo--amarelo {
+  color: #ffd232;
+}
+
+.rd-card__titulo--roxo {
+  color: #7c6ef0;
+}
 
 .rd-card__lista {
   list-style: none;
-  padding: 0; margin: 0;
+  padding: 0;
+  margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 7px;
 }
 
 .rd-card__item {
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   color: color-mix(in srgb, var(--default-color), transparent 20%);
   line-height: 1.5;
   padding-left: 14px;
@@ -402,7 +569,7 @@
   content: '·';
   position: absolute;
   left: 0;
-  opacity: 0.45;
+  opacity: 0.4;
 }
 
 .rd-card__item--vazio {
@@ -415,40 +582,49 @@
 --------------------------------------------------------------*/
 @media (max-width: 768px) {
 
-  .rd-trilha-vertical { display: none; }
-
-  .rd-eixo-bloco {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto;
-    margin-bottom: 40px;
+  .rd-trilha-vertical {
+    display: none;
   }
 
-  .rd-eixo-bloco .rd-planeta {
-    grid-column: 1;
-    grid-row: 1;
-    flex-direction: row;
+  .rd-eixo-marcador {
     justify-content: flex-start;
-    gap: 16px;
-    padding-top: 0;
+    margin: 36px 0 20px;
+  }
+
+  .rd-eixo-marcador__titulo {
+    max-width: none;
+  }
+
+  .rd-eixo-marcador .rd-planeta__anel,
+  .rd-eixo-marcador .rd-planeta__halo {
+    display: none;
+  }
+
+  .rd-card-linha {
+    grid-template-columns: 24px 1fr;
     margin-bottom: 16px;
   }
 
-  .rd-planeta__titulo {
-    max-width: none;
-    text-align: left;
-    font-size: 0.9rem;
+  .rd-card-linha--esquerda .rd-card-linha__vazio,
+  .rd-card-linha--direita .rd-card-linha__vazio {
+    display: none;
   }
 
-  .rd-planeta__anel,
-  .rd-planeta__halo { display: none; }
-
-  .rd-eixo-bloco--esquerda .rd-eixo,
-  .rd-eixo-bloco--direita  .rd-eixo {
+  .rd-card-linha--esquerda .rd-card-linha__ponto,
+  .rd-card-linha--direita .rd-card-linha__ponto {
     grid-column: 1;
-    grid-row: 2;
-    padding: 0;
-    grid-template-columns: 1fr;
+    grid-row: 1;
+    padding-top: 16px;
   }
 
-  .rd-trilha-svg { height: 60px; }
+  .rd-card-linha--esquerda .rd-card-linha__card,
+  .rd-card-linha--direita .rd-card-linha__card {
+    grid-column: 2;
+    grid-row: 1;
+    padding: 0 0 0 12px;
+  }
+
+  .rd-trilha-svg {
+    height: 60px;
+  }
 }
