@@ -42,9 +42,7 @@
   border-color: var(--accent-color);
 }
 
-.objetivos .objetivos-filters li:hover::before {
-  left: 100%;
-}
+.objetivos .objetivos-filters li:hover::before { left: 100%; }
 
 .objetivos .objetivos-filters li.filter-active {
   background: var(--accent-color);
@@ -70,31 +68,30 @@
 }
 
 .objetivos .objetivos-wrapper {
-    border-radius: 16px;
-    color: color-mix(in srgb, var(--default-color), transparent 30%);
-    position: relative;
-    overflow: hidden;
-    margin-bottom: 15px;
-    transition: all 0.3s ease;
-    border: 1px solid;
-    border-color: #2b6d9078;
-    background: #1482bd14;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  border-radius: 16px;
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
+  border: 1px solid #2b6d9078;
+  background: #1482bd14;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .objetivos .objetivos-wrapper::before {
-    content: "";
-    position: absolute;
-    top: -233%;
-    left: 23%;
-    filter: blur(35px);
-    width: 100%;
-    height: 288%;
-    background: radial-gradient(circle, #1482bd 10%, #1482bd26 68%);
-    pointer-events: none;
+  content: "";
+  position: absolute;
+  top: -233%;
+  left: 23%;
+  filter: blur(35px);
+  width: 100%;
+  height: 288%;
+  background: radial-gradient(circle, #1482bd 10%, #1482bd26 68%);
+  pointer-events: none;
 }
 
 .objetivos .objetivos-wrapper:hover {
@@ -114,70 +111,275 @@
   overflow: hidden;
 }
 
-.objetivos .objetivos-content .objetivos-meta {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 12px;
-}
-
-.objetivos .objetivos-content .objetivos-meta .project-type {
-  font-size: 0.72rem;
+.objetivo-titulo {
+  font-size: 0.92rem;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: var(--accent-color);
-  background: color-mix(in srgb, var(--accent-color), transparent 88%);
-  padding: 5px 10px;
-  border-radius: 20px;
+  color: rgba(232, 231, 247, 0.85);
+  line-height: 1.4;
 }
 
-.objetivos .objetivos-content h3 {
-  font-size: 1.05rem;
-  font-weight: 700;
-  margin-bottom: 6px;
-  color: rgba(232, 231, 247, 0.73);
-  line-height: 1.35;
-  font-family: var(--heading-font);
+.objetivo-toggle {
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: color-mix(in srgb, var(--default-color), transparent 40%);
+  transition: transform 0.3s ease, color 0.2s;
+  flex-shrink: 0;
 }
 
-.objetivos .objetivos-content p {
-  font-size: 0.855rem;
-  color: color-mix(in srgb, var(--default-color), transparent 30%);
-  margin-bottom: 16px;
-  line-height: 1.65;
-}
-
-.objetivos-wrapper {
-  border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
-  border-radius: 16px;
-  transition: border-color 0.3s;
-}
-
-.ods {
-  display: flex;
-  gap: 10px;
-}
-
-.ods img {
-  border-radius: 10px;
-  width: 70px;
-  margin-top: 12px;
-}
-
-.objetivo-detalhes {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-}
+.objetivos-wrapper.selecionado .objetivo-toggle { color: #04c4d9; }
 
 .objetivo-iniciativas {
   border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 70%);
   padding-top: 10px;
 }
 
-.objetivo-iniciativas .step-item {
+/*--------------------------------------------------------------
+# Painel de resumo (estilo dashboard)
+--------------------------------------------------------------*/
+.ini-painel {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 20px 28px;
+  border-radius: 16px;
+  background: rgba(10, 14, 40, 0.85);
+  border: 1px solid rgba(4, 196, 217, 0.15);
+  box-shadow: 0 4px 32px rgba(4, 196, 217, 0.06);
+  flex-wrap: wrap;
+}
+
+/* Bloco total — número grande + label */
+.ini-painel-destaque {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+.ini-painel-numero {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1;
+  font-family: var(--heading-font);
+  color: #04c4d9;
+  filter: drop-shadow(0 0 10px rgba(4, 196, 217, 0.55));
+}
+
+.ini-painel-destaque-texto {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ini-painel-label {
+  font-size: 1rem;
+  font-weight: 700;
+  color: rgba(232, 231, 247, 0.9);
+  font-family: var(--heading-font);
+}
+
+.ini-painel-sublabel {
+  font-size: 0.75rem;
+  color: color-mix(in srgb, var(--default-color), transparent 45%);
+}
+
+/* Divisor vertical */
+.ini-painel-divisor {
+  width: 1px;
+  height: 52px;
+  background: rgba(4, 196, 217, 0.18);
+  flex-shrink: 0;
+}
+
+/* Anel de progresso SVG */
+.ini-painel-anel-wrap {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+}
+
+.ini-anel-svg {
+  width: 64px;
+  height: 64px;
+  transform: rotate(-90deg);
+}
+
+.ini-anel-trilha {
+  fill: none;
+  stroke: rgba(4, 196, 217, 0.12);
+  stroke-width: 5;
+}
+
+.ini-anel-progresso {
+  fill: none;
+  stroke: #00db79;
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-dasharray: 163.36;
+  stroke-dashoffset: 163.36;
+  transition: stroke-dashoffset 0.8s ease;
+  filter: drop-shadow(0 0 4px rgba(0, 219, 121, 0.6));
+}
+
+.ini-anel-numero {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #00db79;
+  font-family: var(--heading-font);
+  filter: drop-shadow(0 0 6px rgba(0, 219, 121, 0.5));
+}
+
+/* Info ao lado do anel */
+.ini-painel-anel-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+/* Contadores de andamento e não iniciadas */
+.ini-painel-contador {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.ini-contador-numero {
+  font-size: 2.2rem;
+  font-weight: 800;
+  line-height: 1;
+  font-family: var(--heading-font);
+}
+
+.ini-cor-amarelo {
+  color: #ffd232;
+  filter: drop-shadow(0 0 8px rgba(255, 210, 50, 0.6));
+}
+
+.ini-cor-vermelho {
+  color: #e13a1d;
+  filter: drop-shadow(0 0 8px rgba(225, 58, 29, 0.5));
+}
+
+/* Badges do painel */
+.ini-painel-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 4px 10px;
+  border-radius: 50px;
+  border: 1px solid;
+  white-space: nowrap;
+}
+
+.ini-badge-concluida {
+  background: rgba(0, 219, 121, 0.12);
+  color: #00db79;
+  border-color: rgba(0, 219, 121, 0.35);
+}
+
+.ini-badge-andamento {
+  background: rgba(255, 210, 50, 0.12);
+  color: #ffd232;
+  border-color: rgba(255, 210, 50, 0.35);
+}
+
+.ini-badge-nao {
+  background: rgba(225, 58, 29, 0.12);
+  color: #e13a1d;
+  border-color: rgba(225, 58, 29, 0.35);
+}
+
+@media (max-width: 640px) {
+  .ini-painel {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .ini-painel-divisor {
+    width: 100%;
+    height: 1px;
+  }
+}
+
+/*--------------------------------------------------------------
+# Cards de Iniciativa (gerados pelo JS em .process-steps)
+--------------------------------------------------------------*/
+.step-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 16px;
+  border-radius: 12px;
   margin-bottom: 10px;
+  background: rgba(4, 196, 217, 0.04);
+  border: 1px solid rgba(4, 196, 217, 0.10);
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+
+.step-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40%;
+  height: 100%;
+  background: radial-gradient(ellipse at right, rgba(4, 196, 217, 0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.step-item:hover {
+  border-color: rgba(4, 196, 217, 0.28);
+  background: rgba(4, 196, 217, 0.07);
+}
+
+.step-number {
+  width: 10px;
+  height: 10px;
+  min-width: 10px;
+  border-radius: 50%;
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+
+.step-number.bg-success {
+  background-color: #00db79 !important;
+  box-shadow: 0 0 8px rgba(0, 219, 121, 0.6);
+}
+
+.step-number.bg-primary {
+  background-color: #04c4d9 !important;
+  box-shadow: 0 0 8px rgba(4, 196, 217, 0.6);
+}
+
+.step-number.bg-danger {
+  background-color: #e13a1d !important;
+  box-shadow: 0 0 8px rgba(225, 58, 29, 0.5);
+}
+
+.step-content { flex: 1; min-width: 0; }
+
+.step-content h5 {
+  font-size: 0.88rem !important;
+  font-weight: 600;
+  color: rgba(232, 231, 247, 0.88);
+  line-height: 1.4;
+  margin: 0;
+  font-family: var(--default-font);
 }
 
 /*--------------------------------------------------------------
@@ -190,76 +392,5 @@
   flex-direction: column;
 }
 
-.objetivos-details .objetivos-details-content .project-title {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-  font-weight: 700;
-  line-height: 1.25;
-  color: rgba(232, 231, 247, 0.73);
-  font-family: var(--heading-font);
-}
-
-.objetivos-details .objetivos-details-content .project-meta {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin-bottom: 1.25rem;
-}
-
-.objetivos-details .objetivos-details-content .project-overview .lead {
-  font-size: 0.95rem;
-  line-height: 1.7;
-  color: color-mix(in srgb, var(--default-color), transparent 20%);
-  margin-bottom: 1.25rem;
-}
-
-.objetivos-details .objetivos-details-content .cta-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: auto;
-}
-
-.objetivos-details .objetivos-details-content .cta-buttons .btn-view-project {
-  padding: 10px 24px;
-  background-color: var(--accent-color);
-  color: var(--contrast-color);
-  border-radius: 30px;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  font-size: 0.9rem;
-}
-
-.objetivos-details .objetivos-details-content .cta-buttons .btn-view-project:hover {
-  background-color: color-mix(in srgb, var(--accent-color), black 15%);
-  transform: translateY(-2px);
-}
-
-.objetivos-details .objetivos-details-content .cta-buttons .btn-next-project {
-  padding: 10px 24px;
-  background-color: color-mix(in srgb, var(--heading-color), transparent 90%);
-  color: var(--heading-color);
-  border-radius: 30px;
-  font-weight: 500;
-  font-size: 0.9rem;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.objetivos-details .objetivos-details-content .cta-buttons .btn-next-project:hover {
-  background-color: color-mix(in srgb, var(--heading-color), transparent 80%);
-}
-
-#principios-details .row {
-  justify-content: center;
-}
-
-#principios-details .sidebar {
-  max-width: 150px;
-}
-
-#principios-details .iniciativas {
-  flex: 1;
-}
+#principios-details .row { justify-content: center; }
+#principios-details .iniciativas { flex: 1; }

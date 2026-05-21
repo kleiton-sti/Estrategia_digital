@@ -2,17 +2,6 @@
 
 @section('content')
 <main class="main principios-details-page pagina-interna">
-  <!-- Breadcrumbs -->
-  <!-- <div class="page-title">
-    <div class="breadcrumbs">
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="{{ route('home') }}"><i class="bi bi-house"></i> Home</a></li>
-          <li class="breadcrumb-item active current">{{ $eixo->titulo }}</li>
-        </ol>
-      </nav>
-    </div>
-  </div> -->
 
   <!-- Objetivos -->
   <section id="objetivos" class="objetivos section">
@@ -22,16 +11,16 @@
         <p>{{ $eixo->descricao }}</p>
       </div>
       <!-- constelação neural de progresso -->
-        <div class="constelacao-wrap">
-          <div id="contelacao-absolute">
-            @include('componentes.constelacao', [
-                'constelacao' => $constelacao,
-                'progresso'   => $progresso,
-                'eixoId'      => $eixo->id_eixos,
-            ])
-            <span class="constelacao-pct">{{ round($progresso * 100) }}% concluído</span>
-          </div>
+      <div class="constelacao-wrap">
+        <div id="contelacao-absolute">
+          @include('componentes.constelacao', [
+            'constelacao' => $constelacao,
+            'progresso'   => $progresso,
+            'eixoId'      => $eixo->id_eixos,
+          ])
+          <span class="constelacao-pct">{{ round($progresso * 100) }}% concluído</span>
         </div>
+      </div>
     </div>
 
     <div class="container" data-aos="fade-up">
@@ -43,130 +32,114 @@
               <div class="objetivos-content d-flex align-items-center justify-content-between">
                 <div>
                   <h6 class="objetivo-titulo mb-2">{{ $objetivo->titulo }}</h6>
-                  <span class="badge color-azul"><strong>{{ $objetivo->iniciativas->count() }}</strong>  Iniciativas</span>
+                  <span class="badge color-azul"><strong>{{ $objetivo->iniciativas->count() }}</strong> Iniciativas</span>
                 </div>
-                <i class="bi bi-chevron-down objetivo-toggle" style="font-size: 1.5rem; cursor: pointer;"></i>
+                <i class="bi bi-chevron-down objetivo-toggle"></i>
               </div>
-              <div class="objetivo-iniciativas" style="display: none; margin-top: 15px;">
-              </div>
+              <div class="objetivo-iniciativas" style="display: none; margin-top: 15px;"></div>
             </div>
           </div>
         @endforeach
       </div>
-      
+
       <p class="desc">{!! $objetivo->descricao !!}</p>
     </div>
   </section>
 
   <!-- Iniciativas -->
   <section id="principios-details" class="principios-details section" style="display:none;">
-    <div class="container">
+    <div class="container" data-aos="fade-up">
 
-     <!-- Título e botão Fechar
-    <div class="d-flex justify-content-between align-items-center mb-3">
-      <h6 class="iniciativas-titulo mb-0" style="font-size: 20px;">Iniciativas</h6>
-      <button id="fechar-iniciativas" class="btn btn-outline-secondary btn-sm d-flex align-items-center">
-        <i class="bi bi-x-lg me-1"></i> Fechar
-      </button>
-    </div> -->
+      <!-- Painel de resumo estilo dashboard -->
+      <div class="ini-painel">
 
-      <!-- Conteúdo das Iniciativas -->
-      <div class="row justify-content-center align-items-start gx-3">
-        <div class="iniciativas col">
-          <div class="principios-content">
-            <div class="principios-process">
-              <div class="process-steps"></div>
-            </div>
+        <!-- Bloco principal: total + titulo -->
+        <div class="ini-painel-destaque">
+          <span class="ini-painel-numero" id="sidebar-total">{{ $sidebar['total'] }}</span>
+          <div class="ini-painel-destaque-texto">
+            <span class="ini-painel-label">Iniciativas</span>
+            <span class="ini-painel-sublabel">do objetivo selecionado</span>
           </div>
         </div>
 
-        <!-- Sidebar -->
-        <div class="col-auto">
-            <div class="sidebar">
-              <div class="row g-2 obj-status">
+        <div class="ini-painel-divisor"></div>
 
-                <div class="col-12">
-                  <div class="card text-center shadow-sm border-0 p-2" style="background-color: #131428;">
-                    <div class="card-body p-2">
-                      <h4 class="card-title mb-1" id="sidebar-total">{{ $sidebar['total'] }}</h4>
-                      <p class="badge color-azul">Iniciativas</p>
-                    </div>
-                  </div>
-                </div>
+        <!-- Anel de concluídas -->
+        <div class="ini-painel-anel-wrap">
+          <svg class="ini-anel-svg" viewBox="0 0 64 64">
+            <circle class="ini-anel-trilha" cx="32" cy="32" r="26"/>
+            <circle class="ini-anel-progresso" cx="32" cy="32" r="26" id="ini-anel-circulo"/>
+          </svg>
+          <span class="ini-anel-numero" id="sidebar-concluidas">{{ $sidebar['concluidas'] }}</span>
+        </div>
+        <div class="ini-painel-anel-info">
+          <span class="ini-painel-badge ini-badge-concluida">Concluídas</span>
+          <span class="ini-painel-sublabel" id="ini-legenda-concluidas">de {{ $sidebar['total'] }} iniciativas entregues</span>
+        </div>
 
-                <div class="col-12">
-                  <div class="card text-center shadow-sm border-0 p-2" style="background-color: #131428;">
-                    <div class="card-body p-2">
-                      <h4 class="card-title mb-1" id="sidebar-concluidas">{{ $sidebar['concluidas'] }}</h4>
-                      <p class="badge bg-success">Concluídas</p>
-                    </div>
-                  </div>
-                </div>
+        <div class="ini-painel-divisor"></div>
 
-                <div class="col-12">
-                  <div class="card text-center shadow-sm border-0 p-2" style="background-color: #131428;">
-                    <div class="card-body p-2">
-                      <h4 class="card-title mb-1" id="sidebar-andamento">{{ $sidebar['andamento'] }}</h4>
-                      <p class="badge bg-primary">Em execução</p>
-                    </div>
-                  </div>
-                </div>
+        <!-- Em execução -->
+        <div class="ini-painel-contador">
+          <span class="ini-contador-numero ini-cor-amarelo" id="sidebar-andamento">{{ $sidebar['andamento'] }}</span>
+          <span class="ini-painel-badge ini-badge-andamento">Em Execução</span>
+        </div>
 
-                <div class="col-12">
-                  <div class="card text-center shadow-sm border-0 p-2" style="background-color: #131428;">
-                    <div class="card-body p-2">
-                      <h4 class="card-title mb-1" id="sidebar-nao">{{ $sidebar['nao'] }}</h4>
-                      <p class="badge bg-danger">Não iniciadas</p>
-                    </div>
-                  </div>
-                </div>
+        <div class="ini-painel-divisor"></div>
 
-              </div>
-            </div>
-          </div>
+        <!-- Não iniciadas -->
+        <div class="ini-painel-contador">
+          <span class="ini-contador-numero ini-cor-vermelho" id="sidebar-nao">{{ $sidebar['nao'] }}</span>
+          <span class="ini-painel-badge ini-badge-nao">Não Iniciadas</span>
+        </div>
 
       </div>
 
-      <div id="status-legend" class="status-legend d-flex gap-3">
-        <span class="legend-item"><span class="legend-color bg-success"></span> Concluída</span>
-        <span class="legend-item"><span class="legend-color bg-primary"></span> Em execução</span>
-        <span class="legend-item"><span class="legend-color bg-danger"></span> Não iniciada</span>
+      <!-- Lista de iniciativas -->
+      <div class="iniciativas mt-4">
+        <div class="principios-content">
+          <div class="principios-process">
+            <div class="process-steps"></div>
+          </div>
+        </div>
       </div>
 
     </div>
   </section>
+
 </main>
 @endsection
 
 @push('scripts')
 <script>
-    window.objetivosData = @json($objetivosData);
+  window.objetivosData = @json($objetivosData);
 </script>
 <script>
 (function () {
-    /* anima a constelação revelando nós e arestas escalonadamente no load */
-    window.addEventListener('load', function () {
-        var svg = document.querySelector('.constelacao-svg');
-        if (!svg) return;
+  window.addEventListener('load', function () {
+    var svg     = document.querySelector('.constelacao-svg');
+    if (!svg) return;
+    var nos     = svg.querySelectorAll('.cst-no');
+    var arestas = svg.querySelectorAll('.cst-aresta');
 
-        var nos     = svg.querySelectorAll('.cst-no');
-        var arestas = svg.querySelectorAll('.cst-aresta');
-
-        /* revela arestas primeiro com delay base */
-        arestas.forEach(function (el, i) {
-            setTimeout(function () {
-                el.classList.add('cst-visivel');
-            }, 200 + i * 80);
-        });
-
-        /* revela nós após as arestas */
-        nos.forEach(function (el, i) {
-            setTimeout(function () {
-                el.classList.add('cst-visivel');
-            }, 400 + i * 120);
-        });
+    arestas.forEach(function (el, i) {
+      setTimeout(function () { el.classList.add('cst-visivel'); }, 200 + i * 80);
     });
+    nos.forEach(function (el, i) {
+      setTimeout(function () { el.classList.add('cst-visivel'); }, 400 + i * 120);
+    });
+  });
+
+  /* atualiza o anel SVG de concluídas */
+  window.atualizarAnel = function (concluidas, total) {
+    var circulo = document.getElementById('ini-anel-circulo');
+    if (!circulo) return;
+    var raio = 26;
+    var circunferencia = 2 * Math.PI * raio;
+    var pct = total > 0 ? concluidas / total : 0;
+    circulo.style.strokeDasharray  = circunferencia;
+    circulo.style.strokeDashoffset = circunferencia * (1 - pct);
+  };
 })();
 </script>
 @endpush
-
