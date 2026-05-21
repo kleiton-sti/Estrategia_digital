@@ -5,8 +5,10 @@
  *   576px  — mobile grande
  *   768px  — tablet
  *   992px  — desktop médio
- *   1600px — desktop
- *   2000px — ultrawide
+ *   1200px — desktop
+ *   1400px — desktop largo
+ *   1600px — wide
+ *   3000px — ultrawide
  */
 
 /* ============================================================
@@ -68,7 +70,7 @@
     grid-column: 1;
   }
 
-  .principios .container::after{
+  .principios .container::after {
     background: #04C4D9;
   }
 
@@ -136,7 +138,7 @@
     display: none;
   }
 
-  .principios .container::after{
+  .principios .container::after {
     background: radial-gradient(circle, #04C4D9 50%, rgba(255, 255, 255, 0) 100%);
   }
 
@@ -299,7 +301,6 @@
     margin-bottom: 0.5rem;
   }
 
-
 }
 
 /* ============================================================
@@ -371,12 +372,52 @@
 /* ============================================================
    1200px — desktop
    ============================================================ */
-@media (max-width: 1600px) {
+@media (max-width: 1200px) {
 
-   .hero .hero-visual .hero-image #reflexo-img-8 {
-    clip-path: inset(38% 15% 0 15%);
-    width: 251%;
-   }
+  .hero .hero-visual .hero-image #reflexo-img-8 {
+    bottom: -60%;
+    height: 300px;
+    width: 261%;
+    left: 21%;
+    transform: translateX(-33%);
+    clip-path: inset(38% 10% 0 10%);
+  }
+
+  .objetivos-details .objetivos-details-content {
+    padding-left: 1rem;
+  }
+
+}
+
+/* ============================================================
+   1400px — desktop largo
+   ============================================================ */
+@media (min-width: 1201px) and (max-width: 1400px) {
+
+  .hero .hero-visual .hero-image #reflexo-img-8 {
+    bottom: -70%;
+    height: 360px;
+    width: 261%;
+    left: 21%;
+    transform: translateX(-33%);
+    clip-path: inset(40% 12% 0 12%);
+  }
+
+}
+
+/* ============================================================
+   1600px — wide
+   ============================================================ */
+@media (min-width: 1401px) and (max-width: 1600px) {
+
+  .hero .hero-visual .hero-image #reflexo-img-8 {
+    bottom: -80%;
+    height: 420px;
+    width: 261%;
+    left: 21%;
+    transform: translateX(-33%);
+    clip-path: inset(40% 14% 0 14%);
+  }
 
   .header {
     padding-top: 10px;
@@ -388,14 +429,9 @@
     width: 60%;
   }
 
-  .objetivos-details .objetivos-details-content {
-    padding-left: 1rem;
-  }
-
   section.principios {
     padding-top: 15px !important;
   }
-
 
   .principios .container {
     max-width: 90dvw;
@@ -404,10 +440,48 @@
 
 }
 
+@media (min-width: 1601px) and (max-width: 1800px) {
+
+  .hero .hero-visual .hero-image #reflexo-img-8 {
+    bottom: -122%;
+    height: 480px;
+    width: 261%;
+    left: 21%;
+    transform: translateX(-33%);
+    clip-path: inset(40% 16% 0 16%);
+  }
+
+}
+
 /* ============================================================
-   1600px — ultrawide
+   acima de 1600px — telas largas padrão
    ============================================================ */
-@media (min-width: 3000px) {
+@media (min-width: 1800px) and (max-width: 2560px) {
+
+  .hero .hero-visual .hero-image #reflexo-img-8 {
+    bottom: -72%;
+    height: 463px;
+    width: 261%;
+    left: 21%;
+    transform: translateX(-33%);
+    clip-path: inset(50% 0 0 0);
+  }
+
+}
+
+/* ============================================================
+   3000px — ultrawide
+   ============================================================ */
+@media (min-width: 2561px) {
+
+  .hero .hero-visual .hero-image #reflexo-img-8 {
+    bottom: -132%;
+    height: 600px;
+    width: 261%;
+    left: 21%;
+    transform: translateX(-33%);
+    clip-path: inset(50% 0 0 0);
+  }
 
   .header .header-container {
     width: 55%;
@@ -457,4 +531,5 @@
   .timeline {
     max-width: 1100px;
   }
+
 }
