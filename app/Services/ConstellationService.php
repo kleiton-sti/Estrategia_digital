@@ -29,7 +29,7 @@ class ConstellationService
                 ],
             ],
 
-            /* Gestão e Governança Digital */
+            /* Gestão Integrada */
             2 => [
                 'nos' => [
                     ['x' => 10,  'y' => 30, 'r' => 2.5, 'principal' => false],
@@ -46,7 +46,7 @@ class ConstellationService
                 ],
             ],
 
-            /* Inovação e Tecnologia */
+            /* Gestão Inteligente */
             3 => [
                 'nos' => [
                     ['x' => 50, 'y' => 5,  'r' => 4,   'principal' => true],
@@ -63,7 +63,7 @@ class ConstellationService
                 ],
             ],
 
-            /* Infraestrutura e Conectividade */
+            /* Gestão Confiável*/
             4 => [
                 'nos' => [
                     ['x' => 5,  'y' => 30, 'r' => 2,   'principal' => false],
@@ -81,7 +81,7 @@ class ConstellationService
                 ],
             ],
 
-            /* Segurança e Privacidade */
+            /* Gestão Transparente e Aberta */
             5 => [
                 'nos' => [
                     ['x' => 50, 'y' => 5,  'r' => 4,   'principal' => true],
@@ -97,7 +97,7 @@ class ConstellationService
                 ],
             ],
 
-            /* Sustentabilidade Digital */
+            /* Gestão eficiente*/
             6 => [
                 'nos' => [
                     ['x' => 50, 'y' => 8,  'r' => 3.5, 'principal' => true],

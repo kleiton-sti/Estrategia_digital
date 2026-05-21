@@ -8,7 +8,7 @@
 @php
     $totalNos   = count($constelacao['nos']);
     $nosAtivos  = (int) round($progresso * $totalNos);
-    $uid        = 'cst-' . $eixoId . '-' . uniqid();
+    $uid        = 'cst-' . $eixoId . '-' . uniqid(); // o SVG compartilha IDs no escopo global, portanto isso ajuda a tornar cada SVG único.
 @endphp
 
 <svg

@@ -1,5 +1,5 @@
 // Immediately invoked function usada para executar imediatamente após carregamendo dom DOM e isolar 
-// variáveis e funcções do escopo global.
+// letiáveis e funcções do escopo global.
 (function () {
     let ring = document.getElementById('ringProgress'); // nó interno ao SVG
     if (!ring) return;
@@ -45,4 +45,32 @@
     // no carregamento da página ele já verifica o valor, colocando na base 10
     let initial = parseInt(statEl.textContent, 10) || 0;
     if (initial > 0) setProgress(initial);
+})();
+
+// aneis da pagina eixos
+(function () {
+  window.addEventListener('load', function () {
+    let svg     = document.querySelector('.constelacao-svg');
+    if (!svg) return;
+    let nos     = svg.querySelectorAll('.cst-no');
+    let arestas = svg.querySelectorAll('.cst-aresta');
+
+    arestas.forEach(function (el, i) {
+      setTimeout(function () { el.classList.add('cst-visivel'); }, 200 + i * 80);
+    });
+    nos.forEach(function (el, i) {
+      setTimeout(function () { el.classList.add('cst-visivel'); }, 400 + i * 120);
+    });
+  });
+
+  /* atualiza o anel SVG de concluídas */
+  window.atualizarAnel = function (concluidas, total) {
+    let circulo = document.getElementById('ini-anel-circulo');
+    if (!circulo) return;
+    let raio = 26;
+    let circunferencia = 2 * Math.PI * raio;
+    let pct = total > 0 ? concluidas / total : 0;
+    circulo.style.strokeDasharray  = circunferencia;
+    circulo.style.strokeDashoffset = circunferencia * (1 - pct);
+  };
 })();

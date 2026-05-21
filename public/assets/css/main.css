@@ -337,18 +337,6 @@ span.badge {
   white-space: nowrap;
 }
 
-.iniciativas {
-  background-color: var(--surface-color);
-  border-radius: 12px;
-  height: 440px;
-  padding: 20px;
-  overflow-y: auto;
-  border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
-  scroll-behavior: smooth;
-  scrollbar-width: thin;
-  scrollbar-color: var(--default-color) rgba(0, 0, 0, 0.1);
-}
-
 .table,
 .table th,
 .table td {
@@ -363,6 +351,8 @@ span.badge {
 }
 
 .desc {
+  font-size: 0.9rem;
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
   display: flex;
   align-items: center;
   margin-top: 20px;

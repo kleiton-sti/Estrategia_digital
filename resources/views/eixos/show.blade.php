@@ -18,7 +18,10 @@
             'progresso'   => $progresso,
             'eixoId'      => $eixo->id_eixos,
           ])
-          <span class="constelacao-pct">{{ round($progresso * 100) }}% concluído</span>
+        </div>
+        <div class="constelacao-pct-wrap">
+          <span class="constelacao-pct">{{ round($progresso * 100) }}%</span>
+          <span class="constelacao-pct-desc"> concluído</span>
         </div>
       </div>
     </div>
@@ -41,8 +44,8 @@
           </div>
         @endforeach
       </div>
-
       <p class="desc">{!! $objetivo->descricao !!}</p>
+
     </div>
   </section>
 
@@ -114,32 +117,5 @@
 <script>
   window.objetivosData = @json($objetivosData);
 </script>
-<script>
-(function () {
-  window.addEventListener('load', function () {
-    var svg     = document.querySelector('.constelacao-svg');
-    if (!svg) return;
-    var nos     = svg.querySelectorAll('.cst-no');
-    var arestas = svg.querySelectorAll('.cst-aresta');
-
-    arestas.forEach(function (el, i) {
-      setTimeout(function () { el.classList.add('cst-visivel'); }, 200 + i * 80);
-    });
-    nos.forEach(function (el, i) {
-      setTimeout(function () { el.classList.add('cst-visivel'); }, 400 + i * 120);
-    });
-  });
-
-  /* atualiza o anel SVG de concluídas */
-  window.atualizarAnel = function (concluidas, total) {
-    var circulo = document.getElementById('ini-anel-circulo');
-    if (!circulo) return;
-    var raio = 26;
-    var circunferencia = 2 * Math.PI * raio;
-    var pct = total > 0 ? concluidas / total : 0;
-    circulo.style.strokeDasharray  = circunferencia;
-    circulo.style.strokeDashoffset = circunferencia * (1 - pct);
-  };
-})();
-</script>
+<script src="{{ asset('assets/js/charge.js') }}"></script>
 @endpush

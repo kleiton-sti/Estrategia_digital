@@ -27,7 +27,7 @@ div.container .section-title-obj {
 
 .constelacao-wrap {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: start;
     position: relative;
     align-items: center;
@@ -50,9 +50,23 @@ div.container .section-title-obj {
     overflow: visible;
 }
 
+.constelacao-pct-wrap {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
 .constelacao-pct {
-    font-size: 1rem;
+    font-size: 2rem;
     font-weight: 600;
+    color: color-mix(in srgb, var(--default-color), transparent 40%);
+    white-space: nowrap;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 0.5px;
+}
+
+.constelacao-pct-desc {
     color: color-mix(in srgb, var(--default-color), transparent 40%);
     white-space: nowrap;
     font-family: 'Courier New', monospace;

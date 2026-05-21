@@ -411,9 +411,9 @@
 @media (min-width: 1401px) and (max-width: 1600px) {
 
   .hero .hero-visual .hero-image #reflexo-img-8 {
-    bottom: -80%;
+    bottom: -74%;
     height: 420px;
-    width: 261%;
+    width: 245%;
     left: 21%;
     transform: translateX(-33%);
     clip-path: inset(40% 14% 0 14%);
@@ -459,7 +459,7 @@
 @media (min-width: 1800px) and (max-width: 2560px) {
 
   .hero .hero-visual .hero-image #reflexo-img-8 {
-    bottom: -72%;
+    bottom: -82%;
     height: 463px;
     width: 261%;
     left: 21%;

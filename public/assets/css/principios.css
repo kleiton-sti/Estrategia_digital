@@ -212,16 +212,7 @@
   font-weight: 700;
   font-size: 1rem;
   flex-shrink: 0;
-  animation: step-number 3s ease-in-out infinite;
-}
-
-@keyframes step-number {
-  0%   { transform: scale(1.2); }
-  20%  { transform: scale(1.4); filter: blur(2px); }
-  40%  { transform: scale(1.6); filter: blur(3px); }
-  60%  { transform: scale(1.4); filter: blur(2px); }
-  80%  { transform: scale(1.2); filter: blur(2px); }
-  100% { transform: scale(1.2); filter: blur(1px); }
+  
 }
 
 .principios-details .principios-process .process-steps .step-item .step-content h5 {

@@ -1,6 +1,11 @@
 /*--------------------------------------------------------------
 # Objetivos Section
 --------------------------------------------------------------*/
+
+section#principios-details {
+  padding-top: 0% !important;
+}
+
 .objetivos .objetivos-filters {
   display: flex;
   justify-content: center;
@@ -113,7 +118,7 @@
 
 .objetivo-titulo {
   font-size: 0.92rem;
-  font-weight: 600;
+  letter-spacing: 0.06em;
   color: rgba(232, 231, 247, 0.85);
   line-height: 1.4;
 }
@@ -359,16 +364,19 @@
 .step-number.bg-success {
   background-color: #00db79 !important;
   box-shadow: 0 0 8px rgba(0, 219, 121, 0.6);
+  animation: cstPulsePrincipal 3s ease-in-out infinite;
 }
 
 .step-number.bg-primary {
   background-color: #04c4d9 !important;
   box-shadow: 0 0 8px rgba(4, 196, 217, 0.6);
+  animation: cstPulsePrincipal 3s ease-in-out infinite;
 }
 
 .step-number.bg-danger {
   background-color: #e13a1d !important;
   box-shadow: 0 0 8px rgba(225, 58, 29, 0.5);
+  animation: cstPulsePrincipal 3s ease-in-out infinite;
 }
 
 .step-content { flex: 1; min-width: 0; }
@@ -394,3 +402,8 @@
 
 #principios-details .row { justify-content: center; }
 #principios-details .iniciativas { flex: 1; }
+
+@keyframes cstPulsePrincipal {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.65; }
+}

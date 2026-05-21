@@ -154,7 +154,7 @@
       });
 
       container.style.display = 'block';
-      container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
       const total      = objetivo.iniciativas.length;
       const concluidas = objetivo.iniciativas.filter(i => i.status === 'Concluída').length;
