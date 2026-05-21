@@ -1,8 +1,6 @@
 /*--------------------------------------------------------------
-# Roadmap
+# Roadmap — Hero
 --------------------------------------------------------------*/
-
-/* ---- Hero ---- */
 .roadmap-hero {
   min-height: 70dvh;
   display: flex;
@@ -17,9 +15,7 @@
   gap: 48px;
 }
 
-.roadmap-hero__texto {
-  text-align: center;
-}
+.roadmap-hero__texto { text-align: center; }
 
 .roadmap-hero__label {
   font-size: 0.75rem;
@@ -32,7 +28,7 @@
 
 .roadmap-hero__titulo {
   font-size: 2.2rem !important;
-  font-weight: 700 !important; 
+  font-weight: 700 !important;
   line-height: 1.25 !important;
   margin: 8px 0 16px !important;
   color: rgba(232, 231, 247, 0.73) !important;
@@ -47,7 +43,6 @@
   margin: 0;
 }
 
-/* ícone de scroll */
 .roadmap-scroll-hint {
   display: flex;
   flex-direction: column;
@@ -78,27 +73,16 @@
 }
 
 @keyframes rdScrollBounce {
-
-  0%,
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-
-  50% {
-    transform: translateY(8px);
-    opacity: 0.6;
-  }
+  0%, 100% { transform: translateY(0);    opacity: 1;   }
+  50%       { transform: translateY(8px); opacity: 0.6; }
 }
 
-/* ---- Seção conteúdo ---- */
-.roadmap-content {
-  padding-top: 0;
-}
+/*--------------------------------------------------------------
+# Roadmap — Seção conteúdo
+--------------------------------------------------------------*/
+.roadmap-content { padding-top: 0; }
 
-.roadmap-section-titulo {
-  margin-bottom: 48px;
-}
+.roadmap-section-titulo { margin-bottom: 48px; }
 
 .roadmap-section-titulo h2 {
   font-size: 1.6rem;
@@ -113,160 +97,358 @@
   max-width: 580px;
 }
 
-/* ---- Eixo ---- */
-.roadmap-eixo {
-  margin-bottom: 40px;
+/*--------------------------------------------------------------
+# Trilha neon (hero)
+--------------------------------------------------------------*/
+.rd-trilha {
+  position: relative;
+  width: 100dvw;
+  margin-bottom: -20px;
+  pointer-events: none;
 }
 
-.roadmap-eixo__header {
-  display: flex;
-  align-items: baseline;
-  gap: 14px;
-  margin-bottom: 20px;
+.rd-trilha-svg {
+  width: 100%;
+  height: 120px;
+  overflow: visible;
 }
 
-.roadmap-eixo__num {
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 2px;
-  color: #04C4D9;
-  font-family: 'Courier New', monospace;
-  opacity: 0.7;
+.rd-trilha-glow {
+  fill: none;
+  stroke: #04C4D9;
+  stroke-width: 8;
+  opacity: 0.18;
+  filter: blur(6px);
+  stroke-linecap: round;
 }
 
-.roadmap-eixo__titulo {
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--heading-color);
+.rd-trilha-linha {
+  fill: none;
+  stroke: url(#rdGrad);
+  stroke-width: 2;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 4px #04C4D9) drop-shadow(0 0 12px rgba(4,196,217,0.4));
+  stroke-dasharray: 6 4;
+  animation: rdDash 3s linear infinite;
+}
+
+@keyframes rdDash {
+  to { stroke-dashoffset: -40; }
+}
+
+.rd-particula { fill: #fff; filter: drop-shadow(0 0 4px #04C4D9); }
+.rd-particula--1 { fill: #04C4D9; }
+.rd-particula--2 { fill: rgba(255,255,255,0.7); }
+
+/*--------------------------------------------------------------
+# Linha vertical central (section #trilha)
+--------------------------------------------------------------*/
+.rd-timeline-wrap {
+  position: relative;
+}
+
+/* linha contínua que atravessa todos os eixos */
+.rd-trilha-vertical {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg,
+    transparent 0%,
+    rgba(4, 196, 217, 0.6) 5%,
+    rgba(4, 196, 217, 0.4) 50%,
+    rgba(4, 196, 217, 0.6) 95%,
+    transparent 100%
+  );
+  filter: drop-shadow(0 0 4px rgba(4, 196, 217, 0.5));
+  z-index: 0;
+  pointer-events: none;
+}
+
+/*--------------------------------------------------------------
+# Bloco de cada eixo
+--------------------------------------------------------------*/
+.rd-eixo-bloco {
+  position: relative;
+  display: grid;
+  /* coluna dos cards | espaço do planeta | coluna oposta */
+  grid-template-columns: 1fr 120px 1fr;
+  grid-template-rows: auto auto;
+  align-items: start;
+  gap: 0 0;
+  margin-bottom: 60px;
+}
+
+/* planeta sempre na coluna central, linha 1 */
+.rd-eixo-bloco .rd-planeta {
+  grid-column: 2;
+  grid-row: 1;
+  z-index: 2;
   margin: 0;
 }
 
-/* ---- Colunas (estilo da imagem) ---- */
-.roadmap-eixo__colunas {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+/* eixo à esquerda: cards na coluna 1, planeta na 2 */
+.rd-eixo-bloco--esquerda .rd-eixo {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  padding-right: 36px;
+  align-self: start;
 }
 
-.roadmap-coluna {
-  border-radius: 14px;
-  padding: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  background: rgba(255, 255, 255, 0.03);
+/* eixo à direita: cards na coluna 3, planeta na 2 */
+.rd-eixo-bloco--direita .rd-eixo {
+  grid-column: 3;
+  grid-row: 1 / 3;
+  padding-left: 36px;
+  align-self: start;
+}
+
+/* coluna vazia do lado oposto aos cards */
+.rd-eixo-bloco--esquerda .rd-planeta { justify-items: center; }
+.rd-eixo-bloco--direita  .rd-planeta { justify-items: center; }
+
+/*--------------------------------------------------------------
+# Planetas (marcadores de eixo)
+--------------------------------------------------------------*/
+.rd-planeta {
   position: relative;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 8px;
+  gap: 12px;
 }
 
-/* faixa colorida no topo de cada coluna */
-.roadmap-coluna::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  border-radius: 14px 14px 0 0;
-}
-
-.roadmap-coluna--entregue::before {
-  background: linear-gradient(90deg, #00db79, #04C4D9);
-}
-
-.roadmap-coluna--andamento::before {
-  background: linear-gradient(90deg, #3B82F6, #7c6ef0);
-}
-
-.roadmap-coluna--explorando::before {
-  background: linear-gradient(90deg, #f97316, #ffd232);
-}
-
-.roadmap-coluna__header {
+.rd-planeta__nucleo {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 14px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  justify-content: center;
+  position: relative;
+  z-index: 2;
 }
 
-.roadmap-coluna__icone {
-  font-size: 1rem;
+.rd-planeta--1 .rd-planeta__nucleo { background: radial-gradient(circle at 35% 35%, #1e3a5f, #05071e); box-shadow: 0 0 0 2px rgba(4,196,217,0.5),   0 0 24px rgba(4,196,217,0.4);   }
+.rd-planeta--2 .rd-planeta__nucleo { background: radial-gradient(circle at 35% 35%, #2d1e5f, #05071e); box-shadow: 0 0 0 2px rgba(124,110,240,0.5), 0 0 24px rgba(124,110,240,0.4); }
+.rd-planeta--3 .rd-planeta__nucleo { background: radial-gradient(circle at 35% 35%, #1e4a2f, #05071e); box-shadow: 0 0 0 2px rgba(0,219,121,0.5),   0 0 24px rgba(0,219,121,0.4);   }
+.rd-planeta--4 .rd-planeta__nucleo { background: radial-gradient(circle at 35% 35%, #4a2e1e, #05071e); box-shadow: 0 0 0 2px rgba(255,160,50,0.5),  0 0 24px rgba(255,160,50,0.4);  }
+.rd-planeta--5 .rd-planeta__nucleo { background: radial-gradient(circle at 35% 35%, #1e2e4a, #05071e); box-shadow: 0 0 0 2px rgba(59,130,246,0.5),  0 0 24px rgba(59,130,246,0.4);  }
+.rd-planeta--6 .rd-planeta__nucleo { background: radial-gradient(circle at 35% 35%, #3a1e3a, #05071e); box-shadow: 0 0 0 2px rgba(217,70,239,0.5),  0 0 24px rgba(217,70,239,0.4);  }
+
+.rd-planeta__num {
+  font-size: 1.1rem;
+  font-weight: 800;
+  font-family: 'Courier New', monospace;
+  color: rgba(232,231,247,0.85);
+  letter-spacing: 1px;
 }
 
-.roadmap-coluna--entregue .roadmap-coluna__icone {
-  color: #00db79;
+.rd-planeta__anel {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%) rotateX(70deg);
+  width: 96px; height: 96px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(4,196,217,0.25);
+  z-index: 1;
+  animation: rdGirar 12s linear infinite;
 }
 
-.roadmap-coluna--andamento .roadmap-coluna__icone {
-  color: #3B82F6;
+.rd-planeta--2 .rd-planeta__anel { border-color: rgba(124,110,240,0.3); }
+.rd-planeta--3 .rd-planeta__anel { border-color: rgba(0,219,121,0.3);   animation-duration: 9s;  }
+.rd-planeta--4 .rd-planeta__anel { border-color: rgba(255,160,50,0.3);  animation-duration: 15s; }
+.rd-planeta--5 .rd-planeta__anel { border-color: rgba(59,130,246,0.3);  animation-duration: 10s; }
+.rd-planeta--6 .rd-planeta__anel { border-color: rgba(217,70,239,0.3);  animation-duration: 7s;  }
+
+@keyframes rdGirar {
+  to { transform: translate(-50%,-50%) rotateX(70deg) rotateZ(360deg); }
 }
 
-.roadmap-coluna--explorando .roadmap-coluna__icone {
-  color: #f97316;
+.rd-planeta__halo {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(4,196,217,0.12) 0%, transparent 70%);
+  z-index: 0;
+  animation: rdHaloPulse 4s ease-in-out infinite;
 }
 
-.roadmap-coluna__titulo {
+.rd-planeta--2 .rd-planeta__halo { background: radial-gradient(circle, rgba(124,110,240,0.14) 0%, transparent 70%); }
+.rd-planeta--3 .rd-planeta__halo { background: radial-gradient(circle, rgba(0,219,121,0.14)   0%, transparent 70%); }
+.rd-planeta--4 .rd-planeta__halo { background: radial-gradient(circle, rgba(255,160,50,0.14)  0%, transparent 70%); }
+.rd-planeta--5 .rd-planeta__halo { background: radial-gradient(circle, rgba(59,130,246,0.14)  0%, transparent 70%); }
+.rd-planeta--6 .rd-planeta__halo { background: radial-gradient(circle, rgba(217,70,239,0.14)  0%, transparent 70%); }
+
+@keyframes rdHaloPulse {
+  0%, 100% { opacity: 0.7; transform: translate(-50%,-50%) scale(1);    }
+  50%       { opacity: 1;   transform: translate(-50%,-50%) scale(1.15); }
+}
+
+.rd-planeta__titulo {
   font-size: 0.82rem;
   font-weight: 700;
+  color: rgba(232,231,247,0.8);
+  text-align: center;
+  margin: 0;
+  font-family: var(--heading-font);
+  max-width: 100px;
+  line-height: 1.35;
+}
+
+/*--------------------------------------------------------------
+# Eixo — grid de nebulosas
+--------------------------------------------------------------*/
+.rd-eixo {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+/*--------------------------------------------------------------
+# Nebulosas
+--------------------------------------------------------------*/
+.rd-nebulosa {
+  position: relative;
+  border-radius: 18px;
+  padding: 4px;
+  min-height: 180px;
+}
+
+.rd-nebulosa__glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  filter: blur(28px);
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.4s ease;
+}
+
+.rd-nebulosa:hover .rd-nebulosa__glow { opacity: 0.55; }
+
+.rd-nebulosa--verde   .rd-nebulosa__glow { background: radial-gradient(ellipse at 40% 40%, #00db79 0%, transparent 70%); }
+.rd-nebulosa--amarelo .rd-nebulosa__glow { background: radial-gradient(ellipse at 60% 30%, #ffd232 0%, transparent 70%); }
+.rd-nebulosa--roxo    .rd-nebulosa__glow { background: radial-gradient(ellipse at 50% 60%, #7c6ef0 0%, transparent 70%); }
+
+/*--------------------------------------------------------------
+# Cards
+--------------------------------------------------------------*/
+.rd-card {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  border-radius: 14px;
+  padding: 16px;
+  background: rgba(5, 7, 30, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.07);
+  transition: border-color 0.3s;
+}
+
+.rd-nebulosa--verde:hover  .rd-card { border-color: rgba(0,219,121,0.3);   }
+.rd-nebulosa--amarelo:hover .rd-card { border-color: rgba(255,210,50,0.3); }
+.rd-nebulosa--roxo:hover   .rd-card { border-color: rgba(124,110,240,0.3); }
+
+.rd-card__header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+.rd-card__icone { font-size: 0.95rem; }
+.rd-card__icone--verde   { color: #00db79; filter: drop-shadow(0 0 4px rgba(0,219,121,0.5));   }
+.rd-card__icone--amarelo { color: #ffd232; filter: drop-shadow(0 0 4px rgba(255,210,50,0.5));  }
+.rd-card__icone--roxo    { color: #7c6ef0; filter: drop-shadow(0 0 4px rgba(124,110,240,0.5)); }
+
+.rd-card__titulo {
+  font-size: 0.72rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.8px;
-  margin: 0;
+  letter-spacing: 0.7px;
 }
 
-.roadmap-coluna--entregue .roadmap-coluna__titulo {
-  color: #00db79;
-}
+.rd-card__titulo--verde   { color: #00db79; }
+.rd-card__titulo--amarelo { color: #ffd232; }
+.rd-card__titulo--roxo    { color: #7c6ef0; }
 
-.roadmap-coluna--andamento .roadmap-coluna__titulo {
-  color: #3B82F6;
-}
-
-.roadmap-coluna--explorando .roadmap-coluna__titulo {
-  color: #f97316;
-}
-
-.roadmap-coluna__lista {
+.rd-card__lista {
   list-style: none;
-  padding: 0;
-  margin: 0;
+  padding: 0; margin: 0;
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.roadmap-coluna__item {
-  font-size: 0.82rem;
+.rd-card__item {
+  font-size: 0.8rem;
   color: color-mix(in srgb, var(--default-color), transparent 20%);
-  line-height: 1.45;
+  line-height: 1.5;
   padding-left: 14px;
   position: relative;
 }
 
-.roadmap-coluna__item::before {
-  content: '•';
+.rd-card__item::before {
+  content: '·';
   position: absolute;
   left: 0;
   opacity: 0.45;
 }
 
-.roadmap-coluna__item--vazio {
+.rd-card__item--vazio {
   color: color-mix(in srgb, var(--default-color), transparent 60%);
   font-style: italic;
 }
 
-.roadmap-divisor {
-  border: none;
-  border-top: 1px solid rgba(255, 255, 255, 0.07);
-  margin: 40px 0;
-}
-
-/* ---- Mobile ---- */
+/*--------------------------------------------------------------
+# Mobile
+--------------------------------------------------------------*/
 @media (max-width: 768px) {
-  .roadmap-eixo__colunas {
+
+  .rd-trilha-vertical { display: none; }
+
+  .rd-eixo-bloco {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    margin-bottom: 40px;
+  }
+
+  .rd-eixo-bloco .rd-planeta {
+    grid-column: 1;
+    grid-row: 1;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 16px;
+    padding-top: 0;
+    margin-bottom: 16px;
+  }
+
+  .rd-planeta__titulo {
+    max-width: none;
+    text-align: left;
+    font-size: 0.9rem;
+  }
+
+  .rd-planeta__anel,
+  .rd-planeta__halo { display: none; }
+
+  .rd-eixo-bloco--esquerda .rd-eixo,
+  .rd-eixo-bloco--direita  .rd-eixo {
+    grid-column: 1;
+    grid-row: 2;
+    padding: 0;
     grid-template-columns: 1fr;
   }
 
-  .roadmap-hero__titulo {
-    font-size: 2.4rem;
-  }
+  .rd-trilha-svg { height: 60px; }
 }
