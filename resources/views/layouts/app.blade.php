@@ -31,6 +31,7 @@
   <link href="{{ asset('assets/css/login.css') }}" rel="stylesheet">
   <link href="{{ asset('assets/css/hologram.css') }}" rel="stylesheet">
   <link href="{{ asset('assets/css/constelacao.css') }}" rel="stylesheet">
+  <link href="{{ asset('assets/css/roadmap.css') }}" rel="stylesheet">
   <link href="{{ asset('assets/css/responsive.css') }}" rel="stylesheet">
   @stack('styles')
 
