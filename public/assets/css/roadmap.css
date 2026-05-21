@@ -1,6 +1,36 @@
 /*--------------------------------------------------------------
 # Roadmap Layout
 --------------------------------------------------------------*/
+
+section#roadmap {
+  height: 100dvh;
+}
+
+#roadmap .roadmap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4rem;
+}
+
+#roadmap .roadmap h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 1rem;
+  color: rgba(232, 231, 247, 0.73);
+  font-family: var(--heading-font);
+}
+
+#roadmap p.alinha-texto {
+  max-width: 700px;
+  text-align: center;
+  color:
+    color-mix(in srgb, var(--default-color), transparent 30%);
+  line-height: 1.6;
+}
+
 .roadmap-columns {
   display: flex;
   justify-content: space-between;
@@ -51,7 +81,6 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-start;
 }
 
 .roadmap-img {
