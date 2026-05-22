@@ -112,17 +112,3 @@ div.container .section-title-obj {
     50%       { opacity: 0.65; }
 }
 
-@media (max-width: 768px) {
-    .section-title-obj {
-        flex-direction: column;
-    }
-
-    .constelacao-wrap {
-        width: 120px;
-        align-self: flex-end;
-    }
-
-    .constelacao-svg {
-        width: 120px;
-    }
-}

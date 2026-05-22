@@ -119,7 +119,7 @@
     <!-- /Hero Section -->
 
     <!-- Eixos Section -->
-    <section id="principios" class="principios section">
+    <!-- <section id="principios" class="principios section">
       <div class="container">
         <div class="reflexo-01"></div>
         <div class="reflexo-02"></div>
@@ -149,7 +149,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
     <!-- /Eixos Section -->
 
   </main>
