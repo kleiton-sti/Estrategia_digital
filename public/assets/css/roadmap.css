@@ -173,40 +173,7 @@
   z-index: 0;
 }
 
-/*--------------------------------------------------------------
-# Nebulosas de fundo da section inteira
-# Camada 1: blobs fixos grandes e difusos
---------------------------------------------------------------*/
-.roadmap-content::before,
-.roadmap-content::after {
-  content: '';
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 0;
-  /* filter: blur(120px);
-  opacity: 0.055; */
-}
 
-/* blob ciano no topo-esquerda */
-.roadmap-content::before {
-  width: 60vw;
-  height: 60vw;
-  top: 5%;
-  left: -15%;
-  background: radial-gradient(circle, #04C4D9 0%, #0460d9  60%);
-  animation: rdNebDrift1 28s ease-in-out infinite alternate;
-}
-
-/* blob roxo no fundo-direita */
-.roadmap-content::after {
-  width: 55vw;
-  height: 55vw;
-  bottom: 10%;
-  right: -10%;
-  background: radial-gradient(circle, #3b3669 0%, transparent 65%);
-  animation: rdNebDrift2 34s ease-in-out infinite alternate;
-}
 
 @keyframes rdNebDrift1 {
   from {
