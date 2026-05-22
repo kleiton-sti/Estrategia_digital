@@ -56,46 +56,45 @@
                         @php
                             $ordemDesejada = ['entregue_recentemente', 'em_andamento', 'explorando'];
                             $labels = [
-                                'entregue_recentemente' => 'Entregue Recentemente',
-                                'em_andamento' => 'Em Andamento',
-                                'explorando' => 'Explorando',
-                            ];
-                            $icones = [
-                                'entregue_recentemente' => 'bi-check2-circle',
-                                'em_andamento' => 'bi-arrow-repeat',
-                                'explorando' => 'bi-lightbulb',
+                                'entregue_recentemente' => 'Concluído',
+                                'em_andamento'          => 'Em Execução',
+                                'explorando'            => 'Explorando',
                             ];
                             $cores = [
                                 'entregue_recentemente' => 'verde',
-                                'em_andamento' => 'amarelo',
-                                'explorando' => 'roxo',
+                                'em_andamento'          => 'amarelo',
+                                'explorando'            => 'roxo',
                             ];
                             $gruposExistentes = $eixo->roadmaps->groupBy('status');
                             $numEixo = $loop->iteration;
+                            $numPad  = str_pad($numEixo, 2, '0', STR_PAD_LEFT);
                         @endphp
 
-                        <!-- marcador do eixo: planeta + título ao lado -->
+                        {{-- Separador cósmico entre eixos (a partir do 2º) --}}
+                        @if(!$loop->first)
+                            <div class="rd-eixo-sep" aria-hidden="true"></div>
+                        @endif
+
+                        <!-- marcador do eixo: planeta + título -->
                         <div class="rd-eixo-marcador rd-planeta--{{ $numEixo }}" data-aos="fade-up">
                             <div class="rd-planeta__nucleo">
-                                <span class="rd-planeta__num">{{ str_pad($numEixo, 2, '0', STR_PAD_LEFT) }}</span>
+                                <span class="rd-planeta__num">{{ $numPad }}</span>
                             </div>
-
+                            <div class="rd-planeta__anel"></div>
                             <div class="rd-planeta__halo"></div>
-                            <h3 class="rd-eixo-marcador__titulo">{{ $eixo->titulo }}</h3>
-                            
+                            <h3 class="rd-eixo-marcador__titulo" data-eixo="Eixo {{ $numPad }}">{{ $eixo->titulo }}</h3>
                         </div>
 
-                        <!-- um card por status, alternando de lado -->
+                        <!-- cards de status, alternando de lado -->
                         @foreach($ordemDesejada as $cardIndex => $status)
                             @php
-                                /* alternância global contínua por card dentro do eixo */
-                                $lado = $cardIndex % 2 === 0 ? 'esquerda' : 'direita';
-                                $cor = $cores[$status];
+                                $lado  = $cardIndex % 2 === 0 ? 'esquerda' : 'direita';
+                                $cor   = $cores[$status];
                                 $acoes = $gruposExistentes->get($status, collect());
                             @endphp
 
                             <div class="rd-card-linha rd-card-linha--{{ $lado }}"
-                                data-aos="{{ $lado === 'esquerda' ? 'fade-right' : 'fade-left' }}">
+                                 data-aos="{{ $lado === 'esquerda' ? 'fade-right' : 'fade-left' }}">
 
                                 <!-- metade vazia -->
                                 <div class="rd-card-linha__vazio"></div>
@@ -105,16 +104,97 @@
                                     <div class="rd-ponto rd-ponto--{{ $cor }}"></div>
                                 </div>
 
-                                <!-- card -->
+                                <!-- card com nebulosa -->
                                 <div class="rd-card-linha__card">
                                     <div class="rd-nebulosa rd-nebulosa--{{ $cor }}">
                                         <div class="rd-nebulosa__glow" aria-hidden="true"></div>
                                         <div class="rd-card">
+
                                             <div class="rd-card__header">
-                                                <i class="bi {{ $icones[$status] }} rd-card__icone rd-card__icone--{{ $cor }}"></i>
-                                                <span
-                                                    class="rd-card__titulo rd-card__titulo--{{ $cor }}">{{ $labels[$status] }}</span>
+
+                                                {{-- Ícone SVG cósmico por status --}}
+                                                <div class="rd-card__icone-wrap rd-card__icone-wrap--{{ $cor }}">
+                                                    @if($status === 'entregue_recentemente')
+                                                        {{-- Foguete --}}
+                                                        <svg class="rd-icone-svg rd-icone-svg--foguete"
+                                                             viewBox="0 0 24 24" fill="none"
+                                                             xmlns="http://www.w3.org/2000/svg"
+                                                             aria-hidden="true">
+                                                            <path d="M12 2C12 2 7 7 7 14H17C17 7 12 2 12 2Z"
+                                                                  stroke="currentColor" stroke-width="1.5"
+                                                                  stroke-linejoin="round"/>
+                                                            <path d="M9 14V17C9 18.1 9.9 19 11 19H13C14.1 19 15 18.1 15 17V14"
+                                                                  stroke="currentColor" stroke-width="1.5"/>
+                                                            <path d="M10 19L8.5 22" stroke="currentColor"
+                                                                  stroke-width="1.5" stroke-linecap="round"/>
+                                                            <path d="M14 19L15.5 22" stroke="currentColor"
+                                                                  stroke-width="1.5" stroke-linecap="round"/>
+                                                            <circle cx="12" cy="10" r="1.5" fill="currentColor"/>
+                                                            <path d="M7 14C5.5 14 4 15 4 16.5"
+                                                                  stroke="currentColor" stroke-width="1.5"
+                                                                  stroke-linecap="round"/>
+                                                            <path d="M17 14C18.5 14 20 15 20 16.5"
+                                                                  stroke="currentColor" stroke-width="1.5"
+                                                                  stroke-linecap="round"/>
+                                                        </svg>
+
+                                                    @elseif($status === 'em_andamento')
+                                                        {{-- Meteoro --}}
+                                                        <svg class="rd-icone-svg rd-icone-svg--meteoro"
+                                                             viewBox="0 0 24 24" fill="none"
+                                                             xmlns="http://www.w3.org/2000/svg"
+                                                             aria-hidden="true">
+                                                            <circle cx="14.5" cy="9.5" r="4.5"
+                                                                    stroke="currentColor" stroke-width="1.5"/>
+                                                            <path d="M11.5 12.5L3 21"
+                                                                  stroke="currentColor" stroke-width="1.5"
+                                                                  stroke-linecap="round"/>
+                                                            <path d="M10 7.5L4.5 5.5"
+                                                                  stroke="currentColor" stroke-width="1.2"
+                                                                  stroke-linecap="round" opacity="0.55"/>
+                                                            <path d="M16.5 4.5L18 2"
+                                                                  stroke="currentColor" stroke-width="1.2"
+                                                                  stroke-linecap="round" opacity="0.55"/>
+                                                            <path d="M19.5 11.5L22 12.5"
+                                                                  stroke="currentColor" stroke-width="1.2"
+                                                                  stroke-linecap="round" opacity="0.55"/>
+                                                        </svg>
+
+                                                    @else
+                                                        {{-- OVNI --}}
+                                                        <svg class="rd-icone-svg rd-icone-svg--ovni"
+                                                             viewBox="0 0 24 24" fill="none"
+                                                             xmlns="http://www.w3.org/2000/svg"
+                                                             aria-hidden="true">
+                                                            <ellipse cx="12" cy="11" rx="9" ry="4"
+                                                                     stroke="currentColor" stroke-width="1.5"/>
+                                                            <path d="M8.5 11.5C8.5 11.5 8 15.5 12 15.5C16 15.5 15.5 11.5 15.5 11.5"
+                                                                  stroke="currentColor" stroke-width="1.5"
+                                                                  stroke-linecap="round"/>
+                                                            <circle cx="9"  cy="10" r="1"
+                                                                    fill="currentColor" opacity="0.65"/>
+                                                            <circle cx="12" cy="9.2" r="1"
+                                                                    fill="currentColor" opacity="0.65"/>
+                                                            <circle cx="15" cy="10" r="1"
+                                                                    fill="currentColor" opacity="0.65"/>
+                                                            <path d="M7.5 15.5L5.5 18.5"
+                                                                  stroke="currentColor" stroke-width="1.2"
+                                                                  stroke-linecap="round" opacity="0.45"/>
+                                                            <path d="M12 15.5V18.5"
+                                                                  stroke="currentColor" stroke-width="1.2"
+                                                                  stroke-linecap="round" opacity="0.45"/>
+                                                            <path d="M16.5 15.5L18.5 18.5"
+                                                                  stroke="currentColor" stroke-width="1.2"
+                                                                  stroke-linecap="round" opacity="0.45"/>
+                                                        </svg>
+                                                    @endif
+                                                </div>
+
+                                                <span class="rd-card__titulo rd-card__titulo--{{ $cor }}">
+                                                    {{ $labels[$status] }}
+                                                </span>
                                             </div>
+
                                             <ul class="rd-card__lista">
                                                 @forelse($acoes as $acao)
                                                     <li class="rd-card__item">{{ $acao->acao }}</li>
@@ -122,6 +202,7 @@
                                                     <li class="rd-card__item rd-card__item--vazio">Nenhuma ação registrada.</li>
                                                 @endforelse
                                             </ul>
+
                                         </div>
                                     </div>
                                 </div>
@@ -131,7 +212,7 @@
 
                     @endforeach
 
-                </div>
+                </div>{{-- /rd-timeline-wrap --}}
 
             </div>
         </section>
