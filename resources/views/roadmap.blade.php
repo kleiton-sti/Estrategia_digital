@@ -14,14 +14,9 @@
                         transparente e conectado com o munícipe.
                     </p>
                 </div>
-                <div class="roadmap-scroll-hint" aria-hidden="true">
-                    <span class="roadmap-scroll-hint__texto">ACOMPANHE NOSSO PROGRESSO</span>
-                    <div class="roadmap-scroll-hint__icone">
-                        <i class="bi bi-chevron-double-down"></i>
-                    </div>
-                </div>
+               
 
-                <!-- trilha neon -->
+                <!-- trilha nebulosa -->
                 <div class="rd-trilha">
                     <svg class="rd-trilha-svg" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true">
                         <path class="rd-trilha-glow" d="M0,60 C80,15 160,100 240,55 C320,10 400,90 480,50
@@ -42,11 +37,19 @@
                         </circle>
                     </svg>
                 </div>
+
+                 <div class="roadmap-scroll-hint" aria-hidden="true">
+                    <span class="roadmap-scroll-hint__texto">ACOMPANHE NOSSO PROGRESSO</span>
+                    <div class="roadmap-scroll-hint__icone">
+                        <i class="bi bi-chevron-double-down"></i>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- Linha do tempo -->
         <section id="trilha" class="roadmap-content section">
+
             <div class="container">
 
                 <div class="rd-timeline-wrap">
@@ -54,16 +57,16 @@
 
                     @foreach($eixos as $eixo)
                         @php
-                            $ordemDesejada = ['entregue_recentemente', 'em_andamento', 'explorando'];
+                            $ordemDesejada = ['explorando', 'em_andamento', 'entregue_recentemente'];
                             $labels = [
-                                'entregue_recentemente' => 'Concluído',
-                                'em_andamento'          => 'Em Execução',
                                 'explorando'            => 'Explorando',
+                                'em_andamento'          => 'Em Execução',
+                                'entregue_recentemente' => 'Concluído',
                             ];
                             $cores = [
-                                'entregue_recentemente' => 'verde',
-                                'em_andamento'          => 'amarelo',
                                 'explorando'            => 'roxo',
+                                'em_andamento'          => 'amarelo',
+                                'entregue_recentemente' => 'verde',
                             ];
                             $gruposExistentes = $eixo->roadmaps->groupBy('status');
                             $numEixo = $loop->iteration;
