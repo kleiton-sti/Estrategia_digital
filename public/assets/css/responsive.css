@@ -406,9 +406,9 @@
 }
 
 /* ============================================================
-   1600px — wide
+    1400px a 1600px — desktop largo a wide
    ============================================================ */
-@media (min-width: 1401px) and (max-width: 1600px) {
+@media (min-width: 1401px) and (max-width: 1580px) {
 
   .hero .hero-visual .hero-image #reflexo-img-8 {
     bottom: -74%;
@@ -440,7 +440,7 @@
 
 }
 
-@media (min-width: 1601px) and (max-width: 1800px) {
+@media (min-width: 1581px) and (max-width: 1800px) {
 
   .hero .hero-visual .hero-image #reflexo-img-8 {
     bottom: -122%;
@@ -454,7 +454,7 @@
 }
 
 /* ============================================================
-   acima de 1600px — telas largas padrão
+   acima de 1800px — telas largas padrão
    ============================================================ */
 @media (min-width: 1800px) and (max-width: 2560px) {
 
