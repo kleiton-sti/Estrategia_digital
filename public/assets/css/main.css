@@ -162,19 +162,27 @@ section.principios {
     inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
-/* .principios .container::before {
-  content: "";
-  position: absolute;
-  top: -9%;
-  left: 50%;
-  width: 150%;
-  height: 200px;
-  transform: translateX(-33%);
-  background: radial-gradient(circle, #04C4D9 0%, rgba(255,255,255,0) 20%);
-  filter: blur(60px);
-  pointer-events: none;
-  animation: moveLight 2s;
-} */
+.principios .container::before {
+    content: "";
+    position: absolute;
+    top: -502px;
+    left: 48%;
+    clip-path: inset(50% 0 0 0);
+    width: 200%;
+    height: 898px;
+    transform: translateX(-33%);
+    background: radial-gradient(circle, #04C4D9 0%, rgba(255, 255, 255, 0) 20%);
+    filter: blur(100px);
+    pointer-events: none;
+    opacity: 0;
+    animation: principiosGlow 0.6s ease forwards;
+    animation-delay: 0.8s;
+}
+
+@keyframes principiosGlow {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
 
 .principios .container::after {
   content: "";

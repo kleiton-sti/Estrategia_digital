@@ -109,7 +109,6 @@
                 <div id="reflexo-img-5"></div>
                 <div id="reflexo-img-6"></div>
                 <div id="reflexo-img-7"></div>
-                <div id="reflexo-img-8"></div>
               </div>
             </div>
           </div>

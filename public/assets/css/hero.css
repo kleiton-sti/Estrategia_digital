@@ -430,21 +430,6 @@
    animation: pulseReflexo 9s ease-in-out infinite;
  }
 
- .hero .hero-visual .hero-image #reflexo-img-8 {
-   content: "";
-   position: absolute;
-   bottom: -82%;
-   left: 21%;
-   clip-path : inset(50% 0 0 0);
-   width: 261%;
-   height: 463px;
-   transform: translateX(-33%);
-   background: radial-gradient(circle, #04C4D9 0%, rgba(255, 255, 255, 0) 20%);
-   filter: blur(60px);
-   z-index: 5;
-   pointer-events: none;
- }
-
  .hero .hero-visual .hero-image img {
    border-radius: 20px;
    animation: flutua3 5s ease-in-out infinite;

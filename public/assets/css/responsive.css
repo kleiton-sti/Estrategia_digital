@@ -7,8 +7,9 @@
  *   992px  — desktop médio
  *   1200px — desktop
  *   1400px — desktop largo
- *   1600px — wide
- *   3000px — ultrawide
+ *   1580px — wide
+ *   1800px — telas largas
+ *   2561px — ultrawide
  */
 
 /* ============================================================
@@ -135,6 +136,11 @@
   }
 
   .hero .hero-visual .hero-image {
+    display: none;
+  }
+
+  /* sem cérebro, sem glow */
+  .principios .container::before {
     display: none;
   }
 
@@ -374,12 +380,10 @@
    ============================================================ */
 @media (max-width: 1200px) {
 
-  .hero .hero-visual .hero-image #reflexo-img-8 {
-    bottom: -60%;
+  .principios .container::before {
+    top: -9%;
     height: 300px;
-    width: 261%;
-    left: 21%;
-    transform: translateX(-33%);
+    width: 150%;
     clip-path: inset(38% 10% 0 10%);
   }
 
@@ -394,30 +398,19 @@
    ============================================================ */
 @media (min-width: 1201px) and (max-width: 1400px) {
 
-  .hero .hero-visual .hero-image #reflexo-img-8 {
-    bottom: -70%;
+  .principios .container::before {
+    top: -9%;
     height: 360px;
-    width: 261%;
-    left: 21%;
-    transform: translateX(-33%);
+    width: 150%;
     clip-path: inset(40% 12% 0 12%);
   }
 
 }
 
 /* ============================================================
-    1400px a 1600px — desktop largo a wide
+   1400px a 1580px — desktop largo a wide
    ============================================================ */
 @media (min-width: 1401px) and (max-width: 1580px) {
-
-  .hero .hero-visual .hero-image #reflexo-img-8 {
-    bottom: -74%;
-    height: 420px;
-    width: 245%;
-    left: 21%;
-    transform: translateX(-33%);
-    clip-path: inset(40% 14% 0 14%);
-  }
 
   .header {
     padding-top: 10px;
@@ -438,50 +431,47 @@
     padding: 60px 40px;
   }
 
+  .principios .container::before {
+    top: -9%;
+    height: 420px;
+    width: 150%;
+    clip-path: inset(40% 14% 0 14%);
+  }
+
 }
 
+/* ============================================================
+   1581px a 1800px — wide
+   ============================================================ */
 @media (min-width: 1581px) and (max-width: 1800px) {
 
-  .hero .hero-visual .hero-image #reflexo-img-8 {
-    bottom: -122%;
-    height: 480px;
-    width: 261%;
-    left: 21%;
-    transform: translateX(-33%);
-    clip-path: inset(40% 16% 0 16%);
-  }
-
-}
-
-/* ============================================================
-   acima de 1800px — telas largas padrão
-   ============================================================ */
-@media (min-width: 1800px) and (max-width: 2560px) {
-
-  .hero .hero-visual .hero-image #reflexo-img-8 {
-    bottom: -82%;
-    height: 463px;
-    width: 261%;
-    left: 21%;
-    transform: translateX(-33%);
+  .principios .container::before {
+    top: -49%;
+    height: 646px;
+    width: 150%;
     clip-path: inset(50% 0 0 0);
   }
 
 }
 
 /* ============================================================
-   3000px — ultrawide
+   1800px a 2560px — telas largas
+   ============================================================ */
+@media (min-width: 1801px) and (max-width: 2560px) {
+
+  .principios .container::before {
+    top: -49%;
+    height: 646px;
+    width: 150%;
+    clip-path: inset(50% 0 0 0);
+  }
+
+}
+
+/* ============================================================
+   2561px+ — ultrawide
    ============================================================ */
 @media (min-width: 2561px) {
-
-  .hero .hero-visual .hero-image #reflexo-img-8 {
-    bottom: -132%;
-    height: 600px;
-    width: 261%;
-    left: 21%;
-    transform: translateX(-33%);
-    clip-path: inset(50% 0 0 0);
-  }
 
   .header .header-container {
     width: 55%;
@@ -509,6 +499,10 @@
   }
 
   .principios .container::before {
+    top: -9%;
+    height: 600px;
+    width: 150%;
+    clip-path: inset(50% 0 0 0);
     transform: translateX(-40%);
   }
 
