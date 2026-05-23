@@ -68,10 +68,18 @@ class EixoService
                 ];
             })->toArray();
 
+            /* constelações para a home */
+            $constelacoesPorEixo = $eixos->mapWithKeys(function ($eixo) {
+                return [
+                    $eixo->id_eixos => \App\Services\ConstellationService::porEixo($eixo->id_eixos),
+                ];
+            })->toArray();
+
             return array_merge($totais, [
-                'eixos'            => $eixos,
-                'eixosIcons'       => self::EIXOS_ICONS,
-                'progressoPorEixo' => $progressoPorEixo,
+                'eixos'               => $eixos,
+                'eixosIcons'          => self::EIXOS_ICONS,
+                'progressoPorEixo'    => $progressoPorEixo,
+                'constelacoesPorEixo' => $constelacoesPorEixo,
             ]);
         } catch (\Throwable $e) {
             Log::error('Erro ao carregar dados da home: ' . $e->getMessage());

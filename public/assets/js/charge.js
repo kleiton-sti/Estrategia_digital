@@ -1,59 +1,74 @@
 // Immediately invoked function usada para executar imediatamente após carregamendo dom DOM e isolar 
 // letiáveis e funcções do escopo global.
 (function () {
-    const ring = document.getElementById('ringProgress'); // nó interno ao SVG
-    if (!ring) return;
+  const ring = document.getElementById('ringProgress');
+  if (!ring) return;
 
-    const TOTAL         = 81;
-    const CIRCUMFERENCE = 326.7; // representa comprimento da circunferência (2 * π * raio), raio = 52.
+  const TOTAL = 81;
+  const CIRCUMFERENCE = 326.7;
 
-    const svg  = ring.closest('svg'); // Pega ancestral mais próximo, nesse caso o SVG
+  const svg = ring.closest('svg');
 
-    // Criar elemento em SVG 
-    const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
-    defs.innerHTML =
-        '<linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">' +
-            '<stop offset="0%"   stop-color="#00db79"/>' +
-            '<stop offset="100%" stop-color="#6effc6"/>' +
-        '</linearGradient>';
-    svg.prepend(defs); //adiciona no topo do SVG
-    
-    // Controla o padrão do traço, nesse caso o traço tem o tamanho da circunferência
-    ring.style.strokeDasharray  = CIRCUMFERENCE;
+  const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+  defs.innerHTML =
+    '<linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">' +
+    '<stop offset="0%"   stop-color="#00db79"/>' +
+    '<stop offset="100%" stop-color="#6effc6"/>' +
+    '</linearGradient>';
+  svg.prepend(defs);
 
-    // Controla a posição inicial do traço (começa oculto)
-    ring.style.strokeDashoffset = CIRCUMFERENCE;
+  ring.style.strokeDasharray  = CIRCUMFERENCE;
+  ring.style.strokeDashoffset = CIRCUMFERENCE;
 
-    function setProgress(value) {
-        let pct    = Math.min(value / TOTAL, 1);  // com o '1' o valor nunca passa de 100%
-        let offset = CIRCUMFERENCE * (1 - pct);
-        ring.style.strokeDashoffset = offset; // determina o quanto do traço deve ficar escondido
-    }
+  function setProgress(value) {
+    let pct    = Math.min(value / TOTAL, 1);
+    let offset = CIRCUMFERENCE * (1 - pct);
+    ring.style.strokeDashoffset = offset;
+  }
 
-    const statEl = document.querySelector('.ring-inner .ist-num--verde'); // pega os numeros do dom
-    if (!statEl) return;
+  const statEl = document.querySelector('.ring-inner .ist-num--verde');
+  if (!statEl) return;
 
-    // o MutationObserver observa mudanças no DOM em tempo real
-    const observer = new MutationObserver(function () {
-        let v = parseInt(statEl.textContent, 10) || 0;
-        setProgress(v);
-    });
+  const observer = new MutationObserver(function () {
+    let v = parseInt(statEl.textContent, 10) || 0;
+    setProgress(v);
+  });
 
-    // observa o statEl e todos elementos internos: nós filhos, mudancas de texto e demais elementos internos
-    observer.observe(statEl, { childList: true, characterData: true, subtree: true });
+  observer.observe(statEl, { childList: true, characterData: true, subtree: true });
 
-    // no carregamento da página ele já verifica o valor, colocando na base 10
-    const initial = parseInt(statEl.textContent, 10) || 0;
-    if (initial > 0) setProgress(initial);
+  const initial = parseInt(statEl.textContent, 10) || 0;
+  if (initial > 0) setProgress(initial);
+
+  window.atualizarAnel = function (concluidas, total) {
+    let circulo = document.getElementById('ini-anel-circulo');
+    if (!circulo) return;
+    let raio          = 26;
+    let circunferencia = 2 * Math.PI * raio;
+    let pct           = total > 0 ? concluidas / total : 0;
+    circulo.style.strokeDasharray  = circunferencia;
+    circulo.style.strokeDashoffset = circunferencia * (1 - pct);
+  };
+
 })();
 
-// aneis da pagina eixos
-(function () {
-  window.addEventListener('load', function () {
-    let svg     = document.querySelector('.constelacao-svg');
-    if (!svg) return;
-    let nos     = svg.querySelectorAll('.cst-no');
-    let arestas = svg.querySelectorAll('.cst-aresta');
+
+/* Anima constelações dentro de um escopo específico.
+   Sem argumento anima todas da página (usado no load inicial).
+   Com argumento anima apenas as do elemento passado (usado ao abrir eixo-inline). */
+window.carregarConstelacao = function (escopo) {
+  var alvo = escopo || document;
+  var svgs = alvo.querySelectorAll('.constelacao-svg');
+
+  svgs.forEach(function (svg) {
+    var nos     = svg.querySelectorAll('.cst-no');
+    var arestas = svg.querySelectorAll('.cst-aresta');
+
+    nos.forEach(function (el)     { el.classList.remove('cst-visivel'); });
+    arestas.forEach(function (el) { el.classList.remove('cst-visivel'); });
+
+    /* força reflow para que o browser processe o remove antes do add,
+       garantindo que a transição de opacidade seja re-executada */
+    svg.getBoundingClientRect();
 
     arestas.forEach(function (el, i) {
       setTimeout(function () { el.classList.add('cst-visivel'); }, 200 + i * 80);
@@ -62,15 +77,9 @@
       setTimeout(function () { el.classList.add('cst-visivel'); }, 400 + i * 120);
     });
   });
+};
 
-  /* atualiza o anel SVG de concluídas */
-  window.atualizarAnel = function (concluidas, total) {
-    let circulo = document.getElementById('ini-anel-circulo');
-    if (!circulo) return;
-    let raio = 26;
-    let circunferencia = 2 * Math.PI * raio;
-    let pct = total > 0 ? concluidas / total : 0;
-    circulo.style.strokeDasharray  = circunferencia;
-    circulo.style.strokeDashoffset = circunferencia * (1 - pct);
-  };
-})();
+
+window.addEventListener('load', function () {
+  window.carregarConstelacao();
+});

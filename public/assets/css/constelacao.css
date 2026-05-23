@@ -5,19 +5,7 @@ section#objetivos {
     gap: 0px !important;
 }
 
-/* Sobrescreve apenas o alinhamento específico da constelacao */
-.objetivos .section-title-obj {
-    align-items: center;
-}
 
-.section-title-obj {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 24px;
-    flex-wrap: wrap;
-}
 
 .section-title-obj-texto {
     min-width: 0;

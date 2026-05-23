@@ -215,12 +215,144 @@
     });
   });
 
-  document.querySelectorAll('.principios-card').forEach(card => {
-    card.addEventListener('click', () => {
-      const link = card.querySelector('a.principio-btn');
-      if (link) window.location.href = link.href;
+  /* —— Eixo-portais (home) —— */
+  (function () {
+    document.querySelectorAll('.eixo-portal__stars').forEach(el => {
+      for (let i = 0; i < 18; i++) {
+        const s = document.createElement('span');
+        s.style.cssText = [
+          'position:absolute',
+          `top:${Math.random() * 100}%`,
+          `left:${Math.random() * 100}%`,
+          `width:${Math.random() * 1.5 + 0.5}px`,
+          `height:${Math.random() * 1.5 + 0.5}px`,
+          'border-radius:50%',
+          'background:#fff',
+          `opacity:${(Math.random() * 0.3 + 0.05).toFixed(2)}`,
+        ].join(';');
+        el.appendChild(s);
+      }
     });
-  });
+
+    let eixoAtivoId = null;
+
+    function fecharEixoInline(id) {
+      const inline = document.getElementById('eixo-inline-' + id);
+      if (inline) inline.classList.add('is-hidden');
+      const portal = document.querySelector('.eixo-portal[data-eixo-id="' + id + '"]');
+      if (portal) portal.classList.remove('ativo');
+      eixoAtivoId = null;
+    }
+
+    function abrirEixoInline(eixoId) {
+      if (eixoAtivoId && eixoAtivoId !== eixoId) fecharEixoInline(eixoAtivoId);
+
+      const inline = document.getElementById('eixo-inline-' + eixoId);
+      if (!inline) return;
+
+      if (eixoAtivoId === eixoId) { fecharEixoInline(eixoId); return; }
+
+      inline.classList.remove('is-hidden');
+      eixoAtivoId = eixoId;
+
+      const portal = document.querySelector('.eixo-portal[data-eixo-id="' + eixoId + '"]');
+      if (portal) portal.classList.add('ativo');
+
+      /* anima as constelações do eixo-inline recém aberto */
+      if (window.carregarConstelacao) window.carregarConstelacao(inline);
+
+      const objetivosData = JSON.parse(inline.dataset.objetivos || '[]');
+      const detailsEl    = document.getElementById('principios-details-' + eixoId);
+
+      inline.querySelectorAll('.objetivos-item').forEach(card => {
+        if (card.dataset.listenerAtivo) return;
+        card.dataset.listenerAtivo = '1';
+
+        card.addEventListener('click', () => {
+          const oId     = Number(card.dataset.objetivoId);
+          const objetivo = objetivosData.find(o => o.id === oId);
+          if (!objetivo || !detailsEl) return;
+
+          const wrap = card.querySelector('.objetivos-wrapper');
+          const jaSelecionado = wrap && wrap.classList.contains('selecionado');
+
+          inline.querySelectorAll('.objetivos-wrapper.selecionado')
+            .forEach(el => el.classList.remove('selecionado'));
+          inline.querySelectorAll('.objetivo-toggle').forEach(t => {
+            t.classList.remove('bi-chevron-up');
+            t.classList.add('bi-chevron-down');
+          });
+
+          if (jaSelecionado) {
+            detailsEl.classList.add('is-hidden');
+            return;
+          }
+
+          if (wrap) wrap.classList.add('selecionado');
+          const toggle = card.querySelector('.objetivo-toggle');
+          if (toggle) { toggle.classList.remove('bi-chevron-down'); toggle.classList.add('bi-chevron-up'); }
+
+          const steps = detailsEl.querySelector('.process-steps');
+          if (steps) {
+            steps.innerHTML = '';
+            objetivo.iniciativas.forEach(ini => {
+              const statusClass = ini.status === 'Concluída' ? 'bg-success'
+                : ini.status === 'Em execução'           ? 'bg-primary'
+                :                                               'bg-danger';
+              const div = document.createElement('div');
+              div.className = 'step-item';
+              div.innerHTML = `
+                <div class="step-number rounded-circle ${statusClass}"></div>
+                <div class="step-content ms-3"><h5 class="mb-1">${ini.titulo}</h5></div>
+              `;
+              steps.appendChild(div);
+            });
+          }
+
+          const total      = objetivo.iniciativas.length;
+          const concluidas = objetivo.iniciativas.filter(i => i.status === 'Concluída').length;
+          const andamento  = objetivo.iniciativas.filter(i => i.status === 'Em execução').length;
+          const nao        = objetivo.iniciativas.filter(i => i.status !== 'Concluída' && i.status !== 'Em execução').length;
+
+          const q = s => detailsEl.querySelector(s);
+          if (q('[data-sidebar-total]'))      q('[data-sidebar-total]').textContent      = total;
+          if (q('[data-sidebar-concluidas]')) q('[data-sidebar-concluidas]').textContent = concluidas;
+          if (q('[data-sidebar-andamento]'))  q('[data-sidebar-andamento]').textContent  = andamento;
+          if (q('[data-sidebar-nao]'))        q('[data-sidebar-nao]').textContent        = nao;
+          if (q('[data-legenda-concluidas]')) q('[data-legenda-concluidas]').textContent = 'de ' + total + ' iniciativas entregues';
+
+          const circulo = q('[data-anel-circulo]');
+          if (circulo) {
+            const raio = 26, circ = 2 * Math.PI * raio;
+            const pct  = total > 0 ? concluidas / total : 0;
+            circulo.style.strokeDasharray  = circ;
+            circulo.style.strokeDashoffset = circ * (1 - pct);
+          }
+
+          detailsEl.classList.remove('is-hidden');
+          detailsEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+      });
+
+      setTimeout(() => inline.scrollIntoView({ behavior: 'smooth', block: 'start' }), 60);
+    }
+
+    document.querySelectorAll('.eixo-portal').forEach(portal => {
+      portal.addEventListener('click', () => {
+        const id = Number(portal.dataset.eixoId);
+        abrirEixoInline(id);
+      });
+    });
+
+    document.querySelectorAll('[data-fechar-eixo]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = Number(btn.dataset.fecharEixo);
+        fecharEixoInline(id);
+        const sec = document.getElementById('principios');
+        if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  })();
 
   /* ── Barra de progresso ── */
   document.addEventListener('DOMContentLoaded', () => {

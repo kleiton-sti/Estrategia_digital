@@ -23,21 +23,34 @@
 
   /* — Escala tipográfica com clamp() — */
   /* clamp(mínimo, fluido, máximo) — escala suave entre mobile e ultrawide */
-  --type-xs:    clamp(0.68rem,  0.64rem + 0.2vw,  0.75rem);   /* labels, badges */
-  --type-sm:    clamp(0.75rem,  0.70rem + 0.25vw, 0.875rem);  /* subtextos, datas */
-  --type-body:  clamp(0.82rem,  0.78rem + 0.2vw,  0.99rem);   /* texto secundário */
-  --type-base:  clamp(0.9rem,   0.85rem + 0.25vw, 1.0625rem); /* padrão de leitura */
-  --type-md:    clamp(1rem,     0.95rem + 0.3vw,  1.2rem);    /* h5, destaques */
-  --type-lg:    clamp(1.15rem,  1.05rem + 0.55vw, 1.5rem);    /* h4 */
-  --type-xl:    clamp(1.25rem,  1.1rem  + 0.75vw, 1.75rem);   /* h3, subtítulos */
-  --type-2xl:   clamp(1.5rem,   1.2rem  + 1.1vw,  2.25rem);   /* h2, section-title */
-  --type-3xl:   clamp(1.75rem,  1.3rem  + 1.75vw, 2.75rem);   /* h1, hero */
-  --type-4xl:   clamp(2.0rem,   1.5rem  + 2.4vw,  3.5rem);    /* hero ultrawide */
+  --type-xs: clamp(0.68rem, 0.64rem + 0.2vw, 0.75rem);
+  /* labels, badges */
+  --type-sm: clamp(0.75rem, 0.70rem + 0.25vw, 0.875rem);
+  /* subtextos, datas */
+  --type-body: clamp(0.82rem, 0.78rem + 0.2vw, 0.99rem);
+  /* texto secundário */
+  --type-base: clamp(0.9rem, 0.85rem + 0.25vw, 1.0625rem);
+  /* padrão de leitura */
+  --type-md: clamp(1rem, 0.95rem + 0.3vw, 1.2rem);
+  /* h5, destaques */
+  --type-lg: clamp(1.15rem, 1.05rem + 0.55vw, 1.5rem);
+  /* h4 */
+  --type-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.75rem);
+  /* h3, subtítulos */
+  --type-2xl: clamp(1.5rem, 1.2rem + 1.1vw, 2.25rem);
+  /* h2, section-title */
+  --type-3xl: clamp(1.75rem, 1.3rem + 1.75vw, 2.75rem);
+  /* h1, hero */
+  --type-4xl: clamp(2.0rem, 1.5rem + 2.4vw, 3.5rem);
+  /* hero ultrawide */
 
   /* — Line-heights padronizados — */
-  --lh-tight:   1.25;   /* headings */
-  --lh-base:    1.55;   /* texto corrido */
-  --lh-relaxed: 1.7;    /* parágrafos longos, subtítulos de hero */
+  --lh-tight: 1.25;
+  /* headings */
+  --lh-base: 1.55;
+  /* texto corrido */
+  --lh-relaxed: 1.7;
+  /* parágrafos longos, subtítulos de hero */
 
   /* — Paleta principal — */
   --background-color: #05071e;
@@ -56,10 +69,14 @@
   --nav-dropdown-hover-color: #ffffff;
 
   /* — Espaçamentos e layout com clamp() — */
-  --section-padding-y: clamp(3rem,   5vw,  6rem);    /* 48px → 80px → 96px */
-  --section-gap:       clamp(2.5rem, 4vw,  4.5rem);  /* 40px → 64px → 72px */
-  --title-gap:         clamp(1.5rem, 3vw,  3rem);    /* 24px → 48px → 48px */
-  --header-offset:     clamp(5rem,   6vw,  7.5rem);  /* 80px → 96px → 120px */
+  --section-padding-y: clamp(3rem, 5vw, 6rem);
+  /* 48px → 80px → 96px */
+  --section-gap: clamp(2.5rem, 4vw, 4.5rem);
+  /* 40px → 64px → 72px */
+  --title-gap: clamp(1.5rem, 3vw, 3rem);
+  /* 24px → 48px → 48px */
+  --header-offset: clamp(5rem, 6vw, 7.5rem);
+  /* 80px → 96px → 120px */
 
   /* — Comportamento global — */
   scroll-behavior: smooth;
@@ -116,7 +133,12 @@ a:hover {
   color: color-mix(in srgb, var(--accent-color), transparent 25%);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: var(--heading-color);
   font-family: var(--heading-font);
 }
@@ -155,6 +177,12 @@ section.principios {
   min-height: auto;
 }
 
+
+section.principios-details {
+  border:none;
+}
+
+
 /*
   Compensa o header fixo nas páginas secundárias (tudo exceto a home).
   A home usa o hero que já tem padding suficiente.
@@ -164,95 +192,6 @@ section.principios {
   padding-top: var(--header-offset);
 }
 
-/*--------------------------------------------------------------
-# Container da seção Princípios
---------------------------------------------------------------*/
-.principios .container {
-  flex-direction: column;
-  color: var(--default-color);
-  background-color: var(--background-color);
-  border-radius: 60px;
-  position: relative;
-  max-width: 95vw;
-  display: flex;
-  align-items: center;
-  padding: var(--section-padding-y) 80px;
-  overflow-x: clip;
-  overflow-y: clip;
-  box-shadow:
-    0 1px 0px rgba(4, 196, 217, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.06);
-}
-
-/* Glow superior — entra com delay de 0.8s */
-.principios .container::before {
-  content: "";
-  position: absolute;
-  top: -502px;
-  left: 48%;
-  clip-path: inset(50% 0 0 0);
-  width: 200%;
-  height: 898px;
-  transform: translateX(-33%);
-  background: radial-gradient(circle, #04C4D9 0%, rgba(255, 255, 255, 0) 20%);
-  filter: blur(100px);
-  pointer-events: none;
-  opacity: 0;
-  animation: principiosGlow 0.6s ease forwards;
-  animation-delay: 0.8s;
-}
-
-/* Glow lateral superior — entrada suave */
-.principios .container::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 65%;
-  width: 150%;
-  height: 300px;
-  transform: translateX(-40%);
-  background: radial-gradient(circle, #04C4D9 3%, rgba(255, 255, 255, 0) 100%);
-  filter: blur(300px);
-  pointer-events: none;
-  animation: spreadLight 7s ease-in-out;
-}
-
-/* Reflexos internos do container de principios */
-.principios .container .reflexo-01 {
-  position: absolute;
-  bottom: 0;
-  left: -70%;
-  width: 88%;
-  height: 20%;
-  background: radial-gradient(circle, #04C4D9 0%, rgba(255, 255, 255, 0) 70%);
-  filter: blur(100px);
-  pointer-events: none;
-  animation: spreadLight 7s ease-in-out;
-}
-
-.principios .container .reflexo-02 {
-  position: absolute;
-  bottom: 0;
-  left: -40%;
-  width: 100%;
-  height: 8px;
-  background: radial-gradient(circle, #04C4D9 0%, rgba(255, 255, 255, 0) 70%);
-  filter: blur(100px);
-  pointer-events: none;
-  animation: spreadLight 7s ease-in-out;
-}
-
-.principios .container .reflexo-03 {
-  position: absolute;
-  bottom: 0;
-  right: -5%;
-  width: 100%;
-  height: 1px;
-  background: radial-gradient(circle, #04c4d99d 0%, rgba(255, 255, 255, 0) 70%);
-  filter: blur(5px);
-  pointer-events: none;
-  animation: spreadLight 7s ease-in-out;
-}
 
 /*--------------------------------------------------------------
 # Section Titles — base unificada
@@ -287,6 +226,10 @@ section.principios {
   margin-bottom: 0;
 }
 
+section-title-obj p {
+  width: 35dvw;
+}
+
 /* Variante 1: centralizado */
 .section-title {
   padding-bottom: var(--title-gap);
@@ -305,6 +248,12 @@ section.principios {
 .section-title-obj {
   padding-bottom: var(--title-gap);
   position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap
 }
 
 /* Variante 3: alinhado à esquerda sem centra */

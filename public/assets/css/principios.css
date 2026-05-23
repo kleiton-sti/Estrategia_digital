@@ -1,5 +1,278 @@
 /*--------------------------------------------------------------
-# Principios Section
+# principios.css
+# Cards-portal da section Eixos Estratégicos (home).
+# Cada card é um "portal visual" para o eixo correspondente,
+# exibindo a constelação neural como elemento principal.
+--------------------------------------------------------------*/
+
+
+section#principios {
+  padding-top: 0 !important;
+  overflow: hidden;
+}
+
+
+/*--------------------------------------------------------------
+# Container da seção Princípios
+--------------------------------------------------------------*/
+.principios .container {
+  flex-direction: column;
+  color: var(--default-color);
+  position: relative;
+  max-width: 100vw;
+  display: flex;
+  align-items: center;
+  padding: 0 80px;
+}
+
+
+/*--------------------------------------------------------------
+# Card-portal principal
+--------------------------------------------------------------*/
+.eixo-portal {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  background: rgba(10, 14, 40, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  /* variáveis por eixo injetadas inline via Blade */
+  --eixo-glow: #04C4D9;
+  --eixo-rgb: 4, 196, 217;
+}
+
+.eixo-portal:hover {
+  transform: translateY(-6px);
+  border-color: color-mix(in srgb, var(--eixo-glow), transparent 55%);
+  box-shadow:
+    0 20px 60px rgba(var(--eixo-rgb), 0.15),
+    0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Estado ativo (eixo aberto) */
+.eixo-portal.ativo {
+  border-color: color-mix(in srgb, var(--eixo-glow), transparent 35%);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--eixo-glow), transparent 55%),
+    0 20px 60px rgba(var(--eixo-rgb), 0.2);
+}
+
+/*--------------------------------------------------------------
+# Nebulosa de fundo — glow difuso radial
+--------------------------------------------------------------*/
+.eixo-portal__nebulosa {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 80% 60% at 50% 70%,
+    rgba(var(--eixo-rgb), 0.07) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 0;
+}
+
+.eixo-portal:hover .eixo-portal__nebulosa {
+  opacity: 1.6;
+}
+
+/*--------------------------------------------------------------
+# Fio de luz superior
+--------------------------------------------------------------*/
+.eixo-portal__fio {
+  position: absolute;
+  top: 0;
+  left: 12%;
+  right: 12%;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    color-mix(in srgb, var(--eixo-glow), transparent 30%),
+    transparent
+  );
+  pointer-events: none;
+  z-index: 2;
+  transition: opacity 0.35s;
+}
+
+.eixo-portal:hover .eixo-portal__fio {
+  left: 0;
+  right: 0;
+  opacity: 0.9;
+}
+
+/*--------------------------------------------------------------
+# Cabeçalho do card
+--------------------------------------------------------------*/
+.eixo-portal__header {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px 0;
+}
+
+.eixo-portal__num {
+  font-family: 'Courier New', monospace;
+  font-size: var(--type-xs);
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: color-mix(in srgb, var(--eixo-glow), transparent 15%);
+  filter: drop-shadow(0 0 6px var(--eixo-glow));
+}
+
+.eixo-portal__badge {
+  font-size: var(--type-xs);
+  font-weight: 600;
+  font-family: var(--default-font);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 3px 10px;
+  border-radius: 50px;
+  background: rgba(var(--eixo-rgb), 0.10);
+  color: color-mix(in srgb, var(--eixo-glow), transparent 10%);
+  border: 1px solid rgba(var(--eixo-rgb), 0.22);
+}
+
+/*--------------------------------------------------------------
+# Área da constelação — corpo do card
+--------------------------------------------------------------*/
+.eixo-portal__cst {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 16px;
+  min-height: 160px;
+}
+
+/* O SVG da constelação ocupa todo o espaço disponível */
+.eixo-portal__cst .constelacao-svg {
+  width: 100%;
+  height: auto;
+  max-height: 180px;
+  filter: drop-shadow(0 0 8px rgba(var(--eixo-rgb), 0.25));
+  transition: filter 0.35s ease;
+}
+
+.eixo-portal:hover .eixo-portal__cst .constelacao-svg {
+  filter: drop-shadow(0 0 14px rgba(var(--eixo-rgb), 0.45));
+}
+
+/* Estrelas decorativas geradas via JS */
+.eixo-portal__stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+/*--------------------------------------------------------------
+# Rodapé do card
+--------------------------------------------------------------*/
+.eixo-portal__footer {
+  position: relative;
+  z-index: 2;
+  padding: 14px 20px 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.eixo-portal__titulo {
+  font-size: var(--type-md);
+  font-weight: 700;
+  font-family: var(--heading-font);
+  color: rgba(232, 231, 247, 0.88);
+  margin: 0;
+  line-height: var(--lh-tight);
+}
+
+/* Barra de progresso */
+.eixo-portal__progresso {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.eixo-portal__progresso-barra {
+  flex: 1;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.eixo-portal__progresso-fill {
+  height: 100%;
+  border-radius: 2px;
+  background: linear-gradient(
+    to right,
+    color-mix(in srgb, var(--eixo-glow), transparent 20%),
+    var(--eixo-glow)
+  );
+  box-shadow: 0 0 6px var(--eixo-glow);
+  transition: width 0.8s ease;
+}
+
+.eixo-portal__progresso-pct {
+  font-size: var(--type-xs);
+  font-family: 'Courier New', monospace;
+  font-weight: 600;
+  color: color-mix(in srgb, var(--eixo-glow), transparent 20%);
+  white-space: nowrap;
+}
+
+/* CTA inline */
+.eixo-portal__cta {
+  font-size: var(--type-xs);
+  font-weight: 600;
+  color: color-mix(in srgb, var(--default-color), transparent 45%);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: color 0.25s, gap 0.25s;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.eixo-portal:hover .eixo-portal__cta {
+  color: var(--eixo-glow);
+  gap: 8px;
+}
+
+.eixo-portal__cta .bi-arrow-right {
+  transition: transform 0.25s ease;
+}
+
+.eixo-portal:hover .eixo-portal__cta .bi-arrow-right {
+  transform: translateX(3px);
+}
+
+/*--------------------------------------------------------------
+# Container inline do eixo (revelado ao clicar no portal)
+--------------------------------------------------------------*/
+.eixo-inline {
+  background: var(--background-color);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/*--------------------------------------------------------------
+# Legado — mantido para não quebrar show.blade.php
 --------------------------------------------------------------*/
 .principios .principios-card {
   background: var(--surface-color);
@@ -11,117 +284,20 @@
   transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+  cursor: pointer;
 }
 
 .principios .principios-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 16px 40px rgba(0,0,0,0.18);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
   border-color: color-mix(in srgb, var(--accent-color), transparent 70%);
 }
 
-.principios .principios-card h4 {
-  display: inline-flex;
-  align-items: center;
-  font-size: 1.1rem;
-  font-weight: 700;
-  margin-bottom: 0.75rem;
-  gap: 10px;
-  width: auto;
-  font-family: var(--heading-font);
-  color: rgba(232, 231, 247, 0.73);
-}
-
-.principios .principios-icon {
-  font-size: 1.6rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.3s ease;
-}
-
-.principios .principios-card:hover .principios-icon {
-  transform: scale(1.1);
-}
-
-.principios .principios-card p {
-  font-size: 0.88rem;
-  color: color-mix(in srgb, var(--default-color), transparent 30%);
-  line-height: 1.65;
-  margin-bottom: 1rem;
-  max-width: 38rem;
-  width: 100%;
-}
-
-.principios .principios-leia-mais {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  margin-top: 1rem;
-  padding: 0 10px;
-  box-sizing: border-box;
-}
-
-.principios .principios-link {
-  text-decoration: none;
-  font-weight: 500;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  color: var(--accent-color);
-  font-size: 0.9rem;
-}
-
-.principios .principios-link:hover {
-  color: var(--accent-color);
-  text-decoration: underline;
-}
-
-.principios h4 {
-  margin-bottom: 12px;
-  font-size: 1.1rem;
-  font-weight: 700;
-  font-family: var(--heading-font);
-}
-
-.principios h4 a {
-  color: rgba(232, 231, 247, 0.73);
-  text-decoration: none;
-}
-
-.principios h4 a:hover {
-  color: var(--accent-color);
-}
-
-.principios p {
-  color: color-mix(in srgb, var(--default-color), transparent 30%);
-  line-height: 1.65;
-  margin-bottom: 20px;
-  font-size: 0.88rem;
-}
-
-.principios-leia-mais {
-  padding-top: 15px;
-  bottom: 15px;
-}
-
-.principios-link {
-  position: absolute;
-  bottom: 15px;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.principios-card { cursor: pointer; }
-
 /*--------------------------------------------------------------
-# Principios Details Section
+# Principios Details Section (show.blade.php)
 --------------------------------------------------------------*/
 .principios-details .principios-content h2 {
-  font-size: 1.8rem;
+  font-size: var(--type-2xl);
   font-weight: 700;
   font-family: var(--heading-font);
   color: rgba(232, 231, 247, 0.73);
@@ -129,17 +305,17 @@
 }
 
 .principios-details .principios-content .lead {
-  font-size: 1rem;
+  font-size: var(--type-base);
   color: color-mix(in srgb, var(--default-color), transparent 30%);
   margin-bottom: 1.5rem;
-  line-height: 1.65;
+  line-height: var(--lh-relaxed);
 }
 
 .principios-details .principios-content p {
-  font-size: 0.93rem;
+  font-size: var(--type-body);
   color: color-mix(in srgb, var(--default-color), transparent 20%);
   margin-bottom: 1.2rem;
-  line-height: 1.75;
+  line-height: var(--lh-relaxed);
 }
 
 .principios-details .principios-features {
@@ -150,128 +326,12 @@
   border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
 }
 
-.principios-details .principios-features h4 {
-  color: rgba(232, 231, 247, 0.73);
-  margin-bottom: 1.5rem;
-  font-size: 1.2rem;
-  font-weight: 600;
-  font-family: var(--heading-font);
-}
-
-.principios-details .principios-features .feature-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-}
-
-.principios-details .principios-features .feature-item i {
-  font-size: 1.4rem;
-  color: var(--accent-color);
-  margin-top: 0.2rem;
-}
-
-.principios-details .principios-features .feature-item h5 {
-  color: rgba(232, 231, 247, 0.73);
-  margin-bottom: 0.4rem;
-  font-size: 1rem;
-  font-weight: 600;
-  font-family: var(--heading-font);
-}
-
-.principios-details .principios-features .feature-item p {
-  margin: 0;
-  font-size: 0.88rem;
-  line-height: 1.65;
-  color: color-mix(in srgb, var(--default-color), transparent 30%);
-}
-
-.principios-details .principios-process h4 {
-  color: rgba(232, 231, 247, 0.73);
-  margin-bottom: 2rem;
-  font-size: 1.2rem;
-  font-weight: 600;
-  font-family: var(--heading-font);
-}
-
-.principios-details .principios-process .process-steps .step-item {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-  position: relative;
-}
-
-.principios-details .principios-process .process-steps .step-item .step-number {
-  background: var(--accent-color);
-  color: var(--contrast-color);
-  width: 0.8rem; height: 0.8rem;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 1rem;
-  flex-shrink: 0;
-  
-}
-
-.principios-details .principios-process .process-steps .step-item .step-content h5 {
-  color: rgba(232, 231, 247, 0.73);
-  margin-bottom: 0.4rem;
-  font-size: 1rem;
-  font-weight: 600;
-  font-family: var(--heading-font);
-}
-
-.principios-details .principios-process .process-steps .step-item .step-content p {
-  margin: 0;
-  line-height: 1.65;
-  font-size: 0.88rem;
-  color: color-mix(in srgb, var(--default-color), transparent 30%);
-}
-
-.principios-details .principios-info,
-.principios-details .principios-testimonial,
-.principios-details .inquiry-form {
-  background: var(--surface-color);
-  padding: 1.75rem;
-  border-radius: 12px;
-  margin-bottom: 1.5rem;
-  border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
-}
-
 .principios-details h4 {
   color: rgba(232, 231, 247, 0.73);
   margin-bottom: 1.2rem;
-  font-size: 1.1rem;
+  font-size: var(--type-md);
   font-weight: 600;
   font-family: var(--heading-font);
-}
-
-.principios-details .principios-facts {
-  list-style: none;
-  padding: 0; margin: 0;
-}
-
-.principios-details .principios-facts li {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.6rem 0;
-  border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
-  font-size: 0.9rem;
-}
-
-.principios-details .principios-facts li:last-child { border-bottom: none; }
-
-.principios-details .principios-facts li .fact-label {
-  font-weight: 500;
-  color: color-mix(in srgb, var(--default-color), transparent 30%);
-}
-
-.principios-details .principios-facts li .fact-value {
-  font-weight: 600;
-  color: rgba(232, 231, 247, 0.73);
 }
 
 #principios-details .row { justify-content: center; }
