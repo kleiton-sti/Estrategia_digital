@@ -57,10 +57,8 @@
                         <circle class="ring-progress" cx="60" cy="60" r="52" id="ringProgress" />
                       </svg>
                       <div class="ring-inner">
-                        <span class="ist-num ist-num--verde purecounter"
-                          data-purecounter-start="0"
-                          data-purecounter-end="{{ $concluidas }}"
-                          data-purecounter-duration="3"></span>
+                        <span class="ist-num ist-num--verde purecounter" data-purecounter-start="0"
+                          data-purecounter-end="{{ $concluidas }}" data-purecounter-duration="3"></span>
                       </div>
                     </div>
 
@@ -75,19 +73,15 @@
 
                     <!-- em execução -->
                     <div class="stat-col">
-                      <span class="ist-num ist-num--amarelo purecounter"
-                        data-purecounter-start="0"
-                        data-purecounter-end="{{ $andamento }}"
-                        data-purecounter-duration="3"></span>
+                      <span class="ist-num ist-num--amarelo purecounter" data-purecounter-start="0"
+                        data-purecounter-end="{{ $andamento }}" data-purecounter-duration="3"></span>
                       <span class="ist-pill ist-pill--amarelo">Em execução</span>
                     </div>
 
                     <!-- não iniciadas -->
                     <div class="stat-col">
-                      <span class="ist-num ist-num--vermelho purecounter"
-                        data-purecounter-start="0"
-                        data-purecounter-end="{{ $naoIniciadas }}"
-                        data-purecounter-duration="3"></span>
+                      <span class="ist-num ist-num--vermelho purecounter" data-purecounter-start="0"
+                        data-purecounter-end="{{ $naoIniciadas }}" data-purecounter-duration="3"></span>
                       <span class="ist-pill ist-pill--vermelho">Não iniciadas</span>
                     </div>
 
@@ -116,41 +110,42 @@
         </div>
       </div>
     </section>
-    <!-- /Hero Section -->
 
-    <!-- Eixos Section -->
-    <!-- <section id="principios" class="principios section">
-      <div class="container">
-        <div class="reflexo-01"></div>
-        <div class="reflexo-02"></div>
-        <div class="reflexo-03"></div>
-        <div class="section-title">
-          <h2>Eixos</h2>
-          <p>Cada eixo reúne iniciativas pensadas especialmente para você, cidadão de Caraguatatuba, aproximando a
-            transformação digital da sua vida e do seu dia a dia.</p>
-        </div>
-        <div>
-          <div class="row gy-4">
-            @foreach($eixos as $eixo)
-              <div class="col-lg-4 col-md-6">
-                <div class="principios-card">
-                  <h4>
-                    <span class="principios-icon">
-                      <i class="{{ $eixosIcons[$eixo->id_eixos] ?? 'bi-question-circle' }}"></i>
-                    </span>
-                    <a href="{{ route('eixos.show', $eixo->id_eixos) }}" class="principio-btn text-decoration-none">
-                      {{ $eixo->titulo }}
-                    </a>
-                  </h4>
-                  <p class="small">{{ $eixo->descricao }}</p>
+      <!-- /Hero Section -->
+
+      <!-- Eixos Section -->
+      <section id="principios" class="principios section">
+        <div class="container">
+          <div class="reflexo-01"></div>
+          <div class="reflexo-02"></div>
+          <div class="reflexo-03"></div>
+          <div class="section-title">
+            <h2>Eixos</h2>
+            <p>Cada eixo reúne iniciativas pensadas especialmente para você, cidadão de Caraguatatuba, aproximando a
+              transformação digital da sua vida e do seu dia a dia.</p>
+          </div>
+          <div>
+            <div class="row gy-4">
+              @foreach($eixos as $eixo)
+                <div class="col-lg-4 col-md-6">
+                  <div class="principios-card">
+                    <h4>
+                      <span class="principios-icon">
+                        <i class="{{ $eixosIcons[$eixo->id_eixos] ?? 'bi-question-circle' }}"></i>
+                      </span>
+                      <a href="{{ route('eixos.show', $eixo->id_eixos) }}" class="principio-btn text-decoration-none">
+                        {{ $eixo->titulo }}
+                      </a>
+                    </h4>
+                    <p class="small">{{ $eixo->descricao }}</p>
+                  </div>
                 </div>
-              </div>
-            @endforeach
+              @endforeach
+            </div>
           </div>
         </div>
-      </div>
-    </section> -->
-    <!-- /Eixos Section -->
+      </section>
+      <!-- /Eixos Section -->
 
   </main>
 

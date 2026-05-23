@@ -15,7 +15,7 @@
 }
 
 .hero .hero-content h1 {
-  font-size: var(--type-3xl);
+  font-size: var(--type-4xl);
   font-weight: 700;
   line-height: var(--lh-tight);
   color: rgba(232, 231, 247, 0.73);

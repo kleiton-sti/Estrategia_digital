@@ -48,12 +48,9 @@
   margin-bottom: 2rem;
 }
 
-.hero .hero-content h1 {
-  font-size: 1.5rem;
-}
+
 
 .hero .hero-content p {
-  font-size: 0.875rem;
   text-align: left;
 }
 
@@ -93,13 +90,6 @@
 
 .stat-divisor {
   display: none;
-}
-
-/* Principios */
-.principios .container {
-  border-radius: 1.5rem;
-  padding: 2rem 1.25rem;
-  max-width: 100%;
 }
 
 .principios .container::before {
@@ -278,10 +268,6 @@
     --title-gap: 1.75rem;
   }
 
-  .hero .hero-content h1 {
-    font-size: 2rem;
-  }
-
   .glass-cards-row {
     flex-direction: row;
   }
@@ -331,23 +317,8 @@
     margin-bottom: 0;
   }
 
-  .hero .hero-content h1 {
-    font-size: 1.875rem;
-  }
-
-  .hero .hero-content p {
-    text-align: left;
-    font-size: 0.9375rem;
-  }
-
   .hero .hero-buttons {
     justify-content: flex-start;
-  }
-
-  .principios .container {
-    border-radius: 2.5rem;
-    padding: 3rem 2.5rem;
-    max-width: 90dvw;
   }
 
   .principios .container::before {
@@ -436,9 +407,6 @@
     width: 100%;
   }
 
-  .hero .hero-content h1 {
-    font-size: 2rem;
-  }
 
   .hero .hero-visual .hero-image {
     display: block;
@@ -451,11 +419,6 @@
 
   .ring-inner .ist-num--verde {
     font-size: 1.75rem;
-  }
-
-  .principios .container {
-    max-width: 82dvw;
-    padding: 4rem 3.75rem;
   }
 
   .objetivos .objetivos-wrapper {
@@ -526,15 +489,6 @@
     padding: 0 1.625rem;
   }
 
-  .hero .hero-content h1 {
-    font-size: 2.125rem;
-  }
-
-  .principios .container {
-    max-width: 80dvw;
-    padding: 5rem 5rem;
-  }
-
   .objetivos-details .objetivos-details-content {
     padding-left: 1.25rem;
   }
@@ -554,14 +508,6 @@
     width: 60%;
   }
 
-  .hero .hero-content h1 {
-    font-size: 2.25rem;
-  }
-
-  .principios .container {
-    max-width: 90dvw;
-    padding: 5rem 5rem;
-  }
 
 }
 
@@ -576,15 +522,6 @@
 
   .header .header-container {
     width: 45%;
-  }
-
-  .hero .hero-content h1 {
-    font-size: 2.375rem;
-  }
-
-  .principios .container {
-    max-width: 75dvw;
-    padding: 5.5rem 6rem;
   }
 
 }
@@ -603,24 +540,8 @@
     width: 36%;
   }
 
-
-
-  .hero .hero-content h1 {
-    font-size: 2.75rem;
-  }
-
-  .hero .hero-content p {
-    font-size: 1.0625rem;
-  }
-
-
   section#hero {
     padding-top: 1rem;
-  }
-
-  .principios .container {
-    max-width: 68dvw;
-    padding: 6.25rem 7.5rem;
   }
 
   .section-title h2,

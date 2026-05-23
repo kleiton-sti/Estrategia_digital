@@ -25,7 +25,7 @@
   /* clamp(mínimo, fluido, máximo) — escala suave entre mobile e ultrawide */
   --type-xs:    clamp(0.68rem,  0.64rem + 0.2vw,  0.75rem);   /* labels, badges */
   --type-sm:    clamp(0.75rem,  0.70rem + 0.25vw, 0.875rem);  /* subtextos, datas */
-  --type-body:  clamp(0.82rem,  0.78rem + 0.2vw,  0.95rem);   /* texto secundário */
+  --type-body:  clamp(0.82rem,  0.78rem + 0.2vw,  0.99rem);   /* texto secundário */
   --type-base:  clamp(0.9rem,   0.85rem + 0.25vw, 1.0625rem); /* padrão de leitura */
   --type-md:    clamp(1rem,     0.95rem + 0.3vw,  1.2rem);    /* h5, destaques */
   --type-lg:    clamp(1.15rem,  1.05rem + 0.55vw, 1.5rem);    /* h4 */
@@ -173,7 +173,7 @@ section.principios {
   background-color: var(--background-color);
   border-radius: 60px;
   position: relative;
-  max-width: 80dvw;
+  max-width: 95vw;
   display: flex;
   align-items: center;
   padding: var(--section-padding-y) 80px;
@@ -274,7 +274,6 @@ section.principios {
 .section-titulo h2 {
   font-size: var(--type-2xl);
   font-weight: 700;
-  color: rgba(232, 231, 247, 0.73);
   margin-bottom: 12px;
   font-family: var(--heading-font);
   line-height: var(--lh-tight);
@@ -284,7 +283,6 @@ section.principios {
 .section-title-obj p,
 .section-titulo p {
   font-size: var(--type-body);
-  color: color-mix(in srgb, var(--default-color), transparent 30%);
   line-height: var(--lh-relaxed);
   margin-bottom: 0;
 }
