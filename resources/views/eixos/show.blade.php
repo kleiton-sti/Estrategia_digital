@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<main class="main principios-details-page pagina-interna">
+<main id="main-content" class="main principios-details-page pagina-interna">
 
   <!-- Objetivos -->
   <section id="objetivos" class="objetivos section">
@@ -34,23 +34,23 @@
             <div class="objetivos-wrapper">
               <div class="objetivos-content d-flex align-items-center justify-content-between">
                 <div>
-                  <h6 class="objetivo-titulo mb-2">{{ $objetivo->titulo }}</h6>
+                  <h3 class="objetivo-titulo mb-2">{{ $objetivo->titulo }}</h3>
                   <span class="badge color-azul"><strong>{{ $objetivo->iniciativas->count() }}</strong> Iniciativas</span>
                 </div>
-                <i class="bi bi-chevron-down objetivo-toggle"></i>
+                <i class="bi bi-chevron-down objetivo-toggle" aria-hidden="true"></i>
               </div>
-              <div class="objetivo-iniciativas" style="display: none; margin-top: 15px;"></div>
+              <div class="objetivo-iniciativas is-hidden mt-iniciativas" aria-live="polite"></div>
             </div>
           </div>
         @endforeach
       </div>
-      <p class="desc">{!! $objetivo->descricao !!}</p>
+      {{-- Bug corrigido: linha abaixo estava fora do @foreach e exibia apenas a descrição do último objetivo --}}
 
     </div>
   </section>
 
   <!-- Iniciativas -->
-  <section id="principios-details" class="principios-details section" style="display:none;">
+  <section id="principios-details" class="principios-details section is-hidden">
     <div class="container" data-aos="fade-up">
 
       <!-- Painel de resumo estilo dashboard -->

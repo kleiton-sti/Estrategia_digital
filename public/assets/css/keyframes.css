@@ -1,0 +1,245 @@
+/*--------------------------------------------------------------
+# keyframes.css
+# Arquivo central de animações do projeto.
+# Importado via @import em main.css — não carregar via <link> separado.
+#
+# Índice:
+#   1. Fundo e partículas
+#   2. Luz e brilho (glow, spread, nebulosa)
+#   3. Flutuação (hero, roadmap)
+#   4. Reflexo e pulso (hero, constelação)
+#   5. Interface (preloader, scroll, coração)
+#   6. Roadmap (trilha, planetas, cards)
+#   7. Constelação neural
+#   8. Dashboards (rotação de tela)
+--------------------------------------------------------------*/
+
+/* ============================================================
+   1. Fundo e partículas
+   ============================================================ */
+
+/* Grade de pontos animada no hero e body */
+@keyframes ondaLuz {
+  from {
+    -webkit-mask-position: 150% 0%;
+    mask-position: 150% 0%;
+  }
+  to {
+    -webkit-mask-position: -50% 0%;
+    mask-position: -50% 0%;
+  }
+}
+
+/* ============================================================
+   2. Luz e brilho
+   ============================================================ */
+
+/* Entrada suave de elementos de luz e reflexo */
+@keyframes spreadLight {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Movimento diagonal de luz (secao principios) */
+@keyframes moveLight {
+  from {
+    transform: translateX(0%);
+    opacity: 0;
+  }
+  25% {
+    transform: translateX(0%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(-33%);
+    opacity: 1;
+  }
+}
+
+/* Aparição do glow da seção principios (animação com delay via animation-delay: 0.8s) */
+@keyframes principiosGlow {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ============================================================
+   3. Flutuação
+   ============================================================ */
+
+/* Flutuação leve — uso geral */
+@keyframes flutua1 {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+
+/* Flutuação média */
+@keyframes flutua2 {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+
+/* Flutuação ampla — imagem principal do hero */
+@keyframes flutua3 {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-12px); }
+}
+
+/* ============================================================
+   4. Reflexo e pulso
+   ============================================================ */
+
+/* Pulso do ícone de coração no footer */
+@keyframes pulse {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.3); }
+  100% { transform: scale(1); }
+}
+
+/* Pulso dos reflexos de luz no hero */
+@keyframes pulseReflexo {
+  0%   { transform: scale(0); }
+  50%  { transform: scale(1); }
+  100% { transform: scale(0); }
+}
+
+/* ============================================================
+   5. Interface
+   ============================================================ */
+
+/* Spinner do preloader de página */
+@keyframes animate-preloader {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ============================================================
+   6. Roadmap — trilha, planetas, cards, timeline
+   ============================================================ */
+
+/* Trilha neon pontilhada — movimento contínuo da linha */
+@keyframes rdDash {
+  to { stroke-dashoffset: -40; }
+}
+
+/* Brilho pulsante na linha vertical central do roadmap */
+@keyframes rdVLineGlow {
+  from { opacity: 0.25; }
+  to   { opacity: 0.60; }
+}
+
+/* Flutuação vertical do planeta marcador de eixo */
+@keyframes rdPlanetFloat {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-6px); }
+}
+
+/* Rotação do anel orbital ao redor do planeta */
+@keyframes rdGirar {
+  to { transform: translate(-50%, -50%) rotateX(70deg) rotateZ(360deg); }
+}
+
+/* Pulso do halo difuso ao redor do planeta */
+@keyframes rdHaloPulse {
+  0%, 100% {
+    opacity: 0.70;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.18);
+  }
+}
+
+/* Flutuação orgânica dos cards do roadmap (delays variados por :nth-child no roadmap.css) */
+@keyframes rdCardFloat {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-7px); }
+}
+
+/* Pulso do ponto de marcação na linha do timeline */
+@keyframes rdPontoPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.30;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* Bounce do indicador de scroll no hero do roadmap */
+@keyframes rdScrollBounce {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(8px);
+    opacity: 0.6;
+  }
+}
+
+/* Brilho pulsante no separador cósmico entre eixos */
+@keyframes rdSepBrilho {
+  0%, 100% { opacity: 0.5; }
+  50%       { opacity: 1; }
+}
+
+/* Piscar das estrelas de fundo geradas via JS (rd-star) */
+@keyframes rdStarTwinkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  50% {
+    opacity: var(--op, 0.5);
+    transform: scale(1);
+  }
+}
+
+/* Animação do ícone SVG de foguete (status: Concluído) */
+@keyframes rdFoguete {
+  0%, 100% { transform: translateY(0) rotate(-5deg); }
+  50%       { transform: translateY(-3px) rotate(5deg); }
+}
+
+/* Animação do ícone SVG de meteoro (status: Em Execução) */
+@keyframes rdMeteoro {
+  0%, 100% { transform: translate(0, 0) rotate(-45deg); }
+  50%       { transform: translate(2px, -2px) rotate(-45deg); }
+}
+
+/* Animação do ícone SVG de OVNI (status: Explorando) */
+@keyframes rdOvni {
+  0%, 100% { transform: translateY(0) scaleX(1); }
+  25%       { transform: translateY(-2px) scaleX(1.04); }
+  75%       { transform: translateY(2px) scaleX(0.97); }
+}
+
+/* ============================================================
+   7. Constelação neural
+   ============================================================ */
+
+/* Pulso dos nós ativos secundários */
+@keyframes cstPulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.55; }
+}
+
+/* Pulso dos nós principais (maior destaque) */
+@keyframes cstPulsePrincipal {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.65; }
+}
+
+/* ============================================================
+   8. Dashboards (hands.blade / stii.blade)
+   ============================================================ */
+
+/* Rotação do ícone de celular — aviso de orientação */
+@keyframes rotatePhone {
+  0%  { transform: rotate(0deg); }
+  25% { transform: rotate(90deg); }
+  50% { transform: rotate(0deg); }
+}

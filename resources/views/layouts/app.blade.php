@@ -31,9 +31,7 @@
   <link href="{{ asset('assets/css/conteudo-artigo.css') }}" rel="stylesheet">
   <link href="{{ asset('assets/css/publicacao.css') }}" rel="stylesheet">
   <link href="{{ asset('assets/css/login.css') }}" rel="stylesheet">
-  <link href="{{ asset('assets/css/hologram.css') }}" rel="stylesheet">
   <link href="{{ asset('assets/css/constelacao.css') }}" rel="stylesheet">
-  <link href="{{ asset('assets/css/roadmap.css') }}" rel="stylesheet">
   <link href="{{ asset('assets/css/responsive.css') }}" rel="stylesheet">
   @stack('styles')
 
@@ -54,17 +52,17 @@
     <div class="bg-particles"></div>
   </div>
 
-  <header id="header" class="header d-flex align-items-center">
+  <header id="header" class="header d-flex align-items-center" aria-label="Navegação principal">
 
     <div
       class="header-container container-fluid container-xl  d-flex align-items-center justify-content-between sticky-top">
 
       <a href="{{ route('home') }}" class="logo d-flex align-items-center me-auto me-xl-0">
         <img src="https://www.caraguatatuba.sp.gov.br/pmc/wp-content/themes/awesomepmc/assets/img/favicon.png" alt="">
-        <h1 class="sitename">Secretaria de Tecnologia</h1>
+        <span class="sitename">Secretaria de Tecnologia</span>
       </a>
 
-      <nav id="navmenu" class="navmenu">
+      <nav id="navmenu" class="navmenu" aria-label="Menu principal">
         <ul>
           <li><a href="{{ route('home') }}">Home</a></li>
 
@@ -81,14 +79,14 @@
           </li>
 
           <li class="dropdown">
-            <a href="#"><span>Indicadores</span></i></a>
+            <a href="#"><span>Indicadores</span></a>
             <ul>
               <li><a href="{{ route('tabelas') }}"><span>Painel TCESP</span></a></li>
             </ul>
           </li>
 
           <li class="dropdown">
-            <a href="#"><span>Políticas</span></i></a>
+            <a href="#"><span>Políticas</span></a>
             <ul>
               <li><a href="{{ route('regulamentacoes') }}"><span>Regulamentação</span></a></li>
             </ul>
@@ -127,7 +125,7 @@
 
   @yield('content')
 
-  <footer id="footer" class="text-white">
+  <footer id="footer" class="text-white" role="contentinfo" aria-label="Rodapé — Prefeitura de Caraguatatuba">
 
     <div class="text-white text-center footer-back py-2">
       <a href="https://www.caraguatatuba.sp.gov.br/pmc/" title="Prefeitura Municipal de Caraguatatuba">
@@ -230,14 +228,10 @@
       <div class="text-center mt-4">
         <div class="d-flex justify-content-center align-items-center footer-gap flex-wrap">
           <div class="d-flex gap-4 align-items-center">
-            <a href="https://www.facebook.com/prefeituradecaraguatatuba" class="text-white fs-5"><i
-                class="bi bi-facebook"></i></a>
-            <a href="https://www.instagram.com/caraguatatuba_oficial/" class="text-white fs-5"><i
-                class="bi bi-instagram"></i></a>
-            <a href="https://www.youtube.com/channel/UCH84Ukn-PabhE7vhXxhPUDw" class="text-white fs-5"><i
-                class="bi bi-youtube"></i></a>
-            <a href="https://www.flickr.com/photos/prefeituracaraguatatuba/albums" class="text-white fs-5"><i
-                class="bi bi-image"></i></a>
+            <a href="https://www.facebook.com/prefeituradecaraguatatuba" class="text-white fs-5" aria-label="Facebook da Prefeitura de Caraguatatuba" target="_blank" rel="noopener noreferrer"><i class="bi bi-facebook" aria-hidden="true"></i></a>
+            <a href="https://www.instagram.com/caraguatatuba_oficial/" class="text-white fs-5" aria-label="Instagram da Prefeitura de Caraguatatuba" target="_blank" rel="noopener noreferrer"><i class="bi bi-instagram" aria-hidden="true"></i></a>
+            <a href="https://www.youtube.com/channel/UCH84Ukn-PabhE7vhXxhPUDw" class="text-white fs-5" aria-label="YouTube da Prefeitura de Caraguatatuba" target="_blank" rel="noopener noreferrer"><i class="bi bi-youtube" aria-hidden="true"></i></a>
+            <a href="https://www.flickr.com/photos/prefeituracaraguatatuba/albums" class="text-white fs-5" aria-label="Flickr da Prefeitura de Caraguatatuba" target="_blank" rel="noopener noreferrer"><i class="bi bi-image" aria-hidden="true"></i></a>
           </div>
           <p class="small mb-0">© Copyright 2025 – Prefeitura Municipal de Caraguatatuba • CNPJ 46.482.840/0001-39</p>
           <p class="small footer-p mb-0">Feito com <i class="bi bi-heart heart-icon"></i> pela Secretaria de Tecnologia

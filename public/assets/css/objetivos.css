@@ -56,16 +56,16 @@ section#principios-details {
 }
 
 #objetivos h1 {
-  font-size: 1.8rem;
+  font-size: var(--type-2xl);
   font-weight: 700;
-  line-height: 1.25;
+  line-height: var(--lh-tight);
   margin-bottom: 1rem;
   color: rgba(232, 231, 247, 0.73);
   font-family: var(--heading-font);
 }
 
 #objetivos .container h2 {
-  font-size: 1.5rem;
+  font-size: var(--type-xl);
   font-weight: 700;
   margin-bottom: 1.5rem;
   color: rgba(232, 231, 247, 0.73);
@@ -382,10 +382,10 @@ section#principios-details {
 .step-content { flex: 1; min-width: 0; }
 
 .step-content h5 {
-  font-size: 0.88rem !important;
+  font-size: var(--type-body);
   font-weight: 600;
   color: rgba(232, 231, 247, 0.88);
-  line-height: 1.4;
+  line-height: var(--lh-base);
   margin: 0;
   font-family: var(--default-font);
 }
@@ -402,6 +402,10 @@ section#principios-details {
 
 #principios-details .row { justify-content: center; }
 #principios-details .iniciativas { flex: 1; }
+
+/* — Utilitários de estado (controlados pelo JS) — */
+.is-hidden { display: none; }
+.mt-iniciativas { margin-top: 15px; }
 
 @keyframes cstPulsePrincipal {
     0%, 100% { opacity: 1; }

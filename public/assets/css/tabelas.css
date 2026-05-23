@@ -37,7 +37,7 @@
 
 .section-title h1 { color: var(--heading-color); }
 
-html, body {
-  scroll-behavior: auto !important;
-  overflow-anchor: none;
+/* Desativa scroll-behavior apenas no contexto da página de tabelas */
+.tabelas-page {
+  scroll-behavior: auto;
 }

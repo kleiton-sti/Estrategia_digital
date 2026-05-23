@@ -1,16 +1,16 @@
 // Immediately invoked function usada para executar imediatamente após carregamendo dom DOM e isolar 
 // letiáveis e funcções do escopo global.
 (function () {
-    let ring = document.getElementById('ringProgress'); // nó interno ao SVG
+    const ring = document.getElementById('ringProgress'); // nó interno ao SVG
     if (!ring) return;
 
-    let TOTAL         = 81;
-    let CIRCUMFERENCE = 326.7; // representa comprimento da circunferência (2 * π * raio), raio = 52.
+    const TOTAL         = 81;
+    const CIRCUMFERENCE = 326.7; // representa comprimento da circunferência (2 * π * raio), raio = 52.
 
-    let svg  = ring.closest('svg'); // Pega ancestral mais próximo, nesse caso o SVG
+    const svg  = ring.closest('svg'); // Pega ancestral mais próximo, nesse caso o SVG
 
     // Criar elemento em SVG 
-    let defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+    const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
     defs.innerHTML =
         '<linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">' +
             '<stop offset="0%"   stop-color="#00db79"/>' +
@@ -30,11 +30,11 @@
         ring.style.strokeDashoffset = offset; // determina o quanto do traço deve ficar escondido
     }
 
-    let statEl = document.querySelector('.ring-inner .ist-num--verde'); // pega os numeros do dom
+    const statEl = document.querySelector('.ring-inner .ist-num--verde'); // pega os numeros do dom
     if (!statEl) return;
 
     // o MutationObserver observa mudanças no DOM em tempo real
-    let observer = new MutationObserver(function () {
+    const observer = new MutationObserver(function () {
         let v = parseInt(statEl.textContent, 10) || 0;
         setProgress(v);
     });
@@ -43,7 +43,7 @@
     observer.observe(statEl, { childList: true, characterData: true, subtree: true });
 
     // no carregamento da página ele já verifica o valor, colocando na base 10
-    let initial = parseInt(statEl.textContent, 10) || 0;
+    const initial = parseInt(statEl.textContent, 10) || 0;
     if (initial > 0) setProgress(initial);
 })();
 

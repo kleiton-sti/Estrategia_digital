@@ -1,12 +1,18 @@
 /*--------------------------------------------------------------
-# Roadmap — Hero
+# roadmap.css
+# Estilos da página de Roadmap: hero, trilha neon, timeline,
+# planetas, cards e separadores.
+# Keyframes: centralizados em keyframes.css (importado via main.css).
+# Media queries: centralizadas em responsive.css.
 --------------------------------------------------------------*/
 
-
+/*--------------------------------------------------------------
+# Hero do Roadmap
+--------------------------------------------------------------*/
 .pagina-interna.roadmap-page {
- padding-top: 0 !important;
- 
+  padding-top: 0;
 }
+
 .roadmap-hero {
   min-height: 100dvh;
   display: flex;
@@ -28,7 +34,7 @@
 }
 
 .roadmap-hero__label {
-  font-size: 0.75rem;
+  font-size: var(--type-xs);
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -37,22 +43,23 @@
 }
 
 .roadmap-hero__titulo {
-  font-size: 2.2rem !important;
-  font-weight: 700 !important;
-  line-height: 1.25 !important;
-  margin: 8px 0 16px !important;
-  color: rgba(232, 231, 247, 0.73) !important;
-  font-family: var(--heading-font) !important;
+  font-size: var(--type-2xl);
+  font-weight: 700;
+  line-height: var(--lh-tight);
+  margin: 8px 0 16px;
+  color: rgba(232, 231, 247, 0.73);
+  font-family: var(--heading-font);
 }
 
 .roadmap-hero__sub {
-  font-size: 1rem;
+  font-size: var(--type-base);
   color: color-mix(in srgb, var(--default-color), transparent 35%);
   max-width: 520px;
-  line-height: 1.7;
+  line-height: var(--lh-relaxed);
   margin: 0;
 }
 
+/* Indicador de scroll — bouncing */
 .roadmap-scroll-hint {
   position: absolute;
   bottom: 146px;
@@ -64,7 +71,7 @@
 }
 
 .roadmap-scroll-hint__texto {
-  font-size: 0.72rem;
+  font-size: var(--type-xs);
   letter-spacing: 1.5px;
   text-transform: uppercase;
   color: color-mix(in srgb, var(--default-color), transparent 55%);
@@ -84,22 +91,8 @@
   box-shadow: 0 0 12px rgba(4, 196, 217, 0.2);
 }
 
-@keyframes rdScrollBounce {
-
-  0%,
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-
-  50% {
-    transform: translateY(8px);
-    opacity: 0.6;
-  }
-}
-
 /*--------------------------------------------------------------
-# Trilha neon (hero → conteúdo)
+# Trilha neon (curva entre hero e conteúdo)
 --------------------------------------------------------------*/
 .rd-trilha {
   position: relative;
@@ -133,33 +126,22 @@
   animation: rdDash 3s linear infinite;
 }
 
-@keyframes rdDash {
-  to {
-    stroke-dashoffset: -40;
-  }
-}
-
+/* Partículas que percorrem a trilha */
 .rd-particula {
   fill: #fff;
   filter: drop-shadow(0 0 4px #04C4D9);
 }
 
-.rd-particula--1 {
-  fill: #04C4D9;
-}
-
-.rd-particula--2 {
-  fill: rgba(255, 255, 255, 0.7);
-}
+.rd-particula--1 { fill: #04C4D9; }
+.rd-particula--2 { fill: rgba(255, 255, 255, 0.7); }
 
 /*--------------------------------------------------------------
-# Seção conteúdo — container geral
+# Seção de conteúdo — container geral
 --------------------------------------------------------------*/
 .roadmap-content {
   padding-top: 0;
   position: relative;
   overflow: visible;
-  position: relative;
 }
 
 .roadmap-content .nebulosa-1 {
@@ -168,35 +150,9 @@
   left: 0;
   width: 100dvw;
   height: 100px;
-  background: radial-gradient(shape size at position , rgba(4, 196, 217, 0.28) 0%, transparent 60%);
+  background: radial-gradient(ellipse at center, rgba(4, 196, 217, 0.28) 0%, transparent 60%);
   pointer-events: none;
   z-index: 0;
-}
-
-
-
-@keyframes rdNebDrift1 {
-  from {
-    transform: translate(0, 0) scale(1);
-    
-  }
-
-  to {
-    transform: translate(6%, 12%) scale(1.12);
-    
-  }
-}
-
-@keyframes rdNebDrift2 {
-  from {
-    transform: translate(0, 0) scale(1);
-    
-  }
-
-  to {
-    transform: translate(-8%, -8%) scale(1.15);
-   
-  }
 }
 
 /*--------------------------------------------------------------
@@ -210,7 +166,7 @@
 }
 
 /*--------------------------------------------------------------
-# Linha vertical central — com glow pulsante
+# Linha vertical central com glow pulsante
 --------------------------------------------------------------*/
 .rd-trilha-vertical {
   position: absolute;
@@ -220,16 +176,16 @@
   width: 2px;
   transform: translateX(-50%);
   background: linear-gradient(180deg,
-      transparent 0%,
-      rgba(4, 196, 217, 0.50) 4%,
-      rgba(4, 196, 217, 0.28) 50%,
-      rgba(4, 196, 217, 0.50) 96%,
-      transparent 100%);
+    transparent 0%,
+    rgba(4, 196, 217, 0.50) 4%,
+    rgba(4, 196, 217, 0.28) 50%,
+    rgba(4, 196, 217, 0.50) 96%,
+    transparent 100%);
   z-index: 0;
   pointer-events: none;
 }
 
-/* camada de glow sobre a linha */
+/* Camada de glow sobre a linha */
 .rd-trilha-vertical::after {
   content: '';
   position: absolute;
@@ -243,18 +199,8 @@
   animation: rdVLineGlow 5s ease-in-out infinite alternate;
 }
 
-@keyframes rdVLineGlow {
-  from {
-    opacity: 0.25;
-  }
-
-  to {
-    opacity: 0.60;
-  }
-}
-
 /*--------------------------------------------------------------
-# Marcador do eixo — planeta + título refinados
+# Marcador de eixo — planeta + título
 --------------------------------------------------------------*/
 .rd-eixo-marcador {
   position: relative;
@@ -267,11 +213,8 @@
   z-index: 2;
 }
 
-/* mini nebulosa de ambiente por eixo */
-
-
 .rd-eixo-marcador__titulo {
-  font-size: 1rem;
+  font-size: var(--type-base);
   font-weight: 700;
   color: rgba(232, 231, 247, 0.88);
   font-family: var(--heading-font);
@@ -281,11 +224,10 @@
   text-align: center;
   position: relative;
   z-index: 1;
-  /* respiro tipográfico — label acima */
   padding-top: 2px;
 }
 
-
+/* Núcleo do planeta */
 .rd-eixo-marcador .rd-planeta__nucleo {
   width: 56px;
   height: 56px;
@@ -296,61 +238,26 @@
   position: relative;
   z-index: 3;
   flex-shrink: 0;
-  /* flutuação suave */
   animation: rdPlanetFloat 7s ease-in-out infinite;
 }
 
-@keyframes rdPlanetFloat {
-
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-6px);
-  }
-}
-
-.rd-planeta--1 .rd-planeta__nucleo {
-  background: radial-gradient(circle at 35% 35%, #1e3a5f, #05071e);
-  box-shadow: 0 0 0 2px rgba(4, 196, 217, 0.5), 0 0 24px rgba(4, 196, 217, 0.45);
-}
-
-.rd-planeta--2 .rd-planeta__nucleo {
-  background: radial-gradient(circle at 35% 35%, #2d1e5f, #05071e);
-  box-shadow: 0 0 0 2px rgba(124, 110, 240, 0.5), 0 0 24px rgba(124, 110, 240, 0.45);
-}
-
-.rd-planeta--3 .rd-planeta__nucleo {
-  background: radial-gradient(circle at 35% 35%, #1e4a2f, #05071e);
-  box-shadow: 0 0 0 2px rgba(0, 219, 121, 0.5), 0 0 24px rgba(0, 219, 121, 0.45);
-}
-
-.rd-planeta--4 .rd-planeta__nucleo {
-  background: radial-gradient(circle at 35% 35%, #4a2e1e, #05071e);
-  box-shadow: 0 0 0 2px rgba(255, 160, 50, 0.5), 0 0 24px rgba(255, 160, 50, 0.45);
-}
-
-.rd-planeta--5 .rd-planeta__nucleo {
-  background: radial-gradient(circle at 35% 35%, #1e2e4a, #05071e);
-  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5), 0 0 24px rgba(59, 130, 246, 0.45);
-}
-
-.rd-planeta--6 .rd-planeta__nucleo {
-  background: radial-gradient(circle at 35% 35%, #3a1e3a, #05071e);
-  box-shadow: 0 0 0 2px rgba(217, 70, 239, 0.5), 0 0 24px rgba(217, 70, 239, 0.45);
-}
+/* Variantes de cor por eixo (1–6) */
+.rd-planeta--1 .rd-planeta__nucleo { background: radial-gradient(circle at 35% 35%, #1e3a5f, #05071e); box-shadow: 0 0 0 2px rgba(4, 196, 217, 0.5), 0 0 24px rgba(4, 196, 217, 0.45); }
+.rd-planeta--2 .rd-planeta__nucleo { background: radial-gradient(circle at 35% 35%, #2d1e5f, #05071e); box-shadow: 0 0 0 2px rgba(124, 110, 240, 0.5), 0 0 24px rgba(124, 110, 240, 0.45); }
+.rd-planeta--3 .rd-planeta__nucleo { background: radial-gradient(circle at 35% 35%, #1e4a2f, #05071e); box-shadow: 0 0 0 2px rgba(0, 219, 121, 0.5), 0 0 24px rgba(0, 219, 121, 0.45); }
+.rd-planeta--4 .rd-planeta__nucleo { background: radial-gradient(circle at 35% 35%, #4a2e1e, #05071e); box-shadow: 0 0 0 2px rgba(255, 160, 50, 0.5), 0 0 24px rgba(255, 160, 50, 0.45); }
+.rd-planeta--5 .rd-planeta__nucleo { background: radial-gradient(circle at 35% 35%, #1e2e4a, #05071e); box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5), 0 0 24px rgba(59, 130, 246, 0.45); }
+.rd-planeta--6 .rd-planeta__nucleo { background: radial-gradient(circle at 35% 35%, #3a1e3a, #05071e); box-shadow: 0 0 0 2px rgba(217, 70, 239, 0.5), 0 0 24px rgba(217, 70, 239, 0.45); }
 
 .rd-planeta__num {
-  font-size: 1rem;
+  font-size: var(--type-base);
   font-weight: 800;
   font-family: 'Courier New', monospace;
   color: rgba(232, 231, 247, 0.88);
   letter-spacing: 1px;
 }
 
-/* anel orbital */
+/* Anel orbital */
 .rd-eixo-marcador .rd-planeta__anel {
   position: absolute;
   top: 50%;
@@ -365,37 +272,14 @@
   pointer-events: none;
 }
 
-.rd-planeta--2 .rd-planeta__anel {
-  border-color: rgba(124, 110, 240, 0.30);
-}
+/* Variantes de cor do anel por eixo */
+.rd-planeta--2 .rd-planeta__anel { border-color: rgba(124, 110, 240, 0.30); }
+.rd-planeta--3 .rd-planeta__anel { border-color: rgba(0, 219, 121, 0.30);   animation-duration: 9s; }
+.rd-planeta--4 .rd-planeta__anel { border-color: rgba(255, 160, 50, 0.30);  animation-duration: 15s; }
+.rd-planeta--5 .rd-planeta__anel { border-color: rgba(59, 130, 246, 0.30);  animation-duration: 10s; }
+.rd-planeta--6 .rd-planeta__anel { border-color: rgba(217, 70, 239, 0.30);  animation-duration: 7s; }
 
-.rd-planeta--3 .rd-planeta__anel {
-  border-color: rgba(0, 219, 121, 0.30);
-  animation-duration: 9s;
-}
-
-.rd-planeta--4 .rd-planeta__anel {
-  border-color: rgba(255, 160, 50, 0.30);
-  animation-duration: 15s;
-}
-
-.rd-planeta--5 .rd-planeta__anel {
-  border-color: rgba(59, 130, 246, 0.30);
-  animation-duration: 10s;
-}
-
-.rd-planeta--6 .rd-planeta__anel {
-  border-color: rgba(217, 70, 239, 0.30);
-  animation-duration: 7s;
-}
-
-@keyframes rdGirar {
-  to {
-    transform: translate(-50%, -50%) rotateX(70deg) rotateZ(360deg);
-  }
-}
-
-/* halo difuso */
+/* Halo difuso */
 .rd-eixo-marcador .rd-planeta__halo {
   position: absolute;
   top: 68%;
@@ -410,39 +294,12 @@
   pointer-events: none;
 }
 
-.rd-planeta--2 .rd-planeta__halo {
-  background: radial-gradient(circle, rgba(124, 110, 240, 0.18) 0%, transparent 70%);
-}
-
-.rd-planeta--3 .rd-planeta__halo {
-  background: radial-gradient(circle, rgba(0, 219, 121, 0.18) 0%, transparent 70%);
-}
-
-.rd-planeta--4 .rd-planeta__halo {
-  background: radial-gradient(circle, rgba(255, 160, 50, 0.18) 0%, transparent 70%);
-}
-
-.rd-planeta--5 .rd-planeta__halo {
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.18) 0%, transparent 70%);
-}
-
-.rd-planeta--6 .rd-planeta__halo {
-  background: radial-gradient(circle, rgba(217, 70, 239, 0.18) 0%, transparent 70%);
-}
-
-@keyframes rdHaloPulse {
-
-  0%,
-  100% {
-    opacity: 0.70;
-    transform: translate(-50%, -50%) scale(1);
-  }
-
-  50% {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1.18);
-  }
-}
+/* Variantes de cor do halo por eixo */
+.rd-planeta--2 .rd-planeta__halo { background: radial-gradient(circle, rgba(124, 110, 240, 0.18) 0%, transparent 70%); }
+.rd-planeta--3 .rd-planeta__halo { background: radial-gradient(circle, rgba(0, 219, 121, 0.18) 0%, transparent 70%); }
+.rd-planeta--4 .rd-planeta__halo { background: radial-gradient(circle, rgba(255, 160, 50, 0.18) 0%, transparent 70%); }
+.rd-planeta--5 .rd-planeta__halo { background: radial-gradient(circle, rgba(59, 130, 246, 0.18) 0%, transparent 70%); }
+.rd-planeta--6 .rd-planeta__halo { background: radial-gradient(circle, rgba(217, 70, 239, 0.18) 0%, transparent 70%); }
 
 /*--------------------------------------------------------------
 # Linha de card alternado — grid de 3 colunas
@@ -463,6 +320,7 @@
   z-index: 2;
 }
 
+/* Ponto de marcação na linha */
 .rd-ponto {
   width: 12px;
   height: 12px;
@@ -472,7 +330,7 @@
   position: relative;
 }
 
-/* anel pulsante em volta do ponto */
+/* Anel pulsante ao redor do ponto */
 .rd-ponto::after {
   content: '';
   position: absolute;
@@ -483,163 +341,56 @@
   animation: rdPontoPulse 2.5s ease-in-out infinite;
 }
 
-@keyframes rdPontoPulse {
+/* Variantes de cor do ponto por status */
+.rd-ponto--verde  { background: #00db79; color: #00db79; box-shadow: 0 0 0 3px rgba(0, 219, 121, 0.20), 0 0 10px rgba(0, 219, 121, 0.45); }
+.rd-ponto--amarelo{ background: #ffd232; color: #ffd232; box-shadow: 0 0 0 3px rgba(255, 210, 50, 0.20), 0 0 10px rgba(255, 210, 50, 0.45); }
+.rd-ponto--roxo   { background: #7c6ef0; color: #7c6ef0; box-shadow: 0 0 0 3px rgba(124, 110, 240, 0.20), 0 0 10px rgba(124, 110, 240, 0.45); }
 
-  0%,
-  100% {
-    transform: scale(1);
-    opacity: 0.30;
-  }
+/* Posicionamento na grid — cards à esquerda */
+.rd-card-linha--esquerda .rd-card-linha__vazio { grid-column: 3; grid-row: 1; }
+.rd-card-linha--esquerda .rd-card-linha__ponto { grid-column: 2; grid-row: 1; }
+.rd-card-linha--esquerda .rd-card-linha__card  { grid-column: 1; grid-row: 1; padding-right: 28px; }
 
-  50% {
-    transform: scale(1.5);
-    opacity: 0;
-  }
-}
-
-.rd-ponto--verde {
-  background: #00db79;
-  color: #00db79;
-  box-shadow: 0 0 0 3px rgba(0, 219, 121, 0.20), 0 0 10px rgba(0, 219, 121, 0.45);
-}
-
-.rd-ponto--amarelo {
-  background: #ffd232;
-  color: #ffd232;
-  box-shadow: 0 0 0 3px rgba(255, 210, 50, 0.20), 0 0 10px rgba(255, 210, 50, 0.45);
-}
-
-.rd-ponto--roxo {
-  background: #7c6ef0;
-  color: #7c6ef0;
-  box-shadow: 0 0 0 3px rgba(124, 110, 240, 0.20), 0 0 10px rgba(124, 110, 240, 0.45);
-}
-
-/* posições na grid */
-.rd-card-linha--esquerda .rd-card-linha__vazio {
-  grid-column: 3;
-  grid-row: 1;
-}
-
-.rd-card-linha--esquerda .rd-card-linha__ponto {
-  grid-column: 2;
-  grid-row: 1;
-}
-
-.rd-card-linha--esquerda .rd-card-linha__card {
-  grid-column: 1;
-  grid-row: 1;
-  padding-right: 28px;
-}
-
-.rd-card-linha--direita .rd-card-linha__vazio {
-  grid-column: 1;
-  grid-row: 1;
-}
-
-.rd-card-linha--direita .rd-card-linha__ponto {
-  grid-column: 2;
-  grid-row: 1;
-}
-
-.rd-card-linha--direita .rd-card-linha__card {
-  grid-column: 3;
-  grid-row: 1;
-  padding-left: 28px;
-}
+/* Posicionamento na grid — cards à direita */
+.rd-card-linha--direita .rd-card-linha__vazio { grid-column: 1; grid-row: 1; }
+.rd-card-linha--direita .rd-card-linha__ponto { grid-column: 2; grid-row: 1; }
+.rd-card-linha--direita .rd-card-linha__card  { grid-column: 3; grid-row: 1; padding-left: 28px; }
 
 /*--------------------------------------------------------------
-# Nebulosa do card — atmosfera em torno de cada card
+# Nebulosa do card — atmosfera visual
 --------------------------------------------------------------*/
 .rd-nebulosa {
   position: relative;
   border-radius: 16px;
   padding: 3px;
-  /* flutuação suave e diferente por card */
   animation: rdCardFloat 7s ease-in-out infinite;
 }
 
-/* delays de flutuação variados para parecer orgânico */
-.rd-card-linha:nth-child(2) .rd-nebulosa {
-  animation-duration: 6.2s;
-  animation-delay: -0.8s;
-}
+/* Delays de flutuação variados — efeito orgânico */
+.rd-card-linha:nth-child(2)  .rd-nebulosa { animation-duration: 6.2s; animation-delay: -0.8s; }
+.rd-card-linha:nth-child(3)  .rd-nebulosa { animation-duration: 7.8s; animation-delay: -2.4s; }
+.rd-card-linha:nth-child(4)  .rd-nebulosa { animation-duration: 6.6s; animation-delay: -1.2s; }
+.rd-card-linha:nth-child(5)  .rd-nebulosa { animation-duration: 8.1s; animation-delay: -3.5s; }
+.rd-card-linha:nth-child(6)  .rd-nebulosa { animation-duration: 7.3s; animation-delay: -0.5s; }
+.rd-card-linha:nth-child(7)  .rd-nebulosa { animation-duration: 6.8s; animation-delay: -4.0s; }
+.rd-card-linha:nth-child(8)  .rd-nebulosa { animation-duration: 7.5s; animation-delay: -1.8s; }
+.rd-card-linha:nth-child(9)  .rd-nebulosa { animation-duration: 6.4s; animation-delay: -2.9s; }
+.rd-card-linha:nth-child(10) .rd-nebulosa { animation-duration: 8.3s; animation-delay: -0.3s; }
+.rd-card-linha:nth-child(11) .rd-nebulosa { animation-duration: 7.0s; animation-delay: -3.1s; }
+.rd-card-linha:nth-child(n+12) .rd-nebulosa { animation-duration: 7.2s; animation-delay: -1.5s; }
 
-.rd-card-linha:nth-child(3) .rd-nebulosa {
-  animation-duration: 7.8s;
-  animation-delay: -2.4s;
-}
-
-.rd-card-linha:nth-child(4) .rd-nebulosa {
-  animation-duration: 6.6s;
-  animation-delay: -1.2s;
-}
-
-.rd-card-linha:nth-child(5) .rd-nebulosa {
-  animation-duration: 8.1s;
-  animation-delay: -3.5s;
-}
-
-.rd-card-linha:nth-child(6) .rd-nebulosa {
-  animation-duration: 7.3s;
-  animation-delay: -0.5s;
-}
-
-.rd-card-linha:nth-child(7) .rd-nebulosa {
-  animation-duration: 6.8s;
-  animation-delay: -4.0s;
-}
-
-.rd-card-linha:nth-child(8) .rd-nebulosa {
-  animation-duration: 7.5s;
-  animation-delay: -1.8s;
-}
-
-.rd-card-linha:nth-child(9) .rd-nebulosa {
-  animation-duration: 6.4s;
-  animation-delay: -2.9s;
-}
-
-.rd-card-linha:nth-child(10) .rd-nebulosa {
-  animation-duration: 8.3s;
-  animation-delay: -0.3s;
-}
-
-.rd-card-linha:nth-child(11) .rd-nebulosa {
-  animation-duration: 7.0s;
-  animation-delay: -3.1s;
-}
-
-.rd-card-linha:nth-child(n+12) .rd-nebulosa {
-  animation-duration: 7.2s;
-  animation-delay: -1.5s;
-}
-
-@keyframes rdCardFloat {
-
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-
-  50% {
-    transform: translateY(-7px);
-  }
-}
-
-/* pausa flutuação no hover para não conflitar com translateY do card */
+/* Pausa na flutuação ao hover — evita conflito com translateY do card */
 .rd-nebulosa:hover {
   animation-play-state: paused;
 }
 
-/* glow difuso atrás do card */
+/* Glow difuso atrás do card */
 .rd-nebulosa__glow {
   position: absolute;
   inset: -16px;
   border-radius: 50%;
   filter: blur(36px);
   opacity: 0.28;
-  /* levemente visível sempre */
   pointer-events: none;
   z-index: 0;
   transition: opacity 0.45s ease, transform 0.45s ease;
@@ -651,21 +402,13 @@
   transform: scale(1.08);
 }
 
-.rd-nebulosa--verde .rd-nebulosa__glow {
-  background: radial-gradient(ellipse 75% 55% at 40% 50%, #00db79 0%, transparent 65%);
-}
-
-.rd-nebulosa--amarelo .rd-nebulosa__glow {
-  background: radial-gradient(ellipse 75% 55% at 60% 45%, #ffd232 0%, transparent 65%);
-}
-
-.rd-nebulosa--roxo .rd-nebulosa__glow {
-  background: radial-gradient(ellipse 75% 55% at 50% 55%, #7c6ef0 0%, transparent 65%);
-}
+/* Variantes de glow por cor */
+.rd-nebulosa--verde  .rd-nebulosa__glow { background: radial-gradient(ellipse 75% 55% at 40% 50%, #00db79 0%, transparent 65%); }
+.rd-nebulosa--amarelo .rd-nebulosa__glow { background: radial-gradient(ellipse 75% 55% at 60% 45%, #ffd232 0%, transparent 65%); }
+.rd-nebulosa--roxo   .rd-nebulosa__glow { background: radial-gradient(ellipse 75% 55% at 50% 55%, #7c6ef0 0%, transparent 65%); }
 
 /*--------------------------------------------------------------
-# Partículas-estrela flutuantes (geradas via JS — fallback puro CSS)
-# Pequenos pontos espalhados na section para profundidade de campo
+# Partículas-estrela (geradas via JS — fallback puro CSS)
 --------------------------------------------------------------*/
 .rd-star {
   position: absolute;
@@ -677,22 +420,8 @@
   animation: rdStarTwinkle var(--dur, 4s) ease-in-out infinite var(--delay, 0s);
 }
 
-@keyframes rdStarTwinkle {
-
-  0%,
-  100% {
-    opacity: 0;
-    transform: scale(0.6);
-  }
-
-  50% {
-    opacity: var(--op, 0.5);
-    transform: scale(1);
-  }
-}
-
 /*--------------------------------------------------------------
-# Cards
+# Cards do roadmap
 --------------------------------------------------------------*/
 .rd-card {
   position: relative;
@@ -703,14 +432,13 @@
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border: 1px solid rgba(255, 255, 255, 0.07);
-  /* sombra de profundidade permanente */
   box-shadow:
     0 6px 32px rgba(0, 0, 0, 0.45),
     0 1px 0 rgba(255, 255, 255, 0.04) inset;
   transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 
-/* reflexo superior — fio de luz no topo */
+/* Fio de luz no topo do card */
 .rd-card::before {
   content: '';
   position: absolute;
@@ -723,49 +451,21 @@
   z-index: 2;
 }
 
-.rd-nebulosa--verde .rd-card::before {
-  background: linear-gradient(to right, transparent, rgba(0, 219, 121, 0.35), transparent);
-}
+/* Fio de luz e borda esquerda por variante */
+.rd-nebulosa--verde  .rd-card::before { background: linear-gradient(to right, transparent, rgba(0, 219, 121, 0.35), transparent); }
+.rd-nebulosa--amarelo .rd-card::before { background: linear-gradient(to right, transparent, rgba(255, 210, 50, 0.35), transparent); }
+.rd-nebulosa--roxo   .rd-card::before { background: linear-gradient(to right, transparent, rgba(124, 110, 240, 0.35), transparent); }
 
-.rd-nebulosa--amarelo .rd-card::before {
-  background: linear-gradient(to right, transparent, rgba(255, 210, 50, 0.35), transparent);
-}
+.rd-nebulosa--verde  .rd-card { border-left: 2px solid rgba(0, 219, 121, 0.38); }
+.rd-nebulosa--amarelo .rd-card { border-left: 2px solid rgba(255, 210, 50, 0.38); }
+.rd-nebulosa--roxo   .rd-card { border-left: 2px solid rgba(124, 110, 240, 0.38); }
 
-.rd-nebulosa--roxo .rd-card::before {
-  background: linear-gradient(to right, transparent, rgba(124, 110, 240, 0.35), transparent);
-}
+/* Hover dos cards */
+.rd-nebulosa:hover .rd-card { transform: translateY(-3px); }
 
-/* borda esquerda colorida */
-.rd-nebulosa--verde .rd-card {
-  border-left: 2px solid rgba(0, 219, 121, 0.38);
-}
-
-.rd-nebulosa--amarelo .rd-card {
-  border-left: 2px solid rgba(255, 210, 50, 0.38);
-}
-
-.rd-nebulosa--roxo .rd-card {
-  border-left: 2px solid rgba(124, 110, 240, 0.38);
-}
-
-.rd-nebulosa:hover .rd-card {
-  transform: translateY(-3px);
-}
-
-.rd-nebulosa--verde:hover .rd-card {
-  border-color: rgba(0, 219, 121, 0.32);
-  box-shadow: 0 12px 40px rgba(0, 219, 121, 0.12), 0 6px 32px rgba(0, 0, 0, 0.45);
-}
-
-.rd-nebulosa--amarelo:hover .rd-card {
-  border-color: rgba(255, 210, 50, 0.32);
-  box-shadow: 0 12px 40px rgba(255, 210, 50, 0.12), 0 6px 32px rgba(0, 0, 0, 0.45);
-}
-
-.rd-nebulosa--roxo:hover .rd-card {
-  border-color: rgba(124, 110, 240, 0.32);
-  box-shadow: 0 12px 40px rgba(124, 110, 240, 0.12), 0 6px 32px rgba(0, 0, 0, 0.45);
-}
+.rd-nebulosa--verde:hover  .rd-card { border-color: rgba(0, 219, 121, 0.32);   box-shadow: 0 12px 40px rgba(0, 219, 121, 0.12),   0 6px 32px rgba(0, 0, 0, 0.45); }
+.rd-nebulosa--amarelo:hover .rd-card { border-color: rgba(255, 210, 50, 0.32);  box-shadow: 0 12px 40px rgba(255, 210, 50, 0.12),  0 6px 32px rgba(0, 0, 0, 0.45); }
+.rd-nebulosa--roxo:hover   .rd-card { border-color: rgba(124, 110, 240, 0.32); box-shadow: 0 12px 40px rgba(124, 110, 240, 0.12), 0 6px 32px rgba(0, 0, 0, 0.45); }
 
 /*--------------------------------------------------------------
 # Header do card
@@ -779,7 +479,7 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.07);
 }
 
-/* wrapper do ícone SVG — substitui .rd-card__icone (Bootstrap) */
+/* Wrapper do ícone SVG */
 .rd-card__icone-wrap {
   width: 32px;
   height: 32px;
@@ -788,129 +488,39 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  position: relative;
 }
 
-.rd-card__icone-wrap--verde {
-  background: rgba(0, 219, 121, 0.10);
-  color: #00db79;
-  box-shadow: 0 0 10px rgba(0, 219, 121, 0.25);
-}
+/* Variantes do ícone por cor */
+.rd-card__icone-wrap--verde  { background: rgba(0, 219, 121, 0.10);   color: #00db79; box-shadow: 0 0 10px rgba(0, 219, 121, 0.25); }
+.rd-card__icone-wrap--amarelo { background: rgba(255, 210, 50, 0.10);  color: #ffd232; box-shadow: 0 0 10px rgba(255, 210, 50, 0.25); }
+.rd-card__icone-wrap--roxo   { background: rgba(124, 110, 240, 0.10); color: #7c6ef0; box-shadow: 0 0 10px rgba(124, 110, 240, 0.25); }
 
-.rd-card__icone-wrap--amarelo {
-  background: rgba(255, 210, 50, 0.10);
-  color: #ffd232;
-  box-shadow: 0 0 10px rgba(255, 210, 50, 0.25);
-}
-
-.rd-card__icone-wrap--roxo {
-  background: rgba(124, 110, 240, 0.10);
-  color: #7c6ef0;
-  box-shadow: 0 0 10px rgba(124, 110, 240, 0.25);
-}
-
-/* SVG dentro do ícone */
+/* SVG interno */
 .rd-icone-svg {
   width: 18px;
   height: 18px;
   filter: drop-shadow(0 0 3px currentColor);
 }
 
-/* animações específicas por ícone */
-.rd-icone-svg--foguete {
-  animation: rdFoguete 4s ease-in-out infinite;
-  transform-origin: center;
-}
+/* Animações dos ícones SVG (keyframes em keyframes.css) */
+.rd-icone-svg--foguete  { animation: rdFoguete  4s ease-in-out infinite; transform-origin: center; }
+.rd-icone-svg--meteoro  { animation: rdMeteoro  3s ease-in-out infinite; }
+.rd-icone-svg--ovni     { animation: rdOvni     5s ease-in-out infinite; }
 
-@keyframes rdFoguete {
-
-  0%,
-  100% {
-    transform: translateY(0) rotate(-5deg);
-  }
-
-  50% {
-    transform: translateY(-3px) rotate(5deg);
-  }
-}
-
-.rd-icone-svg--meteoro {
-  animation: rdMeteoro 3s ease-in-out infinite;
-}
-
-@keyframes rdMeteoro {
-
-  0%,
-  100% {
-    transform: translate(0, 0) rotate(-45deg);
-  }
-
-  50% {
-    transform: translate(2px, -2px) rotate(-45deg);
-  }
-}
-
-.rd-icone-svg--ovni {
-  animation: rdOvni 5s ease-in-out infinite;
-}
-
-@keyframes rdOvni {
-
-  0%,
-  100% {
-    transform: translateY(0) scaleX(1);
-  }
-
-  25% {
-    transform: translateY(-2px) scaleX(1.04);
-  }
-
-  75% {
-    transform: translateY(2px) scaleX(0.97);
-  }
-}
-
-/* legado: ícone Bootstrap (mantido para fallback) */
-.rd-card__icone {
-  font-size: 0.9rem;
-}
-
-.rd-card__icone--verde {
-  color: #00db79;
-  filter: drop-shadow(0 0 4px rgba(0, 219, 121, 0.5));
-}
-
-.rd-card__icone--amarelo {
-  color: #ffd232;
-  filter: drop-shadow(0 0 4px rgba(255, 210, 50, 0.5));
-}
-
-.rd-card__icone--roxo {
-  color: #7c6ef0;
-  filter: drop-shadow(0 0 4px rgba(124, 110, 240, 0.5));
-}
-
+/* Título do card */
 .rd-card__titulo {
-  font-size: 0.72rem;
+  font-size: var(--type-xs);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.8px;
 }
 
-.rd-card__titulo--verde {
-  color: #00db79;
-}
-
-.rd-card__titulo--amarelo {
-  color: #ffd232;
-}
-
-.rd-card__titulo--roxo {
-  color: #7c6ef0;
-}
+.rd-card__titulo--verde  { color: #00db79; }
+.rd-card__titulo--amarelo { color: #ffd232; }
+.rd-card__titulo--roxo   { color: #7c6ef0; }
 
 /*--------------------------------------------------------------
-# Lista de ações
+# Lista de ações do card
 --------------------------------------------------------------*/
 .rd-card__lista {
   list-style: none;
@@ -922,14 +532,14 @@
 }
 
 .rd-card__item {
-  font-size: 0.83rem;
+  font-size: var(--type-body);
   color: color-mix(in srgb, var(--default-color), transparent 18%);
-  line-height: 1.55;
+  line-height: var(--lh-base);
   padding-left: 16px;
   position: relative;
 }
 
-/* bullet customizado — ponto colorido */
+/* Bullet colorido */
 .rd-card__item::before {
   content: '';
   position: absolute;
@@ -941,17 +551,9 @@
   opacity: 0.55;
 }
 
-.rd-nebulosa--verde .rd-card__item::before {
-  background: #00db79;
-}
-
-.rd-nebulosa--amarelo .rd-card__item::before {
-  background: #ffd232;
-}
-
-.rd-nebulosa--roxo .rd-card__item::before {
-  background: #7c6ef0;
-}
+.rd-nebulosa--verde  .rd-card__item::before { background: #00db79; }
+.rd-nebulosa--amarelo .rd-card__item::before { background: #ffd232; }
+.rd-nebulosa--roxo   .rd-card__item::before { background: #7c6ef0; }
 
 .rd-card__item--vazio {
   color: color-mix(in srgb, var(--default-color), transparent 60%);
@@ -959,7 +561,7 @@
 }
 
 /*--------------------------------------------------------------
-# Separador visual entre eixos — linha cósmica difusa
+# Separador cósmico entre eixos
 --------------------------------------------------------------*/
 .rd-eixo-sep {
   position: relative;
@@ -989,103 +591,4 @@
   filter: blur(4px);
   background: linear-gradient(to right, transparent, rgba(4, 196, 217, 0.25), transparent);
   animation: rdSepBrilho 4s ease-in-out infinite;
-}
-
-@keyframes rdSepBrilho {
-
-  0%,
-  100% {
-    opacity: 0.5;
-  }
-
-  50% {
-    opacity: 1;
-  }
-}
-
-/*--------------------------------------------------------------
-# Mobile
---------------------------------------------------------------*/
-@media (max-width: 768px) {
-
-  .roadmap-content::before,
-  .roadmap-content::after {
-    opacity: 0.04;
-    filter: blur(80px);
-  }
-
-  .rd-trilha-vertical {
-    display: none;
-  }
-
-  .rd-eixo-marcador {
-    justify-content: flex-start;
-    margin: 44px 0 24px;
-  }
-
-  .rd-eixo-marcador::before {
-    display: none;
-  }
-
-  .rd-eixo-marcador__titulo {
-    max-width: none;
-  }
-
-  .rd-eixo-marcador .rd-planeta__anel,
-  .rd-eixo-marcador .rd-planeta__halo {
-    display: none;
-  }
-
-  /* timeline linear no mobile */
-  .rd-card-linha {
-    grid-template-columns: 24px 1fr;
-    margin-bottom: 18px;
-  }
-
-  .rd-card-linha--esquerda .rd-card-linha__vazio,
-  .rd-card-linha--direita .rd-card-linha__vazio {
-    display: none;
-  }
-
-  .rd-card-linha--esquerda .rd-card-linha__ponto,
-  .rd-card-linha--direita .rd-card-linha__ponto {
-    grid-column: 1;
-    grid-row: 1;
-    padding-top: 18px;
-  }
-
-  .rd-card-linha--esquerda .rd-card-linha__card,
-  .rd-card-linha--direita .rd-card-linha__card {
-    grid-column: 2;
-    grid-row: 1;
-    padding: 0 0 0 14px;
-  }
-
-  /* sem flutuação no mobile — performance */
-  .rd-nebulosa {
-    animation: none;
-  }
-
-  .rd-trilha-svg {
-    height: 60px;
-  }
-}
-
-/*--------------------------------------------------------------
-# Tablet
---------------------------------------------------------------*/
-@media (min-width: 769px) and (max-width: 1024px) {
-
-  .rd-card-linha--esquerda .rd-card-linha__card {
-    padding-right: 20px;
-  }
-
-  .rd-card-linha--direita .rd-card-linha__card {
-    padding-left: 20px;
-  }
-
-  .rd-eixo-marcador__titulo {
-    max-width: 200px;
-    font-size: 0.92rem;
-  }
 }

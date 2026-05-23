@@ -107,16 +107,6 @@
   document.addEventListener('DOMContentLoaded', () => {
     const objetivosData = window.objetivosData || [];
 
-    function atualizarAnel(concluidas, total) {
-      const circulo = document.getElementById('ini-anel-circulo');
-      if (!circulo) return;
-      const raio           = 26;
-      const circunferencia = 2 * Math.PI * raio;
-      const pct            = total > 0 ? concluidas / total : 0;
-      circulo.style.strokeDasharray  = circunferencia;
-      circulo.style.strokeDashoffset = circunferencia * (1 - pct);
-    }
-
     function atualizarLegendaConcluidas(concluidas, total) {
       const el = document.getElementById('ini-legenda-concluidas');
       if (el) el.textContent = 'de ' + total + ' iniciativas entregues';
@@ -153,7 +143,7 @@
         steps.appendChild(div);
       });
 
-      container.style.display = 'block';
+      container.classList.remove('is-hidden');
       container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
       const total      = objetivo.iniciativas.length;
@@ -166,7 +156,7 @@
       document.getElementById('sidebar-andamento').textContent  = andamento;
       document.getElementById('sidebar-nao').textContent        = nao;
 
-      atualizarAnel(concluidas, total);
+      if (window.atualizarAnel) window.atualizarAnel(concluidas, total);
       atualizarLegendaConcluidas(concluidas, total);
 
       document.querySelectorAll('.objetivo-toggle').forEach(t => {
@@ -182,7 +172,7 @@
 
     function fecharIniciativas() {
       const container = document.querySelector('#principios-details');
-      container.style.display = 'none';
+      container.classList.add('is-hidden');
       document.querySelector('#objetivos')
         .scrollIntoView({ behavior: 'smooth', block: 'start' });
       document.querySelectorAll('.objetivos-wrapper.selecionado')
@@ -212,12 +202,6 @@
   });
 
   /* ── Mobile dropdown ── */
-  const mobileToggle = document.querySelector('.mobile-nav-toggle');
-  const navmenu      = document.querySelector('.navmenu');
-  if (mobileToggle && navmenu) {
-    mobileToggle.addEventListener('click', () => navmenu.classList.toggle('mobile-nav-active'));
-  }
-
   document.querySelectorAll('.navmenu .dropdown > a').forEach(drop => {
     drop.addEventListener('click', function (e) {
       if (window.innerWidth < 1200) {

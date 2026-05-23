@@ -1,41 +1,73 @@
 @charset "UTF-8";
 
-/* ============================================================
-   Variáveis globais
-   ============================================================ */
+/*--------------------------------------------------------------
+# main.css
+# Base global do projeto Estratégia Digital.
+# Contém: variáveis, reset, body, seções, títulos, utilitários,
+#         header, footer e preloader.
+# As animações estão centralizadas em keyframes.css (importado abaixo).
+# As media queries estão centralizadas em responsive.css.
+--------------------------------------------------------------*/
+
+/* Importa o arquivo central de @keyframes */
+@import url("keyframes.css");
+
+/*--------------------------------------------------------------
+# Variáveis globais — agrupadas por categoria
+--------------------------------------------------------------*/
 :root {
-  --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+  /* — Tipografia — */
+  --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", sans-serif;
   --heading-font: "Quicksand", sans-serif;
   --nav-font: "Poppins", sans-serif;
-}
 
-:root {
+  /* — Escala tipográfica com clamp() — */
+  /* clamp(mínimo, fluido, máximo) — escala suave entre mobile e ultrawide */
+  --type-xs:    clamp(0.68rem,  0.64rem + 0.2vw,  0.75rem);   /* labels, badges */
+  --type-sm:    clamp(0.75rem,  0.70rem + 0.25vw, 0.875rem);  /* subtextos, datas */
+  --type-body:  clamp(0.82rem,  0.78rem + 0.2vw,  0.95rem);   /* texto secundário */
+  --type-base:  clamp(0.9rem,   0.85rem + 0.25vw, 1.0625rem); /* padrão de leitura */
+  --type-md:    clamp(1rem,     0.95rem + 0.3vw,  1.2rem);    /* h5, destaques */
+  --type-lg:    clamp(1.15rem,  1.05rem + 0.55vw, 1.5rem);    /* h4 */
+  --type-xl:    clamp(1.25rem,  1.1rem  + 0.75vw, 1.75rem);   /* h3, subtítulos */
+  --type-2xl:   clamp(1.5rem,   1.2rem  + 1.1vw,  2.25rem);   /* h2, section-title */
+  --type-3xl:   clamp(1.75rem,  1.3rem  + 1.75vw, 2.75rem);   /* h1, hero */
+  --type-4xl:   clamp(2.0rem,   1.5rem  + 2.4vw,  3.5rem);    /* hero ultrawide */
+
+  /* — Line-heights padronizados — */
+  --lh-tight:   1.25;   /* headings */
+  --lh-base:    1.55;   /* texto corrido */
+  --lh-relaxed: 1.7;    /* parágrafos longos, subtítulos de hero */
+
+  /* — Paleta principal — */
   --background-color: #05071e;
   --default-color: #e8e7f7;
-  --heading-color: #E8E7F7;
-  --accent-color: #023E73;
+  --heading-color: #e8e7f7;
+  --accent-color: #023e73;
   --surface-color: #131428;
   --contrast-color: #ffffff;
-}
 
-:root {
+  /* — Navegação — */
   --nav-color: #c8c6e3;
   --nav-hover-color: #ffffff;
   --nav-mobile-background-color: #03051f;
   --nav-dropdown-background-color: #1f2240;
   --nav-dropdown-color: #c8c6e3;
   --nav-dropdown-hover-color: #ffffff;
+
+  /* — Espaçamentos e layout com clamp() — */
+  --section-padding-y: clamp(3rem,   5vw,  6rem);    /* 48px → 80px → 96px */
+  --section-gap:       clamp(2.5rem, 4vw,  4.5rem);  /* 40px → 64px → 72px */
+  --title-gap:         clamp(1.5rem, 3vw,  3rem);    /* 24px → 48px → 48px */
+  --header-offset:     clamp(5rem,   6vw,  7.5rem);  /* 80px → 96px → 120px */
+
+  /* — Comportamento global — */
+  scroll-behavior: smooth;
 }
 
-:root {
-  --section-padding-y: 80px;
-  --section-gap: 60px;
-  --title-gap: 40px;
-  /* Altura do header fixo + margem superior dele */
-  --header-offset: 110px;
-}
-
+/*--------------------------------------------------------------
+# Variantes de tema (usadas por seções com fundo alternativo)
+--------------------------------------------------------------*/
 .light-background {
   --background-color: #0c114a;
   --surface-color: #131b76;
@@ -49,13 +81,9 @@
   --contrast-color: #ffffff;
 }
 
-:root {
-  scroll-behavior: smooth;
-}
-
-/* ============================================================
-   Base
-   ============================================================ */
+/*--------------------------------------------------------------
+# Base
+--------------------------------------------------------------*/
 body {
   position: relative;
   color: var(--default-color);
@@ -63,6 +91,7 @@ body {
   font-family: var(--default-font);
 }
 
+/* Grade de partículas animada no fundo — abrange toda a página */
 body .hero-bg-elements {
   position: absolute;
   inset: 0;
@@ -87,23 +116,14 @@ a:hover {
   color: color-mix(in srgb, var(--accent-color), transparent 25%);
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
   color: var(--heading-color);
   font-family: var(--heading-font);
 }
 
-h5.mb-1 {
-  font-size: 1.1rem !important;
-}
-
-/* ============================================================
-   Seções globais
-   ============================================================ */
+/*--------------------------------------------------------------
+# Seções globais
+--------------------------------------------------------------*/
 section {
   padding: var(--section-padding-y) 0;
   overflow: hidden;
@@ -125,7 +145,7 @@ section#hero .container {
 }
 
 section.principios {
-  padding-top: 0px !important;
+  padding-top: 0;
   position: relative;
   z-index: 1;
   display: flex;
@@ -133,7 +153,6 @@ section.principios {
   align-items: center;
   padding: var(--section-padding-y) 0;
   min-height: auto;
-
 }
 
 /*
@@ -145,6 +164,9 @@ section.principios {
   padding-top: var(--header-offset);
 }
 
+/*--------------------------------------------------------------
+# Container da seção Princípios
+--------------------------------------------------------------*/
 .principios .container {
   flex-direction: column;
   color: var(--default-color);
@@ -162,28 +184,25 @@ section.principios {
     inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
+/* Glow superior — entra com delay de 0.8s */
 .principios .container::before {
-    content: "";
-    position: absolute;
-    top: -502px;
-    left: 48%;
-    clip-path: inset(50% 0 0 0);
-    width: 200%;
-    height: 898px;
-    transform: translateX(-33%);
-    background: radial-gradient(circle, #04C4D9 0%, rgba(255, 255, 255, 0) 20%);
-    filter: blur(100px);
-    pointer-events: none;
-    opacity: 0;
-    animation: principiosGlow 0.6s ease forwards;
-    animation-delay: 0.8s;
+  content: "";
+  position: absolute;
+  top: -502px;
+  left: 48%;
+  clip-path: inset(50% 0 0 0);
+  width: 200%;
+  height: 898px;
+  transform: translateX(-33%);
+  background: radial-gradient(circle, #04C4D9 0%, rgba(255, 255, 255, 0) 20%);
+  filter: blur(100px);
+  pointer-events: none;
+  opacity: 0;
+  animation: principiosGlow 0.6s ease forwards;
+  animation-delay: 0.8s;
 }
 
-@keyframes principiosGlow {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
+/* Glow lateral superior — entrada suave */
 .principios .container::after {
   content: "";
   position: absolute;
@@ -198,6 +217,7 @@ section.principios {
   animation: spreadLight 7s ease-in-out;
 }
 
+/* Reflexos internos do container de principios */
 .principios .container .reflexo-01 {
   position: absolute;
   bottom: 0;
@@ -234,79 +254,71 @@ section.principios {
   animation: spreadLight 7s ease-in-out;
 }
 
-/* ============================================================
-   Section Titles — padrão unificado
-   ============================================================ */
-.section-title-obj {
-  position: relative;
-}
+/*--------------------------------------------------------------
+# Section Titles — base unificada
+# Todas as variações herdam o mesmo estilo de h2 e p.
+# Cada classe define apenas seu layout (flex, alinhamento).
+#
+# Variantes disponíveis:
+#   .section-title    — centralizado (home, roadmap, regulamentações)
+#   .section-title-obj — inline com constelação à direita (eixos)
+#   .section-titulo   — alinhado à esquerda sem flex (artigos, publicação)
+--------------------------------------------------------------*/
 
-.section-title-obj h2 {
-  font-size: 1.8rem;
+/* Base compartilhada — tipografia */
+.section-title h2,
+.section-title h1,
+.section-title-obj h2,
+.section-title-obj h1,
+.section-titulo h1,
+.section-titulo h2 {
+  font-size: var(--type-2xl);
   font-weight: 700;
   color: rgba(232, 231, 247, 0.73);
   margin-bottom: 12px;
   font-family: var(--heading-font);
+  line-height: var(--lh-tight);
 }
 
-.section-title-obj p {
-  margin-bottom: 0;
-  width: 100%;
-  max-width: 600px;
-  font-size: 0.95rem;
+.section-title p,
+.section-title-obj p,
+.section-titulo p {
+  font-size: var(--type-body);
   color: color-mix(in srgb, var(--default-color), transparent 30%);
-  line-height: 1.6;
+  line-height: var(--lh-relaxed);
+  margin-bottom: 0;
 }
 
+/* Variante 1: centralizado */
 .section-title {
   padding-bottom: var(--title-gap);
-  position: relative;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.section-title h2 {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: rgba(232, 231, 247, 0.73);
-  margin-bottom: 12px;
-  font-family: var(--heading-font);
-}
-
 .section-title p {
-  font-size: 0.95rem;
-  margin-bottom: 0;
   max-width: 600px;
   text-align: center;
-  color: color-mix(in srgb, var(--default-color), transparent 30%);
-  line-height: 1.6;
 }
 
+/* Variante 2: inline com elemento à direita (ex: constelação) */
+.section-title-obj {
+  padding-bottom: var(--title-gap);
+  position: relative;
+}
+
+/* Variante 3: alinhado à esquerda sem centra */
 .section-titulo {
   padding-bottom: var(--title-gap);
 }
 
-.section-titulo h1,
-.section-titulo h2 {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: rgba(232, 231, 247, 0.73);
-  margin-bottom: 12px;
-  font-family: var(--heading-font);
-}
+/*--------------------------------------------------------------
+# Utilitários compartilhados
+--------------------------------------------------------------*/
 
-.section-titulo p {
-  font-size: 0.95rem;
-  color: color-mix(in srgb, var(--default-color), transparent 30%);
-  line-height: 1.6;
-  margin-bottom: 0;
-}
-
-/* ============================================================
-   Utilitários compartilhados
-   ============================================================ */
+/* Legenda de status (tabelas, roadmap) */
 .status-legend {
   margin-top: 1rem;
   margin-bottom: 2rem;
@@ -329,15 +341,17 @@ section.principios {
   display: inline-block;
 }
 
+/* Badge padrão do projeto */
 .badge {
-    color: #04c4d9;
-    background: #04c4d938;
-    border-color: #04C4D9;
+  color: #04c4d9;
+  background: #04c4d938;
+  border-color: #04C4D9;
 }
 
 span.badge {
+  display: inline-flex;
   align-items: center;
-  font-size: 0.68rem;
+  font-size: var(--type-xs);
   font-weight: 700;
   text-transform: uppercase;
   border-radius: 50px;
@@ -345,6 +359,7 @@ span.badge {
   white-space: nowrap;
 }
 
+/* Tabelas dark */
 .table,
 .table th,
 .table td {
@@ -358,6 +373,7 @@ span.badge {
   color: var(--contrast-color) !important;
 }
 
+/* Descrição auxiliar com ênfase */
 .desc {
   font-size: 0.9rem;
   color: color-mix(in srgb, var(--default-color), transparent 30%);
@@ -371,30 +387,34 @@ span.badge {
   display: inline;
 }
 
+/* — Cores de status — */
+/* Expansível: adicionar .color-novo seguindo o mesmo padrão */
 .color-laranja {
   background-color: rgba(198, 88, 9, 0.49);
-  color: #d65f0a !important;
-  z-index: 1;
+  color: #d65f0a;
 }
 
 .color-verde {
   background-color: #00db7845;
-  color: #00db7896 !important;
-  z-index: 1;
+  color: #00db7896;
 }
 
 .color-amarelo {
   background-color: #ffd33261;
-  color: #ffd332a7 !important;
-  z-index: 1;
+  color: #ffd332a7;
 }
 
 .color-vermelho {
   background-color: #9c1c057f;
-  color: #e13a1d !important;
-  z-index: 1;
+  color: #e13a1d;
 }
 
+/* Estado oculto — controlado via JS (classList.add/remove) */
+.is-hidden {
+  display: none !important;
+}
+
+/* Botão fechar iniciativas */
 #fechar-iniciativas {
   transition: 0.2s;
 }
@@ -405,9 +425,9 @@ span.badge {
   border-color: #dc3545;
 }
 
-/* ============================================================
-   Header
-   ============================================================ */
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
 .header {
   color: var(--default-color);
   transition: all 0.5s;
@@ -420,7 +440,7 @@ span.badge {
   border-radius: 50px;
   width: 49%;
   margin-top: 20px;
-  padding: 0px 26px;
+  padding: 0 26px;
   box-shadow: 0px 2px 15px rgba(149, 146, 146, 0);
   z-index: 1000;
 }
@@ -434,16 +454,18 @@ span.badge {
   margin-right: 8px;
 }
 
-.header .logo h1 {
+/* Usa <span> em vez de <h1> para não conflitar com o h1 do conteúdo principal */
+.header .logo .sitename {
   font-size: 16px;
   margin: 0;
   font-weight: 500;
   color: var(--heading-color);
+  font-family: var(--heading-font);
 }
 
-/* ============================================================
-   Footer
-   ============================================================ */
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
 #footer {
   position: relative;
 }
@@ -487,6 +509,7 @@ span.badge {
   max-width: 190px;
 }
 
+/* Coração animado no rodapé */
 .heart-icon {
   color: red;
   transition: transform 0.3s, color 0.3s;
@@ -498,9 +521,9 @@ span.badge {
   animation: pulse 1s infinite;
 }
 
-/* ============================================================
-   Preloader
-   ============================================================ */
+/*--------------------------------------------------------------
+# Preloader
+--------------------------------------------------------------*/
 #preloader {
   position: fixed;
   inset: 0;
@@ -521,70 +544,4 @@ span.badge {
   width: 60px;
   height: 60px;
   animation: animate-preloader 1.5s linear infinite;
-}
-
-/* ============================================================
-   Keyframes
-   ============================================================ */
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.3);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
-
-@keyframes animate-preloader {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes ondaLuz {
-  from {
-    -webkit-mask-position: 150% 0%;
-    mask-position: 150% 0%;
-  }
-
-  to {
-    -webkit-mask-position: -50% 0%;
-    mask-position: -50% 0%;
-  }
-}
-
-@keyframes spreadLight {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes moveLight {
-  from {
-    transform: translateX(-0%);
-    opacity: 0;
-  }
-
-  25% {
-    transform: translateX(-0%);
-    opacity: 0;
-  }
-
-  to {
-    transform: translateX(-33%);
-    opacity: 1;
-  }
 }
