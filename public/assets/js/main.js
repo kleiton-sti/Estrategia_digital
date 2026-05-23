@@ -334,7 +334,7 @@
         });
       });
 
-      setTimeout(() => inline.scrollIntoView({ behavior: 'smooth', block: 'start' }), 60);
+      setTimeout(() => inline.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 60);
     }
 
     document.querySelectorAll('.eixo-portal').forEach(portal => {

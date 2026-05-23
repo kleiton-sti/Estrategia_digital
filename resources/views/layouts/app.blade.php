@@ -67,18 +67,6 @@
           <li><a href="{{ route('home') }}">Home</a></li>
 
           <li class="dropdown">
-            <a href="#"><span>Eixos</span>
-            </a>
-            <ul>
-              @foreach($todosEixos as $ex)
-                <li class="@if(isset($eixo) && $ex->id_eixos == $eixo->id_eixos) active @endif">
-                  <a href="{{ route('eixos.show', $ex->id_eixos) }}"><span>{{ $ex->titulo }}</span></a>
-                </li>
-              @endforeach
-            </ul>
-          </li>
-
-          <li class="dropdown">
             <a href="#"><span>Indicadores</span></a>
             <ul>
               <li><a href="{{ route('tabelas') }}"><span>Painel TCESP</span></a></li>

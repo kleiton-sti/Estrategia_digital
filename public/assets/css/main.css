@@ -246,14 +246,14 @@ section-title-obj p {
 
 /* Variante 2: inline com elemento à direita (ex: constelação) */
 .section-title-obj {
-  padding-bottom: var(--title-gap);
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 24px;
-  flex-wrap: wrap
+    padding-bottom: var(--title-gap);
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 90dvw;
 }
 
 /* Variante 3: alinhado à esquerda sem centra */

@@ -209,30 +209,28 @@
 
           <!-- Objetivos -->
           <section class="objetivos section" style="padding-top: 0">
-            <div class="container section-title-obj" data-aos="fade-up">
-              <div class="section-title-obj-texto">
-                <h2>{{ $eixo->titulo }}</h2>
-                <p>{{ $eixo->descricao }}</p>
-              </div>
-              
-              <div class="constelacao-wrap">
-                <div id="constelacao-absolute-{{ $eixo->id_eixos }}">
-                  @include('componentes.constelacao', [
-                    'constelacao' => $constelacao,
-                    'progresso'   => $progresso,
-                    'eixoId'      => $eixo->id_eixos,
-                  ])
-                </div>
-
-                <div class="constelacao-pct-wrap">
-                  <span class="constelacao-pct">{{ round($progresso * 100) }}%</span>
-                  <span class="constelacao-pct-desc"> concluído</span>
-                </div>
-              </div>
-            </div>
-
             <div class="container" data-aos="fade-up">
-              <h2>Objetivos</h2>
+              <div class="section-title-obj">
+                <div class="section-title-obj-texto">
+                  <h2>{{ $eixo->titulo }}</h2>
+                  <p>{{ $eixo->descricao }}</p>
+                </div>
+                <div class="constelacao-wrap">
+                  <div id="constelacao-absolute-{{ $eixo->id_eixos }}">
+                    @include('componentes.constelacao', [
+                      'constelacao' => $constelacao,
+                      'progresso'   => $progresso,
+                      'eixoId'      => $eixo->id_eixos,
+                    ])
+                  </div>
+                  <div class="constelacao-pct-wrap">
+                    <span class="constelacao-pct">{{ round($progresso * 100) }}%</span>
+                    <span class="constelacao-pct-desc"> concluído</span>
+                  </div>
+                </div>
+              </div>
+
+              <h2 class="objetivos-titulo">Objetivos</h2>
               <div class="row gy-4 isotope-container">
                 @foreach($eixo->objetivos as $objetivo)
                   <div class="col-xl-4 col-lg-6 objetivos-item" data-objetivo-id="{{ $objetivo->id_objetivo }}">

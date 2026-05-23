@@ -84,8 +84,8 @@
 }
 
 .container.section-title-obj {
-    width: 94%;
-    text-align: center;
+  width: 94%;
+  text-align: center;
 }
 
 .stat-divisor {
@@ -119,10 +119,10 @@
 
 
 .constelacao-svg {
-    width: 199px;
-    height: 202px;
-    margin-left: 49px;
-    overflow: visible; 
+  width: 199px;
+  height: 202px;
+  margin-left: 49px;
+  overflow: visible;
 }
 
 /* Footer */
@@ -171,7 +171,7 @@
 
 /* Constelação */
 .constelacao-wrap {
-  width: 47%;
+  width: 53%;
   margin-top: -2rem;
 }
 
@@ -397,10 +397,10 @@
     --title-gap: 2.5rem;
   }
 
-.container.section-title-obj {
+  .container.section-title-obj {
     width: 101%;
     text-align: start;
-}
+  }
 
 
   .header .header-container {
@@ -425,12 +425,12 @@
     height: 10.75rem;
   }
 
-    .constelacao-svg {
-    width: 335px;
-    height: 202px;
+  .constelacao-svg {
+    width: 592px;
+    height: 283px;
     margin-left: 0;
     overflow: visible;
-}
+  }
 
   .objetivos-details .objetivos-details-content {
     padding-left: 0.75rem;

@@ -25,7 +25,33 @@ section#principios {
   padding: 0 80px;
 }
 
+.objetivos .container {
+    flex-direction: column;
+    color: var(--default-color);
+    position: relative;
+    max-width: 100dvw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 80px;
+}
 
+
+.objetivos-titulo {
+    font-size: var(--type-2xl);
+    font-weight: 700;
+    line-height: var(--lh-tight);
+    margin-bottom: 1rem;
+    align-self: start;
+}
+
+.objetivos .container .isotope-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+}
 /*--------------------------------------------------------------
 # Card-portal principal
 --------------------------------------------------------------*/
@@ -268,7 +294,6 @@ section#principios {
 --------------------------------------------------------------*/
 .eixo-inline {
   background: var(--background-color);
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 /*--------------------------------------------------------------
