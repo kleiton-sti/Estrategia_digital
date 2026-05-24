@@ -38,12 +38,16 @@
                     </svg>
                 </div>
 
-                 <div class="roadmap-scroll-hint" aria-hidden="true">
+                <button
+                  class="roadmap-scroll-hint"
+                  aria-label="Ir para a linha do tempo"
+                  onclick="document.getElementById('trilha').scrollIntoView({ behavior: 'smooth', block: 'start' })"
+                >
                     <span class="roadmap-scroll-hint__texto">ACOMPANHE NOSSO PROGRESSO</span>
                     <div class="roadmap-scroll-hint__icone">
                         <i class="bi bi-chevron-double-down"></i>
                     </div>
-                </div>
+                </button>
             </div>
         </section>
 
@@ -216,6 +220,18 @@
                     @endforeach
 
                 </div>{{-- /rd-timeline-wrap --}}
+
+                <!-- Botão voltar ao início — ao final da linha do tempo -->
+                <div class="rd-voltar-wrap" data-aos="fade-up">
+                  <button
+                    class="rd-voltar-btn"
+                    aria-label="Voltar ao início do roadmap"
+                    onclick="document.querySelector('.roadmap-hero').scrollIntoView({ behavior: 'smooth', block: 'start' })"
+                  >
+                    <i class="bi bi-arrow-up" aria-hidden="true"></i>
+                    <span>Voltar ao início</span>
+                  </button>
+                </div>
 
             </div>
         </section>

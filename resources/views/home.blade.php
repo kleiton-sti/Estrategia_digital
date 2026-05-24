@@ -10,8 +10,7 @@
           <div class="col-lg-7" data-aos="fade-right" data-aos-delay="100">
             <div class="hero-content">
               <h1>Estratégia Digital</h1>
-              <p>Promovendo a transformação pelo digital e
-                garantindo serviços mais simples, transparentes e acessíveis ao cidadão.</p>
+              <p>Transformação digital e serviços mais simples, transparentes e acessíveis ao cidadão.</p>
 
               <!-- Stats soltos — sem cards, assimétrico -->
               <div class="hero-stats">

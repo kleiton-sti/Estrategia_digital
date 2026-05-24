@@ -9,6 +9,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
+            UserSeeder::class,
             /* Tabelas sem dependências externas */
             EixosSeeder::class,
             ObjetivosSeeder::class,
@@ -20,7 +21,7 @@ class DatabaseSeeder extends Seeder
 
             /* Usuários dependem de grupos e setores
                (nullable por enquanto; popular grupos/setores antes de vincular) */
-            UserSeeder::class,
+            
 
             /* Artigos dependem de usuários e categorias */
             // ArtigosSeeder::class,

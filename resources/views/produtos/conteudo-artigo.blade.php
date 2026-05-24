@@ -7,6 +7,12 @@
   <meta property="og:description" content="{{ $artigo->subtitulo }}">
   <meta property="og:url" content="{{ url()->current() }}">
   <meta property="og:type" content="article">
+  <meta property="article:published_time" content="{{ $artigo->created_at->toIso8601String() }}">
+  <meta property="article:author" content="{{ $artigo->user->nome ?? '' }}">
+  @foreach($artigo->categorias as $cat)
+    <meta property="article:tag" content="{{ $cat->nome }}">
+  @endforeach
+  <link rel="canonical" href="{{ url()->current() }}">
 @endsection
 
 @section('content')
@@ -16,45 +22,64 @@
         <div class="row justify-content-center">
           <div class="col-lg-8">
 
-            <!-- Aviso informativo -->
-            <p class="conteudo-aviso mb-4">
-              Este conteúdo tem caráter exclusivamente informativo e educativo. Não representa oferta, promoção ou
-              recomendação de produtos ou serviços. As informações aqui apresentadas visam contribuir com a
-              transparência, a inovação e a conscientização sobre a transformação digital na gestão pública municipal.
-            </p>
+            <article itemscope itemtype="https://schema.org/Article">
 
-            <!-- Badges de categoria — multiplas por artigo (N:N) -->
-            <div class="artigo-badges-conteudo mb-3">
-              @foreach($artigo->categorias as $cat)
-                <span class="artigo-badge-conteudo">{{ $cat->nome }}</span>
-              @endforeach
-            </div>
+              <!-- Aviso informativo -->
+              <p class="conteudo-aviso mb-4">
+                Este conteúdo tem caráter exclusivamente informativo e educativo. Não representa oferta, promoção ou
+                recomendação de produtos ou serviços. As informações aqui apresentadas visam contribuir com a
+                transparência, a inovação e a conscientização sobre a transformação digital na gestão pública municipal.
+              </p>
 
-            <!-- Titulo e subtitulo -->
-            <h1 class="conteudo-titulo">{{ $artigo->titulo }}</h1>
-            <p class="conteudo-subtitulo">{{ $artigo->subtitulo }}</p>
-
-            <hr class="conteudo-divisor">
-
-            <!-- Corpo do artigo renderizado como HTML -->
-            <div class="conteudo-corpo">
-              {!! $artigo->corpo !!}
-            </div>
-
-            <!-- Autor e data — rodapé do artigo -->
-            <p class="conteudo-autoria mt-5">
-              <em>Escrito por {{ $artigo->user->nome ?? 'Autor desconhecido' }} em {{ $artigo->created_at->format('d/m/Y') }}</em>
-            </p>
-
-            <!-- Acoes de edicao e exclusao visiveis somente para o autor autenticado -->
-            @auth
-              <div class="d-flex flex-row gap-3">
-                @if(Auth::id() === $artigo->user_id)
-                  @include('componentes.acao-editar', ['artigo' => $artigo])
-                @endif
-                @include('componentes.acao-deletar', ['artigo' => $artigo])
+              <!-- Badges de categoria -->
+              <div class="artigo-badges-conteudo mb-3">
+                @foreach($artigo->categorias as $cat)
+                  <span class="artigo-badge-conteudo">{{ $cat->nome }}</span>
+                @endforeach
               </div>
-            @endauth
+
+              <!-- Titulo e subtitulo -->
+              <h1 class="conteudo-titulo" itemprop="headline">{{ $artigo->titulo }}</h1>
+              <p class="conteudo-subtitulo" itemprop="description">{{ $artigo->subtitulo }}</p>
+
+              <hr class="conteudo-divisor">
+
+              <!-- Corpo do artigo -->
+              <div class="conteudo-corpo" itemprop="articleBody">
+                {!! $artigo->corpo !!}
+              </div>
+
+              <!-- Autor — schema.org/Person + itemprop para indexação rica -->
+              <div class="conteudo-autor mt-5" itemscope itemtype="https://schema.org/Person">
+                <div class="conteudo-autor__avatar" aria-hidden="true">
+                  <i class="bi bi-person-circle"></i>
+                </div>
+                <div class="conteudo-autor__info">
+                  <span class="conteudo-autor__label">Escrito por</span>
+                  <span class="conteudo-autor__nome" itemprop="name">
+                    {{ $artigo->user->nome ?? 'Autor desconhecido' }}
+                  </span>
+                  <time
+                    class="conteudo-autor__data"
+                    datetime="{{ $artigo->created_at->toIso8601String() }}"
+                    itemprop="datePublished"
+                  >
+                    {{ $artigo->created_at->translatedFormat('d \d\e F \d\e Y') }}
+                  </time>
+                </div>
+              </div>
+
+              <!-- Ações de edição e exclusão — somente para o autor autenticado -->
+              @auth
+                <div class="d-flex flex-row gap-3 mt-4">
+                  @if(Auth::id() === $artigo->user_id)
+                    @include('componentes.acao-editar', ['artigo' => $artigo])
+                  @endif
+                  @include('componentes.acao-deletar', ['artigo' => $artigo])
+                </div>
+              @endauth
+
+            </article>
 
           </div>
         </div>

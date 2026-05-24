@@ -21,12 +21,12 @@
       <div class="row g-4">
         <!-- Coluna Esquerda: Serviços Online -->
         <div class="col-12 col-lg-8">
-          <div class="card shadow-sm" style="background-color: var(--surface-color); color: var(--default-color); height: 100%;">
+          <div class="card shadow-sm">
             <div class="card-body">
-              <h5 class="card-title mb-3" style="color: var(--accent-color); font-size: 18px;">Serviços Online</h5>
-              <div class="table-responsive" style="max-height: 100%; overflow-y: auto; scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: var(--default-color) rgba(0,0,0,0.1);">
-                <table class="table table-bordered align-middle mb-0" style="color: var(--default-color); font-size: 14px;">
-                  <thead style="background-color: #1f1f3b; color: var(--contrast-color);">
+              <h5 class="card-title mb-3">Serviços Online</h5>
+              <div class="table-responsive" style="max-height: 100%; overflow-y: auto;">
+                <table class="table table-bordered align-middle mb-0">
+                  <thead>
                     <tr>
                       <th>Serviço</th>
                       <th>2024</th>
@@ -66,12 +66,12 @@
         <div class="col-12 col-lg-4 d-flex flex-column gap-4">
 
           <!-- Adequação Municipal -->
-          <div class="card shadow-sm" style="background-color: var(--surface-color); color: var(--default-color);">
+          <div class="card shadow-sm">
             <div class="card-body">
-              <h5 class="card-title mb-3" style="color: var(--accent-color); font-size: 18px;">Adequação Municipal</h5>
-              <div class="table-responsive" style="max-height: 145px; overflow-y: auto; scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: var(--default-color) rgba(0,0,0,0.1);">
-                <table class="table table-bordered align-middle mb-0" style="color: var(--default-color); font-size: 14px;">
-                  <thead style="background-color: #1f1f3b; color: var(--contrast-color);">
+              <h5 class="card-title mb-3">Adequação Municipal</h5>
+              <div class="table-responsive" style="max-height: 145px; overflow-y: auto;">
+                <table class="table table-bordered align-middle mb-0">
+                  <thead>
                     <tr><th>Item</th><th>2024</th><th>2025</th></tr>
                   </thead>
                   <tbody>
@@ -98,12 +98,12 @@
           </div>
 
           <!-- Sistemas Digitais -->
-          <div class="card shadow-sm" style="background-color: var(--surface-color); color: var(--default-color);">
+          <div class="card shadow-sm">
             <div class="card-body">
-              <h5 class="card-title mb-3" style="color: var(--accent-color); font-size: 18px;">Sistemas Digitais no dia-a-dia da População</h5>
-              <div class="table-responsive" style="max-height: 160px; overflow-y: auto; scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: var(--default-color) rgba(0,0,0,0.1);">
-                <table class="table table-bordered align-middle mb-0" style="color: var(--default-color); font-size: 14px;">
-                  <thead style="background-color: #1f1f3b; color: var(--contrast-color);">
+              <h5 class="card-title mb-3">Sistemas Digitais no dia-a-dia da População</h5>
+              <div class="table-responsive" style="max-height: 160px; overflow-y: auto;">
+                <table class="table table-bordered align-middle mb-0">
+                  <thead>
                     <tr><th>Serviço/Sistema</th><th>2024</th><th>2025</th></tr>
                   </thead>
                   <tbody>
@@ -130,12 +130,12 @@
           </div>
 
           <!-- Participação do Cidadão -->
-          <div class="card shadow-sm" style="background-color: var(--surface-color); color: var(--default-color);">
+          <div class="card shadow-sm">
             <div class="card-body">
-              <h5 class="card-title mb-3" style="color: var(--accent-color); font-size: 18px;">Participação do Cidadão pela Internet</h5>
-              <div class="table-responsive" style="max-height: 150px; overflow-y: auto; scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: var(--default-color) rgba(0,0,0,0.1);">
-                <table class="table table-bordered align-middle mb-0" style="color: var(--default-color); font-size: 14px;">
-                  <thead style="background-color: #1f1f3b; color: var(--contrast-color);">
+              <h5 class="card-title mb-3">Participação do Cidadão pela Internet</h5>
+              <div class="table-responsive" style="max-height: 150px; overflow-y: auto;">
+                <table class="table table-bordered align-middle mb-0">
+                  <thead>
                     <tr><th>Ferramenta</th><th>2024</th><th>2025</th></tr>
                   </thead>
                   <tbody>

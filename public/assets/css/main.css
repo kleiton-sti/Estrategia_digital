@@ -27,7 +27,7 @@
   /* labels, badges */
   --type-sm: clamp(0.75rem, 0.70rem + 0.25vw, 0.875rem);
   /* subtextos, datas */
-  --type-body: clamp(0.82rem, 0.78rem + 0.2vw, 0.99rem);
+  --type-body: clamp(0.82rem, 0.7rem + 0.6vw, 1.1rem);
   /* texto secundário */
   --type-base: clamp(0.9rem, 0.85rem + 0.25vw, 1.0625rem);
   /* padrão de leitura */
@@ -243,12 +243,12 @@ section-title-obj p {
   text-align: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: start;
 }
 
 .section-title p {
-  max-width: 600px;
-  text-align: center;
+    max-width: 100%;
+    text-align: start;
 }
 
 /* Variante 2: inline com elemento à direita (ex: constelação) */
@@ -261,11 +261,6 @@ section-title-obj p {
     justify-content: space-between;
     flex-wrap: wrap;
     width: 100%;
-}
-
-/* Variante 3: alinhado à esquerda sem centra */
-.section-titulo {
-  padding-bottom: var(--title-gap);
 }
 
 /*--------------------------------------------------------------
@@ -303,7 +298,6 @@ section-title-obj p {
 }
 
 span.badge {
-  display: inline-flex;
   align-items: center;
   font-size: var(--type-xs);
   font-weight: 700;

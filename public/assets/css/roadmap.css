@@ -59,7 +59,7 @@
   margin: 0;
 }
 
-/* Indicador de scroll — bouncing */
+/* Indicador de scroll — agora é um botão clicável */
 .roadmap-scroll-hint {
   position: absolute;
   bottom: 146px;
@@ -68,6 +68,16 @@
   align-items: center;
   gap: 8px;
   animation: rdScrollBounce 2s ease-in-out infinite;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.roadmap-scroll-hint:focus-visible {
+  outline: 2px solid #04C4D9;
+  outline-offset: 6px;
+  border-radius: 4px;
 }
 
 .roadmap-scroll-hint__texto {
@@ -559,6 +569,54 @@
 .rd-card__item--vazio {
   color: color-mix(in srgb, var(--default-color), transparent 60%);
   font-style: italic;
+}
+
+/*--------------------------------------------------------------
+# Botão voltar ao início — ao final da linha do tempo
+--------------------------------------------------------------*/
+.rd-voltar-wrap {
+  display: flex;
+  justify-content: center;
+  padding: 48px 0 16px;
+}
+
+.rd-voltar-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  border-radius: 50px;
+  background: rgba(4, 196, 217, 0.06);
+  border: 1px solid rgba(4, 196, 217, 0.25);
+  color: rgba(200, 198, 227, 0.75);
+  font-size: var(--type-sm);
+  font-weight: 600;
+  font-family: var(--nav-font);
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: color 0.25s ease, border-color 0.25s ease,
+              background 0.25s ease, transform 0.25s ease;
+}
+
+.rd-voltar-btn:hover {
+  color: #04C4D9;
+  border-color: rgba(4, 196, 217, 0.55);
+  background: rgba(4, 196, 217, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 0 18px rgba(4, 196, 217, 0.15);
+}
+
+.rd-voltar-btn:focus-visible {
+  outline: 2px solid #04C4D9;
+  outline-offset: 4px;
+}
+
+.rd-voltar-btn .bi-arrow-up {
+  transition: transform 0.25s ease;
+}
+
+.rd-voltar-btn:hover .bi-arrow-up {
+  transform: translateY(-3px);
 }
 
 /*--------------------------------------------------------------

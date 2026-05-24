@@ -42,25 +42,82 @@
     line-height: 1.6;
 }
 
-/* ── Autoria em itálico no rodapé ── */
-.conteudo-autoria {
-    font-size: 0.82rem;
-    color: color-mix(in srgb, var(--default-color), transparent 45%);
-    border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
-    padding-top: 16px;
+/* ── Autoria — bloco estruturado com schema.org ── */
+.conteudo-autor {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 20px;
+  border-radius: 12px;
+  background: rgba(10, 14, 40, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.conteudo-autor::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 15%;
+  right: 15%;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(4, 196, 217, 0.3),
+    transparent
+  );
+  pointer-events: none;
+}
+
+.conteudo-autor__avatar {
+  font-size: 2.4rem;
+  color: rgba(200, 198, 227, 0.35);
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.conteudo-autor__info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.conteudo-autor__label {
+  font-size: var(--type-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: rgba(200, 198, 227, 0.45);
+  font-weight: 600;
+}
+
+.conteudo-autor__nome {
+  font-size: var(--type-base);
+  font-weight: 700;
+  color: rgba(232, 231, 247, 0.88);
+  font-family: var(--heading-font);
+}
+
+.conteudo-autor__data {
+  font-size: var(--type-xs);
+  color: rgba(200, 198, 227, 0.45);
 }
 
 /* ── Badge categoria ── */
 .artigo-badge-conteudo {
-    background-color:color-mix(in srgb, var(--accent-color), transparent 82%);
-    color: var(--accent-color);
-    border: 1px solid color-mix(in srgb, var(--accent-color), transparent 65%);
+    display: inline-block;
     font-size: 0.72rem;
-    font-weight: 600;
+    font-weight: 700;
     padding: 4px 14px;
     border-radius: 50px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    background-color: rgba(4, 196, 217, 0.12);
+    color: #a8f0f7;
+    border: 1px solid rgba(4, 196, 217, 0.35);
 }
 
 /* ── Compartilhar ── */

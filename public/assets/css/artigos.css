@@ -31,29 +31,50 @@
 }
 
 .artigo-card {
-    border-radius: 14px;
+    border-radius: 16px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     height: 100%;
-    background-color: var(--surface-color);
-    border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
-    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    background: rgba(10, 14, 40, 0.72);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
 }
 
 .artigo-card:hover {
-    transform: translateY(-4px);
-    border-color: color-mix(in srgb, var(--accent-color), transparent 50%);
-    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.28);
+    transform: translateY(-5px);
+    border-color: rgba(4, 196, 217, 0.25);
+    box-shadow:
+      0 16px 48px rgba(0, 0, 0, 0.35),
+      0 0 0 1px rgba(4, 196, 217, 0.08);
 }
 
+/* Fio de luz no topo — mesmo padrão dos eixo-portal e header */
 .artigo-card::before {
     content: '';
-    display: block;
-    height: 3px;
-    width: 100%;
-    background: linear-gradient(90deg, var(--accent-color) 0%, color-mix(in srgb, var(--accent-color), #a78bfa 60%) 100%);
-    flex-shrink: 0;
+    position: absolute;
+    top: 0;
+    left: 15%;
+    right: 15%;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgba(4, 196, 217, 0.3),
+      transparent
+    );
+    pointer-events: none;
+    z-index: 1;
+    transition: left 0.3s ease, right 0.3s ease, opacity 0.3s ease;
+}
+
+.artigo-card:hover::before {
+    left: 0;
+    right: 0;
+    opacity: 0.8;
 }
 
 .artigo-card-body {
@@ -73,14 +94,14 @@
 
 .artigo-badge {
     font-size: 0.68rem;
-    font-weight: 600;
-    padding: 3px 10px;
+    font-weight: 700;
+    padding: 4px 12px;
     border-radius: 50px;
     text-transform: uppercase;
-    letter-spacing: 0.4px;
-    background-color: color-mix(in srgb, var(--accent-color), transparent 82%);
-    color: var(--accent-color);
-    border: 1px solid color-mix(in srgb, var(--accent-color), transparent 65%);
+    letter-spacing: 0.5px;
+    background-color: rgba(4, 196, 217, 0.12);
+    color: #a8f0f7;
+    border: 1px solid rgba(4, 196, 217, 0.35);
 }
 
 /* ── Data ── */

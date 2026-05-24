@@ -1,28 +1,42 @@
-.status-sim { color: green; }
-.status-nao { color: red; }
+/*--------------------------------------------------------------
+# tabelas.css — Página de Indicadores
+# Estilização alinhada com a identidade do projeto (home/roadmap).
+# Não altera estrutura HTML — apenas sobrescreve inline styles
+# e classes Bootstrap com a paleta e glassmorphism do projeto.
+--------------------------------------------------------------*/
 
+/* Desativa scroll-behavior apenas no contexto da página de tabelas */
+.tabelas-page {
+  scroll-behavior: auto;
+}
+
+/*--------------------------------------------------------------
+# Título da seção
+--------------------------------------------------------------*/
+.section-title h1 { color: var(--heading-color); }
+
+/*--------------------------------------------------------------
+# Barra de progresso
+--------------------------------------------------------------*/
 .progress {
-  height: 25px;
-  background-color: #2c2c4a;
-  border-radius: 15px;
+  height: 6px;
+  background-color: rgba(255,255,255,0.06);
+  border-radius: 6px;
   overflow: hidden;
-  box-shadow: inset 0 0 5px rgba(0,0,0,0.3);
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   width: 50%;
   min-width: 250px;
   max-width: 400px;
+  box-shadow: none;
 }
 
 .progress-bar {
-  background: linear-gradient(90deg, #350B59 0%, #9C45E8 100%);
-  color: #fff;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-left: 10px;
+  background: linear-gradient(90deg, #7c6ef0 0%, #04C4D9 100%);
+  box-shadow: 0 0 10px rgba(4, 196, 217, 0.4);
+  color: transparent;
+  font-size: 0;
   height: 100%;
-  border-radius: 15px 0 0 15px;
+  border-radius: 6px;
   width: 0%;
   transition: width 1.5s ease-out;
   will-change: width;
@@ -30,14 +44,138 @@
   z-index: 2;
 }
 
-.roadmap-divider {
-  margin: 2rem 0;
-  border-top: 1px solid #333;
+/*--------------------------------------------------------------
+# Cards — glassmorphism alinhado com os eixo-portal
+--------------------------------------------------------------*/
+.card.shadow-sm {
+  background: rgba(10, 14, 40, 0.72) !important;
+  border: 1px solid rgba(255, 255, 255, 0.07) !important;
+  border-radius: 16px !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    0 1px 0 rgba(255, 255, 255, 0.04) inset !important;
+  position: relative;
+  overflow: hidden;
+  color: var(--default-color) !important;
 }
 
-.section-title h1 { color: var(--heading-color); }
-
-/* Desativa scroll-behavior apenas no contexto da página de tabelas */
-.tabelas-page {
-  scroll-behavior: auto;
+/* Fio de luz superior — mesmo padrão dos eixo-portal e header */
+.card.shadow-sm::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 15%;
+  right: 15%;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(4, 196, 217, 0.3),
+    transparent
+  );
+  pointer-events: none;
+  z-index: 1;
 }
+
+.card-body {
+  position: relative;
+  z-index: 2;
+}
+
+/*--------------------------------------------------------------
+# Título dos cards
+--------------------------------------------------------------*/
+.card-title {
+  font-size: var(--type-md) !important;
+  font-family: var(--heading-font) !important;
+  font-weight: 700 !important;
+  color: rgba(232, 231, 247, 0.88) !important;
+  letter-spacing: 0.2px;
+  margin-bottom: 1rem !important;
+}
+
+/*--------------------------------------------------------------
+# Tabelas
+--------------------------------------------------------------*/
+.table {
+  color: var(--default-color) !important;
+  font-size: var(--type-body) !important;
+  border-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+.table-bordered > :not(caption) > * {
+  border-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+.table-bordered > :not(caption) > * > * {
+  border-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Thead */
+.table thead {
+  background-color: rgba(5, 7, 30, 0.7) !important;
+}
+
+.table thead th {
+  font-size: var(--type-xs) !important;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(4, 196, 217, 0.15) !important;
+  color: rgba(200, 198, 227, 0.65) !important;
+}
+
+/* Linhas do tbody */
+.table tbody tr {
+  border-color: rgba(255, 255, 255, 0.04) !important;
+  transition: background 0.2s ease;
+}
+
+.table tbody tr:hover {
+  background-color: rgba(4, 196, 217, 0.04) !important;
+}
+
+.table tbody td {
+  padding: 9px 12px;
+  vertical-align: middle;
+  border-color: rgba(255, 255, 255, 0.04) !important;
+}
+
+/*--------------------------------------------------------------
+# Scrollbar das tabelas
+--------------------------------------------------------------*/
+.table-responsive {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(4, 196, 217, 0.3) rgba(255, 255, 255, 0.04);
+}
+
+.table-responsive::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+.table-responsive::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 4px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+  background: rgba(4, 196, 217, 0.3);
+  border-radius: 4px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb:hover {
+  background: rgba(4, 196, 217, 0.5);
+}
+
+/*--------------------------------------------------------------
+# Ícones de status
+--------------------------------------------------------------*/
+.status-sim { color: #00db79; }
+.status-nao { color: #ef4444; }
+
+.bi-check2-all.text-success  { color: #00db79 !important; }
+.bi-x-lg.text-danger         { color: #ef4444 !important; }
