@@ -159,7 +159,7 @@ section {
 section#hero {
   position: relative;
   color: var(--default-color);
-  min-height: 100dvh;
+  min-height: 88dvh;
   display: flex;
   align-items: center;
   overflow: visible !important;
@@ -175,6 +175,7 @@ section.principios {
   padding-top: 0;
   position: relative;
   z-index: 1;
+  overflow: visible !important;
   display: flex;
   justify-content: center;
   align-items: center;

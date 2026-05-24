@@ -7,102 +7,89 @@
     <section id="hero" class="hero section">
       <div class="container">
         <div class="row align-items-start">
-          <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
+          <div class="col-lg-7" data-aos="fade-right" data-aos-delay="100">
             <div class="hero-content">
               <h1>Estratégia Digital</h1>
               <p>Promovendo a transformação pelo digital e
                 garantindo serviços mais simples, transparentes e acessíveis ao cidadão.</p>
 
-              <!-- Cards glassmorphism -->
-              <div class="hero-glass-cards">
+              <!-- Stats soltos — sem cards, assimétrico -->
+              <div class="hero-stats">
 
-                <!-- linha superior: Eixos + Objetivos -->
-                <div class="glass-cards-row">
-                  <div class="glass-card glass-card--eixos" data-aos="fade-up" data-aos-delay="250">
-                    <div class="glass-card-numero">6</div>
-                    <div class="glass-card-texto">
-                      <span class="glass-card-titulo">Eixos</span>
-                      <span class="glass-card-desc">Estruturas estratégicas de atuação</span>
+                <!-- topo: dois números flutuando em alturas diferentes -->
+                <div class="hero-stats__topo">
+                  <div class="hero-stat hero-stat--eixos" data-aos="fade-up" data-aos-delay="220">
+                    <span class="hero-stat__num">6</span>
+                    <div class="hero-stat__info">
+                      <span class="hero-stat__label">Eixos</span>
+                      <span class="hero-stat__desc">estratégicos</span>
                     </div>
                   </div>
 
-                  <div class="glass-card glass-card--objetivos" data-aos="fade-up" data-aos-delay="350">
-                    <div class="glass-card-numero">18</div>
-                    <div class="glass-card-texto">
-                      <span class="glass-card-titulo">Objetivos</span>
-                      <span class="glass-card-desc">Metas orientadas à transformação</span>
+                  <div class="hero-stat hero-stat--objetivos" data-aos="fade-up" data-aos-delay="340">
+                    <span class="hero-stat__num">18</span>
+                    <div class="hero-stat__info">
+                      <span class="hero-stat__label">Objetivos</span>
+                      <span class="hero-stat__desc">de transformação</span>
+                    </div>
+                  </div>
+
+                  <div class="hero-stat hero-stat--iniciativas" data-aos="fade-up" data-aos-delay="460">
+                    <span class="hero-stat__num">81</span>
+                    <div class="hero-stat__info">
+                      <span class="hero-stat__label">Iniciativas</span>
+                      <span class="hero-stat__desc">em andamento</span>
                     </div>
                   </div>
                 </div>
 
-                <!-- card grande de iniciativas -->
-                <div class="glass-card glass-card--iniciativas" data-aos="fade-up" data-aos-delay="450">
+                <!-- anel + contadores desalinhados intencionalmente -->
+                <div class="hero-stats__anel-row" data-aos="fade-up" data-aos-delay="500">
 
-                  <!-- cabeçalho: total -->
-                  <div class="glass-card-texto--iniciativas">
-                    <div class="glass-card-numero">81</div>
-                    <div class="glass-card-inform">
-                      <span class="glass-card-titulo">Iniciativas</span>
-                      <span class="glass-card-desc">Ações concretas em andamento</span>
+                  <div class="ring-wrap">
+                    <svg class="iniciativas-ring" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                      <circle class="ring-track" cx="60" cy="60" r="52" />
+                      <circle class="ring-progress" cx="60" cy="60" r="52" id="ringProgress" />
+                    </svg>
+                    <div class="ring-inner">
+                      <span class="ist-num ist-num--verde purecounter" data-purecounter-start="0"
+                        data-purecounter-end="{{ $concluidas }}" data-purecounter-duration="3"></span>
                     </div>
                   </div>
 
-                  <!-- linha de stats -->
-                  <div class="iniciativas-stat-row">
+                  <div class="ring-label-col">
+                    <span class="ist-pill ist-pill--verde">Concluídas</span>
+                    <span class="ist-desc">de 81 iniciativas entregues</span>
+                  </div>
 
-                    <!-- concluídas dentro do anel -->
-                    <div class="ring-wrap">
-                      <svg class="iniciativas-ring" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-                        <circle class="ring-track" cx="60" cy="60" r="52" />
-                        <circle class="ring-progress" cx="60" cy="60" r="52" id="ringProgress" />
-                      </svg>
-                      <div class="ring-inner">
-                        <span class="ist-num ist-num--verde purecounter" data-purecounter-start="0"
-                          data-purecounter-end="{{ $concluidas }}" data-purecounter-duration="3"></span>
-                      </div>
-                    </div>
-
-                    <!-- coluna de texto do anel -->
-                    <div class="ring-label-col">
-                      <span class="ist-pill ist-pill--verde">Concluídas</span>
-                      <span class="ist-desc">de 81 iniciativas entregues</span>
-                    </div>
-
-                    <!-- divisor -->
-                    <div class="stat-divisor"></div>
-
-                    <!-- em execução -->
-                    <div class="stat-col">
+                  <div class="hero-stats__contadores">
+                    <div class="hero-contador hero-contador--andamento">
                       <span class="ist-num ist-num--amarelo purecounter" data-purecounter-start="0"
                         data-purecounter-end="{{ $andamento }}" data-purecounter-duration="3"></span>
                       <span class="ist-pill ist-pill--amarelo">Em execução</span>
                     </div>
-
-                    <!-- não iniciadas -->
-                    <div class="stat-col">
+                    <div class="hero-contador hero-contador--nao">
                       <span class="ist-num ist-num--vermelho purecounter" data-purecounter-start="0"
                         data-purecounter-end="{{ $naoIniciadas }}" data-purecounter-duration="3"></span>
                       <span class="ist-pill ist-pill--vermelho">Não iniciadas</span>
                     </div>
-
                   </div>
+
                 </div>
 
               </div>
             </div>
           </div>
 
-          <div class="col-lg-6 colunaImg" data-aos="fade-left" data-aos-delay="200">
+          <div class="col-lg-5 colunaImg" data-aos="fade-left" data-aos-delay="200">
             <div class="hero-visual">
               <div class="hero-image">
                 <img src="assets/img/misc/misc.png" alt="Digital Agency Hero" class="img-fluid">
-                <div id="reflexo-img-1"></div>
-                <div id="reflexo-img-2"></div>
-                <div id="reflexo-img-3"></div>
-                <div id="reflexo-img-4"></div>
+                <!-- <div id="reflexo-img-1"></div> -->
+                <!-- <div id="reflexo-img-2"></div> -->
+                <!-- <div id="reflexo-img-3"></div> -->
                 <div id="reflexo-img-5"></div>
                 <div id="reflexo-img-6"></div>
-                <div id="reflexo-img-7"></div>
               </div>
             </div>
           </div>
@@ -116,10 +103,10 @@
       <!-- Eixos Section -->
       <section id="principios" class="principios section">
         <div class="container">
-          <div class="section-title" data-aos="fade-up">
+          <!-- <div class="section-title" data-aos="fade-up">
             <h2>Eixos Estratégicos</h2>
             <p>Cada eixo é uma constelação de iniciativas pensadas para transformar a vida digital do cidadão de Caraguatatuba.</p>
-          </div>
+          </div> -->
           <div class="row gy-4">
             @foreach($eixos as $eixo)
               @php
@@ -136,7 +123,7 @@
                 ];
                 $cor = $cores[$eixo->id_eixos] ?? $cores[1];
               @endphp
-              <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="{{ ($loop->index % 3) * 100 }}">
+              <div class="col-lg-4 col-md-6">
                 <div class="eixo-portal"
                      data-eixo-id="{{ $eixo->id_eixos }}"
                      style="--eixo-glow: {{ $cor['glow'] }}; --eixo-rgb: {{ $cor['rgb'] }}">

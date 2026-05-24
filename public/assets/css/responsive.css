@@ -60,8 +60,27 @@
   gap: 0.625rem;
 }
 
+/* Hero stats — mobile: empilha em coluna, remove deslocamentos */
+.hero-stats__topo {
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.hero-stat--objetivos {
+  transform: none;
+}
+
+.hero-contador--nao {
+  transform: none;
+}
+
+.hero-stats__anel-row {
+  flex-wrap: wrap;
+  padding-left: 0;
+}
+
 .hero .hero-visual .hero-image {
-  display: none;
+  transform: none;
 }
 
 /* Glass cards */
@@ -408,6 +427,15 @@
 
   .hero .hero-visual .hero-image {
     display: block;
+    transform: translateX(5%);
+  }
+
+  .hero-stat--objetivos {
+    transform: translateY(-12px);
+  }
+
+  .hero-contador--nao {
+    transform: translateX(16px);
   }
 
   .ring-wrap {
