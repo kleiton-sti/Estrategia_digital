@@ -66,19 +66,9 @@
         <ul>
           <li><a href="{{ route('home') }}">Home</a></li>
 
-          <li class="dropdown">
-            <a href="#"><span>Indicadores</span></a>
-            <ul>
-              <li><a href="{{ route('tabelas') }}"><span>Painel TCESP</span></a></li>
-            </ul>
-          </li>
+          <li><a href="{{ route('tabelas') }}">Indicadores</a></li>
 
-          <li class="dropdown">
-            <a href="#"><span>Políticas</span></a>
-            <ul>
-              <li><a href="{{ route('regulamentacoes') }}"><span>Regulamentação</span></a></li>
-            </ul>
-          </li>
+          <li><a href="{{ route('regulamentacoes') }}">Políticas</a></li>
 
           <li class="dropdown">
             <a href="#"><span>Produtos</span></a>
