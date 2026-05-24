@@ -73,27 +73,16 @@
           <li class="dropdown">
             <a href="#"><span>Produtos</span></a>
             <ul>
-              <li><a href="{{ route('artigos') }}">Artigos</a></li>
               <li><a href="{{ route('produtos.all.hands') }}"><span>All Hands</span></a></li>
               <li><a href="{{ route('produtos.stii.numeros') }}"><span>STII em números</span></a></li>
             </ul>
           </li>
 
+          <li><a href="{{ route('artigos') }}">Artigos</a></li>
+
           <li><a href="{{ route('plano') }}">PDTI</a></li>
 
           <li><a href="{{ route('roadmap') }}">Roadmap</a></li>
-
-          <!-- Botão de acesso -->
-          @auth
-            <li>
-              <form action="{{ route('sair') }}" method="POST">
-                @csrf
-                <button type="submit" class="btn-nav-sair">
-                  <i class="bi bi-box-arrow-right"></i> Sair
-                </button>
-              </form>
-            </li>
-          @endauth
 
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>

@@ -25,7 +25,7 @@ class PublicacaoController extends Controller
             $artigos       = $this->produtosService->listarArtigos($categoriaSlug);
             $categorias    = $this->produtosService->listarCategorias();
 
-            return view('produtos.artigos', compact('artigos', 'categorias', 'categoriaSlug'));
+            return view('artigos', compact('artigos', 'categorias', 'categoriaSlug'));
         } catch (\Throwable $e) {
             Log::error('PublicacaoController@painel: ' . $e->getMessage());
             abort(500);

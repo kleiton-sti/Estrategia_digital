@@ -164,36 +164,107 @@
 
 /* ── Painel autenticado ── */
 .artigos-header-auth {
-    background-color: var(--surface-color);
-    border-radius: 12px;
-    padding: 14px 20px;
-    border: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 14px 20px;
+  margin-bottom: 2rem;
+  border-radius: 12px;
+  background: rgba(10, 14, 40, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  position: relative;
+  overflow: hidden;
+}
+
+.artigos-header-auth::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 15%;
+  right: 15%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(4, 196, 217, 0.3), transparent);
+  pointer-events: none;
+}
+
+.artigos-auth-usuario {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.artigos-auth-usuario .bi-person-circle {
+  font-size: 1.4rem;
+  color: rgba(200, 198, 227, 0.4);
 }
 
 .artigos-nome-usuario {
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--heading-color);
+  font-size: var(--type-sm);
+  font-weight: 600;
+  color: rgba(232, 231, 247, 0.85);
+  font-family: var(--heading-font);
 }
 
-.btn-publicar {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 22px;
-    border-radius: 50px;
-    background-color: var(--accent-color);
-    color: #fff;
-    font-size: 0.875rem;
-    font-weight: 600;
-    text-decoration: none;
-    border: none;
-    transition: background-color 0.25s;
+.artigos-auth-acoes {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.btn-publicar:hover {
-    background-color: color-mix(in srgb, var(--accent-color), #000 15%);
-    color: #fff;
+/* Botão Publicar — ciano */
+.btn-artigo-publicar {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 18px;
+  border-radius: 50px;
+  font-size: var(--type-sm);
+  font-weight: 700;
+  font-family: var(--nav-font);
+  letter-spacing: 0.3px;
+  text-decoration: none;
+  background: rgba(4, 196, 217, 0.12);
+  color: #a8f0f7;
+  border: 1px solid rgba(4, 196, 217, 0.35);
+  transition: background 0.25s, border-color 0.25s, color 0.25s, transform 0.25s;
+}
+
+.btn-artigo-publicar:hover {
+  background: rgba(4, 196, 217, 0.2);
+  border-color: rgba(4, 196, 217, 0.6);
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 0 16px rgba(4, 196, 217, 0.2);
+}
+
+/* Botão Sair — vermelho */
+.btn-artigo-sair {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 18px;
+  border-radius: 50px;
+  font-size: var(--type-sm);
+  font-weight: 700;
+  font-family: var(--nav-font);
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  background: rgba(239, 68, 68, 0.08);
+  color: rgba(252, 165, 165, 0.85);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  transition: background 0.25s, border-color 0.25s, color 0.25s, transform 0.25s;
+}
+
+.btn-artigo-sair:hover {
+  background: rgba(239, 68, 68, 0.18);
+  border-color: rgba(239, 68, 68, 0.5);
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 0 16px rgba(239, 68, 68, 0.15);
 }
 
 .artigos-vazio {

@@ -8,14 +8,22 @@
       <div class="container" data-aos="fade-up">
 
         @auth
-          <div class="artigos-header-auth d-flex align-items-center justify-content-between mb-4 flex-wrap gap-3">
-            <div class="d-flex align-items-center gap-2">
-              <i class="bi bi-person-circle fs-4"></i>
+          <div class="artigos-header-auth">
+            <div class="artigos-auth-usuario">
+              <i class="bi bi-person-circle"></i>
               <span class="artigos-nome-usuario">{{ Auth::user()->nome }}</span>
             </div>
-            <a href="{{ route('artigos.criar') }}" class="btn btn-publicar">
-              <i class="bi bi-plus-lg"></i> Publicar
-            </a>
+            <div class="artigos-auth-acoes">
+              <a href="{{ route('artigos.criar') }}" class="btn-artigo-publicar">
+                <i class="bi bi-plus-lg" aria-hidden="true"></i> Publicar
+              </a>
+              <form action="{{ route('sair') }}" method="POST">
+                @csrf
+                <button type="submit" class="btn-artigo-sair">
+                  <i class="bi bi-box-arrow-right" aria-hidden="true"></i> Sair
+                </button>
+              </form>
+            </div>
           </div>
         @endauth
 
@@ -52,7 +60,8 @@
 
           @forelse ($artigos as $artigo)
             <div class="col-lg-6 col-12">
-              <a href="{{ route('artigos.conteudo', ['slug' => $artigo->slug, 'id' => $artigo->id]) }}" class="artigo-card-link">
+              <a href="{{ route('artigos.conteudo', ['slug' => $artigo->slug, 'id' => $artigo->id]) }}"
+                class="artigo-card-link">
                 <div class="artigo-card">
                   <div class="artigo-card-body">
 

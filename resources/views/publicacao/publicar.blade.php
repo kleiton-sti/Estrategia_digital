@@ -272,6 +272,6 @@
 @endsection
 
 @push('scripts')
-<script src='https://cdn.jsdelivr.net/npm/froala-editor@latest/js/froala_editor.pkgd.min.js'></script>
-<script src='{{ asset('assets/js/froala-editor.js') }}'></script>
+<script src="https://cdn.jsdelivr.net/npm/tinymce@7/tinymce.min.js" referrerpolicy="origin"></script>
+<script src="{{ asset('assets/js/tinymce-editor.js') }}"></script>
 @endpush
