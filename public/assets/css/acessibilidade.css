@@ -2,11 +2,11 @@
 # acessibilidade.css
 # Widget de acessibilidade — posicionamento, painel e botão.
 # Alto contraste — sobrescreve todo o projeto via body.alto-contraste.
-# VLibras — imune ao aumento de fonte via px fixo.
+# VLibras — posicionamento e estilo do botão.
 --------------------------------------------------------------*/
 
 /*--------------------------------------------------------------
-# Posicionamento do widget
+# Posicionamento do widget de acessibilidade (lado direito)
 --------------------------------------------------------------*/
 #acessibilidade-widget {
   position: fixed;
@@ -64,7 +64,6 @@
   overflow: hidden;
 }
 
-/* Fio de luz superior — mesmo padrão do header e cards */
 #painel-acessibilidade::before {
   content: '';
   position: absolute;
@@ -108,7 +107,6 @@
   text-align: center;
 }
 
-/* Divisor vertical */
 .acess-divisor {
   width: 1px;
   height: 20px;
@@ -150,15 +148,82 @@
 }
 
 /*--------------------------------------------------------------
+# VLibras — posicionado no lado esquerdo, mesma altura
+--------------------------------------------------------------*/
+[vw] {
+  position: fixed !important;
+  bottom: 41% !important;
+  left: 6px !important;
+  right: auto !important;
+  z-index: 999 !important;
+}
+
+/* Esconde o botão padrão do VLibras */
+[vw-access-button] {
+  display: none !important;
+}
+
+/* Botão customizado do VLibras — injetado via JS */
+#btn-vlibras {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(8, 12, 40, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(124, 110, 240, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(200, 198, 227, 0.75);
+  font-size: 18px;
+  cursor: pointer;
+  transition: border-color 0.25s, color 0.25s, box-shadow 0.25s;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  position: fixed;
+  bottom: 41%;
+  left: 6px;
+  z-index: 999;
+}
+
+#btn-vlibras:hover {
+  border-color: rgba(124, 110, 240, 0.55);
+  color: #c4b8ff;
+  box-shadow: 0 0 18px rgba(124, 110, 240, 0.2);
+}
+
+#btn-vlibras:focus-visible {
+  outline: 2px solid rgba(124, 110, 240, 0.6);
+  outline-offset: 3px;
+}
+
+/*--------------------------------------------------------------
 # VLibras — imune ao aumento de fonte (px fixo)
 --------------------------------------------------------------*/
-.vlibras-widget {
+.vlibras-widget,
+[vw-plugin-wrapper] {
   font-size: 14px !important;
 }
 
-.vlibras-widget button {
-  font-size: 14px !important;
-  padding: 6px 12px !important;
+/*--------------------------------------------------------------
+# Correção: webkit de sombra/partículas de fundo
+# não deve vazar sobre o conteúdo das páginas internas
+--------------------------------------------------------------*/
+.hero-bg-elements {
+  z-index: 0 !important;
+}
+
+.bg-particles {
+  z-index: 0 !important;
+}
+
+/* Conteúdo das páginas internas fica sempre acima do fundo */
+.pagina-interna .container,
+.pagina-interna section,
+.pagina-interna .section-titulo,
+.primeira-sessao .container {
+  position: relative;
+  z-index: 1;
 }
 
 /*--------------------------------------------------------------
@@ -169,13 +234,39 @@ body.alto-contraste {
   color: #fff !important;
 }
 
-/* Seções com fundo escuro do projeto */
-body.alto-contraste .hero,
-body.alto-contraste section,
+/* Fundo global e partículas */
 body.alto-contraste .hero-bg-elements,
 body.alto-contraste .bg-particles {
+  display: none !important;
+}
+
+/* Seções */
+body.alto-contraste .hero,
+body.alto-contraste section,
+body.alto-contraste .roadmap-hero,
+body.alto-contraste .roadmap-content,
+body.alto-contraste .primeira-sessao {
   background: #000 !important;
   background-image: none !important;
+}
+
+/* Efeitos visuais do roadmap e hero */
+body.alto-contraste .rd-nebulosa__glow,
+body.alto-contraste .rd-trilha-vertical,
+body.alto-contraste .rd-trilha-vertical::after,
+body.alto-contraste .rd-eixo-sep::after,
+body.alto-contraste .roadmap-content .nebulosa-1,
+body.alto-contraste .rd-planeta__halo,
+body.alto-contraste .rd-planeta__anel,
+body.alto-contraste #reflexo-img-1,
+body.alto-contraste #reflexo-img-3,
+body.alto-contraste #reflexo-img-4,
+body.alto-contraste #reflexo-img-5,
+body.alto-contraste #reflexo-img-6,
+body.alto-contraste #reflexo-img-7,
+body.alto-contraste .hero .hero-bg-elements {
+  display: none !important;
+  opacity: 0 !important;
 }
 
 /* Header e footer */
@@ -209,6 +300,7 @@ body.alto-contraste a {
 
 /* Cards e superfícies */
 body.alto-contraste .eixo-portal,
+body.alto-contraste .rd-card,
 body.alto-contraste .artigo-card,
 body.alto-contraste .card.shadow-sm,
 body.alto-contraste .objetivos-wrapper,
@@ -216,6 +308,7 @@ body.alto-contraste .artigos-header-auth,
 body.alto-contraste .conteudo-autor {
   background: #000 !important;
   border-color: #fff !important;
+  backdrop-filter: none !important;
 }
 
 /* Botões genéricos */
@@ -252,7 +345,7 @@ body.alto-contraste .navmenu .dropdown ul {
 }
 
 /*--------------------------------------------------------------
-# Widget é imune ao alto contraste
+# Widget de acessibilidade — imune ao alto contraste
 --------------------------------------------------------------*/
 body.alto-contraste #acessibilidade-widget {
   position: fixed !important;
@@ -284,4 +377,18 @@ body.alto-contraste #painel-acessibilidade button {
 
 body.alto-contraste #painel-acessibilidade button:hover {
   background: rgba(255, 255, 255, 0.12) !important;
+}
+
+/* Botão VLibras — imune */
+body.alto-contraste #btn-vlibras {
+  background: #000 !important;
+  color: #fff !important;
+  border-color: #fff !important;
+  position: fixed !important;
+  bottom: 41% !important;
+  left: 6px !important;
+}
+
+body.alto-contraste #btn-vlibras:hover {
+  background: #111 !important;
 }

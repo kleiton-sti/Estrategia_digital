@@ -1,11 +1,10 @@
 /* acessibilidade.js
- * Controle de tamanho de fonte e alto contraste.
+ * Controle de tamanho de fonte, alto contraste e botão VLibras customizado.
  * Persiste preferências via localStorage.
- * Mesmo modelo do lgpd-crawler, adaptado ao projeto.
  */
 (function () {
   const TAMANHOS   = [14, 16, 18, 20, 22, 24];
-  let indiceAtual  = 1; /* padrão: 16px */
+  let indiceAtual  = 1;
 
   /* — Restaura alto contraste salvo — */
   const contrasteSalvo = localStorage.getItem('ed-alto-contraste');
@@ -67,7 +66,6 @@
   const painel   = document.getElementById('painel-acessibilidade');
 
   if (btnAbrir && painel) {
-    /* estado inicial: fechado */
     painel.style.display         = 'flex';
     painel.style.transformOrigin = 'right';
     painel.style.transition      = 'transform 0.25s cubic-bezier(0.34,1.56,0.64,1), opacity 0.22s ease, visibility 0s linear 0.25s';
@@ -105,10 +103,39 @@
       aberto ? fecharPainel() : abrirPainel();
     });
 
-    /* clique dentro do painel não fecha */
     painel.addEventListener('click', (e) => e.stopPropagation());
-
-    /* clique fora fecha */
     document.addEventListener('click', () => { if (aberto) fecharPainel(); });
   }
+
+  /* — Botão VLibras customizado —
+   * Injeta um botão estilizado no lado esquerdo que ativa
+   * o painel oficial do VLibras ao ser clicado.
+   */
+  function injetarBotaoVLibras() {
+    if (document.getElementById('btn-vlibras')) return;
+
+    const btn = document.createElement('button');
+    btn.id = 'btn-vlibras';
+    btn.title = 'Libras';
+    btn.setAttribute('aria-label', 'Ativar VLibras — tradução em Libras');
+    btn.innerHTML = '<i class="bi bi-hand-index-thumb" aria-hidden="true"></i>';
+
+    btn.addEventListener('click', () => {
+      /* Tenta acionar o botão oficial do VLibras */
+      const btnOficial = document.querySelector('[vw-access-button]');
+      if (btnOficial) {
+        btnOficial.click();
+      }
+    });
+
+    document.body.appendChild(btn);
+  }
+
+  /* Aguarda o VLibras carregar antes de injetar o botão */
+  if (document.readyState === 'complete') {
+    injetarBotaoVLibras();
+  } else {
+    window.addEventListener('load', injetarBotaoVLibras);
+  }
+
 })();
