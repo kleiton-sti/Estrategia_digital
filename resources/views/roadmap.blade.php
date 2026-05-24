@@ -5,7 +5,7 @@
 
         <!-- Hero -->
         <section class="roadmap-hero section">
-            <div class="container roadmap-hero__inner" data-aos="fade-up">
+            <div class="roadmap-hero__inner" data-aos="fade-up">
                 <div class="roadmap-hero__texto">
                     <span class="roadmap-hero__label">ROTEIRO DIGITAL</span>
                     <h1 class="roadmap-hero__titulo">Roadmap</h1>

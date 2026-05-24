@@ -183,10 +183,6 @@
   <section class="publicacao-section py-5">
     <div class="container" data-aos="fade-up">
 
-      <div class="section-titulo mb-4">
-        <h1>{{ isset($artigo) ? 'Editar Artigo' : 'Novo Artigo' }}</h1>
-      </div>
-
       @if ($errors->any())
         <div class="alert alert-danger">
           <ul class="mb-0">
