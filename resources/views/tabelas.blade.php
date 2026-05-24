@@ -8,8 +8,7 @@
       <!-- Título -->
       <div class="section-title texto-esquerda-flex mb-4">
         <h1>Painel de Inovação</h1>
-        <p class="alinha-texto-esquerda">O Painel de Inovação é um espaço de transparência e acompanhamento das ações digitais da Prefeitura de Caraguatatuba.
-          Reúne um panorama atualizado dos projetos, serviços e iniciativas de transformação digital conduzidos pela Secretaria de Tecnologia da Informação e Inovação (STII), fortalecendo a cultura de inovação, eficiência e governo aberto no município.</p>
+        <p class="alinha-texto-esquerda">Panorama atualizado para acompanhar as transformações digitais conduzidas pela Secretaria de Tecnologia da Informação e Inovação (STII).</p>
       </div>
 
       <div class="progress">

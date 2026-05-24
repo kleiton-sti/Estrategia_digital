@@ -48,8 +48,6 @@
   margin-bottom: 2rem;
 }
 
-
-
 .hero .hero-content p {
   text-align: left;
 }
@@ -58,29 +56,6 @@
   justify-content: center;
   flex-wrap: wrap;
   gap: 0.625rem;
-}
-
-/* Hero stats — mobile: empilha em coluna, remove deslocamentos */
-.hero-stats__topo {
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.hero-stat--objetivos {
-  transform: none;
-}
-
-.hero-contador--nao {
-  transform: none;
-}
-
-.hero-stats__anel-row {
-  flex-wrap: wrap;
-  padding-left: 0;
-}
-
-.hero .hero-visual .hero-image {
-  transform: none;
 }
 
 /* Glass cards */
@@ -133,9 +108,6 @@
 .objetivos .objetivos-wrapper {
   height: auto;
 }
-
-
-
 
 .constelacao-svg {
   width: 199px;
@@ -275,6 +247,270 @@
 }
 
 /* ============================================================
+   LARGURA UNIFORME DE CONTAINERS — mobile (< md / 992px)
+   Um único token --container-px controla o padding lateral de
+   todos os .container e sections do site em telas pequenas.
+   Isso garante que o conteúdo de todas as páginas fique
+   alinhado na mesma margem, sem exceções.
+   ============================================================ */
+@media (max-width: 61.9375rem) {
+
+  :root {
+    --container-px: 1.25rem;
+    /* 20px — margem lateral uniforme mobile */
+  }
+
+  /* Normaliza TODOS os .container do Bootstrap para usar o token */
+  .container,
+  .container-fluid,
+  .container-sm,
+  .container-md,
+  .container-lg,
+  .container-xl,
+  .container-xxl {
+    padding-left: var(--container-px) !important;
+    padding-right: var(--container-px) !important;
+  }
+
+  /* Garante que sections não adicionem padding lateral próprio */
+  section {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* A timeline de Regulamentações tem padding-left próprio —
+     precisa ser ajustada para respeitar o token */
+  .timeline {
+    padding-left: 2.75rem;
+    /* espaço para o fio + ponto sem sair da margem */
+  }
+
+  .timeline::before {
+    left: 0.5rem;
+  }
+
+  .timeline-item::before {
+    left: -0.125rem;
+  }
+
+  .timeline-date,
+  .timeline-content {
+    margin-left: 1.5rem;
+  }
+
+
+}
+
+/* ============================================================
+   TÍTULOS E SUBTÍTULOS — páginas internas (< md / 992px)
+   Centraliza h1/h2/p nos blocos de título do body.
+   Não afeta cards, badges ou elementos internos de componentes.
+   ============================================================ */
+@media (max-width: 61.9375rem) {
+
+  /* Páginas internas — todos os blocos de título */
+  .pagina-interna .section-title,
+  .pagina-interna .section-titulo,
+  .pagina-interna .section-title-obj {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .pagina-interna .section-title h1,
+  .pagina-interna .section-title h2,
+  .pagina-interna .section-titulo h1,
+  .pagina-interna .section-titulo h2,
+  .pagina-interna .section-title-obj h1,
+  .pagina-interna .section-title-obj h2 {
+    text-align: center;
+  }
+
+  .pagina-interna .section-title p,
+  .pagina-interna .section-titulo p,
+  .pagina-interna .section-title-obj p,
+  .pagina-interna p.alinha-texto-esquerda {
+    text-align: center;
+    max-width: 100%;
+  }
+
+  /* Roadmap hero — label, título e subtítulo */
+  .roadmap-hero__texto {
+    text-align: center;
+  }
+
+  .section-title-obj {
+    flex-direction: column;
+    gap: 33px;
+    justify-content: center;
+  }
+
+  /* Eixo inline no home — bloco de texto do título do eixo */
+  .section-title-obj-texto {
+    display: flex;
+    text-align: center;
+    width: 100dvw;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .section-title-obj p {
+    width: 86dvw !important;
+  }
+
+  .section-title-obj-texto h2,
+  .section-title-obj-texto p {
+    text-align: center;
+    width: 100%;
+  }
+
+  /* Título "Objetivos" dentro do eixo expandido */
+  .objetivos-titulo {
+    text-align: center;
+    align-self: center;
+  }
+
+
+
+}
+
+/* ============================================================
+   HERO HOME — card de stats mobile (< md / 992px)
+   Os três números (6 / 18 / 81) ficam lado a lado num card único
+   semitransparente separado por linhas sutis.
+   O anel + contadores ficam logo abaixo.
+   A imagem do cérebro fica posicionada atrás do card via JS.
+   ============================================================ */
+@media (max-width: 61.9375rem) {
+
+  /* Oculta a coluna da imagem — será usada só como fundo */
+  .hero .colunaImg {
+    display: none !important;
+  }
+
+  /* hero-content precisa de position para o fundo absoluto */
+  .hero .hero-content {
+    position: relative;
+  }
+
+  /* Imagem do cérebro injetada via JS como fundo atrás dos stats */
+  .hero-stats-mobile-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 110%;
+    max-width: none;
+    opacity: 0.1;
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(1px);
+  }
+
+  /* O bloco .hero-stats fica sobre o fundo */
+  .hero-stats {
+    position: relative;
+    z-index: 1;
+    gap: 20px;
+  }
+
+  /* ── Card único dos três stats ── */
+  .hero-stats__topo {
+    flex-wrap: nowrap;
+    gap: 0;
+    width: 100%;
+    background: rgba(5, 7, 30, 0.52);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 16px;
+    padding: 1rem 0.25rem;
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    position: relative;
+  }
+
+  .hero-stats__topo::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 15%;
+    right: 15%;
+    height: 1px;
+    background: linear-gradient(to right,
+        transparent,
+        rgba(4, 196, 217, 0.3),
+        transparent);
+    border-radius: 1px;
+    pointer-events: none;
+  }
+
+  /* Cada stat ocupa 1/3 do card */
+  .hero-stat {
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Separador vertical entre os stats */
+  .hero-stat+.hero-stat {
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
+    padding-left: 0 !important;
+    margin-left: 0 !important;
+  }
+
+  .hero-stat+.hero-stat::before {
+    display: none;
+  }
+
+  /* Números uniformes e proporcionais no mobile */
+  .hero-stat--eixos .hero-stat__num,
+  .hero-stat--objetivos .hero-stat__num,
+  .hero-stat--iniciativas .hero-stat__num {
+    font-size: clamp(1.9rem, 6.5vw, 2.6rem);
+  }
+
+  /* Cancela os transforms verticais do desktop */
+  .hero-stat--objetivos {
+    transform: none;
+  }
+
+  /* Texto info centralizado */
+  .hero-stat__info {
+    align-items: center;
+    text-align: center;
+  }
+
+  /* ── Linha do anel + contadores de carregamento ── */
+  .hero-stats__anel-row {
+    flex-wrap: nowrap;
+    padding-left: 0;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .hero-stats__contadores {
+    margin-left: 0;
+  }
+
+  .hero-contador--nao {
+    transform: none;
+  }
+
+  .hero .hero-visual .hero-image {
+    transform: none;
+  }
+
+}
+
+/* ============================================================
    XS — 36rem+ (576px)
    ============================================================ */
 @media (min-width: 36rem) {
@@ -282,6 +518,8 @@
   :root {
     --section-padding-y: 3.5rem;
     --title-gap: 1.75rem;
+    --container-px: 1.5rem;
+    /* aumenta ligeiramente em telas um pouco maiores */
   }
 
   .glass-cards-row {
@@ -405,6 +643,7 @@
 
 /* ============================================================
    MD — 62rem+ (992px)
+   Restaura tudo ao comportamento desktop original.
    ============================================================ */
 @media (min-width: 62rem) {
 
@@ -413,22 +652,57 @@
     --title-gap: 2.5rem;
   }
 
+  /* Devolve o padding lateral padrão do Bootstrap aos containers */
+  .container,
+  .container-fluid,
+  .container-sm,
+  .container-md,
+  .container-lg,
+  .container-xl,
+  .container-xxl {
+    padding-left: var(--bs-gutter-x, 0.75rem) !important;
+    padding-right: var(--bs-gutter-x, 0.75rem) !important;
+  }
+
+  /* Restaura padding lateral de sections */
+  section {
+    padding-left: unset;
+    padding-right: unset;
+  }
+
+  /* Restaura timeline */
+  .timeline {
+    padding-left: 60px;
+  }
+
+  .timeline::before {
+    left: 20px;
+  }
+
+  .timeline-item::before {
+    left: 10px;
+  }
+
+  .timeline-date,
+  .timeline-content {
+    margin-left: 50px;
+  }
+
   .container.section-title-obj {
     width: 100%;
     text-align: start;
   }
 
-
   .header .header-container {
     width: 100%;
   }
-
 
   .hero .hero-visual .hero-image {
     display: block;
     transform: translateX(5%);
   }
 
+  /* Restaura os transforms assimétricos do desktop */
   .hero-stat--objetivos {
     transform: translateY(-12px);
   }
@@ -497,6 +771,119 @@
     display: block;
   }
 
+  /* Restaura alinhamento dos títulos nas páginas internas */
+  .pagina-interna .section-title,
+  .pagina-interna .section-titulo,
+  .pagina-interna .section-title-obj {
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  .pagina-interna .section-title h1,
+  .pagina-interna .section-title h2,
+  .pagina-interna .section-titulo h1,
+  .pagina-interna .section-titulo h2,
+  .pagina-interna .section-title-obj h1,
+  .pagina-interna .section-title-obj h2 {
+    text-align: left;
+  }
+
+  .pagina-interna .section-title p,
+  .pagina-interna .section-titulo p,
+  .pagina-interna .section-title-obj p,
+  .pagina-interna p.alinha-texto-esquerda {
+   
+  }
+
+  .section-title-obj-texto {
+    text-align: left;
+    width: auto;
+  }
+
+  .section-title-obj-texto h2,
+  .section-title-obj-texto p {
+    
+  }
+
+  .objetivos-titulo {
+    text-align: left;
+    align-self: flex-start;
+  }
+
+  /* Remove o cérebro de fundo mobile e restaura a imagem original */
+  .hero-stats-mobile-bg {
+    display: none;
+  }
+
+  .hero .colunaImg {
+    display: block !important;
+  }
+
+  /* Restaura o card de stats para o layout assimétrico original */
+  .hero-stats__topo {
+    flex-wrap: nowrap;
+    gap: 0;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+
+  .hero-stats__topo::before {
+    display: none;
+  }
+
+  .hero-stat {
+    flex: unset;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 10px;
+    padding: unset;
+    margin: unset;
+  }
+
+  .hero-stat+.hero-stat {
+    border-left: none;
+    padding-left: 24px;
+    margin-left: 24px;
+  }
+
+  .hero-stat+.hero-stat::before {
+    display: block;
+  }
+
+  .hero-stat__info {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .hero-stats__anel-row {
+    flex-wrap: nowrap;
+    padding-left: 8px;
+    justify-content: flex-start;
+    gap: 20px;
+  }
+
+  .hero-stats__contadores {
+    margin-left: 8px;
+  }
+
+  /* Restaura tamanhos dos números */
+  .hero-stat--eixos .hero-stat__num {
+    font-size: clamp(2.8rem, 4vw, 4rem);
+  }
+
+  .hero-stat--objetivos .hero-stat__num {
+    font-size: clamp(3.4rem, 5vw, 5rem);
+  }
+
+  .hero-stat--iniciativas .hero-stat__num {
+    font-size: clamp(4.2rem, 6.5vw, 6.5rem);
+  }
+
 }
 
 /* ============================================================
@@ -532,7 +919,6 @@
   .header .header-container {
     width: 60%;
   }
-
 
 }
 
