@@ -32,6 +32,7 @@
   <link href="{{ asset('assets/css/publicacao.css') }}" rel="stylesheet">
   <link href="{{ asset('assets/css/login.css') }}" rel="stylesheet">
   <link href="{{ asset('assets/css/constelacao.css') }}" rel="stylesheet">
+  <link href="{{ asset('assets/css/acessibilidade.css') }}" rel="stylesheet">
   <link href="{{ asset('assets/css/responsive.css') }}" rel="stylesheet">
   @stack('styles')
 
@@ -89,6 +90,25 @@
       </nav>
     </div>
   </header>
+
+  <!-- Acessibilidade -->
+  <div id="acessibilidade-widget">
+    <div id="painel-acessibilidade">
+      <button id="btn-aumentar" title="Aumentar fonte" aria-label="Aumentar tamanho da fonte">
+        <span>A+</span>
+      </button>
+      <button id="btn-diminuir" title="Diminuir fonte" aria-label="Diminuir tamanho da fonte">
+        <span>A-</span>
+      </button>
+      <div class="acess-divisor"></div>
+      <button id="btn-contraste" title="Alto contraste" aria-label="Alternar alto contraste" aria-pressed="false">
+        <span><i class="bi bi-circle-half" aria-hidden="true"></i></span>
+      </button>
+    </div>
+    <button id="btn-abrir-acessibilidade" title="Acessibilidade" aria-label="Abrir ferramentas de acessibilidade" aria-expanded="false">
+      <i class="bi bi-universal-access" aria-hidden="true"></i>
+    </button>
+  </div>
 
   @yield('content')
 
@@ -212,7 +232,18 @@
   <script src="{{ asset('assets/vendor/aos/aos.js') }}"></script>
   <script src="{{ asset('assets/vendor/purecounter/purecounter_vanilla.js') }}"></script>
   <script src="{{ asset('assets/js/main.js') }}"></script>
+  <script src="{{ asset('assets/js/acessibilidade.js') }}"></script>
   @stack('scripts')
+  <!-- VLibras -->
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper vlibras-widget"></div>
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>new window.VLibras.Widget('https://vlibras.gov.br/app');</script>
+
 </body>
 
 </html>

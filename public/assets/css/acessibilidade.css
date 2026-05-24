@@ -1,0 +1,287 @@
+/*--------------------------------------------------------------
+# acessibilidade.css
+# Widget de acessibilidade — posicionamento, painel e botão.
+# Alto contraste — sobrescreve todo o projeto via body.alto-contraste.
+# VLibras — imune ao aumento de fonte via px fixo.
+--------------------------------------------------------------*/
+
+/*--------------------------------------------------------------
+# Posicionamento do widget
+--------------------------------------------------------------*/
+#acessibilidade-widget {
+  position: fixed;
+  bottom: 41%;
+  right: 6px;
+  z-index: 999;
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+}
+
+@media (max-width: 640px) {
+  #acessibilidade-widget {
+    bottom: 41%;
+    right: 6px;
+  }
+
+  #btn-abrir-acessibilidade {
+    width: 36px;
+    height: 36px;
+    font-size: 17px;
+    border-radius: 6px;
+  }
+
+  #painel-acessibilidade {
+    height: 36px;
+    min-width: 110px;
+    padding: 3px;
+  }
+
+  #painel-acessibilidade button {
+    padding: 4px 8px;
+    font-size: 13px;
+  }
+}
+
+/*--------------------------------------------------------------
+# Painel expansível
+--------------------------------------------------------------*/
+#painel-acessibilidade {
+  display: flex;
+  align-items: center;
+  background: rgba(8, 12, 40, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(4, 196, 217, 0.25);
+  border-radius: 10px;
+  padding: 4px;
+  height: 40px;
+  min-width: 130px;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(4, 196, 217, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Fio de luz superior — mesmo padrão do header e cards */
+#painel-acessibilidade::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 15%;
+  right: 15%;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(4, 196, 217, 0.4),
+    transparent
+  );
+  pointer-events: none;
+}
+
+#painel-acessibilidade button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+  border: none;
+  background: transparent;
+  color: rgba(200, 198, 227, 0.75);
+  font-family: 'Courier New', monospace;
+}
+
+#painel-acessibilidade button:hover {
+  background: rgba(4, 196, 217, 0.1);
+  color: #a8f0f7;
+}
+
+#painel-acessibilidade button span {
+  width: 20px;
+  text-align: center;
+}
+
+/* Divisor vertical */
+.acess-divisor {
+  width: 1px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
+  margin: 0 2px;
+}
+
+/*--------------------------------------------------------------
+# Botão gatilho
+--------------------------------------------------------------*/
+#btn-abrir-acessibilidade {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(8, 12, 40, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(4, 196, 217, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(200, 198, 227, 0.75);
+  font-size: 18px;
+  cursor: pointer;
+  transition: border-color 0.25s, color 0.25s, box-shadow 0.25s;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+#btn-abrir-acessibilidade:hover {
+  border-color: rgba(4, 196, 217, 0.55);
+  color: #a8f0f7;
+  box-shadow: 0 0 18px rgba(4, 196, 217, 0.2);
+}
+
+#btn-abrir-acessibilidade:focus-visible {
+  outline: 2px solid rgba(4, 196, 217, 0.6);
+  outline-offset: 3px;
+}
+
+/*--------------------------------------------------------------
+# VLibras — imune ao aumento de fonte (px fixo)
+--------------------------------------------------------------*/
+.vlibras-widget {
+  font-size: 14px !important;
+}
+
+.vlibras-widget button {
+  font-size: 14px !important;
+  padding: 6px 12px !important;
+}
+
+/*--------------------------------------------------------------
+# Alto contraste
+--------------------------------------------------------------*/
+body.alto-contraste {
+  background-color: #000 !important;
+  color: #fff !important;
+}
+
+/* Seções com fundo escuro do projeto */
+body.alto-contraste .hero,
+body.alto-contraste section,
+body.alto-contraste .hero-bg-elements,
+body.alto-contraste .bg-particles {
+  background: #000 !important;
+  background-image: none !important;
+}
+
+/* Header e footer */
+body.alto-contraste .header .header-container,
+body.alto-contraste footer {
+  background: #000 !important;
+  border-color: #fff !important;
+}
+
+/* Textos */
+body.alto-contraste p,
+body.alto-contraste h1,
+body.alto-contraste h2,
+body.alto-contraste h3,
+body.alto-contraste h4,
+body.alto-contraste h5,
+body.alto-contraste h6,
+body.alto-contraste span,
+body.alto-contraste li,
+body.alto-contraste label,
+body.alto-contraste strong,
+body.alto-contraste td,
+body.alto-contraste th {
+  color: #fff !important;
+}
+
+/* Links */
+body.alto-contraste a {
+  color: #ff0 !important;
+}
+
+/* Cards e superfícies */
+body.alto-contraste .eixo-portal,
+body.alto-contraste .artigo-card,
+body.alto-contraste .card.shadow-sm,
+body.alto-contraste .objetivos-wrapper,
+body.alto-contraste .artigos-header-auth,
+body.alto-contraste .conteudo-autor {
+  background: #000 !important;
+  border-color: #fff !important;
+}
+
+/* Botões genéricos */
+body.alto-contraste button {
+  background-color: #000 !important;
+  color: #fff !important;
+  border-color: #fff !important;
+}
+
+body.alto-contraste input,
+body.alto-contraste textarea,
+body.alto-contraste select {
+  background-color: #000 !important;
+  color: #fff !important;
+  border-color: #fff !important;
+}
+
+/* Tabelas */
+body.alto-contraste .table,
+body.alto-contraste .table thead,
+body.alto-contraste .table tbody tr {
+  background: #000 !important;
+  border-color: #fff !important;
+}
+
+/* Navmenu */
+body.alto-contraste .navmenu a {
+  color: #fff !important;
+}
+
+body.alto-contraste .navmenu .dropdown ul {
+  background: #000 !important;
+  border-color: #fff !important;
+}
+
+/*--------------------------------------------------------------
+# Widget é imune ao alto contraste
+--------------------------------------------------------------*/
+body.alto-contraste #acessibilidade-widget {
+  position: fixed !important;
+  bottom: 41% !important;
+  right: 6px !important;
+  z-index: 999 !important;
+}
+
+body.alto-contraste #btn-abrir-acessibilidade {
+  background: #000 !important;
+  color: #fff !important;
+  border-color: #fff !important;
+}
+
+body.alto-contraste #btn-abrir-acessibilidade:hover {
+  background: #111 !important;
+}
+
+body.alto-contraste #painel-acessibilidade {
+  background: #000 !important;
+  border-color: #fff !important;
+}
+
+body.alto-contraste #painel-acessibilidade button {
+  background: transparent !important;
+  color: #fff !important;
+  border: none !important;
+}
+
+body.alto-contraste #painel-acessibilidade button:hover {
+  background: rgba(255, 255, 255, 0.12) !important;
+}

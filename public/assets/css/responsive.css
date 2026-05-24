@@ -794,18 +794,14 @@
     text-align: left;
   }
 
-  .pagina-interna .section-title p,
-  .pagina-interna .section-titulo p,
-  .pagina-interna .section-title-obj p,
-  .pagina-interna p.alinha-texto-esquerda {}
+
 
   .section-title-obj-texto {
     text-align: left;
     width: auto;
   }
 
-  .section-title-obj-texto h2,
-  .section-title-obj-texto p {}
+
 
   .objetivos-titulo {
     text-align: left;
