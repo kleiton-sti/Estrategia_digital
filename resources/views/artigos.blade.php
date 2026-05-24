@@ -29,7 +29,7 @@
 
         <div class="section-titulo mb-5 d-flex flex-column justify-content-start">
           <h1>Artigos</h1>
-          <p class="text-start">Explore conteudos sobre transformacao digital, inovacao e gestao publica.</p>
+          <p>Explore conteudos sobre transformacao digital, inovacao e gestao publica.</p>
         </div>
 
         <!-- Pills de filtro por categoria -->

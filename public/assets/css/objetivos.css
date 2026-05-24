@@ -308,7 +308,7 @@ section#principios-details {
 
 @media (max-width: 640px) {
   .ini-painel {
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
     gap: 16px;
   }
@@ -316,6 +316,11 @@ section#principios-details {
   .ini-painel-divisor {
     width: 100%;
     height: 1px;
+  }
+
+  .ini-painel-contador {
+    flex-direction: row;
+    gap: 12px;
   }
 }
 

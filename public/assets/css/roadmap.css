@@ -48,16 +48,15 @@
   font-weight: 700;
   line-height: var(--lh-tight);
   margin: 8px 0 16px;
-  color: rgba(232, 231, 247, 0.73);
   font-family: var(--heading-font);
 }
 
 .roadmap-hero__sub {
   font-size: var(--type-base);
-  color: color-mix(in srgb, var(--default-color), transparent 35%);
   max-width: 520px;
   line-height: var(--lh-relaxed);
   margin: 0;
+  padding: 0px 39px;
 }
 
 /* Indicador de scroll — agora é um botão clicável */

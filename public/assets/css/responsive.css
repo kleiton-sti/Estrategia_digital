@@ -49,7 +49,7 @@
 }
 
 .hero .hero-content p {
-  text-align: left;
+  text-align: center;
 }
 
 .hero .hero-buttons {
@@ -356,13 +356,13 @@
   }
 
   .section-title-obj p {
-    width: 86dvw !important;
+    width: 91dvw !important;
   }
 
   .section-title-obj-texto h2,
   .section-title-obj-texto p {
     text-align: center;
-    width: 100%;
+    width: 100dvw;
   }
 
   /* Título "Objetivos" dentro do eixo expandido */
@@ -566,10 +566,12 @@
   }
 
   .hero .hero-content {
-    text-align: left;
+    text-align: center;
     padding-inline: 0;
     margin-bottom: 0;
   }
+
+ 
 
   .hero .hero-buttons {
     justify-content: flex-start;
