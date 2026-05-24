@@ -84,7 +84,7 @@
 }
 
 .container.section-title-obj {
-  width: 94%;
+  width: 100%;
   text-align: center;
 }
 
@@ -121,8 +121,7 @@
 .constelacao-svg {
   width: 199px;
   height: 202px;
-  margin-left: 49px;
-  overflow: visible;
+  overflow: hidden;
 }
 
 /* Footer */
@@ -171,7 +170,6 @@
 
 /* Constelação */
 .constelacao-wrap {
-  width: 53%;
   margin-top: -2rem;
 }
 
@@ -398,7 +396,7 @@
   }
 
   .container.section-title-obj {
-    width: 101%;
+    width: 100%;
     text-align: start;
   }
 
@@ -426,10 +424,10 @@
   }
 
   .constelacao-svg {
-    width: 592px;
-    height: 283px;
-    margin-left: 0;
-    overflow: visible;
+    width: 100%;
+    max-width: 592px;
+    height: auto;
+    overflow: hidden;
   }
 
   .objetivos-details .objetivos-details-content {

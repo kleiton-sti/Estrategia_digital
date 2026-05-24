@@ -8,7 +8,7 @@ section#objetivos {
 
 
 .section-title-obj-texto {
-    max-width: 35dvw;
+    max-width: 55%;
 }
 
 .constelacao-wrap {
@@ -19,7 +19,8 @@ section#objetivos {
     align-items: center;
     gap: 6px;
     flex-shrink: 0;
-    width: 561px;
+    width: auto;
+    max-width: 100%;
 }
 
 .constelacao-absolute {
@@ -33,7 +34,7 @@ section#objetivos {
 .constelacao-svg {
     width: 335px;
     height: 202px;
-    overflow: visible;
+    overflow: hidden;
 }
 
 .constelacao-pct-wrap {

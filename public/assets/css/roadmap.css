@@ -96,9 +96,10 @@
 --------------------------------------------------------------*/
 .rd-trilha {
   position: relative;
-  width: 100dvw;
+  width: 100%;
   margin-bottom: -20px;
   pointer-events: none;
+  overflow: hidden;
 }
 
 .rd-trilha-svg {
@@ -148,7 +149,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 100dvw;
+  width: 100%;
   height: 100px;
   background: radial-gradient(ellipse at center, rgba(4, 196, 217, 0.28) 0%, transparent 60%);
   pointer-events: none;

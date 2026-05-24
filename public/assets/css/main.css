@@ -101,8 +101,13 @@
 /*--------------------------------------------------------------
 # Base
 --------------------------------------------------------------*/
+html {
+  overflow-x: hidden;
+}
+
 body {
   position: relative;
+  overflow-x: hidden;
   color: var(--default-color);
   background-color: var(--background-color);
   font-family: var(--default-font);
@@ -154,7 +159,7 @@ section {
 section#hero {
   position: relative;
   color: var(--default-color);
-  min-height: 87dvh;
+  min-height: 100dvh;
   display: flex;
   align-items: center;
   overflow: visible !important;
@@ -179,7 +184,8 @@ section.principios {
 
 
 section.principios-details {
-  border:none;
+    border: none;
+    padding-top: 0;
 }
 
 
@@ -253,7 +259,7 @@ section-title-obj p {
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    width: 90dvw;
+    width: 100%;
 }
 
 /* Variante 3: alinhado à esquerda sem centra */

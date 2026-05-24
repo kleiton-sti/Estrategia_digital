@@ -22,12 +22,12 @@
 >
     <defs>
         <!-- glow para nós principais ativos -->
-        <filter id="{{ $uid }}-glow-principal" x="-80%" y="-80%" width="260%" height="260%">
+        <filter id="{{ $uid }}-glow-principal" x="-40%" y="-40%" width="180%" height="180%">
             <feGaussianBlur stdDeviation="2.2" result="blur"/>
             <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
         </filter>
         <!-- glow suave para nós secundários ativos -->
-        <filter id="{{ $uid }}-glow-secundario" x="-60%" y="-60%" width="220%" height="220%">
+        <filter id="{{ $uid }}-glow-secundario" x="-30%" y="-30%" width="160%" height="160%">
             <feGaussianBlur stdDeviation="1.2" result="blur"/>
             <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
         </filter>

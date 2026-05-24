@@ -18,14 +18,12 @@
   font-size: var(--type-4xl);
   font-weight: 700;
   line-height: var(--lh-tight);
-  color: rgba(232, 231, 247, 0.73);
   margin-bottom: 1.2rem;
   font-family: var(--heading-font);
 }
 
 .hero .hero-content p {
   font-size: var(--type-body);
-  color: color-mix(in srgb, var(--default-color), transparent 30%);
   margin-bottom: 2rem;
   line-height: var(--lh-relaxed);
 }
