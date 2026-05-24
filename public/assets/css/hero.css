@@ -20,12 +20,14 @@
   line-height: var(--lh-tight);
   margin-bottom: 1.2rem;
   font-family: var(--heading-font);
+  text-align: left;
 }
 
 .hero .hero-content p {
   font-size: var(--type-body);
   margin-bottom: 2rem;
   line-height: var(--lh-relaxed);
+  text-align: left
 }
 
 /*--------------------------------------------------------------

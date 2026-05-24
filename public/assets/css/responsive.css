@@ -48,10 +48,6 @@
   margin-bottom: 2rem;
 }
 
-.hero .hero-content p {
-  text-align: center;
-}
-
 .hero .hero-buttons {
   justify-content: center;
   flex-wrap: wrap;
@@ -276,6 +272,14 @@
   section {
     padding-left: 0;
     padding-right: 0;
+  }
+
+  .hero .hero-content h1 {
+    text-align: center;
+  }
+
+  .hero .hero-content p {
+    text-align: center;
   }
 
   /* A timeline de Regulamentações tem padding-left próprio —
@@ -571,7 +575,7 @@
     margin-bottom: 0;
   }
 
- 
+
 
   .hero .hero-buttons {
     justify-content: flex-start;
@@ -793,9 +797,7 @@
   .pagina-interna .section-title p,
   .pagina-interna .section-titulo p,
   .pagina-interna .section-title-obj p,
-  .pagina-interna p.alinha-texto-esquerda {
-   
-  }
+  .pagina-interna p.alinha-texto-esquerda {}
 
   .section-title-obj-texto {
     text-align: left;
@@ -803,9 +805,7 @@
   }
 
   .section-title-obj-texto h2,
-  .section-title-obj-texto p {
-    
-  }
+  .section-title-obj-texto p {}
 
   .objetivos-titulo {
     text-align: left;
