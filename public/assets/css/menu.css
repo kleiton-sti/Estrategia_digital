@@ -45,7 +45,6 @@
     opacity: 0.6;
   }
 
-  /* Underline ciano no hover — alinhado com a identidade do projeto */
   .navmenu > ul > li > a::before {
     content: '';
     position: absolute;
@@ -68,18 +67,10 @@
   .navmenu .active,
   .navmenu .active:focus { color: #ffffff; }
 
-  /* Dropdown — sem fundo sólido no hover do item pai */
   .navmenu .dropdown { position: relative; }
-
-  .navmenu .dropdown > a {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-  }
-
+  .navmenu .dropdown > a { display: flex; align-items: center; gap: 4px; }
   .navmenu .dropdown:hover > a i { transform: rotate(180deg); }
 
-  /* Painel do dropdown — glassmorphism */
   .navmenu .dropdown ul {
     margin: 8px 0 0;
     padding: 8px 0;
@@ -101,23 +92,16 @@
     min-width: 180px;
   }
 
-  /* Fio de luz no topo do dropdown */
   .navmenu .dropdown ul::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 20%;
-    right: 20%;
+    top: 0; left: 20%; right: 20%;
     height: 1px;
     background: linear-gradient(to right, transparent, rgba(4, 196, 217, 0.3), transparent);
     border-radius: 1px;
   }
 
-  .navmenu .dropdown:hover > ul {
-    opacity: 1;
-    top: 100%;
-    visibility: visible;
-  }
+  .navmenu .dropdown:hover > ul { opacity: 1; top: 100%; visibility: visible; }
 
   .navmenu .dropdown ul li { min-width: 180px; }
 
@@ -162,12 +146,7 @@
   text-decoration: none;
 }
 
-.btn-nav-entrar:hover {
-  background-color: #2563eb;
-  transform: translateY(-1px);
-  color: #fff !important;
-}
-
+.btn-nav-entrar:hover { background-color: #2563eb; transform: translateY(-1px); color: #fff !important; }
 .btn-nav-entrar::before { display: none !important; }
 
 .btn-nav-sair {
@@ -187,15 +166,17 @@
   text-decoration: none;
 }
 
-.btn-nav-sair:hover {
-  background-color: #f87171;
-  color: #fff !important;
-}
+.btn-nav-sair:hover { background-color: #f87171; color: #fff !important; }
 
 /*--------------------------------------------------------------
 # Navigation Menu — Mobile
+#
+# O botão .mobile-nav-toggle permanece dentro do <nav> no HTML.
+# O menu abre como painel flutuante fixo abaixo do header.
+# O navmenu NÃO vira overlay — apenas o ul aparece.
 --------------------------------------------------------------*/
 @media (max-width: 1199px) {
+
   .mobile-nav-toggle {
     color: var(--nav-color);
     font-size: 28px;
@@ -203,38 +184,61 @@
     margin-right: 10px;
     cursor: pointer;
     transition: color 0.3s;
+    position: relative;
+    z-index: 9999;
   }
 
-  .navmenu { padding: 0; z-index: 9997; }
+  .navmenu {
+    padding: 0;
+    /* sem position fixed no navmenu — evita capturar cliques na tela toda */
+  }
 
-  .navmenu ul {
+  /* ul escondido por padrão */
+  .navmenu > ul {
     display: none;
     list-style: none;
-    position: absolute;
-    inset: 60px 20px 20px 20px;
-    padding: 10px 0;
+    position: fixed;
+    top: 75px;
+    left: 16px;
+    right: 16px;
+    padding: 8px 0;
     margin: 0;
-    border-radius: 6px;
-    background-color: var(--nav-mobile-background-color);
-    border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
-    box-shadow: none;
+    border-radius: 14px;
+    background: rgba(3, 5, 31, 0.96);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.6),
+      0 0 0 1px rgba(4, 196, 217, 0.08);
     overflow-y: auto;
-    transition: 0.3s;
+    max-height: calc(100dvh - 100px);
     z-index: 9998;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
   }
+
+  /* ul visível quando body tem mobile-nav-active */
+  .mobile-nav-active .navmenu > ul { display: block; }
 
   .navmenu a,
   .navmenu a:focus {
     color: var(--nav-dropdown-color);
-    padding: 10px 20px;
+    padding: 11px 20px;
     font-family: var(--nav-font);
-    font-size: 17px;
+    font-size: 15px;
     font-weight: 500;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    white-space: nowrap;
-    transition: 0.3s;
+    transition: color 0.2s, background 0.2s;
+    border-radius: 8px;
+    margin: 1px 6px;
+  }
+
+  .navmenu a:hover,
+  .navmenu .active,
+  .navmenu .active:focus {
+    color: #ffffff;
+    background: rgba(4, 196, 217, 0.06);
   }
 
   .navmenu a i,
@@ -242,24 +246,27 @@
     font-size: 12px;
     line-height: 0;
     margin-left: 5px;
-    width: 30px; height: 30px;
+    width: 28px; height: 28px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
     transition: 0.3s;
-    background-color: color-mix(in srgb, var(--accent-color), transparent 90%);
+    background-color: color-mix(in srgb, var(--accent-color), transparent 88%);
   }
 
-  .navmenu a i:hover,
-  .navmenu a:focus i:hover {
-    background-color: var(--accent-color);
-    color: var(--contrast-color);
+  /* Submenus mobile */
+  .navmenu .dropdown ul {
+    position: static;
+    display: none;
+    padding: 4px 0;
+    margin: 4px 12px;
+    background: rgba(31, 34, 64, 0.7);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
   }
 
-  .navmenu a:hover,
-  .navmenu .active,
-  .navmenu .active:focus { color: var(--nav-dropdown-hover-color); }
+  .navmenu .dropdown > .dropdown-active { display: block; }
 
   .navmenu .active i,
   .navmenu .active:focus i {
@@ -268,41 +275,11 @@
     transform: rotate(180deg);
   }
 
-  .navmenu .dropdown ul {
-    position: static;
-    display: none;
-    z-index: 99;
-    padding: 10px 0;
-    margin: 10px 20px;
-    background-color: var(--nav-dropdown-background-color);
-    transition: all 0.5s ease-in-out;
-  }
-
-  .navmenu .dropdown ul ul { background-color: rgba(33,37,41,0.1); }
-
-  .navmenu .dropdown > .dropdown-active {
-    display: block;
-    background-color: rgba(33,37,41,0.03);
-  }
-
-  .mobile-nav-active { overflow: hidden; }
-
+  /* Botão vira X quando menu aberto */
   .mobile-nav-active .mobile-nav-toggle {
-    color: #fff;
-    position: absolute;
-    font-size: 32px;
-    top: 15px; right: 15px;
-    margin-right: 0;
-    z-index: 9999;
+    color: #04C4D9;
   }
 
-  .mobile-nav-active .navmenu {
-    position: fixed;
-    overflow: hidden;
-    inset: 0;
-    background: rgba(33,37,41,0.8);
-    transition: 0.3s;
-  }
-
-  .mobile-nav-active .navmenu > ul { display: block; }
+  /* overflow hidden no body quando menu aberto — impede scroll de fundo */
+  .mobile-nav-active { overflow: hidden; }
 }
