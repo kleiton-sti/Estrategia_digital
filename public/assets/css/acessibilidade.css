@@ -236,6 +236,10 @@
   padding: 0;
 }
 
+.body.alto-contraste #btn-vlibras svg {
+  color: #fff !important;
+}
+
 #btn-vlibras svg {
   border-radius: 50%;
   display: block;
@@ -691,4 +695,8 @@ body.alto-contraste .timeline-content {
   background: #000 !important;
   border-color: #fff !important;
   color: #fff !important;
+}
+
+body.alto-contraste .navmenu > ul > li > a::before {
+  background: #fff !important;
 }

@@ -1,34 +1,30 @@
-const ring = document.getElementById('ringProgress');
-
-const TOTAL = 81;
-const CIRCUMFERENCE = 326.7;
-
-const svg = ring.closest('svg');
-
-const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
-
-
-// Immediately invoked function usada para executar imediatamente após carregamendo dom DOM e isolar 
-// letiáveis e funcções do escopo global.
+// Immediately invoked function usada para executar imediatamente após carregamento do DOM e isolar
+// variáveis e funções do escopo global.
 (function () {
+  // #ringProgress só existe na home — protege para não quebrar em outras páginas
+  const ring = document.getElementById('ringProgress');
+  if (!ring) return;
 
- if (localStorage.getItem('ed-alto-contraste') === 'true') {
-    defs.innerHTML =
-      '<linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">' +
-      '<stop offset="0%"   stop-color="#fff"/>' +
-      '<stop offset="100%" stop-color="#fff"/>' +
-      '</linearGradient>';
+  const TOTAL = 81;
+  const CIRCUMFERENCE = 326.7;
+  const svg  = ring.closest('svg');
+  const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+
+  function aplicarGradienteAnel(altoContraste) {
+    defs.innerHTML = altoContraste
+      ? '<linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">'
+        + '<stop offset="0%"   stop-color="#fff"/>'
+        + '<stop offset="100%" stop-color="#fff"/>'
+        + '</linearGradient>'
+      : '<linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">'
+        + '<stop offset="0%"   stop-color="#00db79"/>'
+        + '<stop offset="100%" stop-color="#6effc6"/>'
+        + '</linearGradient>';
     svg.prepend(defs);
   }
-  else {
-    defs.innerHTML =
-      '<linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">' +
-      '<stop offset="0%"   stop-color="#00db79"/>' +
-      '<stop offset="100%" stop-color="#6effc6"/>' +
-      '</linearGradient>';
-    svg.prepend(defs);
 
-  }
+  // Aplica o gradiente correto ao carregar
+  aplicarGradienteAnel(localStorage.getItem('ed-alto-contraste') === 'true');
 
   ring.style.strokeDasharray = CIRCUMFERENCE;
   ring.style.strokeDashoffset = CIRCUMFERENCE;

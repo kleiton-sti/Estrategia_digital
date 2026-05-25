@@ -11,6 +11,7 @@
       </div>
 
       <div class="timeline">
+         
         @foreach($regulamentacoes as $item)
           <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
             <div class="timeline-date">
@@ -21,6 +22,7 @@
               @endif
             </div>
             <div class="timeline-content">
+              <div class="nebulosa"></div>
               <a target="_blank" href="{{ $item->link }}"><h4>{{ $item->titulo }}</h4></a>
               <p>{{ $item->descricao }}</p>
               @if($item->link)

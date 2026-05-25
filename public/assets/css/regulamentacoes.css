@@ -19,8 +19,23 @@
   top: 0;
   bottom: 0;
   width: 3px;
-  background: linear-gradient(180deg, #9C45E8, #350B59);
+  background: linear-gradient(180deg, transparent 0%, #9562c1 4%, #7f4cab 50%, rgb(57 7 87 / 50%) 96%, transparent 100%);
   border-radius: 2px;
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    left: 2.5%;
+    transform: translateX(-50%);
+    top: 0;
+    bottom: 0;
+    width: 7px;
+    background: #9562c1;
+    filter: blur(6px);
+    opacity: 0.4;
+    animation: rdVLineGlow 5s ease-in-out infinite alternate;
 }
 
 /* ============================================================
@@ -45,6 +60,7 @@
   z-index: 2;
 }
 
+
 /* ============================================================
    Data de publicação
    ============================================================ */
@@ -62,11 +78,14 @@
    Conteúdo do item
    ============================================================ */
 .timeline-content {
-  background: var(--cor-superficie);
+  /* background: #06083161; */
+  backdrop-filter: blur(2px);
+  position: relative;
   color: var(--cor-texto);
   padding: 1rem 1.25rem;
   border-radius: 12px;
   border: 1px solid color-mix(in srgb, var(--cor-texto), transparent 90%);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35), 0 1px 0 rgba(255, 255, 255, 0.05) inset;
   transition: transform 0.2s ease, border-color 0.2s ease;
   margin-left: 50px;
   max-width: 100%;
@@ -74,9 +93,34 @@
   word-break: break-word;
 }
 
+.timeline-content .nebulosa {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 50% 70%, rgba(var(--eixo-rgb), 0.07) 0%, transparent 70%);
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 0;
+}
+
+
+.timeline-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 15%;
+  right: 15%;
+  height: 1px;
+  border-radius: 1px;
+  background: linear-gradient(to right, transparent, rgba(217, 4, 206, 0.35), transparent);
+  pointer-events: none;
+}
+
 .timeline-content:hover {
   transform: translateY(-3px);
-  border-color: color-mix(in srgb, #9C45E8, transparent 60%);
+}
+
+.timeline-content::before:hover {
+  background: linear-gradient(to right, transparent, #be84f1, transparent);
 }
 
 .timeline-content h4 {

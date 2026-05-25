@@ -15,12 +15,27 @@
    Card central
    ============================================================ */
 .login-card {
-  background-color: #12132b;
+  background-color: #05063129;
+  position: relative;
   border-radius: 18px;
+  backdrop-filter: blur(1px);
   padding: 44px 40px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
   width: 100%;
   max-width: 400px;
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.45);
+}
+
+.login-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 15%;
+    right: 15%;
+    height: 1px;
+    border-radius: 1px;
+    background: linear-gradient(to right, transparent, rgba(217, 4, 206, 0.35), transparent);
+    pointer-events: none;
 }
 
 /* ============================================================
@@ -87,7 +102,7 @@
   padding: 12px;
   border: none;
   border-radius: 8px;
-  background-color: #7c5ddb;
+  background-color: #9C45E8;
   color: #ffffff;
   font-size: 1rem;
   font-weight: 600;
