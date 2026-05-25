@@ -12,7 +12,7 @@
 @endphp
 
 <svg
-    class="constelacao-svg"
+    class="constelacao-svg {{ $altoContraste ? 'constelacao-svg--alto-contraste' : '' }}"
     viewBox="0 0 100 60"
     xmlns="http://www.w3.org/2000/svg"
     aria-hidden="true"
@@ -33,9 +33,9 @@
         </filter>
         <!-- gradiente das arestas ativas -->
         <linearGradient id="{{ $uid }}-aresta-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%"   stop-color="#3B82F6" stop-opacity="0.8"/>
-            <stop offset="50%"  stop-color="#04C4D9" stop-opacity="0.9"/>
-            <stop offset="100%" stop-color="#7c6ef0" stop-opacity="0.8"/>
+            <stop offset="0%"   stop-color="var(--cst-cor-secundaria)" stop-opacity="0.8"/>
+            <stop offset="50%"  stop-color="var(--cst-cor-principal)" stop-opacity="0.9"/>
+            <stop offset="100%" stop-color="var(--cst-cor-tercearia)" stop-opacity="0.8"/>
         </linearGradient>
     </defs>
 
@@ -61,18 +61,16 @@
             $ativo      = $i < $nosAtivos;
             $principal  = $no['principal'] ?? false;
             $filtro     = $ativo ? ($principal ? 'url(#' . $uid . '-glow-principal)' : 'url(#' . $uid . '-glow-secundario)') : 'none';
-            $cor        = $ativo
-                ? ($principal ? '#04C4D9' : '#3B82F6')
-                : 'rgba(255,255,255,0.12)';
-            $corBorda   = $ativo
-                ? ($principal ? '#a8f0f7' : '#93c5fd')
-                : 'rgba(255,255,255,0.08)';
+            // $cor        = $ativo
+            //     ? ($principal ? '#04C4D9' : '#3B82F6')
+            //     : 'rgba(255,255,255,0.12)';
+            // $corBorda   = $ativo
+            //     ? ($principal ? '#a8f0f7' : '#93c5fd')
+            //     : 'rgba(255,255,255,0.08)';
         @endphp
         <circle
             class="cst-no {{ $ativo ? 'cst-no--ativo' : '' }} {{ $principal ? 'cst-no--principal' : '' }}"
             cx="{{ $no['x'] }}" cy="{{ $no['y'] }}" r="{{ $no['r'] }}"
-            fill="{{ $cor }}"
-            stroke="{{ $corBorda }}"
             stroke-width="0.5"
             filter="{{ $filtro }}"
         />

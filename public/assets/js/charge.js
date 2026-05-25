@@ -1,22 +1,34 @@
+const ring = document.getElementById('ringProgress');
+
+const TOTAL = 81;
+const CIRCUMFERENCE = 326.7;
+
+const svg = ring.closest('svg');
+
+const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+
+
 // Immediately invoked function usada para executar imediatamente após carregamendo dom DOM e isolar 
 // letiáveis e funcções do escopo global.
 (function () {
-  const ring = document.getElementById('ringProgress');
-  if (!ring) return;
 
-  const TOTAL = 81;
-  const CIRCUMFERENCE = 326.7;
+ if (localStorage.getItem('ed-alto-contraste') === 'true') {
+    defs.innerHTML =
+      '<linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">' +
+      '<stop offset="0%"   stop-color="#fff"/>' +
+      '<stop offset="100%" stop-color="#fff"/>' +
+      '</linearGradient>';
+    svg.prepend(defs);
+  }
+  else {
+    defs.innerHTML =
+      '<linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">' +
+      '<stop offset="0%"   stop-color="#00db79"/>' +
+      '<stop offset="100%" stop-color="#6effc6"/>' +
+      '</linearGradient>';
+    svg.prepend(defs);
 
-  const svg = ring.closest('svg');
-
-  const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
-
-  defs.innerHTML =
-    '<linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">' +
-    '<stop offset="0%"   stop-color="#00db79"/>' +
-    '<stop offset="100%" stop-color="#6effc6"/>' +
-    '</linearGradient>';
-  svg.prepend(defs);
+  }
 
   ring.style.strokeDasharray = CIRCUMFERENCE;
   ring.style.strokeDashoffset = CIRCUMFERENCE;

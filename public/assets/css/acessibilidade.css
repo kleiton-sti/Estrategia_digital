@@ -1,3 +1,56 @@
+/* Paleta padrão para constelaçãos */
+:root {
+  --cst-cor-principal: #04C4D9;
+  --cst-cor-secundaria: #3B82F6;
+  --cst-cor-tercearia: #7c6ef0;
+  --cst-cor-border-principal: #a8f0f7;
+  --cst-cor-border-secundaria: #93c5fd;
+  --cst-cor-aresta-ativa: #3B82F6;
+  --cst-cor-node-inativo: rgba(255,255,255,0.12);
+  --cst-cor-aresta-inativa: rgba(255,255,255,0.07);
+}
+
+/* Alto contraste */
+.constelacao-svg--alto-contraste {
+  --cst-cor-principal: #fff;
+  --cst-cor-secundaria: #fff;
+  --cst-cor-border-principal: #fff;
+  --cst-cor-border-secundaria: #fff;
+  --cst-cor-aresta-ativa: #fff;
+  --cst-cor-node-inativo: rgba(255,255,255,0.25);
+  --cst-cor-aresta-inativa: rgba(255,255,255,0.15);
+}
+
+.constelacao-svg {
+  --filter-glow-principal: drop-shadow(0 0 3px var(--cst-cor-principal));
+  --filter-glow-secundario: drop-shadow(0 0 2px var(--cst-cor-secundaria));
+}
+
+.constelacao-svg--alto-contraste {
+  --filter-glow-principal: drop-shadow(0 0 5px var(--cst-cor-principal));
+  --filter-glow-secundario: drop-shadow(0 0 3px var(--cst-cor-secundaria));
+}
+
+
+.cst-no {
+  fill: var(--cst-cor-node-inativo);
+  stroke: var(--cst-cor-stroke-inativo);
+}
+
+/* Nó ativo + principal */
+.cst-no--ativo.cst-no--principal {
+  fill: var(--cst-cor-principal);
+  stroke: var(--cst-cor-border-principal);
+}
+
+/* Nó ativo + secundário */
+.cst-no--ativo:not(.cst-no--principal) {
+  fill: var(--cst-cor-secundaria);
+  stroke: var(--cst-cor-border-secundaria);
+}
+
+
+
 /*--------------------------------------------------------------
 # acessibilidade.css
 # Widget de acessibilidade — posicionamento, painel e botão.
@@ -301,6 +354,11 @@ body.alto-contraste th {
   color: #fff !important;
 }
 
+body.alto-contraste span {
+  border-color: #fff !important;
+  filter: none !important;
+}
+
 /* Links */
 body.alto-contraste a {
   color: #ff0 !important;
@@ -401,8 +459,24 @@ body.alto-contraste #btn-vlibras:hover {
   background: #111 !important;
 }
 
-[svg] {
+
+body.alto-contraste .footer-back {
   background: #000 !important;
   color: #fff !important;
-  border-color: #fff !important;
+  border-top: 1px solid #fff !important;
+  border-bottom: 1px solid #fff !important;
+}
+
+body.alto-contraste .ini-anel-trilha {
+    stroke: rgba(255, 255, 255, 0.2) !important;
+}
+
+body.alto-contraste .ini-anel-progresso {
+    stroke: #fff !important;
+    filter: none !important;
+}
+
+body.alto-contraste .ini-anel-numero {
+    color: #fff !important;
+    filter: none !important;
 }

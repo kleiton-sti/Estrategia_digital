@@ -56,7 +56,7 @@
     btnContraste.addEventListener('click', () => {
       document.body.classList.toggle('alto-contraste');
       const ativo = document.body.classList.contains('alto-contraste');
-      if(!ativo) localStorage.removeItem('ed-alto-contraste');
+      document.cookie = `ed-alto-contraste=${ativo}; path=/; max-age=31536000`;
       localStorage.setItem('ed-alto-contraste', ativo);
       btnContraste.setAttribute('aria-pressed', ativo);
     });
@@ -138,3 +138,23 @@
   }
 
 })();
+
+
+document.addEventListener('click', (e) => {
+  if (e.target.id === 'btn-contraste') {
+    document.querySelectorAll('.constelacao-svg').forEach(svg => {
+      svg.classList.toggle('constelacao-svg--alto-contraste');
+    });
+    // Persiste preferência
+    localStorage.setItem('altoContraste', 
+      document.querySelector('.constelacao-svg').classList.contains('constelacao-svg--alto-contraste')
+    );
+  }
+});
+
+// Restaura preferência ao carregar
+if (localStorage.getItem('altoContraste') === 'true') {
+  document.querySelectorAll('.constelacao-svg').forEach(svg => {
+    svg.classList.add('constelacao-svg--alto-contraste');
+  });
+}

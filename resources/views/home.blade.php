@@ -145,6 +145,7 @@
                       'constelacao' => $constelacao,
                       'progresso'   => $progresso,
                       'eixoId'      => $eixo->id_eixos,
+                      'altoContraste' => $altoContraste = request()->cookie('ed-alto-contraste') === 'true',
                     ])
                     <!-- Estrelas de fundo decorativas -->
                     <div class="eixo-portal__stars" aria-hidden="true"></div>
