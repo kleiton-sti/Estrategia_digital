@@ -56,6 +56,7 @@
     btnContraste.addEventListener('click', () => {
       document.body.classList.toggle('alto-contraste');
       const ativo = document.body.classList.contains('alto-contraste');
+      if(!ativo) localStorage.removeItem('ed-alto-contraste');
       localStorage.setItem('ed-alto-contraste', ativo);
       btnContraste.setAttribute('aria-pressed', ativo);
     });
@@ -124,8 +125,9 @@
       const btnOficial = document.querySelector('[vw-access-button]');
       if (btnOficial) btnOficial.click();
     });
-
+    
     document.body.appendChild(btn);
+
   }
 
   /* Aguarda o VLibras carregar antes de injetar o botão */

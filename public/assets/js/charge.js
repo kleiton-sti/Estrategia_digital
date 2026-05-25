@@ -10,6 +10,7 @@
   const svg = ring.closest('svg');
 
   const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+
   defs.innerHTML =
     '<linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">' +
     '<stop offset="0%"   stop-color="#00db79"/>' +
@@ -17,11 +18,11 @@
     '</linearGradient>';
   svg.prepend(defs);
 
-  ring.style.strokeDasharray  = CIRCUMFERENCE;
+  ring.style.strokeDasharray = CIRCUMFERENCE;
   ring.style.strokeDashoffset = CIRCUMFERENCE;
 
   function setProgress(value) {
-    let pct    = Math.min(value / TOTAL, 1);
+    let pct = Math.min(value / TOTAL, 1);
     let offset = CIRCUMFERENCE * (1 - pct);
     ring.style.strokeDashoffset = offset;
   }
@@ -42,10 +43,10 @@
   window.atualizarAnel = function (concluidas, total) {
     let circulo = document.getElementById('ini-anel-circulo');
     if (!circulo) return;
-    let raio          = 26;
+    let raio = 26;
     let circunferencia = 2 * Math.PI * raio;
-    let pct           = total > 0 ? concluidas / total : 0;
-    circulo.style.strokeDasharray  = circunferencia;
+    let pct = total > 0 ? concluidas / total : 0;
+    circulo.style.strokeDasharray = circunferencia;
     circulo.style.strokeDashoffset = circunferencia * (1 - pct);
   };
 
@@ -56,14 +57,14 @@
    Sem argumento anima todas da página (usado no load inicial).
    Com argumento anima apenas as do elemento passado (usado ao abrir eixo-inline). */
 window.carregarConstelacao = function (escopo) {
-  var alvo = escopo || document;
-  var svgs = alvo.querySelectorAll('.constelacao-svg');
+  let alvo = escopo || document;
+  let svgs = alvo.querySelectorAll('.constelacao-svg');
 
   svgs.forEach(function (svg) {
-    var nos     = svg.querySelectorAll('.cst-no');
-    var arestas = svg.querySelectorAll('.cst-aresta');
+    let nos = svg.querySelectorAll('.cst-no');
+    let arestas = svg.querySelectorAll('.cst-aresta');
 
-    nos.forEach(function (el)     { el.classList.remove('cst-visivel'); });
+    nos.forEach(function (el) { el.classList.remove('cst-visivel'); });
     arestas.forEach(function (el) { el.classList.remove('cst-visivel'); });
 
     /* força reflow para que o browser processe o remove antes do add,
@@ -95,19 +96,19 @@ window.addEventListener('load', function () {
     // Só em mobile/tablet (< 992px)
     if (window.innerWidth >= 992) return;
 
-    var heroContent = document.querySelector('.hero .hero-content');
+    let heroContent = document.querySelector('.hero .hero-content');
     if (!heroContent) return;
 
     // Evita duplicata em resize
     if (heroContent.querySelector('.hero-stats-mobile-bg')) return;
 
     // Pega a src da imagem original na coluna oculta
-    var imgOriginal = document.querySelector('.hero .colunaImg img');
+    let imgOriginal = document.querySelector('.hero .colunaImg img');
     if (!imgOriginal) return;
 
-    var img = document.createElement('img');
-    img.src       = imgOriginal.src;
-    img.alt       = '';
+    let img = document.createElement('img');
+    img.src = imgOriginal.src;
+    img.alt = '';
     img.className = 'hero-stats-mobile-bg';
     img.setAttribute('aria-hidden', 'true');
 
@@ -118,13 +119,13 @@ window.addEventListener('load', function () {
   // Executa no load e em resize (com debounce leve)
   window.addEventListener('load', injetarFundoCerebro);
 
-  var resizeTimer;
+  let resizeTimer;
   window.addEventListener('resize', function () {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(function () {
       // Remove se passou para desktop
       if (window.innerWidth >= 992) {
-        var bg = document.querySelector('.hero-stats-mobile-bg');
+        let bg = document.querySelector('.hero-stats-mobile-bg');
         if (bg) bg.remove();
       } else {
         injetarFundoCerebro();
@@ -132,3 +133,26 @@ window.addEventListener('load', function () {
     }, 150);
   });
 })();
+
+
+const btnContraste = document.getElementById('btn-contraste');
+
+btnContraste.addEventListener('click', () => {
+  if (localStorage.getItem('ed-alto-contraste') === 'true') {
+    defs.innerHTML =
+      '<linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">' +
+      '<stop offset="0%"   stop-color="#fff"/>' +
+      '<stop offset="100%" stop-color="#fff"/>' +
+      '</linearGradient>';
+    svg.prepend(defs);
+  }
+  else {
+    defs.innerHTML =
+      '<linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">' +
+      '<stop offset="0%"   stop-color="#00db79"/>' +
+      '<stop offset="100%" stop-color="#6effc6"/>' +
+      '</linearGradient>';
+    svg.prepend(defs);
+
+  }
+})

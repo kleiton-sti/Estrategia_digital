@@ -103,7 +103,6 @@ section#principios-details {
   font-weight: 700;
   line-height: var(--lh-compacto);
   margin-bottom: 1rem;
-  color: rgba(232, 231, 247, 0.73);
   font-family: var(--fonte-titulo);
 }
 

@@ -400,3 +400,9 @@ body.alto-contraste #btn-vlibras {
 body.alto-contraste #btn-vlibras:hover {
   background: #111 !important;
 }
+
+[svg] {
+  background: #000 !important;
+  color: #fff !important;
+  border-color: #fff !important;
+}
