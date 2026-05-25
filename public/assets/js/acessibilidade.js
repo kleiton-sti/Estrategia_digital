@@ -10,6 +10,10 @@
   const contrasteSalvo = localStorage.getItem('ed-alto-contraste');
   if (contrasteSalvo === 'true') {
     document.body.classList.add('alto-contraste');
+    // Restaura a classe nos SVGs de constelação já presentes no DOM
+    document.querySelectorAll('.constelacao-svg').forEach(svg => {
+      svg.classList.add('constelacao-svg--alto-contraste');
+    });
   }
 
   /* — Restaura tamanho de fonte salvo — */
@@ -59,6 +63,10 @@
       document.cookie = `ed-alto-contraste=${ativo}; path=/; max-age=31536000`;
       localStorage.setItem('ed-alto-contraste', ativo);
       btnContraste.setAttribute('aria-pressed', ativo);
+      // Sincroniza a classe de alto contraste em todos os SVGs de constelação
+      document.querySelectorAll('.constelacao-svg').forEach(svg => {
+        svg.classList.toggle('constelacao-svg--alto-contraste', ativo);
+      });
     });
   }
 
@@ -140,21 +148,12 @@
 })();
 
 
-document.addEventListener('click', (e) => {
-  if (e.target.id === 'btn-contraste') {
+// Garante que SVGs renderizados dinamicamente (após o carregamento inicial)
+// também recebam a classe de alto contraste, caso a preferência esteja ativa.
+document.addEventListener('DOMContentLoaded', () => {
+  if (localStorage.getItem('ed-alto-contraste') === 'true') {
     document.querySelectorAll('.constelacao-svg').forEach(svg => {
-      svg.classList.toggle('constelacao-svg--alto-contraste');
+      svg.classList.add('constelacao-svg--alto-contraste');
     });
-    // Persiste preferência
-    localStorage.setItem('altoContraste', 
-      document.querySelector('.constelacao-svg').classList.contains('constelacao-svg--alto-contraste')
-    );
   }
 });
-
-// Restaura preferência ao carregar
-if (localStorage.getItem('altoContraste') === 'true') {
-  document.querySelectorAll('.constelacao-svg').forEach(svg => {
-    svg.classList.add('constelacao-svg--alto-contraste');
-  });
-}

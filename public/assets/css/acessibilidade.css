@@ -480,3 +480,51 @@ body.alto-contraste .ini-anel-numero {
     color: #fff !important;
     filter: none !important;
 }
+
+
+body.alto-contraste .eixo-portal__progresso-fill {
+  background: #fff !important;
+}
+
+body.alto-contraste .objetivos-wrapper::before {
+  background: none;
+}
+
+body.alto-contraste .ini-painel {
+  background: #000 !important;
+  border-color: #fff !important;
+}
+
+body.alto-contraste .step-item {
+  background: #000 !important;
+  border-color: #fff !important;
+}
+
+
+body.alto-contraste .ini-badge-andamento {
+  background: yellow;
+  color: #000 !important;
+}
+body.alto-contraste .ini-badge-nao {
+  background: red;
+  color: #000 !important;
+}
+body.alto-contraste .ini-badge-concluida {
+  background: green;
+  color: #000 !important;
+}
+
+body.alto-contraste .ini-painel-label {
+  color: rgb(0, 174, 255) !important;
+  filter: none !important;
+}
+
+body.alto-contraste .progress-bar {
+  background-color: #fff !important;
+}
+
+body.alto-contraste .table {
+  background: #000 !important;
+  border-color: #fff !important;
+  color: #fff !important;
+}
