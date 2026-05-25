@@ -481,9 +481,151 @@ body.alto-contraste .ini-anel-numero {
     filter: none !important;
 }
 
+/*--------------------------------------------------------------
+# Alto contraste — Roadmap
+--------------------------------------------------------------*/
+
+/* Pontos da timeline */
+body.alto-contraste .rd-ponto--verde,
+body.alto-contraste .rd-ponto--amarelo,
+body.alto-contraste .rd-ponto--roxo {
+  background: #fff !important;
+  color: #fff !important;
+  box-shadow: none !important;
+}
+
+/* Ícones dos cards */
+body.alto-contraste .rd-card__icone-wrap--verde,
+body.alto-contraste .rd-card__icone-wrap--amarelo,
+body.alto-contraste .rd-card__icone-wrap--roxo {
+  background: transparent !important;
+  color: #fff !important;
+  box-shadow: none !important;
+}
+
+body.alto-contraste .rd-icone-svg {
+  filter: none !important;
+  color: #fff !important;
+}
+
+/* Títulos coloridos dos cards */
+body.alto-contraste .rd-card__titulo--verde,
+body.alto-contraste .rd-card__titulo--amarelo,
+body.alto-contraste .rd-card__titulo--roxo {
+  color: #fff !important;
+}
+
+/* Bullets da lista dos cards */
+body.alto-contraste .rd-nebulosa--verde .rd-card__item::before,
+body.alto-contraste .rd-nebulosa--amarelo .rd-card__item::before,
+body.alto-contraste .rd-nebulosa--roxo .rd-card__item::before {
+  background: #fff !important;
+}
+
+/* Núcleos dos planetas / marcadores de eixo */
+body.alto-contraste .rd-planeta--1 .rd-planeta__nucleo,
+body.alto-contraste .rd-planeta--2 .rd-planeta__nucleo,
+body.alto-contraste .rd-planeta--3 .rd-planeta__nucleo,
+body.alto-contraste .rd-planeta--4 .rd-planeta__nucleo,
+body.alto-contraste .rd-planeta--5 .rd-planeta__nucleo,
+body.alto-contraste .rd-planeta--6 .rd-planeta__nucleo {
+  background: #000 !important;
+  box-shadow: 0 0 0 2px #fff !important;
+}
+
+/* Borda colorida dos cards */
+body.alto-contraste .rd-nebulosa--verde .rd-card,
+body.alto-contraste .rd-nebulosa--amarelo .rd-card,
+body.alto-contraste .rd-nebulosa--roxo .rd-card {
+  border-left-color: #fff !important;
+}
+
+/* Fio de luz dos cards */
+body.alto-contraste .rd-nebulosa--verde .rd-card::before,
+body.alto-contraste .rd-nebulosa--amarelo .rd-card::before,
+body.alto-contraste .rd-nebulosa--roxo .rd-card::before {
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.4), transparent) !important;
+}
+
+/* Glow dos cards (remove blur colorido) */
+body.alto-contraste .rd-nebulosa__glow {
+  display: none !important;
+}
+
+/*--------------------------------------------------------------
+# Alto contraste — Indicadores (barra de progresso e tabela)
+--------------------------------------------------------------*/
+
+/* Barra de progresso do painel de eixo */
+body.alto-contraste .eixo-portal__progresso-barra {
+  background: rgba(255,255,255,0.15) !important;
+}
 
 body.alto-contraste .eixo-portal__progresso-fill {
   background: #fff !important;
+  box-shadow: none !important;
+}
+
+body.alto-contraste .eixo-portal__progresso-pct {
+  color: #fff !important;
+}
+
+
+/* Números e labels coloridos do painel de indicadores */
+body.alto-contraste .ini-painel-numero,
+body.alto-contraste .ini-cor-amarelo,
+body.alto-contraste .ini-cor-vermelho {
+  color: #fff !important;
+  filter: none !important;
+}
+
+/* Badges do painel */
+body.alto-contraste .ini-badge-concluida,
+body.alto-contraste .ini-badge-andamento,
+body.alto-contraste .ini-badge-nao {
+  background: transparent !important;
+  color: #fff !important;
+  border-color: #fff !important;
+}
+
+/*--------------------------------------------------------------
+# Alto contraste — Política (linha, cards, pontos)
+--------------------------------------------------------------*/
+
+/* Fio de luz dos cards de eixo */
+body.alto-contraste .eixo-portal__fio {
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.45), transparent) !important;
+}
+
+/* Número e badge do cabeçalho do card */
+body.alto-contraste .eixo-portal__num {
+  color: #fff !important;
+  filter: none !important;
+}
+
+body.alto-contraste .eixo-portal__badge {
+  background: transparent !important;
+  color: #fff !important;
+  border-color: #fff !important;
+}
+
+/* Porcentagem e fill no rodapé do card de eixo */
+body.alto-contraste .eixo-portal__cta {
+  color: rgba(255,255,255,0.6) !important;
+}
+
+body.alto-contraste .eixo-portal:hover .eixo-portal__cta {
+  color: #fff !important;
+}
+
+/*--------------------------------------------------------------
+# Alto contraste — Artigos (badges)
+--------------------------------------------------------------*/
+
+body.alto-contraste .artigo-badge {
+  background-color: transparent !important;
+  color: #fff !important;
+  border-color: #fff !important;
 }
 
 body.alto-contraste .objetivos-wrapper::before {
@@ -502,15 +644,15 @@ body.alto-contraste .step-item {
 
 
 body.alto-contraste .ini-badge-andamento {
-  background: yellow;
+  background: yellow !important;
   color: #000 !important;
 }
 body.alto-contraste .ini-badge-nao {
-  background: red;
+  background: red !important;
   color: #000 !important;
 }
 body.alto-contraste .ini-badge-concluida {
-  background: green;
+  background: green !important;
   color: #000 !important;
 }
 
@@ -524,6 +666,28 @@ body.alto-contraste .progress-bar {
 }
 
 body.alto-contraste .table {
+  background: #000 !important;
+  border-color: #fff !important;
+  color: #fff !important;
+}
+
+
+body.alto-contraste .timeline::before {
+  background: #fff !important;
+}
+
+body.alto-contraste .timeline-item::before {
+  background: #fff !important;
+}
+
+body.alto-contraste .timeline-date {
+  color: #fff !important;
+  background: #000 !important;
+  border-color: #fff !important;
+}
+
+
+body.alto-contraste .timeline-content {
   background: #000 !important;
   border-color: #fff !important;
   color: #fff !important;
