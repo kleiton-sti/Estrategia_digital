@@ -1,80 +1,101 @@
-/* ── Login ── */
+/* ============================================================
+   login.css — Página de autenticação
+   Contém: layout, card, campos de formulário e botão de login.
+   ============================================================ */
+
+/* ============================================================
+   Layout da seção
+   ============================================================ */
 .login-section {
-    min-height: calc(100vh - 200px);
-    padding: 60px 16px;
+  min-height: calc(100vh - 200px);
+  padding: 60px 16px;
 }
 
+/* ============================================================
+   Card central
+   ============================================================ */
 .login-card {
-    background-color: #12132b;
-    border-radius: 18px;
-    padding: 44px 40px;
-    width: 100%;
-    max-width: 400px;
-    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.45);
+  background-color: #12132b;
+  border-radius: 18px;
+  padding: 44px 40px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.45);
 }
 
+/* ============================================================
+   Título
+   ============================================================ */
 .login-titulo {
-    text-align: center;
-    font-family: var(--heading-font);
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--heading-color);
-    margin-bottom: 28px;
+  text-align: center;
+  font-family: var(--fonte-titulo);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--cor-titulo);
+  margin-bottom: 28px;
 }
 
+/* ============================================================
+   Mensagem de erro
+   ============================================================ */
 .login-erro {
-    background-color: rgba(220, 53, 69, 0.15);
-    border: 1px solid #dc3545;
-    color: #ff7070;
-    border-radius: 8px;
-    padding: 10px 14px;
-    font-size: 0.875rem;
-    margin-bottom: 20px;
+  background-color: rgba(220, 53, 69, 0.15);
+  border: 1px solid #dc3545;
+  color: #ff7070;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 0.875rem;
+  margin-bottom: 20px;
 }
 
+/* ============================================================
+   Campos do formulário
+   ============================================================ */
 .login-campo {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .login-label {
-    display: block;
-    font-size: 0.875rem;
-    color: var(--default-color);
-    margin-bottom: 6px;
+  display: block;
+  font-size: 0.875rem;
+  color: var(--cor-texto);
+  margin-bottom: 6px;
 }
 
 .login-input {
-    width: 100%;
-    background-color: #1e1f3a;
-    border: 1px solid #2e2f50;
-    border-radius: 8px;
-    padding: 10px 14px;
-    color: var(--default-color);
-    font-size: 0.95rem;
-    outline: none;
-    transition: border-color 0.25s;
+  width: 100%;
+  background-color: #1e1f3a;
+  border: 1px solid #2e2f50;
+  border-radius: 8px;
+  padding: 10px 14px;
+  color: var(--cor-texto);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.25s;
 }
 
 .login-input:focus {
-    border-color: #7c5ddb;
+  border-color: #7c5ddb;
 }
 
+/* ============================================================
+   Botão de envio
+   ============================================================ */
 .btn-login {
-    display: block;
-    width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 8px;
-    background-color: #7c5ddb;
-    color: #ffffff;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    margin-top: 24px;
-    transition: background-color 0.25s;
+  display: block;
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: #7c5ddb;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 24px;
+  transition: background-color 0.25s;
 }
 
 .btn-login:hover {
-    background-color: #5d33c2;
+  background-color: #5d33c2;
 }
-

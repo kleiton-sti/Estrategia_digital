@@ -1,11 +1,49 @@
-/*--------------------------------------------------------------
-# Objetivos Section
---------------------------------------------------------------*/
+/* ============================================================
+   objetivos.css — Seção Objetivos e Iniciativas
+   Contém: filtros, cards de objetivo, painel de resumo,
+           anel de progresso, cards de iniciativa e layout de eixos.
+   ============================================================ */
 
-section#principios-details {
-  padding-top: 0% !important;
+/* ============================================================
+   Seção Objetivos
+   ============================================================ */
+section#objetivos {
+  gap: 0 !important;
 }
 
+section#principios-details {
+  padding-top: 0 !important;
+}
+
+.objetivos .container {
+  flex-direction: column;
+  color: var(--cor-texto);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 3rem;
+}
+
+.objetivos .container .isotope-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.objetivos-titulo {
+  font-size: var(--tipo-2xl);
+  font-weight: 700;
+  line-height: var(--lh-compacto);
+  margin-bottom: 12px;
+  align-self: start;
+}
+
+/* ============================================================
+   Filtros
+   ============================================================ */
 .objetivos .objetivos-filters {
   display: flex;
   justify-content: center;
@@ -23,12 +61,12 @@ section#principios-details {
   border-radius: 50px;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  background-color: var(--surface-color);
-  color: var(--default-color);
-  border: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
+  background-color: var(--cor-superficie);
+  color: var(--cor-texto);
+  border: 1px solid color-mix(in srgb, var(--cor-texto), transparent 85%);
   position: relative;
   overflow: hidden;
-  font-family: var(--default-font);
+  font-family: var(--fonte-padrao);
 }
 
 .objetivos .objetivos-filters li::before {
@@ -44,37 +82,45 @@ section#principios-details {
 
 .objetivos .objetivos-filters li:hover {
   transform: translateY(-2px);
-  border-color: var(--accent-color);
+  border-color: var(--cor-destaque);
 }
 
-.objetivos .objetivos-filters li:hover::before { left: 100%; }
+.objetivos .objetivos-filters li:hover::before {
+  left: 100%;
+}
 
 .objetivos .objetivos-filters li.filter-active {
-  background: var(--accent-color);
-  color: var(--contrast-color);
-  border-color: var(--accent-color);
+  background: var(--cor-destaque);
+  color: var(--cor-contraste);
+  border-color: var(--cor-destaque);
 }
 
+/* ============================================================
+   Headings internos dos objetivos
+   ============================================================ */
 #objetivos h1 {
-  font-size: var(--type-2xl);
+  font-size: var(--tipo-2xl);
   font-weight: 700;
-  line-height: var(--lh-tight);
+  line-height: var(--lh-compacto);
   margin-bottom: 1rem;
   color: rgba(232, 231, 247, 0.73);
-  font-family: var(--heading-font);
+  font-family: var(--fonte-titulo);
 }
 
 #objetivos .container h2 {
-  font-size: var(--type-xl);
+  font-size: var(--tipo-xl);
   font-weight: 700;
   margin-bottom: 1.5rem;
   color: rgba(232, 231, 247, 0.73);
-  font-family: var(--heading-font);
+  font-family: var(--fonte-titulo);
 }
 
+/* ============================================================
+   Cards de objetivo
+   ============================================================ */
 .objetivos .objetivos-wrapper {
   border-radius: 16px;
-  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  color: color-mix(in srgb, var(--cor-texto), transparent 30%);
   position: relative;
   overflow: hidden;
   margin-bottom: 15px;
@@ -101,12 +147,12 @@ section#principios-details {
 
 .objetivos .objetivos-wrapper:hover {
   transform: translateY(-5px);
-  border-color: color-mix(in srgb, var(--accent-color), transparent 70%);
+  border-color: color-mix(in srgb, var(--cor-destaque), transparent 70%);
   box-shadow: 0 12px 32px hsla(201, 81%, 41%, 0.295);
 }
 
 .objetivos .objetivos-wrapper.selecionado {
-  border-color: var(--accent-color);
+  border-color: var(--cor-destaque);
 }
 
 .objetivos .objetivos-content {
@@ -126,21 +172,23 @@ section#principios-details {
 .objetivo-toggle {
   font-size: 1.2rem;
   cursor: pointer;
-  color: color-mix(in srgb, var(--default-color), transparent 40%);
+  color: color-mix(in srgb, var(--cor-texto), transparent 40%);
   transition: transform 0.3s ease, color 0.2s;
   flex-shrink: 0;
 }
 
-.objetivos-wrapper.selecionado .objetivo-toggle { color: #04c4d9; }
+.objetivos-wrapper.selecionado .objetivo-toggle {
+  color: #04c4d9;
+}
 
 .objetivo-iniciativas {
-  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 70%);
+  border-top: 1px solid color-mix(in srgb, var(--cor-texto), transparent 70%);
   padding-top: 10px;
 }
 
-/*--------------------------------------------------------------
-# Painel de resumo (estilo dashboard)
---------------------------------------------------------------*/
+/* ============================================================
+   Painel de resumo (dashboard)
+   ============================================================ */
 .ini-painel {
   display: flex;
   align-items: center;
@@ -153,7 +201,6 @@ section#principios-details {
   flex-wrap: wrap;
 }
 
-/* Bloco total — número grande + label */
 .ini-painel-destaque {
   display: flex;
   align-items: center;
@@ -165,7 +212,7 @@ section#principios-details {
   font-size: 3rem;
   font-weight: 800;
   line-height: 1;
-  font-family: var(--heading-font);
+  font-family: var(--fonte-titulo);
   color: #04c4d9;
   filter: drop-shadow(0 0 10px rgba(4, 196, 217, 0.55));
 }
@@ -180,15 +227,14 @@ section#principios-details {
   font-size: 1rem;
   font-weight: 700;
   color: rgba(232, 231, 247, 0.9);
-  font-family: var(--heading-font);
+  font-family: var(--fonte-titulo);
 }
 
 .ini-painel-sublabel {
   font-size: 0.75rem;
-  color: color-mix(in srgb, var(--default-color), transparent 45%);
+  color: color-mix(in srgb, var(--cor-texto), transparent 45%);
 }
 
-/* Divisor vertical */
 .ini-painel-divisor {
   width: 1px;
   height: 52px;
@@ -196,7 +242,9 @@ section#principios-details {
   flex-shrink: 0;
 }
 
-/* Anel de progresso SVG */
+/* ============================================================
+   Anel de progresso SVG do painel
+   ============================================================ */
 .ini-painel-anel-wrap {
   position: relative;
   width: 64px;
@@ -236,11 +284,10 @@ section#principios-details {
   font-size: 1.1rem;
   font-weight: 800;
   color: #00db79;
-  font-family: var(--heading-font);
+  font-family: var(--fonte-titulo);
   filter: drop-shadow(0 0 6px rgba(0, 219, 121, 0.5));
 }
 
-/* Info ao lado do anel */
 .ini-painel-anel-info {
   display: flex;
   flex-direction: column;
@@ -248,7 +295,9 @@ section#principios-details {
   flex-shrink: 0;
 }
 
-/* Contadores de andamento e não iniciadas */
+/* ============================================================
+   Contadores do painel
+   ============================================================ */
 .ini-painel-contador {
   display: flex;
   flex-direction: column;
@@ -261,7 +310,7 @@ section#principios-details {
   font-size: 2.2rem;
   font-weight: 800;
   line-height: 1;
-  font-family: var(--heading-font);
+  font-family: var(--fonte-titulo);
 }
 
 .ini-cor-amarelo {
@@ -274,7 +323,9 @@ section#principios-details {
   filter: drop-shadow(0 0 8px rgba(225, 58, 29, 0.5));
 }
 
-/* Badges do painel */
+/* ============================================================
+   Badges do painel
+   ============================================================ */
 .ini-painel-badge {
   display: inline-flex;
   align-items: center;
@@ -324,9 +375,9 @@ section#principios-details {
   }
 }
 
-/*--------------------------------------------------------------
-# Cards de Iniciativa (gerados pelo JS em .process-steps)
---------------------------------------------------------------*/
+/* ============================================================
+   Cards de Iniciativa (gerados pelo JS em .process-steps)
+   ============================================================ */
 .step-item {
   display: flex;
   align-items: flex-start;
@@ -384,20 +435,23 @@ section#principios-details {
   animation: cstPulsePrincipal 3s ease-in-out infinite;
 }
 
-.step-content { flex: 1; min-width: 0; }
+.step-content {
+  flex: 1;
+  min-width: 0;
+}
 
 .step-content h5 {
-  font-size: var(--type-body);
+  font-size: var(--tipo-body);
   font-weight: 600;
   color: rgba(232, 231, 247, 0.88);
   line-height: var(--lh-base);
   margin: 0;
-  font-family: var(--default-font);
+  font-family: var(--fonte-padrao);
 }
 
-/*--------------------------------------------------------------
-# Objetivos Details Section
---------------------------------------------------------------*/
+/* ============================================================
+   Layout do painel de detalhes dos objetivos
+   ============================================================ */
 .objetivos-details .objetivos-details-content {
   padding: 0 0 0 2rem;
   height: 100%;
@@ -405,14 +459,15 @@ section#principios-details {
   flex-direction: column;
 }
 
-#principios-details .row { justify-content: center; }
-#principios-details .iniciativas { flex: 1; }
+#principios-details .row {
+  justify-content: center;
+}
 
-/* — Utilitários de estado (controlados pelo JS) — */
-.is-hidden { display: none; }
-.mt-iniciativas { margin-top: 15px; }
+#principios-details .iniciativas {
+  flex: 1;
+}
 
-@keyframes cstPulsePrincipal {
-    0%, 100% { opacity: 1; }
-    50%       { opacity: 0.65; }
+/* Utilitários de estado (controlados pelo JS) */
+.mt-iniciativas {
+  margin-top: 15px;
 }

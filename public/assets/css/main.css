@@ -1,106 +1,120 @@
 @charset "UTF-8";
 
-/*--------------------------------------------------------------
-# main.css
-# Base global do projeto Estratégia Digital.
-# Contém: variáveis, reset, body, seções, títulos, utilitários,
-#         header, footer e preloader.
-# As animações estão centralizadas em keyframes.css (importado abaixo).
-# As media queries estão centralizadas em responsive.css.
---------------------------------------------------------------*/
+/* ============================================================
+   main.css — Base global do projeto Estratégia Digital
+   Contém: variáveis, reset, tipografia, utilitários,
+           header, footer, preloader e tokens do sistema.
+   Animações: keyframes.css (importado abaixo).
+   Responsividade: responsive.css.
+   Estilos de página: arquivos CSS dedicados por blade.
+   ============================================================ */
 
-/* Importa o arquivo central de @keyframes */
 @import url("keyframes.css");
 
-/*--------------------------------------------------------------
-# Variáveis globais — agrupadas por categoria
---------------------------------------------------------------*/
+/* ============================================================
+   Variáveis globais
+   ============================================================ */
 :root {
-  /* — Tipografia — */
-  --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --heading-font: "Quicksand", sans-serif;
-  --nav-font: "Poppins", sans-serif;
+  /* Tipografia — famílias */
+  --fonte-padrao: "Roboto", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --fonte-titulo: "Quicksand", sans-serif;
+  --fonte-nav: "Poppins", sans-serif;
 
-  /* — Escala tipográfica com clamp() — */
-  /* clamp(mínimo, fluido, máximo) — escala suave entre mobile e ultrawide */
-  --type-xs: clamp(0.68rem, 0.64rem + 0.2vw, 0.75rem);
-  /* labels, badges */
-  --type-sm: clamp(0.75rem, 0.70rem + 0.25vw, 0.875rem);
-  /* subtextos, datas */
-  --type-body: clamp(0.82rem, 0.7rem + 0.6vw, 1.1rem);
-  /* texto secundário */
-  --type-base: clamp(0.9rem, 0.85rem + 0.25vw, 1.0625rem);
-  /* padrão de leitura */
-  --type-md: clamp(1rem, 0.95rem + 0.3vw, 1.2rem);
-  /* h5, destaques */
-  --type-lg: clamp(1.15rem, 1.05rem + 0.55vw, 1.5rem);
-  /* h4 */
-  --type-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.75rem);
-  /* h3, subtítulos */
-  --type-2xl: clamp(1.5rem, 1.2rem + 1.1vw, 2.25rem);
-  /* h2, section-title */
-  --type-3xl: clamp(1.75rem, 1.3rem + 1.75vw, 2.75rem);
-  /* h1, hero */
-  --type-4xl: clamp(2.0rem, 1.5rem + 2.4vw, 3.5rem);
-  /* hero ultrawide */
+  /* Tipografia — escala fluida com clamp() */
+  --tipo-xs:   clamp(0.68rem, 0.64rem + 0.20vw, 0.750rem); /* labels, badges */
+  --tipo-sm:   clamp(0.75rem, 0.70rem + 0.25vw, 0.875rem); /* subtextos, datas */
+  --tipo-body: clamp(0.82rem, 0.70rem + 0.60vw, 1.100rem); /* texto secundário */
+  --tipo-base: clamp(0.90rem, 0.85rem + 0.25vw, 1.063rem); /* leitura padrão */
+  --tipo-md:   clamp(1.00rem, 0.95rem + 0.30vw, 1.200rem); /* h5, destaques */
+  --tipo-lg:   clamp(1.15rem, 1.05rem + 0.55vw, 1.500rem); /* h4 */
+  --tipo-xl:   clamp(1.25rem, 1.10rem + 0.75vw, 1.750rem); /* h3, subtítulos */
+  --tipo-2xl:  clamp(1.50rem, 1.20rem + 1.10vw, 2.250rem); /* h2, section-title */
+  --tipo-3xl:  clamp(1.75rem, 1.30rem + 1.75vw, 2.750rem); /* h1, hero */
+  --tipo-4xl:  clamp(2.00rem, 1.50rem + 2.40vw, 3.500rem); /* hero ultrawide */
 
-  /* — Line-heights padronizados — */
-  --lh-tight: 1.25;
-  /* headings */
-  --lh-base: 1.55;
-  /* texto corrido */
-  --lh-relaxed: 1.7;
-  /* parágrafos longos, subtítulos de hero */
+  /* Tipografia — altura de linha */
+  --lh-compacto: 1.25; /* headings */
+  --lh-base:     1.55; /* texto corrido */
+  --lh-amplo:    1.70; /* parágrafos longos */
 
-  /* — Paleta principal — */
-  --background-color: #05071e;
-  --default-color: #e8e7f7;
-  --heading-color: #e8e7f7;
-  --accent-color: #023e73;
-  --surface-color: #131428;
-  --contrast-color: #ffffff;
+  /* Paleta principal */
+  --cor-fundo:      #05071e;
+  --cor-texto:      #e8e7f7;
+  --cor-titulo:     #e8e7f7;
+  --cor-destaque:   #023e73;
+  --cor-superficie: #131428;
+  --cor-contraste:  #ffffff;
 
-  /* — Navegação — */
-  --nav-color: #c8c6e3;
-  --nav-hover-color: #ffffff;
-  --nav-mobile-background-color: #03051f;
-  --nav-dropdown-background-color: #1f2240;
-  --nav-dropdown-color: #c8c6e3;
-  --nav-dropdown-hover-color: #ffffff;
+  /* Navegação */
+  --nav-cor:                     #c8c6e3;
+  --nav-cor-hover:               #ffffff;
+  --nav-fundo-mobile:            #03051f;
+  --nav-dropdown-fundo:          #1f2240;
+  --nav-dropdown-cor:            #c8c6e3;
+  --nav-dropdown-cor-hover:      #ffffff;
 
-  /* — Espaçamentos e layout com clamp() — */
-  --section-padding-y: clamp(3rem, 5vw, 6rem);
-  /* 48px → 80px → 96px */
-  --section-gap: clamp(2.5rem, 4vw, 4.5rem);
-  /* 40px → 64px → 72px */
-  --title-gap: clamp(1.5rem, 3vw, 3rem);
-  /* 24px → 48px → 48px */
-  --header-offset: clamp(5rem, 6vw, 7.5rem);
-  /* 80px → 96px → 120px */
+  /* Espaçamentos fluidos */
+  --espaco-secao-y: clamp(3rem, 5vw, 6rem);    /* padding vertical de seções */
+  --espaco-gap:     clamp(2.5rem, 4vw, 4.5rem); /* gap entre seções */
+  --espaco-titulo:  clamp(1.5rem, 3vw, 3rem);   /* gap abaixo dos títulos */
+  --offset-header:  clamp(5rem, 6vw, 7.5rem);   /* compensação do header fixo */
 
-  /* — Comportamento global — */
+  /* Compatibilidade — aliases legados usados em blades e JS existentes */
+  --default-font:    var(--fonte-padrao);
+  --heading-font:    var(--fonte-titulo);
+  --nav-font:        var(--fonte-nav);
+  --type-xs:         var(--tipo-xs);
+  --type-sm:         var(--tipo-sm);
+  --type-body:       var(--tipo-body);
+  --type-base:       var(--tipo-base);
+  --type-md:         var(--tipo-md);
+  --type-lg:         var(--tipo-lg);
+  --type-xl:         var(--tipo-xl);
+  --type-2xl:        var(--tipo-2xl);
+  --type-3xl:        var(--tipo-3xl);
+  --type-4xl:        var(--tipo-4xl);
+  --lh-tight:        var(--lh-compacto);
+  --lh-relaxed:      var(--lh-amplo);
+  --background-color: var(--cor-fundo);
+  --default-color:    var(--cor-texto);
+  --heading-color:    var(--cor-titulo);
+  --accent-color:     var(--cor-destaque);
+  --surface-color:    var(--cor-superficie);
+  --contrast-color:   var(--cor-contraste);
+  --section-padding-y: var(--espaco-secao-y);
+  --section-gap:       var(--espaco-gap);
+  --title-gap:         var(--espaco-titulo);
+  --header-offset:     var(--offset-header);
+
   scroll-behavior: smooth;
 }
 
-/*--------------------------------------------------------------
-# Variantes de tema (usadas por seções com fundo alternativo)
---------------------------------------------------------------*/
+/* ============================================================
+   Variantes de tema
+   ============================================================ */
 .light-background {
+  --cor-fundo:      #0c114a;
+  --cor-superficie: #131b76;
   --background-color: #0c114a;
   --surface-color: #131b76;
 }
 
 .dark-background {
+  --cor-fundo:      #01020e;
+  --cor-texto:      #ffffff;
+  --cor-titulo:     #ffffff;
+  --cor-superficie: #252525;
+  --cor-contraste:  #ffffff;
   --background-color: #01020e;
-  --default-color: #ffffff;
-  --heading-color: #ffffff;
-  --surface-color: #252525;
+  --default-color:  #ffffff;
+  --heading-color:  #ffffff;
+  --surface-color:  #252525;
   --contrast-color: #ffffff;
 }
 
-/*--------------------------------------------------------------
-# Base
---------------------------------------------------------------*/
+/* ============================================================
+   Reset e base
+   ============================================================ */
 html {
   overflow-x: hidden;
 }
@@ -108,9 +122,9 @@ html {
 body {
   position: relative;
   overflow-x: hidden;
-  color: var(--default-color);
-  background-color: var(--background-color);
-  font-family: var(--default-font);
+  color: var(--cor-texto);
+  background-color: var(--cor-fundo);
+  font-family: var(--fonte-padrao);
 }
 
 /* Grade de partículas animada no fundo — abrange toda a página */
@@ -120,8 +134,8 @@ body .hero-bg-elements {
   pointer-events: none;
   background-image: radial-gradient(circle, color-mix(in srgb, #1482bd, transparent 75%) 2px, transparent 1px);
   background-size: 50px 50px;
-  -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0.1) 100%);
-  mask-image: linear-gradient(to right, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0.1) 100%);
+  -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0.1) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0.1) 100%);
+  mask-image:         linear-gradient(to right, rgba(0,0,0,0.1) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0.1) 100%);
   -webkit-mask-size: 200% 100%;
   mask-size: 200% 100%;
   animation: ondaLuz 4s linear infinite;
@@ -129,117 +143,65 @@ body .hero-bg-elements {
 }
 
 a {
-  color: var(--accent-color);
+  color: var(--cor-destaque);
   text-decoration: none;
   transition: 0.3s;
 }
 
 a:hover {
-  color: color-mix(in srgb, var(--accent-color), transparent 25%);
+  color: color-mix(in srgb, var(--cor-destaque), transparent 25%);
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: var(--heading-color);
-  font-family: var(--heading-font);
+h1, h2, h3, h4, h5, h6 {
+  color: var(--cor-titulo);
+  font-family: var(--fonte-titulo);
 }
 
-/*--------------------------------------------------------------
-# Seções globais
---------------------------------------------------------------*/
+/* ============================================================
+   Seções globais
+   ============================================================ */
 section {
-  padding: var(--section-padding-y) 0;
+  padding: var(--espaco-secao-y) 0;
   overflow: hidden;
 }
 
-section#hero {
-  position: relative;
-  color: var(--default-color);
-  min-height: 88dvh;
-  display: flex;
-  align-items: center;
-  overflow: visible !important;
-  scroll-margin-top: 90px;
-  z-index: 2;
-}
-
-section#hero .container {
-  padding-top: 60px;
-}
-
-section.principios {
-  padding-top: 0;
-  position: relative;
-  z-index: 1;
-  overflow: visible !important;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: var(--section-padding-y) 0;
-  min-height: auto;
-}
-
-
-section.principios-details {
-    border: none;
-    padding-top: 0;
-}
-
-
 /*
-  Compensa o header fixo nas páginas secundárias (tudo exceto a home).
-  A home usa o hero que já tem padding suficiente.
+  Compensação do header fixo nas páginas secundárias (tudo exceto a home).
   Aplique a classe .pagina-interna no <main> das blades que não são home.
 */
 .pagina-interna {
-  padding-top: var(--header-offset);
+  padding-top: var(--offset-header);
 }
 
-
-/*--------------------------------------------------------------
-# Section Titles — base unificada
-# Todas as variações herdam o mesmo estilo de h2 e p.
-# Cada classe define apenas seu layout (flex, alinhamento).
-#
-# Variantes disponíveis:
-#   .section-title    — centralizado (home, roadmap, regulamentações)
-#   .section-title-obj — inline com constelação à direita (eixos)
-#   .section-titulo   — alinhado à esquerda sem flex (artigos, publicação)
---------------------------------------------------------------*/
-
-/* Base compartilhada — tipografia */
+/* ============================================================
+   Títulos de seção — base unificada
+   Variantes: .section-title (centralizado), .section-title-obj (inline),
+              .section-titulo (esquerda sem flex)
+   ============================================================ */
 .section-title h2,
 .section-title h1,
 .section-title-obj h2,
 .section-title-obj h1,
 .section-titulo h1,
 .section-titulo h2 {
-  font-size: var(--type-2xl);
+  font-size: var(--tipo-2xl);
   font-weight: 700;
   margin-bottom: 12px;
-  font-family: var(--heading-font);
-  line-height: var(--lh-tight);
+  font-family: var(--fonte-titulo);
+  line-height: var(--lh-compacto);
 }
 
 .section-title p,
 .section-title-obj p,
 .section-titulo p {
-  font-size: var(--type-body);
-  line-height: var(--lh-relaxed);
+  font-size: var(--tipo-body);
+  line-height: var(--lh-amplo);
   margin-bottom: 0;
 }
 
-section-title-obj p {
-  width: 35dvw;
-}
-
-/* Variante 1: centralizado */
+/* Variante 1: centralizado / alinhado à esquerda */
 .section-title {
-  padding-bottom: var(--title-gap);
+  padding-bottom: var(--espaco-titulo);
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -247,25 +209,29 @@ section-title-obj p {
 }
 
 .section-title p {
-    max-width: 100%;
-    text-align: start;
+  max-width: 100%;
+  text-align: start;
 }
 
 /* Variante 2: inline com elemento à direita (ex: constelação) */
 .section-title-obj {
-    padding-bottom: var(--title-gap);
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    width: 100%;
+  padding-bottom: var(--espaco-titulo);
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
-/*--------------------------------------------------------------
-# Utilitários compartilhados
---------------------------------------------------------------*/
+.section-title-obj p {
+  width: 35dvw;
+}
+
+/* ============================================================
+   Utilitários compartilhados
+   ============================================================ */
 
 /* Legenda de status (tabelas, roadmap) */
 .status-legend {
@@ -299,7 +265,7 @@ section-title-obj p {
 
 span.badge {
   align-items: center;
-  font-size: var(--type-xs);
+  font-size: var(--tipo-xs);
   font-weight: 700;
   text-transform: uppercase;
   border-radius: 50px;
@@ -311,20 +277,20 @@ span.badge {
 .table,
 .table th,
 .table td {
-  background-color: var(--surface-color) !important;
-  color: var(--default-color) !important;
-  border-color: #2c2c4a;
+  background-color: var(--cor-superficie) !important;
+  color: var(--cor-texto) !important;
+  border-color  : #2c2c4a;
 }
 
 .table thead th {
   background-color: #1f1f3b !important;
-  color: var(--contrast-color) !important;
+  color: var(--cor-contraste) !important;
 }
 
 /* Descrição auxiliar com ênfase */
 .desc {
   font-size: 0.9rem;
-  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  color: color-mix(in srgb, var(--cor-texto), transparent 30%);
   display: flex;
   align-items: center;
   margin-top: 20px;
@@ -335,10 +301,9 @@ span.badge {
   display: inline;
 }
 
-/* — Cores de status — */
-/* Expansível: adicionar .color-novo seguindo o mesmo padrão */
+/* Cores de status */
 .color-laranja {
-  background-color: rgba(198, 88, 9, 0.49);
+  background-color: rgba(198, 88,  9, 0.49);
   color: #d65f0a;
 }
 
@@ -357,27 +322,22 @@ span.badge {
   color: #e13a1d;
 }
 
-/* Estado oculto — controlado via JS (classList.add/remove) */
+.color-azul {
+  background-color: rgba(4, 196, 217, 0.12);
+  color: #a8f0f7;
+  border-color: rgba(4, 196, 217, 0.35);
+}
+
+/* Estado oculto — controlado via JS */
 .is-hidden {
   display: none !important;
 }
 
-/* Botão fechar iniciativas */
-#fechar-iniciativas {
-  transition: 0.2s;
-}
-
-#fechar-iniciativas:hover {
-  background-color: #dc3545;
-  color: #fff;
-  border-color: #dc3545;
-}
-
-/*--------------------------------------------------------------
-# main.css — Header
---------------------------------------------------------------*/
+/* ============================================================
+   Header
+   ============================================================ */
 .header {
-  color: var(--default-color);
+  color: var(--cor-texto);
   transition: all 0.4s ease;
   justify-content: center;
   position: relative;
@@ -398,8 +358,6 @@ span.badge {
   box-shadow:
     0 8px 32px rgba(0, 0, 0, 0.35),
     0 1px 0 rgba(255, 255, 255, 0.05) inset;
-  /* Fio de luz sutil no topo */
-  outline: 1px solid transparent;
 }
 
 /* Fio de luz superior — glow ciano suave */
@@ -411,12 +369,7 @@ span.badge {
   right: 15%;
   height: 1px;
   border-radius: 1px;
-  background: linear-gradient(
-    to right,
-    transparent,
-    rgba(4, 196, 217, 0.35),
-    transparent
-  );
+  background: linear-gradient(to right, transparent, rgba(4, 196, 217, 0.35), transparent);
   pointer-events: none;
 }
 
@@ -434,13 +387,13 @@ span.badge {
   margin: 0;
   font-weight: 600;
   color: rgba(232, 231, 247, 0.9);
-  font-family: var(--heading-font);
+  font-family: var(--fonte-titulo);
   letter-spacing: 0.2px;
 }
 
-/*--------------------------------------------------------------
-# Footer
---------------------------------------------------------------*/
+/* ============================================================
+   Footer
+   ============================================================ */
 #footer {
   position: relative;
 }
@@ -496,25 +449,25 @@ span.badge {
   animation: pulse 1s infinite;
 }
 
-/*--------------------------------------------------------------
-# Preloader
---------------------------------------------------------------*/
+/* ============================================================
+   Preloader
+   ============================================================ */
 #preloader {
   position: fixed;
   inset: 0;
   z-index: 999999;
   overflow: hidden;
-  background: var(--background-color);
+  background: var(--cor-fundo);
   transition: all 0.6s ease-out;
 }
 
-#preloader:before {
+#preloader::before {
   content: "";
   position: fixed;
   top: calc(50% - 30px);
   left: calc(50% - 30px);
   border: 6px solid #ffffff;
-  border-color: var(--accent-color) transparent var(--accent-color) transparent;
+  border-color: var(--cor-destaque) transparent var(--cor-destaque) transparent;
   border-radius: 50%;
   width: 60px;
   height: 60px;

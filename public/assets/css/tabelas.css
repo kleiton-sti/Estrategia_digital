@@ -1,26 +1,22 @@
-/*--------------------------------------------------------------
-# tabelas.css — Página de Indicadores
-# Estilização alinhada com a identidade do projeto (home/roadmap).
-# Não altera estrutura HTML — apenas sobrescreve inline styles
-# e classes Bootstrap com a paleta e glassmorphism do projeto.
---------------------------------------------------------------*/
+/* ============================================================
+   tabelas.css — Página de Indicadores (Painel de Inovação)
+   Contém: título, barra de progresso, cards glassmorphism,
+           tabelas, scrollbar e ícones de status.
+   ============================================================ */
 
-/* Desativa scroll-behavior apenas no contexto da página de tabelas */
+/* ============================================================
+   Desativa scroll suave na página de tabelas
+   ============================================================ */
 .tabelas-page {
   scroll-behavior: auto;
 }
 
-/*--------------------------------------------------------------
-# Título da seção
---------------------------------------------------------------*/
-.section-title h1 { color: var(--heading-color); }
-
-/*--------------------------------------------------------------
-# Barra de progresso
---------------------------------------------------------------*/
+/* ============================================================
+   Barra de progresso
+   ============================================================ */
 .progress {
   height: 6px;
-  background-color: rgba(255,255,255,0.06);
+  background-color: rgba(255, 255, 255, 0.06);
   border-radius: 6px;
   overflow: hidden;
   margin-bottom: 2rem;
@@ -44,9 +40,9 @@
   z-index: 2;
 }
 
-/*--------------------------------------------------------------
-# Cards — glassmorphism alinhado com os eixo-portal
---------------------------------------------------------------*/
+/* ============================================================
+   Cards glassmorphism
+   ============================================================ */
 .card.shadow-sm {
   background: rgba(10, 14, 40, 0.72) !important;
   border: 1px solid rgba(255, 255, 255, 0.07) !important;
@@ -58,10 +54,10 @@
     0 1px 0 rgba(255, 255, 255, 0.04) inset !important;
   position: relative;
   overflow: hidden;
-  color: var(--default-color) !important;
+  color: var(--cor-texto) !important;
 }
 
-/* Fio de luz superior — mesmo padrão dos eixo-portal e header */
+/* Fio de luz superior */
 .card.shadow-sm::before {
   content: '';
   position: absolute;
@@ -69,12 +65,7 @@
   left: 15%;
   right: 15%;
   height: 1px;
-  background: linear-gradient(
-    to right,
-    transparent,
-    rgba(4, 196, 217, 0.3),
-    transparent
-  );
+  background: linear-gradient(to right, transparent, rgba(4, 196, 217, 0.3), transparent);
   pointer-events: none;
   z-index: 1;
 }
@@ -84,24 +75,24 @@
   z-index: 2;
 }
 
-/*--------------------------------------------------------------
-# Título dos cards
---------------------------------------------------------------*/
+/* ============================================================
+   Título dos cards
+   ============================================================ */
 .card-title {
-  font-size: var(--type-md) !important;
-  font-family: var(--heading-font) !important;
+  font-size: var(--tipo-md) !important;
+  font-family: var(--fonte-titulo) !important;
   font-weight: 700 !important;
   color: rgba(232, 231, 247, 0.88) !important;
   letter-spacing: 0.2px;
   margin-bottom: 1rem !important;
 }
 
-/*--------------------------------------------------------------
-# Tabelas
---------------------------------------------------------------*/
+/* ============================================================
+   Tabelas
+   ============================================================ */
 .table {
-  color: var(--default-color) !important;
-  font-size: var(--type-body) !important;
+  color: var(--cor-texto) !important;
+  font-size: var(--tipo-body) !important;
   border-color: rgba(255, 255, 255, 0.05) !important;
 }
 
@@ -113,13 +104,12 @@
   border-color: rgba(255, 255, 255, 0.05) !important;
 }
 
-/* Thead */
 .table thead {
   background-color: rgba(5, 7, 30, 0.7) !important;
 }
 
 .table thead th {
-  font-size: var(--type-xs) !important;
+  font-size: var(--tipo-xs) !important;
   font-weight: 600;
   letter-spacing: 0.6px;
   text-transform: uppercase;
@@ -128,7 +118,6 @@
   color: rgba(200, 198, 227, 0.65) !important;
 }
 
-/* Linhas do tbody */
 .table tbody tr {
   border-color: rgba(255, 255, 255, 0.04) !important;
   transition: background 0.2s ease;
@@ -144,9 +133,9 @@
   border-color: rgba(255, 255, 255, 0.04) !important;
 }
 
-/*--------------------------------------------------------------
-# Scrollbar das tabelas
---------------------------------------------------------------*/
+/* ============================================================
+   Scrollbar das tabelas
+   ============================================================ */
 .table-responsive {
   scrollbar-width: thin;
   scrollbar-color: rgba(4, 196, 217, 0.3) rgba(255, 255, 255, 0.04);
@@ -171,11 +160,19 @@
   background: rgba(4, 196, 217, 0.5);
 }
 
-/*--------------------------------------------------------------
-# Ícones de status
---------------------------------------------------------------*/
+/* ============================================================
+   Ícones de status
+   ============================================================ */
 .status-sim { color: #00db79; }
 .status-nao { color: #ef4444; }
 
-.bi-check2-all.text-success  { color: #00db79 !important; }
-.bi-x-lg.text-danger         { color: #ef4444 !important; }
+.bi-check2-all.text-success { color: #00db79 !important; }
+.bi-x-lg.text-danger        { color: #ef4444 !important; }
+
+/* ============================================================
+   Estilo inline do ícone programado (amarelo)
+   — extraído dos style="" inline das blades de tabelas
+   ============================================================ */
+.icone-programado {
+  color: yellow;
+}

@@ -1,125 +1,282 @@
-/* ── Publicação ── */
+/* ============================================================
+   publicacao.css — Formulário de publicação e edição de artigos
+   Contém: card do formulário, campos, editor TinyMCE e botões.
+   ============================================================ */
+
+/* ============================================================
+   Layout da seção
+   ============================================================ */
 .publicacao-section {
-    min-height: calc(100vh - 200px);
+  min-height: calc(100vh - 200px);
 }
 
+/* ============================================================
+   Card do formulário
+   ============================================================ */
 .publicacao-card {
-    background-color: var(--surface-color);
-    border-radius: 16px;
-    padding: 36px 32px;
-    border: 1px solid color-mix(in srgb, var(--default-color), transparent 88%);
+  background-color: var(--cor-superficie);
+  border-radius: 16px;
+  padding: 36px 32px;
+  border: 1px solid color-mix(in srgb, var(--cor-texto), transparent 88%);
 }
 
+/* ============================================================
+   Campos do formulário
+   ============================================================ */
 .publicacao-label {
-    display: block;
-    font-size: 0.875rem;
-    color: var(--default-color);
-    margin-bottom: 6px;
-    font-weight: 500;
+  display: block;
+  font-size: 0.875rem;
+  color: var(--cor-texto);
+  margin-bottom: 6px;
+  font-weight: 500;
 }
 
 .publicacao-input,
 .publicacao-select {
-    width: 100%;
-    background-color: #1e1f3a;
-    border: 1px solid #2e2f50;
-    border-radius: 8px;
-    padding: 10px 14px;
-    color: var(--default-color);
-    font-size: 0.95rem;
-    outline: none;
-    transition: border-color 0.25s;
+  width: 100%;
+  background-color: #1e1f3a;
+  border: 1px solid #2e2f50;
+  border-radius: 8px;
+  padding: 10px 14px;
+  color: var(--cor-texto);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.25s;
 }
 
 .publicacao-input:focus,
 .publicacao-select:focus {
-    border-color: var(--accent-color);
+  border-color: var(--cor-destaque);
 }
 
 .publicacao-select option {
-    background-color: #1e1f3a;
-    color: var(--default-color);
+  background-color: #1e1f3a;
+  color: var(--cor-texto);
 }
 
-/* Froala — adaptar ao tema */
-.fr-box.fr-basic .fr-wrapper {
-    background-color: #1e1f3a !important;
-    color: var(--default-color) !important;
-    border-color: #2e2f50 !important;
-    border-radius: 0 0 8px 8px;
+/* ============================================================
+   Editor TinyMCE — tema escuro
+   ============================================================ */
+.tox-tinymce {
+  border: 1px solid #2e2f50 !important;
+  border-radius: 8px !important;
 }
 
-.fr-toolbar {
-    background-color: #131428 !important;
-    border-color: #2e2f50 !important;
-    border-radius: 8px 8px 0 0 !important;
+.tox .tox-toolbar,
+.tox .tox-toolbar__overflow,
+.tox .tox-toolbar-overlord,
+.tox .tox-toolbar__primary,
+.tox .tox-menubar,
+.tox .tox-statusbar,
+.tox-toolbar__overflow {
+  background-color: #131428 !important;
+  border-color: #2e2f50 !important;
 }
 
-.fr-toolbar .fr-btn:hover {
-    background-color: #1e1f3a !important;
+.tox .tox-tbtn,
+.tox .tox-tbtn--select,
+.tox .tox-tbtn--bespoke {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: #c8c6e3 !important;
 }
 
-.fr-command.fr-btn svg path {
-    fill: #8e8e93 !important;
+.tox .tox-tbtn__select-label,
+.tox .tox-tbtn--bespoke .tox-tbtn__select-label {
+  color: #c8c6e3 !important;
 }
 
-.fr-toolbar .fr-command.fr-btn.fr-active svg path {
-    fill: #3B82F6 !important;
+.tox .tox-icon svg,
+.tox .tox-tbtn svg {
+  fill: #c8c6e3 !important;
 }
 
-.fr-element {
-    color: var(--default-color) !important;
-    min-height: 300px;
+.tox .tox-tbtn:hover,
+.tox .tox-tbtn--enabled,
+.tox .tox-tbtn--active,
+.tox .tox-tbtn--select:hover,
+.tox .tox-tbtn--bespoke:hover {
+  background: #1e1f3a !important;
 }
 
-/* ── Botões da publicação ── */
+.tox .tox-tbtn:hover svg,
+.tox .tox-tbtn--enabled svg,
+.tox .tox-tbtn--active svg {
+  fill: #3B82F6 !important;
+}
+
+.tox .tox-toolbar__group:not(:last-of-type) {
+  border-right: 1px solid #2e2f50 !important;
+}
+
+.tox .tox-mbtn,
+.tox .tox-mbtn__select-label {
+  background: transparent !important;
+  color: #c8c6e3 !important;
+}
+
+.tox .tox-mbtn:hover,
+.tox .tox-mbtn--active {
+  background-color: #1e1f3a !important;
+  color: #ffffff !important;
+}
+
+.tox .tox-menu,
+.tox .tox-collection,
+.tox .tox-collection__group {
+  background-color: #1f2240 !important;
+  border-color: #2e2f50 !important;
+}
+
+.tox .tox-collection__item {
+  color: #c8c6e3 !important;
+}
+
+.tox .tox-collection__item--active,
+.tox .tox-collection__item:hover {
+  background-color: #1e1f3a !important;
+  color: #ffffff !important;
+}
+
+.tox .tox-collection__item svg {
+  fill: #c8c6e3 !important;
+}
+
+.tox .tox-edit-area {
+  border-color: #2e2f50 !important;
+  background-color: #1e1f3a !important;
+}
+
+.tox .tox-edit-area__iframe {
+  background-color: #1e1f3a !important;
+}
+
+.tox .tox-statusbar {
+  border-top: 1px solid #2e2f50 !important;
+  background-color: #131428 !important;
+}
+
+.tox .tox-statusbar a,
+.tox .tox-statusbar__wordcount,
+.tox .tox-statusbar__path-item,
+.tox .tox-statusbar__branding {
+  color: #8e8e93 !important;
+}
+
+.tox .tox-dialog,
+.tox .tox-dialog__header,
+.tox .tox-dialog__footer,
+.tox .tox-dialog__body,
+.tox .tox-dialog__body-content {
+  background-color: #131428 !important;
+  border-color: #2e2f50 !important;
+  color: #e8e7f7 !important;
+}
+
+.tox .tox-dialog__title {
+  color: #ffffff !important;
+}
+
+.tox .tox-label,
+.tox .tox-form__group label {
+  color: #c8c6e3 !important;
+}
+
+.tox .tox-textfield,
+.tox .tox-textarea,
+.tox .tox-selectfield select,
+.tox .tox-listboxfield .tox-listbox--select {
+  background-color: #1e1f3a !important;
+  border-color: #2e2f50 !important;
+  color: #e8e7f7 !important;
+}
+
+.tox .tox-textfield:focus,
+.tox .tox-textarea:focus {
+  border-color: #3B82F6 !important;
+  outline: none !important;
+}
+
+.tox .tox-button:not(.tox-button--secondary):not(.tox-button--icon) {
+  background-color: #3B82F6 !important;
+  border-color: #3B82F6 !important;
+  color: #ffffff !important;
+}
+
+.tox .tox-button:not(.tox-button--secondary):not(.tox-button--icon):hover {
+  background-color: #2563eb !important;
+  border-color: #2563eb !important;
+}
+
+.tox .tox-button--secondary {
+  background-color: transparent !important;
+  border-color: #2e2f50 !important;
+  color: #c8c6e3 !important;
+}
+
+.tox .tox-button--secondary:hover {
+  background-color: #1e1f3a !important;
+  color: #ffffff !important;
+}
+
+.tox .tox-tooltip__body {
+  background-color: #1f2240 !important;
+  color: #e8e7f7 !important;
+}
+
+.tox-silver-sink .tox-dialog-wrap__backdrop {
+  background-color: rgba(0, 0, 0, 0.6) !important;
+}
+
+/* ============================================================
+   Botões do formulário
+   ============================================================ */
 .btn-publicar-enviar {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 10px 28px;
-    border-radius: 8px;
-    background-color: var(--accent-color);
-    color: #fff;
-    font-size: 0.9rem;
-    font-weight: 600;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.25s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 28px;
+  border-radius: 8px;
+  background-color: var(--cor-destaque);
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.25s;
 }
 
 .btn-publicar-enviar:hover {
-    background-color: color-mix(in srgb, var(--accent-color), #000 15%);
+  background-color: color-mix(in srgb, var(--cor-destaque), #000 15%);
 }
 
 .btn-publicar-cancelar {
-    display: inline-flex;
-    align-items: center;
-    padding: 10px 22px;
-    border-radius: 8px;
-    background: transparent;
-    border: 2px solid color-mix(in srgb, var(--default-color), transparent 50%);
-    color: var(--default-color);
-    font-size: 0.9rem;
-    font-weight: 600;
-    text-decoration: none;
-    transition: border-color 0.25s, color 0.25s;
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 22px;
+  border-radius: 8px;
+  background: transparent;
+  border: 2px solid color-mix(in srgb, var(--cor-texto), transparent 50%);
+  color: var(--cor-texto);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: border-color 0.25s, color 0.25s;
 }
 
 .btn-publicar-cancelar:hover {
-    border-color: var(--default-color);
-    color: var(--heading-color);
+  border-color: var(--cor-texto);
+  color: var(--cor-titulo);
 }
 
-
 @media (max-width: 767px) {
-.fr-toolbar .fr-btn-grp {
+  .fr-toolbar .fr-btn-grp {
     display: flex !important;
     flex-direction: row !important;
     flex-wrap: wrap !important;
     justify-content: space-around !important;
     width: 100% !important;
     float: none !important;
+  }
 }
-}
-

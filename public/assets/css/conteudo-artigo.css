@@ -1,48 +1,60 @@
-/* ── Conteúdo do artigo ── */
+/* ============================================================
+   conteudo-artigo.css — Página de leitura de artigo
+   Contém: título, subtítulo, corpo, aviso, autoria,
+           badges de categoria, compartilhamento e ações do autor.
+   ============================================================ */
+
+/* ============================================================
+   Tipografia do artigo
+   ============================================================ */
 .conteudo-titulo {
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--heading-color);
-    margin-bottom: 10px;
-    line-height: 1.3;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--cor-titulo);
+  margin-bottom: 10px;
+  line-height: 1.3;
 }
 
 .conteudo-subtitulo {
-    font-size: 1.1rem;
-    color: color-mix(in srgb, var(--default-color), transparent 20%);
-    margin-bottom: 20px;
-    line-height: 1.6;
+  font-size: 1.1rem;
+  color: color-mix(in srgb, var(--cor-texto), transparent 20%);
+  margin-bottom: 20px;
+  line-height: 1.6;
 }
 
 .conteudo-divisor {
-    border-color: color-mix(in srgb, var(--default-color), transparent 75%);
-    margin-bottom: 28px;
+  border-color: color-mix(in srgb, var(--cor-texto), transparent 75%);
+  margin-bottom: 28px;
 }
 
 .conteudo-corpo {
-    font-size: 1rem;
-    line-height: 1.85;
-    color: #e8e7f7;
+  font-size: 1rem;
+  line-height: 1.85;
+  color: #e8e7f7;
 }
 
 .conteudo-corpo img {
-    max-width: 100%;
-    border-radius: 8px;
-    margin: 16px 0;
+  max-width: 100%;
+  border-radius: 8px;
+  margin: 16px 0;
 }
 
-/* ── Aviso informativo no topo ── */
+/* ============================================================
+   Aviso informativo no topo
+   ============================================================ */
 .conteudo-aviso {
-    font-size: 0.8rem;
-    color: color-mix(in srgb, var(--default-color), transparent 40%);
-    border-left: 3px solid color-mix(in srgb, var(--accent-color), transparent 50%);
-    padding: 10px 14px;
-    background-color: color-mix(in srgb, var(--surface-color), transparent 30%);
-    border-radius: 0 6px 6px 0;
-    line-height: 1.6;
+  font-size: 0.8rem;
+  color: color-mix(in srgb, var(--cor-texto), transparent 40%);
+  border-left: 3px solid color-mix(in srgb, var(--cor-destaque), transparent 50%);
+  padding: 10px 14px;
+  background-color: color-mix(in srgb, var(--cor-superficie), transparent 30%);
+  border-radius: 0 6px 6px 0;
+  line-height: 1.6;
 }
 
-/* ── Autoria — bloco estruturado com schema.org ── */
+/* ============================================================
+   Bloco de autoria
+   ============================================================ */
 .conteudo-autor {
   display: flex;
   align-items: center;
@@ -64,12 +76,7 @@
   left: 15%;
   right: 15%;
   height: 1px;
-  background: linear-gradient(
-    to right,
-    transparent,
-    rgba(4, 196, 217, 0.3),
-    transparent
-  );
+  background: linear-gradient(to right, transparent, rgba(4, 196, 217, 0.3), transparent);
   pointer-events: none;
 }
 
@@ -87,7 +94,7 @@
 }
 
 .conteudo-autor__label {
-  font-size: var(--type-xs);
+  font-size: var(--tipo-xs);
   text-transform: uppercase;
   letter-spacing: 0.8px;
   color: rgba(200, 198, 227, 0.45);
@@ -95,89 +102,95 @@
 }
 
 .conteudo-autor__nome {
-  font-size: var(--type-base);
+  font-size: var(--tipo-base);
   font-weight: 700;
   color: rgba(232, 231, 247, 0.88);
-  font-family: var(--heading-font);
+  font-family: var(--fonte-titulo);
 }
 
 .conteudo-autor__data {
-  font-size: var(--type-xs);
+  font-size: var(--tipo-xs);
   color: rgba(200, 198, 227, 0.45);
 }
 
-/* ── Badge categoria ── */
+/* ============================================================
+   Badge de categoria (dentro do conteúdo)
+   ============================================================ */
 .artigo-badge-conteudo {
-    display: inline-block;
-    font-size: 0.72rem;
-    font-weight: 700;
-    padding: 4px 14px;
-    border-radius: 50px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    background-color: rgba(4, 196, 217, 0.12);
-    color: #a8f0f7;
-    border: 1px solid rgba(4, 196, 217, 0.35);
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 4px 14px;
+  border-radius: 50px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background-color: rgba(4, 196, 217, 0.12);
+  color: #a8f0f7;
+  border: 1px solid rgba(4, 196, 217, 0.35);
 }
 
-/* ── Compartilhar ── */
+/* ============================================================
+   Compartilhamento
+   ============================================================ */
 .compartilhar-label {
-    font-size: 0.875rem;
-    color: color-mix(in srgb, var(--default-color), transparent 30%);
+  font-size: 0.875rem;
+  color: color-mix(in srgb, var(--cor-texto), transparent 30%);
 }
 
 .compartilhar-link {
-    font-size: 1.25rem;
-    color: color-mix(in srgb, var(--default-color), transparent 20%);
-    transition: color 0.2s;
+  font-size: 1.25rem;
+  color: color-mix(in srgb, var(--cor-texto), transparent 20%);
+  transition: color 0.2s;
 }
 
 .compartilhar-link:hover {
-    color: var(--accent-color);
+  color: var(--cor-destaque);
 }
 
-/* ── Ações do autor ── */
+/* ============================================================
+   Ações do autor (editar / excluir)
+   ============================================================ */
 .acoes-artigo {
-    padding-top: 12px;
-    margin-top: 32px;
+  padding-top: 12px;
+  margin-top: 32px;
 }
 
 .btn-acao-editar {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 20px;
-    border-radius: 8px;
-    background-color: var(--accent-color);
-    color: #fff;
-    font-size: 0.875rem;
-    font-weight: 600;
-    text-decoration: none;
-    border: none;
-    transition: background-color 0.25s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 20px;
+  border-radius: 8px;
+  background-color: var(--cor-destaque);
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  transition: background-color 0.25s;
 }
 
 .btn-acao-editar:hover {
-    background-color: color-mix(in srgb, var(--accent-color), #000 15%);
-    color: #fff;
+  background-color: color-mix(in srgb, var(--cor-destaque), #000 15%);
+  color: #fff;
 }
 
 .btn-acao-excluir {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 20px;
-    border-radius: 8px;
-    background-color: transparent;
-    color: #dc3545;
-    font-size: 0.875rem;
-    font-weight: 600;
-    border: 2px solid #dc3545;
-    cursor: pointer;
-    transition: all 0.25s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 20px;
+  border-radius: 8px;
+  background-color: transparent;
+  color: #dc3545;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border: 2px solid #dc3545;
+  cursor: pointer;
+  transition: all 0.25s;
 }
 
 .btn-acao-excluir:hover {
-    background-color: #dc3545;
-    color: #fff;
+  background-color: #dc3545;
+  color: #fff;
 }

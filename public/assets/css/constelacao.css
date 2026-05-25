@@ -1,101 +1,98 @@
-/*--------------------------------------------------------------
-# Constelação Neural
---------------------------------------------------------------*/
-section#objetivos {
-    gap: 0px !important;
-}
+/* ============================================================
+   constelacao.css — Componente de constelação neural
+   Contém: wrapper, SVG, nós, arestas, porcentagem e animações.
+   ============================================================ */
 
-
-
-.section-title-obj-texto {
-    max-width: 55%;
-}
-
+/* ============================================================
+   Container e layout
+   ============================================================ */
 .constelacao-wrap {
-    display: flex;
-    flex-direction: row;
-    justify-content: start;
-    position: relative;
-    align-items: center;
-    gap: 6px;
-    flex-shrink: 0;
-    width: auto;
-    max-width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  position: relative;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  width: auto;
+  max-width: 100%;
 }
 
 .constelacao-absolute {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 0;
-    left: 0;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .constelacao-svg {
-    width: 335px;
-    height: 202px;
-    overflow: hidden;
+  width: 335px;
+  height: 202px;
+  overflow: hidden;
 }
 
+/* ============================================================
+   Porcentagem de progresso
+   ============================================================ */
 .constelacao-pct-wrap {
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .constelacao-pct {
-    font-size: 2rem;
-    font-weight: 600;
-    color: color-mix(in srgb, var(--default-color), transparent 40%);
-    white-space: nowrap;
-    font-family: 'Courier New', monospace;
-    letter-spacing: 0.5px;
+  font-size: 2rem;
+  font-weight: 600;
+  color: color-mix(in srgb, var(--cor-texto), transparent 40%);
+  white-space: nowrap;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.5px;
 }
 
 .constelacao-pct-desc {
-    color: color-mix(in srgb, var(--default-color), transparent 40%);
-    white-space: nowrap;
-    font-family: 'Courier New', monospace;
-    letter-spacing: 0.5px;
+  color: color-mix(in srgb, var(--cor-texto), transparent 40%);
+  white-space: nowrap;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.5px;
 }
 
-/* nós inativos */
+/* ============================================================
+   Nós da constelação
+   ============================================================ */
 .cst-no {
-    transition: fill 0.4s ease, opacity 0.4s ease;
-    opacity: 0;
+  transition: fill 0.4s ease, opacity 0.4s ease;
+  opacity: 0;
 }
 
-/* nós revelados pelo JS com atraso escalonado */
 .cst-no.cst-visivel {
-    opacity: 1;
+  opacity: 1;
 }
 
 .cst-no--ativo.cst-visivel {
-    animation: cstPulse 3s ease-in-out infinite;
+  animation: cstPulse 3s ease-in-out infinite;
 }
 
 .cst-no--principal.cst-no--ativo.cst-visivel {
-    animation: cstPulsePrincipal 2.5s ease-in-out infinite;
+  animation: cstPulsePrincipal 2.5s ease-in-out infinite;
 }
 
-/* arestas */
+/* ============================================================
+   Arestas da constelação
+   ============================================================ */
 .cst-aresta {
-    opacity: 0;
-    transition: opacity 0.4s ease;
+  opacity: 0;
+  transition: opacity 0.4s ease;
 }
 
 .cst-aresta.cst-visivel {
-    opacity: 1;
+  opacity: 1;
 }
 
-@keyframes cstPulse {
-    0%, 100% { opacity: 1; }
-    50%       { opacity: 0.55; }
+/* ============================================================
+   Texto do título de contexto
+   ============================================================ */
+.section-title-obj-texto {
+  max-width: 55%;
 }
-
-@keyframes cstPulsePrincipal {
-    0%, 100% { opacity: 1; }
-    50%       { opacity: 0.65; }
-}
-

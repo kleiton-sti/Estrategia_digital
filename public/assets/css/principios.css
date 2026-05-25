@@ -1,57 +1,46 @@
-/*--------------------------------------------------------------
-# principios.css
-# Cards-portal da section Eixos Estratégicos (home).
-# Cada card é um "portal visual" para o eixo correspondente,
-# exibindo a constelação neural como elemento principal.
---------------------------------------------------------------*/
+/* ============================================================
+   principios.css — Cards-portal dos Eixos Estratégicos (home)
+   Contém: seção #principios, card-portal (.eixo-portal),
+           nebulosa, fio de luz, cabeçalho, constelação, rodapé,
+           barra de progresso, eixo-inline e estilos legados.
+   ============================================================ */
 
-
+/* ============================================================
+   Seção Princípios
+   ============================================================ */
 section#principios {
   padding-top: 1rem;
   overflow: hidden;
 }
 
-
-/*--------------------------------------------------------------
-# Container da seção Princípios
---------------------------------------------------------------*/
-.principios .container {
-  flex-direction: column;
-  color: var(--default-color);
+section.principios {
+  padding-top: 0;
   position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.objetivos .container {
-  flex-direction: column;
-  color: var(--default-color);
-  position: relative;
+  z-index: 1;
+  overflow: visible !important;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 3rem;
+  padding: var(--espaco-secao-y) 0;
+  min-height: auto;
 }
 
-
-.objetivos-titulo {
-    font-size: var(--type-2xl);
-    font-weight: 700;
-    line-height: var(--lh-tight);
-    margin-bottom: 12px;
-    align-self: start;
+section.principios-details {
+  border: none;
+  padding-top: 0;
 }
 
-.objetivos .container .isotope-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 100%;
+.principios .container {
+  flex-direction: column;
+  color: var(--cor-texto);
+  position: relative;
+  display: flex;
+  align-items: center;
 }
-/*--------------------------------------------------------------
-# Card-portal principal
---------------------------------------------------------------*/
+
+/* ============================================================
+   Card-portal principal
+   ============================================================ */
 .eixo-portal {
   position: relative;
   border-radius: 20px;
@@ -65,8 +54,6 @@ section#principios {
   height: 100%;
   display: flex;
   flex-direction: column;
-
-  /* variáveis por eixo injetadas inline via Blade */
   --eixo-glow: #04C4D9;
   --eixo-rgb: 4, 196, 217;
 }
@@ -79,7 +66,6 @@ section#principios {
     0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
-/* Estado ativo (eixo aberto) */
 .eixo-portal.ativo {
   border-color: color-mix(in srgb, var(--eixo-glow), transparent 35%);
   box-shadow:
@@ -87,17 +73,13 @@ section#principios {
     0 20px 60px rgba(var(--eixo-rgb), 0.2);
 }
 
-/*--------------------------------------------------------------
-# Nebulosa de fundo — glow difuso radial
---------------------------------------------------------------*/
+/* ============================================================
+   Nebulosa de fundo
+   ============================================================ */
 .eixo-portal__nebulosa {
   position: absolute;
   inset: 0;
-  background: radial-gradient(
-    ellipse 80% 60% at 50% 70%,
-    rgba(var(--eixo-rgb), 0.07) 0%,
-    transparent 70%
-  );
+  background: radial-gradient(ellipse 80% 60% at 50% 70%, rgba(var(--eixo-rgb), 0.07) 0%, transparent 70%);
   pointer-events: none;
   transition: opacity 0.4s ease;
   z-index: 0;
@@ -107,21 +89,16 @@ section#principios {
   opacity: 1.6;
 }
 
-/*--------------------------------------------------------------
-# Fio de luz superior
---------------------------------------------------------------*/
+/* ============================================================
+   Fio de luz superior
+   ============================================================ */
 .eixo-portal__fio {
   position: absolute;
   top: 0;
   left: 12%;
   right: 12%;
   height: 1px;
-  background: linear-gradient(
-    to right,
-    transparent,
-    color-mix(in srgb, var(--eixo-glow), transparent 30%),
-    transparent
-  );
+  background: linear-gradient(to right, transparent, color-mix(in srgb, var(--eixo-glow), transparent 30%), transparent);
   pointer-events: none;
   z-index: 2;
   transition: opacity 0.35s;
@@ -133,9 +110,9 @@ section#principios {
   opacity: 0.9;
 }
 
-/*--------------------------------------------------------------
-# Cabeçalho do card
---------------------------------------------------------------*/
+/* ============================================================
+   Cabeçalho do card
+   ============================================================ */
 .eixo-portal__header {
   position: relative;
   z-index: 2;
@@ -147,7 +124,7 @@ section#principios {
 
 .eixo-portal__num {
   font-family: 'Courier New', monospace;
-  font-size: var(--type-xs);
+  font-size: var(--tipo-xs);
   font-weight: 700;
   letter-spacing: 2px;
   color: color-mix(in srgb, var(--eixo-glow), transparent 15%);
@@ -155,9 +132,9 @@ section#principios {
 }
 
 .eixo-portal__badge {
-  font-size: var(--type-xs);
+  font-size: var(--tipo-xs);
   font-weight: 600;
-  font-family: var(--default-font);
+  font-family: var(--fonte-padrao);
   text-transform: uppercase;
   letter-spacing: 0.5px;
   padding: 3px 10px;
@@ -167,9 +144,9 @@ section#principios {
   border: 1px solid rgba(var(--eixo-rgb), 0.22);
 }
 
-/*--------------------------------------------------------------
-# Área da constelação — corpo do card
---------------------------------------------------------------*/
+/* ============================================================
+   Área da constelação
+   ============================================================ */
 .eixo-portal__cst {
   position: relative;
   z-index: 1;
@@ -181,7 +158,6 @@ section#principios {
   min-height: 160px;
 }
 
-/* O SVG da constelação ocupa todo o espaço disponível */
 .eixo-portal__cst .constelacao-svg {
   width: 100%;
   height: auto;
@@ -194,7 +170,6 @@ section#principios {
   filter: drop-shadow(0 0 14px rgba(var(--eixo-rgb), 0.45));
 }
 
-/* Estrelas decorativas geradas via JS */
 .eixo-portal__stars {
   position: absolute;
   inset: 0;
@@ -203,9 +178,9 @@ section#principios {
   border-radius: 20px;
 }
 
-/*--------------------------------------------------------------
-# Rodapé do card
---------------------------------------------------------------*/
+/* ============================================================
+   Rodapé do card
+   ============================================================ */
 .eixo-portal__footer {
   position: relative;
   z-index: 2;
@@ -217,15 +192,17 @@ section#principios {
 }
 
 .eixo-portal__titulo {
-  font-size: var(--type-md);
+  font-size: var(--tipo-md);
   font-weight: 700;
-  font-family: var(--heading-font);
+  font-family: var(--fonte-titulo);
   color: rgba(232, 231, 247, 0.88);
   margin: 0;
-  line-height: var(--lh-tight);
+  line-height: var(--lh-compacto);
 }
 
-/* Barra de progresso */
+/* ============================================================
+   Barra de progresso
+   ============================================================ */
 .eixo-portal__progresso {
   display: flex;
   align-items: center;
@@ -243,28 +220,26 @@ section#principios {
 .eixo-portal__progresso-fill {
   height: 100%;
   border-radius: 2px;
-  background: linear-gradient(
-    to right,
-    color-mix(in srgb, var(--eixo-glow), transparent 20%),
-    var(--eixo-glow)
-  );
+  background: linear-gradient(to right, color-mix(in srgb, var(--eixo-glow), transparent 20%), var(--eixo-glow));
   box-shadow: 0 0 6px var(--eixo-glow);
   transition: width 0.8s ease;
 }
 
 .eixo-portal__progresso-pct {
-  font-size: var(--type-xs);
+  font-size: var(--tipo-xs);
   font-family: 'Courier New', monospace;
   font-weight: 600;
   color: color-mix(in srgb, var(--eixo-glow), transparent 20%);
   white-space: nowrap;
 }
 
-/* CTA inline */
+/* ============================================================
+   CTA inline
+   ============================================================ */
 .eixo-portal__cta {
-  font-size: var(--type-xs);
+  font-size: var(--tipo-xs);
   font-weight: 600;
-  color: color-mix(in srgb, var(--default-color), transparent 45%);
+  color: color-mix(in srgb, var(--cor-texto), transparent 45%);
   display: inline-flex;
   align-items: center;
   gap: 5px;
@@ -286,23 +261,23 @@ section#principios {
   transform: translateX(3px);
 }
 
-/*--------------------------------------------------------------
-# Container inline do eixo (revelado ao clicar no portal)
---------------------------------------------------------------*/
+/* ============================================================
+   Container inline do eixo (revelado ao clicar no portal)
+   ============================================================ */
 .eixo-inline {
-  background: var(--background-color);
+  background: var(--cor-fundo);
 }
 
-/*--------------------------------------------------------------
-# Legado — mantido para não quebrar show.blade.php
---------------------------------------------------------------*/
+/* ============================================================
+   Legado — mantido para não quebrar show.blade.php
+   ============================================================ */
 .principios .principios-card {
-  background: var(--surface-color);
+  background: var(--cor-superficie);
   border-radius: 20px;
   padding: 28px 24px;
   position: relative;
   height: 100%;
-  border: 1px solid color-mix(in srgb, var(--default-color), transparent 92%);
+  border: 1px solid color-mix(in srgb, var(--cor-texto), transparent 92%);
   transition: all 0.3s ease;
   display: flex;
   flex-direction: column;
@@ -312,50 +287,58 @@ section#principios {
 .principios .principios-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
-  border-color: color-mix(in srgb, var(--accent-color), transparent 70%);
+  border-color: color-mix(in srgb, var(--cor-destaque), transparent 70%);
 }
 
-/*--------------------------------------------------------------
-# Principios Details Section (show.blade.php)
---------------------------------------------------------------*/
+/* ============================================================
+   Principios Details Section (show.blade.php)
+   ============================================================ */
 .principios-details .principios-content h2 {
-  font-size: var(--type-2xl);
+  font-size: var(--tipo-2xl);
   font-weight: 700;
-  font-family: var(--heading-font);
+  font-family: var(--fonte-titulo);
   color: rgba(232, 231, 247, 0.73);
   margin-bottom: 1rem;
 }
 
 .principios-details .principios-content .lead {
-  font-size: var(--type-base);
-  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  font-size: var(--tipo-base);
+  color: color-mix(in srgb, var(--cor-texto), transparent 30%);
   margin-bottom: 1.5rem;
-  line-height: var(--lh-relaxed);
+  line-height: var(--lh-amplo);
 }
 
 .principios-details .principios-content p {
-  font-size: var(--type-body);
-  color: color-mix(in srgb, var(--default-color), transparent 20%);
+  font-size: var(--tipo-body);
+  color: color-mix(in srgb, var(--cor-texto), transparent 20%);
   margin-bottom: 1.2rem;
-  line-height: var(--lh-relaxed);
+  line-height: var(--lh-amplo);
 }
 
 .principios-details .principios-features {
-  background: var(--surface-color);
+  background: var(--cor-superficie);
   padding: 2rem;
   border-radius: 12px;
   margin: 2.5rem 0;
-  border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  border: 1px solid color-mix(in srgb, var(--cor-texto), transparent 90%);
 }
 
 .principios-details h4 {
   color: rgba(232, 231, 247, 0.73);
   margin-bottom: 1.2rem;
-  font-size: var(--type-md);
+  font-size: var(--tipo-md);
   font-weight: 600;
-  font-family: var(--heading-font);
+  font-family: var(--fonte-titulo);
 }
 
-#principios-details .row { justify-content: center; }
-#principios-details .sidebar { max-width: 150px; }
-#principios-details .iniciativas { flex: 1; }
+#principios-details .row {
+  justify-content: center;
+}
+
+#principios-details .sidebar {
+  max-width: 150px;
+}
+
+#principios-details .iniciativas {
+  flex: 1;
+}

@@ -1,38 +1,54 @@
-/*--------------------------------------------------------------
-# hero.css
-# Estilos da seção hero (home) e dos cards glassmorphism.
-# Keyframes: centralizados em keyframes.css (importado via main.css).
-# Media queries: centralizadas em responsive.css.
---------------------------------------------------------------*/
+/* ============================================================
+   hero.css — Seção hero da home
+   Contém: container, tipografia, stats, anel de progresso,
+           pills de status, visual, reflexos de luz e partículas.
+   Keyframes: keyframes.css (via main.css).
+   Responsividade: responsive.css.
+   ============================================================ */
 
-/*--------------------------------------------------------------
-# Hero — container e tipografia
---------------------------------------------------------------*/
+/* ============================================================
+   Container e tipografia
+   ============================================================ */
 .hero {
   position: relative;
   overflow: hidden;
   padding-top: 80px;
 }
 
+section#hero {
+  position: relative;
+  color: var(--cor-texto);
+  min-height: 88dvh;
+  display: flex;
+  align-items: center;
+  overflow: visible !important;
+  scroll-margin-top: 90px;
+  z-index: 2;
+}
+
+section#hero .container {
+  padding-top: 60px;
+}
+
 .hero .hero-content h1 {
-  font-size: var(--type-4xl);
+  font-size: var(--tipo-4xl);
   font-weight: 700;
-  line-height: var(--lh-tight);
+  line-height: var(--lh-compacto);
   margin-bottom: 1.2rem;
-  font-family: var(--heading-font);
+  font-family: var(--fonte-titulo);
   text-align: left;
 }
 
 .hero .hero-content p {
-  font-size: var(--type-body);
+  font-size: var(--tipo-body);
   margin-bottom: 2rem;
-  line-height: var(--lh-relaxed);
-  text-align: left
+  line-height: var(--lh-amplo);
+  text-align: left;
 }
 
-/*--------------------------------------------------------------
-# Stats soltos — layout assimétrico
---------------------------------------------------------------*/
+/* ============================================================
+   Stats — layout assimétrico
+   ============================================================ */
 .hero-stats {
   display: flex;
   flex-direction: column;
@@ -40,11 +56,9 @@
   margin-top: 12px;
 }
 
-/* Linha superior: três números em alturas propositalmente diferentes */
 .hero-stats__topo {
   display: flex;
   align-items: flex-end;
-  /* ancora na base — alturas livres acima */
   gap: 0;
 }
 
@@ -55,13 +69,12 @@
   position: relative;
 }
 
-/* Separa os três por uma linha vertical fina */
-.hero-stat+.hero-stat {
+.hero-stat + .hero-stat {
   padding-left: 24px;
   margin-left: 24px;
 }
 
-.hero-stat+.hero-stat::before {
+.hero-stat + .hero-stat::before {
   content: '';
   position: absolute;
   left: 0;
@@ -71,9 +84,8 @@
   background: rgba(255, 255, 255, 0.08);
 }
 
-/* Número principal de cada stat */
 .hero-stat__num {
-  font-family: var(--heading-font);
+  font-family: var(--fonte-titulo);
   font-weight: 800;
   line-height: 1;
 }
@@ -86,7 +98,7 @@
 }
 
 .hero-stat__label {
-  font-size: var(--type-sm);
+  font-size: var(--tipo-sm);
   font-weight: 700;
   color: rgba(232, 231, 247, 0.85);
   letter-spacing: 0.3px;
@@ -94,18 +106,17 @@
 }
 
 .hero-stat__desc {
-  font-size: var(--type-xs);
-  color: color-mix(in srgb, var(--default-color), transparent 50%);
+  font-size: var(--tipo-xs);
+  color: color-mix(in srgb, var(--cor-texto), transparent 50%);
 }
 
-/* Eixos — menor, âncora na base */
+/* Variantes por grupo de stat */
 .hero-stat--eixos .hero-stat__num {
   font-size: clamp(2.8rem, 4vw, 4rem);
   color: #93c5fd;
   text-shadow: 0 0 18px rgba(59, 130, 246, 0.2);
 }
 
-/* Objetivos — médio, sobe um pouco */
 .hero-stat--objetivos {
   transform: translateY(-12px);
 }
@@ -116,23 +127,22 @@
   text-shadow: 0 0 18px rgba(124, 110, 240, 0.2);
 }
 
-/* Iniciativas — maior, âncora na base */
 .hero-stat--iniciativas .hero-stat__num {
   font-size: clamp(4.2rem, 6.5vw, 6.5rem);
   color: #a8f0f7;
   text-shadow: 0 0 22px rgba(4, 196, 217, 0.2);
 }
 
-/* Linha do anel + contadores */
+/* ============================================================
+   Linha do anel + contadores
+   ============================================================ */
 .hero-stats__anel-row {
   display: flex;
   align-items: center;
   gap: 20px;
   padding-left: 8px;
-  /* leve deslocamento — quebra o alinhamento da coluna */
 }
 
-/* Contadores em coluna, deslocados verticalmente entre si */
 .hero-stats__contadores {
   display: flex;
   flex-direction: column;
@@ -146,20 +156,18 @@
   gap: 10px;
 }
 
-/* Em execução — normal */
 .hero-contador--andamento {
   transform: translateX(0);
 }
 
-/* Não iniciadas — recuado para criar diagonal */
 .hero-contador--nao {
   transform: translateX(16px);
   margin-top: 8px;
 }
 
-/*--------------------------------------------------------------
-# Anel de progresso SVG (concluídas)
---------------------------------------------------------------*/
+/* ============================================================
+   Anel de progresso SVG
+   ============================================================ */
 .ring-wrap {
   position: relative;
   width: 110px;
@@ -195,7 +203,6 @@
   filter: drop-shadow(0 0 5px rgba(0, 219, 121, 0.65));
 }
 
-/* Número dentro do anel */
 .ring-inner {
   position: relative;
   z-index: 1;
@@ -207,13 +214,12 @@
 .ring-inner .ist-num--verde {
   font-size: 1.8rem;
   font-weight: 800;
-  font-family: var(--heading-font);
+  font-family: var(--fonte-titulo);
   line-height: 1;
   color: #00db79;
   filter: drop-shadow(0 0 8px rgba(0, 219, 121, 0.6));
 }
 
-/* Coluna de texto ao lado do anel */
 .ring-label-col {
   display: flex;
   flex-direction: column;
@@ -221,12 +227,11 @@
 }
 
 .ist-desc {
-  font-size: var(--type-xs);
-  color: color-mix(in srgb, var(--default-color), transparent 45%);
+  font-size: var(--tipo-xs);
+  color: color-mix(in srgb, var(--cor-texto), transparent 45%);
   line-height: 1.4;
 }
 
-/* Divisor vertical entre colunas */
 .stat-divisor {
   width: 1px;
   height: 60px;
@@ -234,7 +239,6 @@
   flex-shrink: 0;
 }
 
-/* Colunas de Em execução e Não iniciadas */
 .stat-col {
   display: flex;
   flex-direction: column;
@@ -243,13 +247,13 @@
   flex: 1;
 }
 
-/*--------------------------------------------------------------
-# Números de status
---------------------------------------------------------------*/
+/* ============================================================
+   Números de status
+   ============================================================ */
 .ist-num {
   font-size: 1.6rem;
   font-weight: 800;
-  font-family: var(--heading-font);
+  font-family: var(--fonte-titulo);
   line-height: 1;
 }
 
@@ -268,14 +272,13 @@
   filter: drop-shadow(0 0 6px rgba(225, 58, 29, 0.55));
 }
 
-/*--------------------------------------------------------------
-# Pills de badge de status
-# Expansível: adicionar .ist-pill--novo seguindo o mesmo padrão
---------------------------------------------------------------*/
+/* ============================================================
+   Pills de status
+   ============================================================ */
 .ist-pill {
   display: inline-flex;
   align-items: center;
-  font-size: var(--type-xs);
+  font-size: var(--tipo-xs);
   font-weight: 700;
   letter-spacing: 0.4px;
   text-transform: uppercase;
@@ -303,9 +306,9 @@
   border-color: rgba(225, 58, 29, 0.25);
 }
 
-/*--------------------------------------------------------------
-# Textos internos dos cards
---------------------------------------------------------------*/
+/* ============================================================
+   Textos internos dos cards de stats
+   ============================================================ */
 .glass-card-texto {
   display: flex;
   flex-direction: column;
@@ -313,21 +316,21 @@
 }
 
 .glass-card-titulo {
-  font-size: var(--type-body);
+  font-size: var(--tipo-body);
   font-weight: 700;
-  color: color-mix(in srgb, var(--heading-color), transparent 10%);
+  color: color-mix(in srgb, var(--cor-titulo), transparent 10%);
   letter-spacing: 0.2px;
 }
 
 .glass-card-desc {
-  font-size: var(--type-sm);
-  color: color-mix(in srgb, var(--default-color), transparent 40%);
+  font-size: var(--tipo-sm);
+  color: color-mix(in srgb, var(--cor-texto), transparent 40%);
   line-height: 1.4;
 }
 
-/*--------------------------------------------------------------
-# Visual — imagem do hero
---------------------------------------------------------------*/
+/* ============================================================
+   Visual — imagem do hero
+   ============================================================ */
 .hero .hero-visual {
   position: relative;
   display: flex;
@@ -341,7 +344,6 @@
   z-index: 2;
   width: 100%;
   transform: translateX(5%);
-  /* vaza levemente para a direita — quebra a grade */
 }
 
 .hero .hero-visual .hero-image img {
@@ -349,10 +351,9 @@
   animation: flutua3 5s ease-in-out infinite;
 }
 
-/*--------------------------------------------------------------
-# Reflexos de luz ao redor da imagem do hero
-# Cada ID corresponde a um blob de luz com cor e posição únicos
---------------------------------------------------------------*/
+/* ============================================================
+   Reflexos de luz ao redor da imagem
+   ============================================================ */
 .hero .hero-visual .hero-image #reflexo-img-1 {
   position: absolute;
   width: 137%;
@@ -399,21 +400,19 @@
   filter: blur(26px);
   bottom: 42%;
   right: 39%;
-  animation: pulseReflexo 5s ease-in-out infinite;
   animation: flutua3 5s ease-in-out infinite;
 }
 
 .hero .hero-visual .hero-image #reflexo-img-6 {
-    position: absolute;
-    width: 20%;
-    height: 20%;
-    background: radial-gradient(circle, #ffed4e 2%, rgba(255, 255, 0, 0) 70%);
-    border-radius: 100%;
-    filter: blur(45px);
-    top: 25.5%;
-    right: 13.5%;
-    animation: pulseReflexo 7s ease-in-out infinite;
-    animation: flutua3 5s ease-in-out infinite;
+  position: absolute;
+  width: 20%;
+  height: 20%;
+  background: radial-gradient(circle, #ffed4e 2%, rgba(255, 255, 0, 0) 70%);
+  border-radius: 100%;
+  filter: blur(45px);
+  top: 25.5%;
+  right: 13.5%;
+  animation: flutua3 5s ease-in-out infinite;
 }
 
 .hero .hero-visual .hero-image #reflexo-img-7 {
@@ -429,10 +428,9 @@
   animation: pulseReflexo 9s ease-in-out infinite;
 }
 
-/*--------------------------------------------------------------
-# Background elements — grade de partículas dentro do hero
-# (o bloco global está em main.css; este é específico do hero)
---------------------------------------------------------------*/
+/* ============================================================
+   Grade de partículas dentro do hero
+   ============================================================ */
 .hero .hero-bg-elements {
   position: absolute;
   top: 0;
@@ -451,8 +449,8 @@
   bottom: 0;
   background-image: radial-gradient(circle, color-mix(in srgb, #1482bd, transparent 75%) 2px, transparent 1px);
   background-size: 50px 50px;
-  -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0.1) 100%);
-  mask-image: linear-gradient(to right, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0.1) 100%);
+  -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0.1) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0.1) 100%);
+  mask-image:         linear-gradient(to right, rgba(0,0,0,0.1) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0.1) 100%);
   -webkit-mask-size: 200% 100%;
   mask-size: 200% 100%;
   animation: ondaLuz 1s linear infinite;
