@@ -894,10 +894,12 @@
     --title-gap: 2.5rem;
   }
 
+
   .header .header-container {
-    width: 60%;
+    width: 73%;
     padding: 0 1.625rem;
   }
+
 
   .objetivos-details .objetivos-details-content {
     padding-left: 1.25rem;
