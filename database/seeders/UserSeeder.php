@@ -19,6 +19,7 @@ class UserSeeder extends Seeder
         // Usuário de teste 1
         User::create([
             'registro' => '28544',
+            'cargo' => 'Secretário de Tecnologia',
             'nome' => 'Rubens Costa',
             'email' => 'rubens.costa@caraguatatuba.sp.gov.br',
             'cpf' => '37723454848',
@@ -35,6 +36,7 @@ class UserSeeder extends Seeder
         // Usuário de teste 2
         User::create([
             'registro' => '28523',
+            'cargo' => 'Chefe da área de dados',
             'nome' => 'Tiago Santos Braun',
             'email' => 'maria@example.com',
             'cpf' => '30045994811',
@@ -51,6 +53,7 @@ class UserSeeder extends Seeder
         // Usuário de teste 3
         User::create([
             'registro' => '07717',
+            'cargo' => "Chefe de operações",
             'nome' => 'Marcio Luis Rodrigues de Paula Lima',
             'email' => 'marcio.paula@caraguatatuba.sp.gov.br',
             'cpf' => '16162931870',
@@ -67,6 +70,7 @@ class UserSeeder extends Seeder
         // Usuário admin
         User::create([
             'registro' => '13174',
+            'cargo' => 'Chefe de transformação digital',
             'nome' => 'Alexandre Gudin Novak',
             'email' => 'alexandre.novak@caraguatatuba.sp.gov.br',
             'cpf' => '21571501886',
