@@ -21,70 +21,87 @@
   --fonte-nav: "Poppins", sans-serif;
 
   /* Tipografia — escala fluida com clamp() */
-  --tipo-xs:   clamp(0.68rem, 0.64rem + 0.20vw, 0.750rem); /* labels, badges */
-  --tipo-sm:   clamp(0.75rem, 0.70rem + 0.25vw, 0.875rem); /* subtextos, datas */
-  --tipo-body: clamp(0.82rem, 0.70rem + 0.60vw, 1.100rem); /* texto secundário */
-  --tipo-base: clamp(0.90rem, 0.85rem + 0.25vw, 1.063rem); /* leitura padrão */
-  --tipo-md:   clamp(1.00rem, 0.95rem + 0.30vw, 1.200rem); /* h5, destaques */
-  --tipo-lg:   clamp(1.15rem, 1.05rem + 0.55vw, 1.500rem); /* h4 */
-  --tipo-xl:   clamp(1.25rem, 1.10rem + 0.75vw, 1.750rem); /* h3, subtítulos */
-  --tipo-2xl:  clamp(1.50rem, 1.20rem + 1.10vw, 2.250rem); /* h2, section-title */
-  --tipo-3xl:  clamp(1.75rem, 1.30rem + 1.75vw, 2.750rem); /* h1, hero */
-  --tipo-4xl:  clamp(2.00rem, 1.50rem + 2.40vw, 3.500rem); /* hero ultrawide */
+  --tipo-xs: clamp(0.68rem, 0.64rem + 0.20vw, 0.750rem);
+  /* labels, badges */
+  --tipo-sm: clamp(0.75rem, 0.70rem + 0.25vw, 0.875rem);
+  /* subtextos, datas */
+  --tipo-body: clamp(0.82rem, 0.70rem + 0.60vw, 1.100rem);
+  /* texto secundário */
+  --tipo-base: clamp(0.90rem, 0.85rem + 0.25vw, 1.063rem);
+  /* leitura padrão */
+  --tipo-md: clamp(1.00rem, 0.95rem + 0.30vw, 1.200rem);
+  /* h5, destaques */
+  --tipo-lg: clamp(1.15rem, 1.05rem + 0.55vw, 1.500rem);
+  /* h4 */
+  --tipo-xl: clamp(1.25rem, 1.10rem + 0.75vw, 1.750rem);
+  /* h3, subtítulos */
+  --tipo-2xl: clamp(1.50rem, 1.20rem + 1.10vw, 2.250rem);
+  /* h2, section-title */
+  --tipo-3xl: clamp(1.75rem, 1.30rem + 1.75vw, 2.750rem);
+  /* h1, hero */
+  --tipo-4xl: clamp(2.00rem, 1.50rem + 2.40vw, 3.500rem);
+  /* hero ultrawide */
 
   /* Tipografia — altura de linha */
-  --lh-compacto: 1.25; /* headings */
-  --lh-base:     1.55; /* texto corrido */
-  --lh-amplo:    1.70; /* parágrafos longos */
+  --lh-compacto: 1.25;
+  /* headings */
+  --lh-base: 1.55;
+  /* texto corrido */
+  --lh-amplo: 1.70;
+  /* parágrafos longos */
 
   /* Paleta principal */
-  --cor-fundo:      #05071e;
-  --cor-texto:      #e8e7f7;
-  --cor-titulo:     #e8e7f7;
-  --cor-destaque:   #023e73;
+  --cor-fundo: #05071e;
+  --cor-texto: #e8e7f7;
+  --cor-titulo: #e8e7f7;
+  --cor-destaque: #023e73;
   --cor-superficie: #131428;
-  --cor-contraste:  #ffffff;
+  --cor-contraste: #ffffff;
 
   /* Navegação */
-  --nav-cor:                     #c8c6e3;
-  --nav-cor-hover:               #ffffff;
-  --nav-fundo-mobile:            #03051f;
-  --nav-dropdown-fundo:          #1f2240;
-  --nav-dropdown-cor:            #c8c6e3;
-  --nav-dropdown-cor-hover:      #ffffff;
+  --nav-cor: #c8c6e3;
+  --nav-cor-hover: #ffffff;
+  --nav-fundo-mobile: #03051f;
+  --nav-dropdown-fundo: #1f2240;
+  --nav-dropdown-cor: #c8c6e3;
+  --nav-dropdown-cor-hover: #ffffff;
 
   /* Espaçamentos fluidos */
-  --espaco-secao-y: clamp(3rem, 5vw, 6rem);    /* padding vertical de seções */
-  --espaco-gap:     clamp(2.5rem, 4vw, 4.5rem); /* gap entre seções */
-  --espaco-titulo:  clamp(1.5rem, 3vw, 3rem);   /* gap abaixo dos títulos */
-  --offset-header:  clamp(5rem, 6vw, 7.5rem);   /* compensação do header fixo */
+  --espaco-secao-y: clamp(3rem, 5vw, 6rem);
+  /* padding vertical de seções */
+  --espaco-gap: clamp(2.5rem, 4vw, 4.5rem);
+  /* gap entre seções */
+  --espaco-titulo: clamp(1.5rem, 3vw, 3rem);
+  /* gap abaixo dos títulos */
+  --offset-header: clamp(5rem, 6vw, 7.5rem);
+  /* compensação do header fixo */
 
   /* Compatibilidade — aliases legados usados em blades e JS existentes */
-  --default-font:    var(--fonte-padrao);
-  --heading-font:    var(--fonte-titulo);
-  --nav-font:        var(--fonte-nav);
-  --type-xs:         var(--tipo-xs);
-  --type-sm:         var(--tipo-sm);
-  --type-body:       var(--tipo-body);
-  --type-base:       var(--tipo-base);
-  --type-md:         var(--tipo-md);
-  --type-lg:         var(--tipo-lg);
-  --type-xl:         var(--tipo-xl);
-  --type-2xl:        var(--tipo-2xl);
-  --type-3xl:        var(--tipo-3xl);
-  --type-4xl:        var(--tipo-4xl);
-  --lh-tight:        var(--lh-compacto);
-  --lh-relaxed:      var(--lh-amplo);
+  --default-font: var(--fonte-padrao);
+  --heading-font: var(--fonte-titulo);
+  --nav-font: var(--fonte-nav);
+  --type-xs: var(--tipo-xs);
+  --type-sm: var(--tipo-sm);
+  --type-body: var(--tipo-body);
+  --type-base: var(--tipo-base);
+  --type-md: var(--tipo-md);
+  --type-lg: var(--tipo-lg);
+  --type-xl: var(--tipo-xl);
+  --type-2xl: var(--tipo-2xl);
+  --type-3xl: var(--tipo-3xl);
+  --type-4xl: var(--tipo-4xl);
+  --lh-tight: var(--lh-compacto);
+  --lh-relaxed: var(--lh-amplo);
   --background-color: var(--cor-fundo);
-  --default-color:    var(--cor-texto);
-  --heading-color:    var(--cor-titulo);
-  --accent-color:     var(--cor-destaque);
-  --surface-color:    var(--cor-superficie);
-  --contrast-color:   var(--cor-contraste);
+  --default-color: var(--cor-texto);
+  --heading-color: var(--cor-titulo);
+  --accent-color: var(--cor-destaque);
+  --surface-color: var(--cor-superficie);
+  --contrast-color: var(--cor-contraste);
   --section-padding-y: var(--espaco-secao-y);
-  --section-gap:       var(--espaco-gap);
-  --title-gap:         var(--espaco-titulo);
-  --header-offset:     var(--offset-header);
+  --section-gap: var(--espaco-gap);
+  --title-gap: var(--espaco-titulo);
+  --header-offset: var(--offset-header);
 
   scroll-behavior: smooth;
 }
@@ -93,22 +110,22 @@
    Variantes de tema
    ============================================================ */
 .light-background {
-  --cor-fundo:      #0c114a;
+  --cor-fundo: #0c114a;
   --cor-superficie: #131b76;
   --background-color: #0c114a;
   --surface-color: #131b76;
 }
 
 .dark-background {
-  --cor-fundo:      #01020e;
-  --cor-texto:      #ffffff;
-  --cor-titulo:     #ffffff;
+  --cor-fundo: #01020e;
+  --cor-texto: #ffffff;
+  --cor-titulo: #ffffff;
   --cor-superficie: #252525;
-  --cor-contraste:  #ffffff;
+  --cor-contraste: #ffffff;
   --background-color: #01020e;
-  --default-color:  #ffffff;
-  --heading-color:  #ffffff;
-  --surface-color:  #252525;
+  --default-color: #ffffff;
+  --heading-color: #ffffff;
+  --surface-color: #252525;
   --contrast-color: #ffffff;
 }
 
@@ -134,8 +151,8 @@ body .hero-bg-elements {
   pointer-events: none;
   background-image: radial-gradient(circle, color-mix(in srgb, #1482bd, transparent 75%) 2px, transparent 1px);
   background-size: 50px 50px;
-  -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0.1) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0.1) 100%);
-  mask-image:         linear-gradient(to right, rgba(0,0,0,0.1) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0.1) 100%);
+  -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0.1) 100%);
+  mask-image: linear-gradient(to right, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 1) 50%, rgba(0, 0, 0, 0.1) 100%);
   -webkit-mask-size: 200% 100%;
   mask-size: 200% 100%;
   animation: ondaLuz 4s linear infinite;
@@ -152,7 +169,12 @@ a:hover {
   color: color-mix(in srgb, var(--cor-destaque), transparent 25%);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: var(--cor-titulo);
   font-family: var(--fonte-titulo);
 }
@@ -279,7 +301,7 @@ span.badge {
 .table td {
   background-color: var(--cor-superficie) !important;
   color: var(--cor-texto) !important;
-  border-color  : #2c2c4a;
+  border-color: #2c2c4a;
 }
 
 .table thead th {
@@ -303,7 +325,7 @@ span.badge {
 
 /* Cores de status */
 .color-laranja {
-  background-color: rgba(198, 88,  9, 0.49);
+  background-color: rgba(198, 88, 9, 0.49);
   color: #d65f0a;
 }
 
@@ -351,7 +373,8 @@ span.badge {
   -webkit-backdrop-filter: blur(18px);
   border: 1px solid rgba(255, 255, 255, 0.07);
   border-radius: 50px;
-  width: 49%;
+  width: clamp(37.5rem, 49%, 56.25rem);
+  gap: clamp(0.2rem, 1vw, 0.75rem);
   margin-top: 20px;
   padding: 0 26px;
   z-index: 1000;
@@ -375,6 +398,8 @@ span.badge {
 
 .header .logo {
   line-height: 1;
+  flex-shrink: 0;
+  min-width: 0;
 }
 
 .header .logo img {
@@ -383,12 +408,14 @@ span.badge {
 }
 
 .header .logo .sitename {
-  font-size: 15px;
+  font-size: 1.2rem;
   margin: 0;
   font-weight: 600;
   color: rgba(232, 231, 247, 0.9);
   font-family: var(--fonte-titulo);
   letter-spacing: 0.2px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 /* ============================================================

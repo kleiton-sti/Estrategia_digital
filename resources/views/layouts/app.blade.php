@@ -59,7 +59,7 @@
     <div
       class="header-container container-fluid container-xl  d-flex align-items-center justify-content-between sticky-top">
 
-      <a href="{{ route('home') }}" class="logo d-flex align-items-center me-auto me-xl-0">
+      <a href="{{ route('home') }}" class="logo d-flex align-items-center">
         <img src="https://www.caraguatatuba.sp.gov.br/pmc/wp-content/themes/awesomepmc/assets/img/favicon.png" alt="">
         <span class="sitename">Secretaria de Tecnologia</span>
       </a>

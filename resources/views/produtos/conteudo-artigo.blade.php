@@ -46,6 +46,9 @@
                 {!! $artigo->corpo !!}
               </div>
 
+              <!-- Compartilhamento -->
+              @include('componentes.compartilhar', ['artigo' => $artigo])
+
               <!-- Autor — schema.org/Person + itemprop para indexação rica -->
               <div class="conteudo-autor mt-5">
                 <div class="conteudo-autor__avatar" aria-hidden="true">
