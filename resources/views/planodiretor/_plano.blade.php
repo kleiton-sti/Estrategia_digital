@@ -33,6 +33,7 @@
         text-align: center;
         opacity: 1;
         /* background-color: #ffffff; */
+}
 </style>
 
 @section('content')

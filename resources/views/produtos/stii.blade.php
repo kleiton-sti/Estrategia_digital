@@ -27,6 +27,7 @@
     </div>
     <p>Por favor, gire seu celular para uma melhor experiência</p>
 </div>
+@include('componentes.jsonld', ['tipo' => 'produtos', 'subtipo' => 'STII'])
 @endsection
 @push('styles')
 <style>

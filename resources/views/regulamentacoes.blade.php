@@ -35,5 +35,6 @@
 
     </div>
   </section>
+  @include('componentes.jsonld', ['tipo' => 'regulamentacoes'])
 </main>
 @endsection

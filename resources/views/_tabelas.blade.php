@@ -245,5 +245,6 @@
       </div> <!-- /row -->
     </div>
   </section>
+  @include('componentes.jsonld', ['tipo' => 'tabelas'])
 </main>
 @endsection

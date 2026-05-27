@@ -22,7 +22,7 @@
         <div class="row justify-content-center">
           <div class="col-lg-8">
 
-            <article">
+            <article>
 
               <!-- Aviso informativo -->
               <p class="conteudo-aviso mb-4">
@@ -88,5 +88,7 @@
         </div>
       </div>
     </section>
+
+    @include('componentes.jsonld', ['artigo' => $artigo, 'tipo' => 'artigo'])
   </main>
 @endsection

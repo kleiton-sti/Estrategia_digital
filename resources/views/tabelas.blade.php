@@ -164,5 +164,6 @@
       </div>
     </div>
   </section>
+  @include('componentes.jsonld', ['tipo' =>  'tabelas'])
 </main>
 @endsection

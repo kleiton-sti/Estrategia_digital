@@ -109,6 +109,7 @@
 
       </div>
     </section>
+    @include('componentes.jsonld', ['artigos' => $artigos, 'tipo' => 'listaArtigos'])
   </main>
 @endsection
 

@@ -235,6 +235,6 @@
 
             </div>
         </section>
-
+        @include('componentes.jsonld', ['tipo' => 'roadmap', 'eixos' => $eixos])
     </main>
 @endsection

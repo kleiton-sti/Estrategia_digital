@@ -55,7 +55,7 @@
             </div>
         </div>
     </section>
-
+    @include('componentes.jsonld', ['tipo' => 'plano'])
 </main>
 @endsection
 
