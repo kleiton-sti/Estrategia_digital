@@ -234,6 +234,7 @@
   <script src="{{ asset('assets/js/main.js') }}"></script>
   <script src="{{ asset('assets/js/acessibilidade.js') }}"></script>
   @stack('scripts')
+  @stack('jsonld')
   <!-- VLibras -->
   <div vw class="enabled">
     <div vw-access-button class="active"></div>
