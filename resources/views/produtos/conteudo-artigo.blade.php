@@ -22,7 +22,7 @@
         <div class="row justify-content-center">
           <div class="col-lg-8">
 
-            <article itemscope itemtype="https://schema.org/Article">
+            <article">
 
               <!-- Aviso informativo -->
               <p class="conteudo-aviso mb-4">
@@ -39,26 +39,29 @@
               </div>
 
               <!-- Titulo e subtitulo -->
-              <h1 class="conteudo-titulo" itemprop="headline">{{ $artigo->titulo }}</h1>
-              <p class="conteudo-subtitulo" itemprop="description">{{ $artigo->subtitulo }}</p>
+              <h1 class="conteudo-titulo">{{ $artigo->titulo }}</h1>
+              <p class="conteudo-subtitulo">{{ $artigo->subtitulo }}</p>
 
               <hr class="conteudo-divisor">
 
               <!-- Corpo do artigo -->
-              <div class="conteudo-corpo" itemprop="articleBody">
+              <div class="conteudo-corpo">
                 {!! $artigo->corpo !!}
               </div>
 
               <!-- Autor — schema.org/Person + itemprop para indexação rica -->
-              <div class="conteudo-autor mt-5" itemscope itemtype="https://schema.org/Person">
+              <div class="conteudo-autor mt-5">
                 <div class="conteudo-autor__avatar" aria-hidden="true">
                   <i class="bi bi-person-circle"></i>
                 </div>
                 <div class="conteudo-autor__info">
                   <span class="conteudo-autor__label">Escrito por</span>
-                  <span class="conteudo-autor__nome" itemprop="name">
-                    {{ $artigo->user->nome ?? 'Autor desconhecido' }}
-                  </span>
+                  <div class="cargo-autor">
+                    <span class="conteudo-autor__nome">
+                      {{ $artigo->user->nome ?? 'Autor desconhecido' }}
+                    </span>
+                    <span class="conteudo-autor__cargo">{{ $artigo->user->cargo }}</span>
+                  </div>
                   <time
                     class="conteudo-autor__data"
                     datetime="{{ $artigo->created_at->toIso8601String() }}"

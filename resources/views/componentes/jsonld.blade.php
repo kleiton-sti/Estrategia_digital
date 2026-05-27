@@ -1,7 +1,7 @@
-{{--
-    Componente: jsonld
-    Emite um <script type="application/ld+json"> no @stack('jsonld') do layout.
---}}
+
+ <!-- Componente: jsonld
+ Emite um <script type="application/ld+json"> no @stack('jsonld') do layout. -->
+
 
 @push('jsonld')
 @php

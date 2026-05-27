@@ -80,6 +80,20 @@
   pointer-events: none;
 }
 
+.conteudo-autor .cargo-autor {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.conteudo-autor__cargo {
+  font-size: var(--tipo-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: rgba(200, 198, 227, 0.45);
+  font-weight: 600;
+}
+
 .conteudo-autor__avatar {
   font-size: 2.4rem;
   color: rgba(200, 198, 227, 0.35);
