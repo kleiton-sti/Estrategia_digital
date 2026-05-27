@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
     <main class="main pagina-interna roadmap-page">
 
@@ -235,6 +234,6 @@
 
             </div>
         </section>
-        @include('componentes.jsonld', ['tipo' => 'roadmap', 'eixos' => $eixos])
+        @include('componentes.jsonld', ['tipo' =>  'roadmap', 'eixos' => $eixos])
     </main>
 @endsection

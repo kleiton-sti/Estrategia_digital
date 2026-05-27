@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <main class="main pagina-interna">
   <section id="regulamentacoes" class="section py-5">
@@ -35,6 +34,6 @@
 
     </div>
   </section>
-  @include('componentes.jsonld', ['tipo' => 'regulamentacoes'])
+  @include('componentes.jsonld', ['tipo' => 'regulamentacoes', 'regulamentacoes' => $regulamentacoes])
 </main>
 @endsection

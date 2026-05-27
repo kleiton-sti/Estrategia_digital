@@ -6,6 +6,7 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   @yield('meta')
+  @stack('og_meta')
 
   <title>@yield('title', 'Estratégia Digital')</title>
 
@@ -36,7 +37,7 @@
   <link href="{{ asset('assets/css/responsive.css') }}" rel="stylesheet">
   @stack('styles')
 
-
+   @stack('jsonld')
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-5C6J76BMYV"></script>
   <script>
@@ -234,7 +235,6 @@
   <script src="{{ asset('assets/js/main.js') }}"></script>
   <script src="{{ asset('assets/js/acessibilidade.js') }}"></script>
   @stack('scripts')
-  @stack('jsonld')
   <!-- VLibras -->
   <div vw class="enabled">
     <div vw-access-button class="active"></div>

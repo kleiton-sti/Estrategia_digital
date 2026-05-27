@@ -1,34 +1,43 @@
+{{--
+    Componente: jsonld
+    Emite um <script type="application/ld+json"> no @stack('jsonld') do layout.
 
- <!-- Componente: jsonld
- Emite um <script type="application/ld+json"> no @stack('jsonld') do layout. -->
+    Parâmetros obrigatórios:
+      $tipo — string: 'home' | 'artigo' | 'listaArtigos' | 'roadmap'
+                    | 'regulamentacoes' | 'plano' | 'tabelas' | 'produtos'
 
+    Parâmetros opcionais (dependem do tipo):
+      $artigo          — Model Artigo      (tipo: artigo)
+      $eixos           — Collection Eixo   (tipo: home, roadmap)
+      $artigos         — Collection Artigo (tipo: listaArtigos)
+      $regulamentacoes — Collection        (tipo: regulamentacoes)
+      $subtipo         — string            (tipo: produtos — ex.: 'All Hands', 'STII em Números')
+      $totalIniciativas, $concluidas, $andamento, $naoIniciadas — ints (tipo: home)
+--}}
 
 @push('jsonld')
 @php
-    $baseUrl       = rtrim(config('app.url', 'https://estrategiadigital.caraguatatuba.sp.gov.br'), '/');
-    $orgId         = $baseUrl . '/#organization';
-    $websiteId     = $baseUrl . '/#website';
-    $logoUrl       = 'https://www.caraguatatuba.sp.gov.br/pmc/wp-content/themes/awesomepmc/assets/img/favicon.png';
+    $baseUrl   = rtrim(config('app.url', 'https://estrategiadigital.caraguatatuba.sp.gov.br'), '/');
+    $orgId     = $baseUrl . '/#organization';
+    $websiteId = $baseUrl . '/#website';
+    $logoUrl   = 'https://www.caraguatatuba.sp.gov.br/pmc/wp-content/themes/awesomepmc/assets/img/favicon.png';
 
-    /* ── Bloco Organization + WebSite (sempre presente) ── */
+    /* ── Bloco Organization (sempre presente) ── */
     $organization = [
-        '@type'       => 'Organization',
-        '@id'         => $orgId,
-        'name'        => 'Secretaria de Tecnologia da Informação e Inovação — Prefeitura de Caraguatatuba',
+        '@type'         => 'GovernmentOrganization',
+        '@id'           => $orgId,
+        'name'          => 'Secretaria de Tecnologia da Informação e Inovação — Prefeitura de Caraguatatuba',
         'alternateName' => 'STII Caraguatatuba',
-        'url'         => $baseUrl,
-        'logo'        => [
-            '@type' => 'ImageObject',
-            'url'   => $logoUrl,
-        ],
-        'address' => [
+        'url'           => $baseUrl,
+        'logo'          => ['@type' => 'ImageObject', 'url' => $logoUrl],
+        'address'       => [
             '@type'           => 'PostalAddress',
             'addressLocality' => 'Caraguatatuba',
             'addressRegion'   => 'SP',
             'addressCountry'  => 'BR',
         ],
-        'telephone'    => '+551238978100',
-        'sameAs'       => [
+        'telephone'          => '+551238978100',
+        'sameAs'             => [
             'https://www.caraguatatuba.sp.gov.br/pmc/',
             'https://www.facebook.com/prefeituradecaraguatatuba',
             'https://www.instagram.com/caraguatatuba_oficial/',
@@ -40,6 +49,7 @@
         ],
     ];
 
+    /* ── Bloco WebSite (sempre presente) ── */
     $website = [
         '@type'           => 'WebSite',
         '@id'             => $websiteId,
@@ -51,21 +61,22 @@
         'potentialAction' => [
             '@type'       => 'SearchAction',
             'target'      => $baseUrl . '/artigos?search={search_term_string}',
-            'query-input' => 'required name=search_term_string',
+            'query-input' => ['@type' => 'PropertyValueSpecification', 'valueRequired' => true, 'valueName' => 'search_term_string'],
         ],
     ];
 
-    /* ── Grafos por tipo de página ── */
     $graphs = [$organization, $website];
 
-    /* ════════════════════ HOME ════════════════════ */
+    /* ════════════════════════════════════════════
+       HOME
+    ════════════════════════════════════════════ */
     if ($tipo === 'home') {
         $graphs[] = [
             '@type'       => 'WebPage',
             '@id'         => $baseUrl . '/#webpage',
             'url'         => $baseUrl . '/',
             'name'        => 'Estratégia Digital — Caraguatatuba',
-            'description' => 'Acompanhe os planos para transformação digital da Prefeitura de Caraguatatuba.',
+            'description' => 'Acompanhe os 6 eixos estratégicos, 18 objetivos e as iniciativas de transformação digital da Prefeitura de Caraguatatuba.',
             'isPartOf'    => ['@id' => $websiteId],
             'about'       => ['@id' => $orgId],
             'inLanguage'  => 'pt-BR',
@@ -80,42 +91,40 @@
             ],
         ];
 
-        /* ItemList com os eixos */
         if (!empty($eixos) && $eixos->isNotEmpty()) {
-            $eixoItems = $eixos->map(fn($e, $i) => [
-                '@type'    => 'ListItem',
-                'position' => $i + 1,
-                'name'     => $e->titulo,
-                'url'      => $baseUrl . '/eixos/' . $e->id_eixos,
-            ])->values()->all();
-
             $graphs[] = [
                 '@type'           => 'ItemList',
                 'name'            => 'Eixos Estratégicos da Transformação Digital',
                 'description'     => 'Os 6 eixos que estruturam o Plano de Transformação Digital de Caraguatatuba.',
                 'numberOfItems'   => $eixos->count(),
-                'itemListElement' => $eixoItems,
+                'itemListElement' => $eixos->map(fn($e, $i) => [
+                    '@type'    => 'ListItem',
+                    'position' => $i + 1,
+                    'name'     => $e->titulo,
+                    'url'      => $baseUrl . '/eixos/' . $e->id_eixos,
+                ])->values()->all(),
             ];
         }
 
-        /* Estatísticas como Dataset simplificado */
         if (isset($totalIniciativas)) {
             $graphs[] = [
-                '@type'       => 'Dataset',
-                'name'        => 'Indicadores da Estratégia Digital — Caraguatatuba',
-                'description' => "Painel de acompanhamento das {$totalIniciativas} iniciativas de transformação digital.",
-                'publisher'   => ['@id' => $orgId],
+                '@type'            => 'Dataset',
+                'name'             => 'Indicadores da Estratégia Digital — Caraguatatuba',
+                'description'      => "Painel de acompanhamento das {$totalIniciativas} iniciativas de transformação digital.",
+                'publisher'        => ['@id' => $orgId],
                 'variableMeasured' => [
                     ['@type' => 'PropertyValue', 'name' => 'Total de Iniciativas',      'value' => $totalIniciativas],
-                    ['@type' => 'PropertyValue', 'name' => 'Iniciativas Concluídas',    'value' => $concluidas     ?? 0],
-                    ['@type' => 'PropertyValue', 'name' => 'Iniciativas Em Execução',   'value' => $andamento      ?? 0],
-                    ['@type' => 'PropertyValue', 'name' => 'Iniciativas Não Iniciadas', 'value' => $naoIniciadas   ?? 0],
+                    ['@type' => 'PropertyValue', 'name' => 'Iniciativas Concluídas',    'value' => $concluidas   ?? 0],
+                    ['@type' => 'PropertyValue', 'name' => 'Iniciativas Em Execução',   'value' => $andamento    ?? 0],
+                    ['@type' => 'PropertyValue', 'name' => 'Iniciativas Não Iniciadas', 'value' => $naoIniciadas ?? 0],
                 ],
             ];
         }
     }
 
-    /* ════════════════════ ARTIGO (conteudo) ════════════════════ */
+    /* ════════════════════════════════════════════
+       ARTIGO (página de conteúdo individual)
+    ════════════════════════════════════════════ */
     elseif ($tipo === 'artigo' && isset($artigo)) {
         $artigoUrl = $baseUrl . '/artigos/' . $artigo->slug . '/' . $artigo->id;
 
@@ -125,17 +134,12 @@
             'headline'         => $artigo->titulo,
             'description'      => $artigo->subtitulo,
             'url'              => $artigoUrl,
-            'datePublished'    => $artigo->created_at->toIso8601String(), 
+            'datePublished'    => $artigo->created_at->toIso8601String(),
             'dateModified'     => ($artigo->updated_at ?? $artigo->created_at)->toIso8601String(),
             'inLanguage'       => 'pt-BR',
             'isPartOf'         => ['@id' => $websiteId],
             'publisher'        => ['@id' => $orgId],
-            'author'           => [
-                '@type' => 'Person',
-                'jobTitle' => $artigo->user->cargo ?? '',
-                'name'  => $artigo->user->nome ?? 'Equipe STII',
-            ],
-            'image'            => $logoUrl,
+            'author'           => ['@type' => 'Person', 'name' => $artigo->user->nome ?? 'Equipe STII'],
             'articleSection'   => $artigo->categorias->pluck('nome')->implode(', '),
             'keywords'         => $artigo->categorias->pluck('nome')->implode(', '),
             'mainEntityOfPage' => ['@id' => $artigoUrl . '#webpage'],
@@ -152,15 +156,17 @@
             'breadcrumb' => [
                 '@type'           => 'BreadcrumbList',
                 'itemListElement' => [
-                    ['@type' => 'ListItem', 'position' => 1, 'name' => 'Home',    'item' => $baseUrl . '/'],
-                    ['@type' => 'ListItem', 'position' => 2, 'name' => 'Artigos', 'item' => $baseUrl . '/artigos'],
-                    ['@type' => 'ListItem', 'position' => 3, 'name' => $artigo->titulo, 'item' => $artigoUrl],
+                    ['@type' => 'ListItem', 'position' => 1, 'name' => 'Home',           'item' => $baseUrl . '/'],
+                    ['@type' => 'ListItem', 'position' => 2, 'name' => 'Artigos',        'item' => $baseUrl . '/artigos'],
+                    ['@type' => 'ListItem', 'position' => 3, 'name' => $artigo->titulo,  'item' => $artigoUrl],
                 ],
             ],
         ];
     }
 
-    /* ════════════════════ LISTA DE ARTIGOS ════════════════════ */
+    /* ════════════════════════════════════════════
+       LISTA DE ARTIGOS
+    ════════════════════════════════════════════ */
     elseif ($tipo === 'listaArtigos') {
         $graphs[] = [
             '@type'       => 'CollectionPage',
@@ -194,7 +200,9 @@
         }
     }
 
-    /* ════════════════════ ROADMAP ════════════════════ */
+    /* ════════════════════════════════════════════
+       ROADMAP
+    ════════════════════════════════════════════ */
     elseif ($tipo === 'roadmap') {
         $graphs[] = [
             '@type'       => 'WebPage',
@@ -216,8 +224,8 @@
 
         if (!empty($eixos) && $eixos->isNotEmpty()) {
             $graphs[] = [
-                '@type'       => 'ItemList',
-                'name'        => 'Roadmap de Transformação Digital por Eixo',
+                '@type'           => 'ItemList',
+                'name'            => 'Roadmap de Transformação Digital por Eixo',
                 'itemListElement' => $eixos->map(fn($e, $i) => [
                     '@type'       => 'ListItem',
                     'position'    => $i + 1,
@@ -232,7 +240,9 @@
         }
     }
 
-    /* ════════════════════ REGULAMENTAÇÕES ════════════════════ */
+    /* ════════════════════════════════════════════
+       REGULAMENTAÇÕES
+    ════════════════════════════════════════════ */
     elseif ($tipo === 'regulamentacoes') {
         $graphs[] = [
             '@type'       => 'WebPage',
@@ -246,8 +256,8 @@
             'breadcrumb'  => [
                 '@type'           => 'BreadcrumbList',
                 'itemListElement' => [
-                    ['@type' => 'ListItem', 'position' => 1, 'name' => 'Home',             'item' => $baseUrl . '/'],
-                    ['@type' => 'ListItem', 'position' => 2, 'name' => 'Regulamentações',  'item' => $baseUrl . '/regulamentacoes'],
+                    ['@type' => 'ListItem', 'position' => 1, 'name' => 'Home',            'item' => $baseUrl . '/'],
+                    ['@type' => 'ListItem', 'position' => 2, 'name' => 'Regulamentações', 'item' => $baseUrl . '/regulamentacoes'],
                 ],
             ],
         ];
@@ -255,21 +265,23 @@
         if (!empty($regulamentacoes)) {
             foreach ($regulamentacoes as $reg) {
                 if (empty($reg->titulo)) continue;
-                $graphs[] = [
-                    '@type'       => 'GovernmentService',
-                    'name'        => $reg->titulo,
-                    'description' => $reg->descricao ?? '',
-                    'url'         => $reg->link ?? '',
-                    'provider'    => ['@id' => $orgId],
+                $graphs[] = array_filter([
+                    '@type'         => 'GovernmentService',
+                    'name'          => $reg->titulo,
+                    'description'   => $reg->descricao ?? '',
+                    'url'           => $reg->link      ?? '',
+                    'provider'      => ['@id' => $orgId],
                     'datePublished' => $reg->publicado_em
                         ? \Carbon\Carbon::parse($reg->publicado_em)->toIso8601String()
                         : null,
-                ];
+                ]);
             }
         }
     }
 
-    /* ════════════════════ PLANO DIRETOR (PDTI) ════════════════════ */
+    /* ════════════════════════════════════════════
+       PLANO DIRETOR (PDTI)
+    ════════════════════════════════════════════ */
     elseif ($tipo === 'plano') {
         $graphs[] = [
             '@type'       => 'WebPage',
@@ -290,22 +302,24 @@
         ];
 
         $graphs[] = [
-            '@type'     => 'GovernmentService',
-            'name'      => 'Plano Diretor de Tecnologia da Informação e Inovação',
-            'alternateName' => 'PDTI',
-            'provider'  => ['@id' => $orgId],
-            'url'       => $baseUrl . '/plano',
-            'description' => 'Documento que orienta as ações estratégicas de TI e inovação da Prefeitura de Caraguatatuba.',
-            'serviceType' => 'Planejamento de TI',
-            'areaServed' => [
-                '@type' => 'City',
-                'name'  => 'Caraguatatuba',
+            '@type'        => 'GovernmentService',
+            'name'         => 'Plano Diretor de Tecnologia da Informação e Inovação',
+            'alternateName'=> 'PDTI',
+            'provider'     => ['@id' => $orgId],
+            'url'          => $baseUrl . '/plano',
+            'description'  => 'Documento que orienta as ações estratégicas de TI e inovação da Prefeitura de Caraguatatuba.',
+            'serviceType'  => 'Planejamento de TI',
+            'areaServed'   => [
+                '@type'            => 'City',
+                'name'             => 'Caraguatatuba',
                 'containedInPlace' => ['@type' => 'State', 'name' => 'São Paulo'],
             ],
         ];
     }
 
-    /* ════════════════════ TABELAS / INDICADORES ════════════════════ */
+    /* ════════════════════════════════════════════
+       TABELAS / INDICADORES
+    ════════════════════════════════════════════ */
     elseif ($tipo === 'tabelas') {
         $graphs[] = [
             '@type'       => 'WebPage',
@@ -331,20 +345,29 @@
             'description' => 'Tabela de acompanhamento das ações de inovação e transformação digital da Prefeitura de Caraguatatuba.',
             'publisher'   => ['@id' => $orgId],
             'url'         => $baseUrl . '/tabelas',
+            'temporalCoverage' => "2025/2026",
+            'keywords' => [
+                'Inovação',
+                'Transformação Digital',
+                'Caraguatatuba',
+            ],
             'license'     => 'https://creativecommons.org/licenses/by/4.0/',
             'creator'     => ['@id' => $orgId],
         ];
     }
 
-    /* ════════════════════ PRODUTOS (STII / All Hands) ════════════════════ */
+    /* ════════════════════════════════════════════
+       PRODUTOS (STII em Números / All Hands)
+    ════════════════════════════════════════════ */
     elseif ($tipo === 'produtos') {
         $nomePagina = $subtipo ?? 'Produtos';
-        $slugPagina = $subtipo === 'All Hands' ? 'all-hands' : 'stii-em-numeros';
+        $slugPagina = ($subtipo === 'All Hands') ? 'all-hands' : 'stii-em-numeros';
+        $urlPagina  = $baseUrl . '/produtos/' . $slugPagina;
 
         $graphs[] = [
             '@type'       => 'WebPage',
-            '@id'         => $baseUrl . '/produtos/' . $slugPagina . '#webpage',
-            'url'         => $baseUrl . '/produtos/' . $slugPagina,
+            '@id'         => $urlPagina . '#webpage',
+            'url'         => $urlPagina,
             'name'        => $nomePagina . ' — Estratégia Digital Caraguatatuba',
             'description' => 'Resultados e entregas da ' . $nomePagina . ' da Secretaria de Tecnologia da Informação e Inovação.',
             'isPartOf'    => ['@id' => $websiteId],
@@ -354,21 +377,16 @@
                 '@type'           => 'BreadcrumbList',
                 'itemListElement' => [
                     ['@type' => 'ListItem', 'position' => 1, 'name' => 'Home',      'item' => $baseUrl . '/'],
-                    ['@type' => 'ListItem', 'position' => 2, 'name' => 'Produtos',  'item' => $baseUrl . '/produtos/' . $slugPagina],
-                    ['@type' => 'ListItem', 'position' => 3, 'name' => $nomePagina, 'item' => $baseUrl . '/produtos/' . $slugPagina],
+                    ['@type' => 'ListItem', 'position' => 2, 'name' => $nomePagina, 'item' => $urlPagina],
                 ],
             ],
         ];
     }
 
-// JSON_UNESCAPED_UNICODE: mantém a acentuação correta; JSON_UNESCAPED_SLASHES: mantem URLs limpas; JSON_PRETTY_PRINT: apresenta o JSON formatado.
-
-    $jsonld = json_encode([
-        '@context' => 'https://schema.org',
-        '@graph'   => $graphs,
-    ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
-
-
+    $jsonld = json_encode(
+        ['@context' => 'https://schema.org', '@graph' => $graphs],
+        JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT
+    );
 @endphp
 <script type="application/ld+json">
 {!! $jsonld !!}

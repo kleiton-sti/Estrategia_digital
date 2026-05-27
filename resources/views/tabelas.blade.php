@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <main class="main pagina-interna">
   <section id="tabelas" class="section">

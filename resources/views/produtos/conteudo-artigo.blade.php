@@ -3,19 +3,16 @@
 @section('title', Str::limit($artigo->titulo, 60))
 
 @section('meta')
-  <meta property="og:title" content="{{ $artigo->titulo }}">
-  <meta property="og:description" content="{{ $artigo->subtitulo }}">
-  <meta property="og:url" content="{{ url()->current() }}">
-  <meta property="og:type" content="article">
-  <meta property="article:published_time" content="{{ $artigo->created_at->toIso8601String() }}">
-  <meta property="article:author" content="{{ $artigo->user->nome ?? '' }}">
   @foreach($artigo->categorias as $cat)
     <meta property="article:tag" content="{{ $cat->nome }}">
   @endforeach
   <link rel="canonical" href="{{ url()->current() }}">
 @endsection
 
+
+
 @section('content')
+   @include('componentes.openGraph', ['tipo' => 'artigo', 'artigo' => $artigo])
   <main class="main pagina-interna">
     <section id="conteudo-artigo" class="primeira-sessao py-5">
       <div class="container" data-aos="fade-up">
@@ -88,7 +85,6 @@
         </div>
       </div>
     </section>
-
     @include('componentes.jsonld', ['artigo' => $artigo, 'tipo' => 'artigo'])
   </main>
 @endsection

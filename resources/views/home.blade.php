@@ -1,10 +1,10 @@
 @extends('layouts.app')
-
 @section('content')
-  <main class="main">
 
+  <main class="main">
     <!-- Hero Section -->
     <section id="hero" class="hero section">
+      
       <div class="container">
         <div class="row align-items-start">
           <div class="col-lg-7" data-aos="fade-right" data-aos-delay="100">
@@ -286,7 +286,7 @@
 
         </div>
       @endforeach
-
+      @include('componentes.jsonld', ['tipo' => 'home', 'eixos' => $eixos,  'totalIniciativas' => $totalIni, 'concluidas' => $concluidas, 'andamento' => $andamento, 'naoIniciadas' => $nao])
   </main>
 
   @push('scripts')

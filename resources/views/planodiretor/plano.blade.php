@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+
 <!-- Flipbook StyleSheets -->
 <link href="{{ asset('assets/plugin-flip/css/dflip.min.css') }}" rel="stylesheet" type="text/css">
 <link href="{{ asset('assets/plugin-flip/css/themify-icons.min.css') }}" rel="stylesheet" type="text/css">
