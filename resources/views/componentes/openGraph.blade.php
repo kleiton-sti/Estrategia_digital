@@ -5,7 +5,7 @@
     if ($tipo === 'artigo' && isset($artigo)) {
         $titulo = $artigo->titulo . ' — Estratégia Digital';
         $descricao = $artigo->subtitulo ?? 'Leia mais sobre inovação em Caraguatatuba.';
-        $url = $baseUrl . '/artigos/' . $artigo->slug . '/' . $artigo->id;
+        $url = $baseUrl . '/artigos/' . $artigo->slug;
         $imagem =  $imgPadrao;
         $ogType = 'article';
     } else {

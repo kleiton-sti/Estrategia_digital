@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class Eixo extends Model
 {
@@ -28,6 +29,11 @@ class Eixo extends Model
     public function roadmaps()
     {
         return $this->hasMany(Roadmap::class, 'eixo_id', 'id_eixos');
+    }
+
+    public function getSlugAttribute()
+    {
+        return Str::slug($this->titulo);
     }
 
 }

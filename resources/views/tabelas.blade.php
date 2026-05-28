@@ -1,4 +1,9 @@
 @extends('layouts.app')
+
+@section('meta')
+    <link rel="canonical" href="https://estrategiadigital.caraguatatuba.sp.gov.br/indicadores">
+@endsection
+
 @section('content')
 <main class="main pagina-interna">
   <section id="tabelas" class="section">

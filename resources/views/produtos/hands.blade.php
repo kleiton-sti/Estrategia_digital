@@ -1,12 +1,10 @@
 @extends('layouts.app')
 
-
+@section('meta')
+    <link rel="canonical" href="https://estrategiadigital.caraguatatuba.sp.gov.br/produtos/all-hands">
+@endsection
 
 @section('content')
-
-@push('styles')
-    <link rel="canonical" href="https://estrategiadigital.caraguatatuba.sp.gov.br/produtos/all-hands">
-@endpush
 
 <!-- <main class="main principios-details-page">
     <div class="container">

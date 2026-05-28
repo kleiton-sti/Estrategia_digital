@@ -1,7 +1,12 @@
 @extends('layouts.app')
 @section('title', 'Artigos')
 
+@section('meta')
+    <link rel="canonical" href="{{ config('app.url') }}/artigos">
+@endsection
+
 @section('content')
+
   <main class="main pagina-interna">
     <section id="artigos" class="primeira-sessao py-5">
       <div class="container" data-aos="fade-up">

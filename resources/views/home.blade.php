@@ -1,6 +1,10 @@
 @extends('layouts.app')
-@section('content')
 
+@section('meta')
+  <link rel="canonical" href="{{ config('app.url') }}/">
+@endsection
+
+@section('content')
   <main class="main">
     <!-- Hero Section -->
     <section id="hero" class="hero section">
@@ -124,6 +128,7 @@
               @endphp
               <div class="col-lg-4 col-md-6">
                 <div class="eixo-portal"
+                     id="eixo-portal-{{ $eixo->slug }}"
                      data-eixo-id="{{ $eixo->id_eixos }}"
                      style="--eixo-glow: {{ $cor['glow'] }}; --eixo-rgb: {{ $cor['rgb'] }}">
 
@@ -191,7 +196,7 @@
           $nao         = $eixo->objetivos->sum(fn($o) => $o->iniciativas->where('status', 'Não iniciada')->count());
         @endphp
 
-        <div class="eixo-inline is-hidden" id="eixo-inline-{{ $eixo->id_eixos }}"
+        <div class="eixo-inline is-hidden" id="eixo-{{ $eixo->slug }}" data-eixo-id="{{ $eixo->id_eixos }}"
              data-objetivos='@json($objetivosData)'>
 
           <!-- Objetivos -->

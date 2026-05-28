@@ -93,7 +93,7 @@
                 '@type'       => 'WebPageElement',
                 'name'        => $e->titulo,
                 'description' => $e->descricao,
-                'cssSelector' => '#eixo-inline-' . $e->id_eixos,
+                'cssSelector' => '#eixo-' . $e->slug,
             ])->values()->all(),
 
             'keywords' => $eixos->pluck('titulo')->implode(', ') 
@@ -111,7 +111,7 @@
                     'position' => $i + 1,
                     'name'     => $e->titulo,
                     'description' => $e->descricao,
-                    'url'      => $baseUrl . '/#eixos-inline-' . $e->id_eixos,
+                    'url'      => $baseUrl . '/#eixo-' . $e->slug,
                 ])->values()->all(),
             ];
         }
@@ -316,7 +316,7 @@
             'name'         => 'Plano Diretor de Tecnologia da Informação e Inovação',
             'alternateName'=> 'PDTI',
             'provider'     => ['@id' => $orgId],
-            'url'          => $baseUrl . '/plano',
+            'url'          => $baseUrl . '/plano-diretor-ti',
             'description'  => 'Documento que orienta as ações estratégicas de TI e inovação da Prefeitura de Caraguatatuba.',
             'serviceType'  => 'Planejamento de TI',
             'areaServed'   => [
@@ -354,7 +354,7 @@
             'name'        => 'Indicadores de Ações de Inovação — Caraguatatuba',
             'description' => 'Tabela de acompanhamento das ações de inovação e transformação digital da Prefeitura de Caraguatatuba.',
             'publisher'   => ['@id' => $orgId],
-            'url'         => $baseUrl . '/tabelas',
+            'url'         => $baseUrl . '/indicadores',
             'temporalCoverage' => "2025/2026",
             'keywords' => [
                 'Inovação',
