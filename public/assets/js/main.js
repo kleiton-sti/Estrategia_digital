@@ -237,7 +237,7 @@
     let eixoAtivoId = null;
 
     function fecharEixoInline(id) {
-      const inline = document.getElementById('eixo-inline[data-eixo-id="' + id + '"]');
+      const inline = document.querySelector('.eixo-inline[data-eixo-id="' + id + '"]');
       if (inline) inline.classList.add('is-hidden');
       const portal = document.querySelector('.eixo-portal[data-eixo-id="' + id + '"]');
       if (portal) portal.classList.remove('ativo');
@@ -247,7 +247,7 @@
     function abrirEixoInline(eixoId) {
       if (eixoAtivoId && eixoAtivoId !== eixoId) fecharEixoInline(eixoAtivoId);
 
-      const inline = document.getElementById('eixo-inline[data-eixo-id="' + eixoId + '"]');
+      const inline = document.querySelector('.eixo-inline[data-eixo-id="' + eixoId + '"]');
       if (!inline) return;
 
       if (eixoAtivoId === eixoId) { fecharEixoInline(eixoId); return; }

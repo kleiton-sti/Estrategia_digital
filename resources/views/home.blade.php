@@ -87,7 +87,7 @@
           <div class="col-lg-5 colunaImg" data-aos="fade-left" data-aos-delay="200">
             <div class="hero-visual">
               <div class="hero-image">
-                <img src="public/assets/img/misc/misc.png" alt="Digital Agency Hero" class="img-fluid">
+                <img src="assets/img/misc/misc.png" alt="Digital Agency Hero" class="img-fluid">
                 <!-- <div id="reflexo-img-1"></div> -->
                 <!-- <div id="reflexo-img-2"></div> -->
                 <!-- <div id="reflexo-img-3"></div> -->

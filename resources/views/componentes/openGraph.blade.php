@@ -3,9 +3,10 @@
     $imgPadrao = $baseUrl . '/assets/img/estrategia-digital.png';
 
     if ($tipo === 'artigo' && isset($artigo)) {
-        $titulo = $artigo->titulo . ' — Estratégia Digital';
+        $titulo = Str::limit($artigo->titulo . ' — Estratégia Digital', 60);
         $descricao = $artigo->subtitulo ?? 'Leia mais sobre inovação em Caraguatatuba.';
         $url = $baseUrl . '/artigos/' . $artigo->slug;
+        $autor = $artigo->user->nome;
         $imagem =  $imgPadrao;
         $ogType = 'article';
     } else {
@@ -25,8 +26,11 @@
     <meta property="og:title" content="{{ $titulo }}">
     <meta property="og:description" content="{{ $descricao }}">
     <meta property="og:image" content="{{ $imagem }}">
+    <meta property="og:image:width" content="1201">
+    <meta property="og:image:height" content="630">
     <meta property="og:site_name" content="Estratégia Digital Caraguatatuba">
     <meta property="og:locale" content="pt_BR">
+    <meta name="author" content="">
 
     <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image">

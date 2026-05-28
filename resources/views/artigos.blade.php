@@ -64,7 +64,7 @@
 
           @forelse ($artigos as $artigo)
             <div class="col-lg-6 col-12">
-              <a href="{{ route('artigos.conteudo', ['slug' => $artigo->slug, 'id' => $artigo->id]) }}"
+              <a href="{{ route('artigos.conteudo', ['slug' => $artigo->slug]) }}"
                 class="artigo-card-link">
                 <div class="artigo-card">
                   <div class="artigo-card-body">

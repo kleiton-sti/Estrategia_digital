@@ -46,4 +46,14 @@ class ProdutosService
             abort(500);
         }
     }
+
+    public function buscarArtigoPorSlug(string $slug): Artigo
+    {
+        try {
+            return Artigo::with(['categorias', 'user'])->where('slug', $slug)->firstOrFail();
+        } catch (\Throwable $e) {
+            Log::error('ProdutosService@buscarArtigoPorSlug: ' . $e->getMessage());
+            abort(404);
+        }
+    }
 }
