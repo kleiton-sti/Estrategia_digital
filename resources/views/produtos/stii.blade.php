@@ -1,5 +1,8 @@
 @extends('layouts.app')
 @section('content')
+@push('styles')
+    <link rel="canonical" href="https://estrategiadigital.caraguatatuba.sp.gov.br/produtos/stii-em-numeros">
+@endpush
 <!-- <main class="main principios-details-page">
     <div class="container">
         <section id="objetivos" class="objetivos section">

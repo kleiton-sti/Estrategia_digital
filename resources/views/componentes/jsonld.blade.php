@@ -60,7 +60,7 @@
         'inLanguage'      => 'pt-BR',
         'potentialAction' => [
             '@type'       => 'SearchAction',
-            'target'      => $baseUrl . '/artigos?search={search_term_string}',
+            'target'      => $baseUrl . '/artigos?categoria={search_term_string}',
             'query-input' => ['@type' => 'PropertyValueSpecification', 'valueRequired' => true, 'valueName' => 'search_term_string'],
         ],
     ];
@@ -89,6 +89,15 @@
                     'item'     => $baseUrl . '/',
                 ]],
             ],
+            'hasPart' => $eixos->map(fn($e) => [
+                '@type'       => 'WebPageElement',
+                'name'        => $e->titulo,
+                'description' => $e->descricao,
+                'cssSelector' => '#eixo-inline-' . $e->id_eixos,
+            ])->values()->all(),
+
+            'keywords' => $eixos->pluck('titulo')->implode(', ') 
+            . ', Estratégia Digital, Caraguatatuba, Tecnologia, Inovação, Governo Digital',
         ];
 
         if (!empty($eixos) && $eixos->isNotEmpty()) {
@@ -101,7 +110,8 @@
                     '@type'    => 'ListItem',
                     'position' => $i + 1,
                     'name'     => $e->titulo,
-                    'url'      => $baseUrl . '/eixos/' . $e->id_eixos,
+                    'description' => $e->descricao,
+                    'url'      => $baseUrl . '/#eixos-inline-' . $e->id_eixos,
                 ])->values()->all(),
             ];
         }
@@ -126,7 +136,7 @@
        ARTIGO (página de conteúdo individual)
     ════════════════════════════════════════════ */
     elseif ($tipo === 'artigo' && isset($artigo)) {
-        $artigoUrl = $baseUrl . '/artigos/' . $artigo->slug . '/' . $artigo->id;
+        $artigoUrl = $baseUrl . '/artigos/' . $artigo->slug;
 
         $graphs[] = [
             '@type'            => 'Article',
@@ -285,8 +295,8 @@
     elseif ($tipo === 'plano') {
         $graphs[] = [
             '@type'       => 'WebPage',
-            '@id'         => $baseUrl . '/plano#webpage',
-            'url'         => $baseUrl . '/plano',
+            '@id'         => $baseUrl . '/plano-diretor-ti#webpage',
+            'url'         => $baseUrl . '/plano-diretor-ti',
             'name'        => 'PDTI — Plano Diretor de Tecnologia da Informação',
             'description' => 'Plano Diretor de Tecnologia da Informação e Inovação da Prefeitura de Caraguatatuba.',
             'isPartOf'    => ['@id' => $websiteId],
@@ -296,7 +306,7 @@
                 '@type'           => 'BreadcrumbList',
                 'itemListElement' => [
                     ['@type' => 'ListItem', 'position' => 1, 'name' => 'Home', 'item' => $baseUrl . '/'],
-                    ['@type' => 'ListItem', 'position' => 2, 'name' => 'PDTI', 'item' => $baseUrl . '/plano'],
+                    ['@type' => 'ListItem', 'position' => 2, 'name' => 'PDTI', 'item' => $baseUrl . '/plano-diretor-ti'],
                 ],
             ],
         ];
@@ -323,8 +333,8 @@
     elseif ($tipo === 'tabelas') {
         $graphs[] = [
             '@type'       => 'WebPage',
-            '@id'         => $baseUrl . '/tabelas#webpage',
-            'url'         => $baseUrl . '/tabelas',
+            '@id'         => $baseUrl . '/indicadores#webpage',
+            'url'         => $baseUrl . '/indicadores',
             'name'        => 'Indicadores — Estratégia Digital Caraguatatuba',
             'description' => 'Acompanhe os indicadores de transformação digital da Prefeitura de Caraguatatuba.',
             'isPartOf'    => ['@id' => $websiteId],
@@ -334,7 +344,7 @@
                 '@type'           => 'BreadcrumbList',
                 'itemListElement' => [
                     ['@type' => 'ListItem', 'position' => 1, 'name' => 'Home',        'item' => $baseUrl . '/'],
-                    ['@type' => 'ListItem', 'position' => 2, 'name' => 'Indicadores', 'item' => $baseUrl . '/tabelas'],
+                    ['@type' => 'ListItem', 'position' => 2, 'name' => 'Indicadores', 'item' => $baseUrl . '/indicadores'],
                 ],
             ],
         ];
