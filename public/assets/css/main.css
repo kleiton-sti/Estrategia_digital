@@ -373,8 +373,8 @@ span.badge {
   -webkit-backdrop-filter: blur(18px);
   border: 1px solid rgba(255, 255, 255, 0.07);
   border-radius: 50px;
-  width: clamp(37.5rem, 49%, 56.25rem);
-  gap: clamp(0.2rem, 1vw, 0.75rem);
+  /* width: clamp(37.5rem, 49%, 56.25rem); */
+  gap: clamp(0.2rem, 3vw, 2.75rem);
   margin-top: 20px;
   padding: 0 26px;
   z-index: 1000;

@@ -37,14 +37,6 @@
             <i class="fa-brands fa-x-twitter" aria-hidden="true"></i>
         </a>
 
-        {{-- Instagram não tem API de compartilhamento por URL --}}
-        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer"
-           class="compartilhar-btn compartilhar-btn--instagram"
-           aria-label="Instagram — copie o link e compartilhe nos Stories"
-           title="Instagram">
-            <i class="fa-brands fa-instagram" aria-hidden="true"></i>
-        </a>
-
         <button type="button"
                 class="compartilhar-btn compartilhar-btn--copiar"
                 aria-label="Copiar link do artigo"
