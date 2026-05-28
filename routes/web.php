@@ -13,15 +13,15 @@ use App\Http\Controllers\UploadController;
 
 /* Rotas públicas */
 Route::get('/', [EixoController::class, 'index'])->name('home');
-Route::get('/eixos/{id}', [EixoController::class, 'show'])->name('eixos.show');
-Route::get('/tabelas', [AcoesInovacaoController::class, 'index'])->name('tabelas');
+// Route::get('/eixos/{id}', [EixoController::class, 'show'])->name('eixos.show');
+Route::get('/indicadores', [AcoesInovacaoController::class, 'index'])->name('tabelas');
 Route::get('/roadmap', [RoadmapController::class, 'index'])->name('roadmap');
-Route::get('/plano', [PlanoDiretorController::class, 'plano'])->name('plano');
+Route::get('/plano-diretor-ti', [PlanoDiretorController::class, 'plano'])->name('plano');
 Route::get('/regulamentacoes', [RegulamentacoesController::class, 'index'])->name('regulamentacoes');
 Route::get('/produtos/stii-em-numeros', [ProdutosController::class, 'numeros'])->name('produtos.stii.numeros');
 Route::get('/produtos/all-hands', [ProdutosController::class, 'allHands'])->name('produtos.all.hands');
 Route::get('/artigos', [ProdutosController::class, 'artigos'])->name('artigos');
-Route::get('/artigos/{slug}/{id}', [ProdutosController::class, 'conteudoArtigo'])->name('artigos.conteudo');
+Route::get('/artigos/{slug}', [ProdutosController::class, 'conteudoArtigo'])->name('artigos.conteudo');
 
 /* Autenticação — acesso restrito à subrede 192.168.11.x */
 Route::middleware('rede.stii')->group(function () {

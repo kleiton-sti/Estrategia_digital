@@ -19,13 +19,13 @@ class EixoController extends Controller
         }
     }
 
-    public function show(int $id)
-    {
-        try {
-            return view('eixos.show', $this->eixoService->dadosEixo($id));
-        } catch (\Throwable $e) {
-            Log::error('Erro ao carregar eixo: ' . $e->getMessage());
-            abort(500);
-        }
-    }
+    // public function show(int $id)
+    // {
+    //     try {
+    //         return view('eixos.show', $this->eixoService->dadosEixo($id));
+    //     } catch (\Throwable $e) {
+    //         Log::error('Erro ao carregar eixo: ' . $e->getMessage());
+    //         abort(500);
+    //     }
+    // }
 }

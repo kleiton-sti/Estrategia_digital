@@ -87,50 +87,50 @@ class EixoService
         }
     }
 
-    public function dadosEixo(int $id): array
-    {
-        try {
-            $eixo = Eixo::where('id_eixos', $id)
-                ->with(['objetivos.iniciativas'])
-                ->firstOrFail();
+    // public function dadosEixo(int $id): array
+    // {
+    //     try {
+    //         $eixo = Eixo::where('id_eixos', $id)
+    //             ->with(['objetivos.iniciativas'])
+    //             ->firstOrFail();
 
-            $objetivosData = $eixo->objetivos->map(fn($o) => [
-                'id'          => $o->id_objetivo,
-                'titulo'      => $o->titulo,
-                'descricao'   => $o->descricao,
-                'iniciativas' => $o->iniciativas->map(fn($i) => [
-                    'id'        => $i->id_iniciativa,
-                    'codigo'    => $i->codigo,
-                    'titulo'    => $i->titulo,
-                    'descricao' => $i->descricao,
-                    'status'    => $i->status,
-                ])->toArray(),
-            ])->toArray();
+    //         $objetivosData = $eixo->objetivos->map(fn($o) => [
+    //             'id'          => $o->id_objetivo,
+    //             'titulo'      => $o->titulo,
+    //             'descricao'   => $o->descricao,
+    //             'iniciativas' => $o->iniciativas->map(fn($i) => [
+    //                 'id'        => $i->id_iniciativa,
+    //                 'codigo'    => $i->codigo,
+    //                 'titulo'    => $i->titulo,
+    //                 'descricao' => $i->descricao,
+    //                 'status'    => $i->status,
+    //             ])->toArray(),
+    //         ])->toArray();
 
-            $total      = $eixo->objetivos->sum(fn($o) => $o->iniciativas->count());
-            $concluidas = $eixo->objetivos->sum(fn($o) => $o->iniciativas->where('status', 'Concluída')->count());
+    //         $total      = $eixo->objetivos->sum(fn($o) => $o->iniciativas->count());
+    //         $concluidas = $eixo->objetivos->sum(fn($o) => $o->iniciativas->where('status', 'Concluída')->count());
 
-            $sidebar = [
-                'total'      => $total,
-                'concluidas' => $concluidas,
-                'andamento'  => $eixo->objetivos->sum(fn($o) => $o->iniciativas->where('status', 'Em execução')->count()),
-                'nao'        => $eixo->objetivos->sum(fn($o) => $o->iniciativas->where('status', 'Não iniciada')->count()),
-            ];
+    //         $sidebar = [
+    //             'total'      => $total,
+    //             'concluidas' => $concluidas,
+    //             'andamento'  => $eixo->objetivos->sum(fn($o) => $o->iniciativas->where('status', 'Em execução')->count()),
+    //             'nao'        => $eixo->objetivos->sum(fn($o) => $o->iniciativas->where('status', 'Não iniciada')->count()),
+    //         ];
 
-            $progresso    = $total > 0 ? round($concluidas / $total, 4) : 0.0;
-            $constelacao  = \App\Services\ConstellationService::porEixo($id);
+    //         $progresso    = $total > 0 ? round($concluidas / $total, 4) : 0.0;
+    //         $constelacao  = \App\Services\ConstellationService::porEixo($id);
 
-            return [
-                'eixo'          => $eixo,
-                'objetivosData' => $objetivosData,
-                'sidebar'       => $sidebar,
-                'odsMap'        => self::ODS_MAP,
-                'progresso'     => $progresso,
-                'constelacao'   => $constelacao,
-            ];
-        } catch (\Throwable $e) {
-            Log::error('Erro ao carregar eixo #' . $id . ': ' . $e->getMessage());
-            abort(500);
-        }
-    }
+    //         return [
+    //             'eixo'          => $eixo,
+    //             'objetivosData' => $objetivosData,
+    //             'sidebar'       => $sidebar,
+    //             'odsMap'        => self::ODS_MAP,
+    //             'progresso'     => $progresso,
+    //             'constelacao'   => $constelacao,
+    //         ];
+    //     } catch (\Throwable $e) {
+    //         Log::error('Erro ao carregar eixo #' . $id . ': ' . $e->getMessage());
+    //         abort(500);
+    //     }
+    // }
 }
