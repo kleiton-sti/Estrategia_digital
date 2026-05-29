@@ -7,19 +7,19 @@
 
   const TOTAL = 81;
   const CIRCUMFERENCE = 326.7;
-  const svg  = ring.closest('svg');
+  const svg = ring.closest('svg');
   const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
 
   function aplicarGradienteAnel(altoContraste) {
     defs.innerHTML = altoContraste
       ? '<linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">'
-        + '<stop offset="0%"   stop-color="#fff"/>'
-        + '<stop offset="100%" stop-color="#fff"/>'
-        + '</linearGradient>'
+      + '<stop offset="0%"   stop-color="#fff"/>'
+      + '<stop offset="100%" stop-color="#fff"/>'
+      + '</linearGradient>'
       : '<linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">'
-        + '<stop offset="0%"   stop-color="#00db79"/>'
-        + '<stop offset="100%" stop-color="#6effc6"/>'
-        + '</linearGradient>';
+      + '<stop offset="0%"   stop-color="#00db79"/>'
+      + '<stop offset="100%" stop-color="#6effc6"/>'
+      + '</linearGradient>';
     svg.prepend(defs);
   }
 
@@ -146,6 +146,12 @@ window.addEventListener('load', function () {
 const btnContraste = document.getElementById('btn-contraste');
 
 btnContraste.addEventListener('click', () => {
+  const ring = document.getElementById('ringProgress');
+  if (!ring) return;
+
+  const svg = ring.closest('svg');
+  const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+
   if (localStorage.getItem('ed-alto-contraste') === 'true') {
     defs.innerHTML =
       '<linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">' +
@@ -164,3 +170,5 @@ btnContraste.addEventListener('click', () => {
 
   }
 })
+
+

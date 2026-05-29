@@ -75,10 +75,12 @@
 
           <li class="dropdown">
             <a href="#"><span>Produtos</span></a>
-            <ul>
-              <li><a href="{{ route('produtos.all.hands') }}"><span>All Hands</span></a></li>
-              <li><a href="{{ route('produtos.stii.numeros') }}"><span>STII em números</span></a></li>
-            </ul>
+            <div class="dropdown-subpaginas">
+              <ul>
+                <li><a href="{{ route('produtos.all.hands') }}"><span>All Hands</span></a></li>
+                <li><a href="{{ route('produtos.stii.numeros') }}"><span>STII em números</span></a></li>
+              </ul>
+            </div>
           </li>
 
           <li><a href="{{ route('artigos') }}">Artigos</a></li>

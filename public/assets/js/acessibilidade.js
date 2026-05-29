@@ -59,6 +59,7 @@
   if (btnContraste) {
     btnContraste.addEventListener('click', () => {
       document.body.classList.toggle('alto-contraste');
+
       const ativo = document.body.classList.contains('alto-contraste');
       document.cookie = `ed-alto-contraste=${ativo}; path=/; max-age=31536000`;
       localStorage.setItem('ed-alto-contraste', ativo);

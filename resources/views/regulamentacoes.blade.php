@@ -6,7 +6,7 @@
 
 @section('content')
 <main class="main pagina-interna">
-  <section id="regulamentacoes" class="section py-5">
+  <section id="regulamentacoes" class="section">
     <div class="container" data-aos="fade-up">
 
       <div class="section-title texto-esquerda-flex mb-5">

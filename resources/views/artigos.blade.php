@@ -8,7 +8,7 @@
 @section('content')
 
   <main class="main pagina-interna">
-    <section id="artigos" class="primeira-sessao py-5">
+    <section id="artigos" class="primeira-sessao">
       <div class="container" data-aos="fade-up">
 
         @auth

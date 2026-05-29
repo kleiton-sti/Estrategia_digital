@@ -45,7 +45,7 @@
                 <button
                   class="roadmap-scroll-hint"
                   aria-label="Ir para a linha do tempo"
-                  onclick="document.getElementById('trilha').scrollIntoView({ behavior: 'smooth', block: 'start' })"
+                  onclick="window.scrollComOffset(document.getElementById('trilha'))"
                 >
                     <span class="roadmap-scroll-hint__texto">ACOMPANHE NOSSO PROGRESSO</span>
                     <div class="roadmap-scroll-hint__icone">
@@ -230,7 +230,7 @@
                   <button
                     class="rd-voltar-btn"
                     aria-label="Voltar ao início do roadmap"
-                    onclick="document.querySelector('.roadmap-hero').scrollIntoView({ behavior: 'smooth', block: 'start' })"
+                    onclick="window.scrollComOffset(document.querySelector('.roadmap-hero'))"
                   >
                     <i class="bi bi-arrow-up" aria-hidden="true"></i>
                     <span>Voltar ao início</span>

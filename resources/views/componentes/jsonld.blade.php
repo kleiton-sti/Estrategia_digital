@@ -58,11 +58,6 @@
         'description'     => 'Portal de Estratégia Digital da Secretaria de Tecnologia da Informação e Inovação da Prefeitura de Caraguatatuba.',
         'publisher'       => ['@id' => $orgId],
         'inLanguage'      => 'pt-BR',
-        'potentialAction' => [
-            '@type'       => 'SearchAction',
-            'target'      => $baseUrl . '/artigos?categoria={search_term_string}',
-            'query-input' => ['@type' => 'PropertyValueSpecification', 'valueRequired' => true, 'valueName' => 'search_term_string'],
-        ],
     ];
 
     $graphs = [$organization, $website];
@@ -76,7 +71,7 @@
             '@id'         => $baseUrl . '/#webpage',
             'url'         => $baseUrl . '/',
             'name'        => 'Estratégia Digital — Caraguatatuba',
-            'description' => 'Acompanhe os 6 eixos estratégicos, 18 objetivos e as iniciativas de transformação digital da Prefeitura de Caraguatatuba.',
+            'description' => 'Acompanhe as estratégias, objetivos e iniciativas da Secretaria de Tecnologia da Informação e Inovação para a transformação digital da Prefeitura de Caraguatatuba.',
             'isPartOf'    => ['@id' => $websiteId],
             'about'       => ['@id' => $orgId],
             'inLanguage'  => 'pt-BR',
@@ -89,15 +84,14 @@
                     'item'     => $baseUrl . '/',
                 ]],
             ],
-            'hasPart' => $eixos->map(fn($e) => [
+            'hasPart' => $eixos->map(fn($e) => [  //cada eixo passa a ser um elemento semântico da página
                 '@type'       => 'WebPageElement',
                 'name'        => $e->titulo,
                 'description' => $e->descricao,
                 'cssSelector' => '#eixo-' . $e->slug,
             ])->values()->all(),
 
-            'keywords' => $eixos->pluck('titulo')->implode(', ') 
-            . ', Estratégia Digital, Caraguatatuba, Tecnologia, Inovação, Governo Digital',
+            'keywords' => $eixos->pluck('titulo')->implode(', '),
         ];
 
         if (!empty($eixos) && $eixos->isNotEmpty()) {

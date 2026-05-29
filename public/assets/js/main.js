@@ -1,3 +1,10 @@
+function scrollComOffset(el, extra = 16) {
+  const header = document.getElementById('header');
+  const offset = (header ? header.offsetHeight : 70) + extra;
+  const y = el.getBoundingClientRect().top + window.scrollY - offset;
+  window.scrollTo({ top: y, behavior: 'smooth' });
+}
+
 (function () {
   "use strict";
 
@@ -144,7 +151,7 @@
       });
 
       container.classList.remove('is-hidden');
-      container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      scrollComOffset(container);
 
       const total      = objetivo.iniciativas.length;
       const concluidas = objetivo.iniciativas.filter(i => i.status === 'Concluída').length;
@@ -173,8 +180,7 @@
     function fecharIniciativas() {
       const container = document.querySelector('#principios-details');
       container.classList.add('is-hidden');
-      document.querySelector('#objetivos')
-        .scrollIntoView({ behavior: 'smooth', block: 'start' });
+      scrollComOffset(document.querySelector('#objetivos'));
       document.querySelectorAll('.objetivos-wrapper.selecionado')
         .forEach(el => el.classList.remove('selecionado'));
       document.querySelectorAll('.objetivo-toggle').forEach(t => {
@@ -330,11 +336,11 @@
           }
 
           detailsEl.classList.remove('is-hidden');
-          detailsEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          scrollComOffset(detailsEl);
         });
       });
 
-      setTimeout(() => inline.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 60);
+      setTimeout(() => scrollComOffset(inline));
     }
 
     document.querySelectorAll('.eixo-portal').forEach(portal => {
@@ -349,7 +355,7 @@
         const id = Number(btn.dataset.fecharEixo);
         fecharEixoInline(id);
         const sec = document.getElementById('principios');
-        if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (sec) scrollComOffset(sec);
       });
     });
   })();
@@ -378,3 +384,5 @@
   });
 
 })();
+
+

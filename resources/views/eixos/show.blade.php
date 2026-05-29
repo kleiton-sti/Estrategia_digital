@@ -1,7 +1,12 @@
 @extends('layouts.app')
 
+@section('meta')
+    <link rel="canonical" href="https://estrategiadigital.caraguatatuba.sp.gov.br">
+@endsection
+
 @section('content')
 <main id="main-content" class="main principios-details-page pagina-interna">
+
 
   <!-- Objetivos -->
   <section id="objetivos" class="objetivos section">

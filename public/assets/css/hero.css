@@ -18,7 +18,7 @@
 section#hero {
   position: relative;
   color: var(--cor-texto);
-  min-height: 88dvh;
+  min-height: 85dvh;
   display: flex;
   align-items: center;
   overflow: visible !important;
@@ -27,7 +27,7 @@ section#hero {
 }
 
 section#hero .container {
-  padding-top: 60px;
+  /* padding-top: 60px; */
 }
 
 .hero .hero-content h1 {
