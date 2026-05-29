@@ -20,6 +20,7 @@
   margin-bottom: 25rem;
   align-items: center;
   position: relative;
+  overflow: visible;
 }
 
 .roadmap-hero__inner {
@@ -62,7 +63,9 @@
 /* Indicador de scroll — agora é um botão clicável */
 .roadmap-scroll-hint {
   position: absolute;
-  bottom: 146px;
+  left: 2vw;
+  right: 2vw;
+  bottom: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -71,6 +74,7 @@
   background: none;
   border: none;
   cursor: pointer;
+  z-index: 1;
   padding: 0;
 }
 
@@ -143,8 +147,13 @@
   filter: drop-shadow(0 0 4px #04C4D9);
 }
 
-.rd-particula--1 { fill: #04C4D9; }
-.rd-particula--2 { fill: rgba(255, 255, 255, 0.7); }
+.rd-particula--1 {
+  fill: #04C4D9;
+}
+
+.rd-particula--2 {
+  fill: rgba(255, 255, 255, 0.7);
+}
 
 /*--------------------------------------------------------------
 # Seção de conteúdo — container geral
@@ -187,11 +196,11 @@
   width: 2px;
   transform: translateX(-50%);
   background: linear-gradient(180deg,
-    transparent 0%,
-    rgba(4, 196, 217, 0.50) 4%,
-    rgba(4, 196, 217, 0.28) 50%,
-    rgba(4, 196, 217, 0.50) 96%,
-    transparent 100%);
+      transparent 0%,
+      rgba(4, 196, 217, 0.50) 4%,
+      rgba(4, 196, 217, 0.28) 50%,
+      rgba(4, 196, 217, 0.50) 96%,
+      transparent 100%);
   z-index: 0;
   pointer-events: none;
 }
@@ -253,12 +262,35 @@
 }
 
 /* Variantes de cor por eixo (1–6) */
-.rd-planeta--1 .rd-planeta__nucleo { background: radial-gradient(circle at 35% 35%, #1e3a5f, #05071e); box-shadow: 0 0 0 2px rgba(4, 196, 217, 0.5), 0 0 24px rgba(4, 196, 217, 0.45); }
-.rd-planeta--2 .rd-planeta__nucleo { background: radial-gradient(circle at 35% 35%, #2d1e5f, #05071e); box-shadow: 0 0 0 2px rgba(124, 110, 240, 0.5), 0 0 24px rgba(124, 110, 240, 0.45); }
-.rd-planeta--3 .rd-planeta__nucleo { background: radial-gradient(circle at 35% 35%, #1e4a2f, #05071e); box-shadow: 0 0 0 2px rgba(0, 219, 121, 0.5), 0 0 24px rgba(0, 219, 121, 0.45); }
-.rd-planeta--4 .rd-planeta__nucleo { background: radial-gradient(circle at 35% 35%, #4a2e1e, #05071e); box-shadow: 0 0 0 2px rgba(255, 160, 50, 0.5), 0 0 24px rgba(255, 160, 50, 0.45); }
-.rd-planeta--5 .rd-planeta__nucleo { background: radial-gradient(circle at 35% 35%, #1e2e4a, #05071e); box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5), 0 0 24px rgba(59, 130, 246, 0.45); }
-.rd-planeta--6 .rd-planeta__nucleo { background: radial-gradient(circle at 35% 35%, #3a1e3a, #05071e); box-shadow: 0 0 0 2px rgba(217, 70, 239, 0.5), 0 0 24px rgba(217, 70, 239, 0.45); }
+.rd-planeta--1 .rd-planeta__nucleo {
+  background: radial-gradient(circle at 35% 35%, #1e3a5f, #05071e);
+  box-shadow: 0 0 0 2px rgba(4, 196, 217, 0.5), 0 0 24px rgba(4, 196, 217, 0.45);
+}
+
+.rd-planeta--2 .rd-planeta__nucleo {
+  background: radial-gradient(circle at 35% 35%, #2d1e5f, #05071e);
+  box-shadow: 0 0 0 2px rgba(124, 110, 240, 0.5), 0 0 24px rgba(124, 110, 240, 0.45);
+}
+
+.rd-planeta--3 .rd-planeta__nucleo {
+  background: radial-gradient(circle at 35% 35%, #1e4a2f, #05071e);
+  box-shadow: 0 0 0 2px rgba(0, 219, 121, 0.5), 0 0 24px rgba(0, 219, 121, 0.45);
+}
+
+.rd-planeta--4 .rd-planeta__nucleo {
+  background: radial-gradient(circle at 35% 35%, #4a2e1e, #05071e);
+  box-shadow: 0 0 0 2px rgba(255, 160, 50, 0.5), 0 0 24px rgba(255, 160, 50, 0.45);
+}
+
+.rd-planeta--5 .rd-planeta__nucleo {
+  background: radial-gradient(circle at 35% 35%, #1e2e4a, #05071e);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5), 0 0 24px rgba(59, 130, 246, 0.45);
+}
+
+.rd-planeta--6 .rd-planeta__nucleo {
+  background: radial-gradient(circle at 35% 35%, #3a1e3a, #05071e);
+  box-shadow: 0 0 0 2px rgba(217, 70, 239, 0.5), 0 0 24px rgba(217, 70, 239, 0.45);
+}
 
 .rd-planeta__num {
   font-size: var(--type-base);
@@ -284,11 +316,29 @@
 }
 
 /* Variantes de cor do anel por eixo */
-.rd-planeta--2 .rd-planeta__anel { border-color: rgba(124, 110, 240, 0.30); }
-.rd-planeta--3 .rd-planeta__anel { border-color: rgba(0, 219, 121, 0.30);   animation-duration: 9s; }
-.rd-planeta--4 .rd-planeta__anel { border-color: rgba(255, 160, 50, 0.30);  animation-duration: 15s; }
-.rd-planeta--5 .rd-planeta__anel { border-color: rgba(59, 130, 246, 0.30);  animation-duration: 10s; }
-.rd-planeta--6 .rd-planeta__anel { border-color: rgba(217, 70, 239, 0.30);  animation-duration: 7s; }
+.rd-planeta--2 .rd-planeta__anel {
+  border-color: rgba(124, 110, 240, 0.30);
+}
+
+.rd-planeta--3 .rd-planeta__anel {
+  border-color: rgba(0, 219, 121, 0.30);
+  animation-duration: 9s;
+}
+
+.rd-planeta--4 .rd-planeta__anel {
+  border-color: rgba(255, 160, 50, 0.30);
+  animation-duration: 15s;
+}
+
+.rd-planeta--5 .rd-planeta__anel {
+  border-color: rgba(59, 130, 246, 0.30);
+  animation-duration: 10s;
+}
+
+.rd-planeta--6 .rd-planeta__anel {
+  border-color: rgba(217, 70, 239, 0.30);
+  animation-duration: 7s;
+}
 
 /* Halo difuso */
 .rd-eixo-marcador .rd-planeta__halo {
@@ -306,11 +356,25 @@
 }
 
 /* Variantes de cor do halo por eixo */
-.rd-planeta--2 .rd-planeta__halo { background: radial-gradient(circle, rgba(124, 110, 240, 0.18) 0%, transparent 70%); }
-.rd-planeta--3 .rd-planeta__halo { background: radial-gradient(circle, rgba(0, 219, 121, 0.18) 0%, transparent 70%); }
-.rd-planeta--4 .rd-planeta__halo { background: radial-gradient(circle, rgba(255, 160, 50, 0.18) 0%, transparent 70%); }
-.rd-planeta--5 .rd-planeta__halo { background: radial-gradient(circle, rgba(59, 130, 246, 0.18) 0%, transparent 70%); }
-.rd-planeta--6 .rd-planeta__halo { background: radial-gradient(circle, rgba(217, 70, 239, 0.18) 0%, transparent 70%); }
+.rd-planeta--2 .rd-planeta__halo {
+  background: radial-gradient(circle, rgba(124, 110, 240, 0.18) 0%, transparent 70%);
+}
+
+.rd-planeta--3 .rd-planeta__halo {
+  background: radial-gradient(circle, rgba(0, 219, 121, 0.18) 0%, transparent 70%);
+}
+
+.rd-planeta--4 .rd-planeta__halo {
+  background: radial-gradient(circle, rgba(255, 160, 50, 0.18) 0%, transparent 70%);
+}
+
+.rd-planeta--5 .rd-planeta__halo {
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.18) 0%, transparent 70%);
+}
+
+.rd-planeta--6 .rd-planeta__halo {
+  background: radial-gradient(circle, rgba(217, 70, 239, 0.18) 0%, transparent 70%);
+}
 
 /*--------------------------------------------------------------
 # Linha de card alternado — grid de 3 colunas
@@ -353,19 +417,57 @@
 }
 
 /* Variantes de cor do ponto por status */
-.rd-ponto--verde  { background: #00db79; color: #00db79; box-shadow: 0 0 0 3px rgba(0, 219, 121, 0.20), 0 0 10px rgba(0, 219, 121, 0.45); }
-.rd-ponto--amarelo{ background: #ffd232; color: #ffd232; box-shadow: 0 0 0 3px rgba(255, 210, 50, 0.20), 0 0 10px rgba(255, 210, 50, 0.45); }
-.rd-ponto--roxo   { background: #7c6ef0; color: #7c6ef0; box-shadow: 0 0 0 3px rgba(124, 110, 240, 0.20), 0 0 10px rgba(124, 110, 240, 0.45); }
+.rd-ponto--verde {
+  background: #00db79;
+  color: #00db79;
+  box-shadow: 0 0 0 3px rgba(0, 219, 121, 0.20), 0 0 10px rgba(0, 219, 121, 0.45);
+}
+
+.rd-ponto--amarelo {
+  background: #ffd232;
+  color: #ffd232;
+  box-shadow: 0 0 0 3px rgba(255, 210, 50, 0.20), 0 0 10px rgba(255, 210, 50, 0.45);
+}
+
+.rd-ponto--roxo {
+  background: #7c6ef0;
+  color: #7c6ef0;
+  box-shadow: 0 0 0 3px rgba(124, 110, 240, 0.20), 0 0 10px rgba(124, 110, 240, 0.45);
+}
 
 /* Posicionamento na grid — cards à esquerda */
-.rd-card-linha--esquerda .rd-card-linha__vazio { grid-column: 3; grid-row: 1; }
-.rd-card-linha--esquerda .rd-card-linha__ponto { grid-column: 2; grid-row: 1; }
-.rd-card-linha--esquerda .rd-card-linha__card  { grid-column: 1; grid-row: 1; padding-right: 28px; }
+.rd-card-linha--esquerda .rd-card-linha__vazio {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.rd-card-linha--esquerda .rd-card-linha__ponto {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.rd-card-linha--esquerda .rd-card-linha__card {
+  grid-column: 1;
+  grid-row: 1;
+  padding-right: 28px;
+}
 
 /* Posicionamento na grid — cards à direita */
-.rd-card-linha--direita .rd-card-linha__vazio { grid-column: 1; grid-row: 1; }
-.rd-card-linha--direita .rd-card-linha__ponto { grid-column: 2; grid-row: 1; }
-.rd-card-linha--direita .rd-card-linha__card  { grid-column: 3; grid-row: 1; padding-left: 28px; }
+.rd-card-linha--direita .rd-card-linha__vazio {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.rd-card-linha--direita .rd-card-linha__ponto {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.rd-card-linha--direita .rd-card-linha__card {
+  grid-column: 3;
+  grid-row: 1;
+  padding-left: 28px;
+}
 
 /*--------------------------------------------------------------
 # Nebulosa do card — atmosfera visual
@@ -378,17 +480,60 @@
 }
 
 /* Delays de flutuação variados — efeito orgânico */
-.rd-card-linha:nth-child(2)  .rd-nebulosa { animation-duration: 6.2s; animation-delay: -0.8s; }
-.rd-card-linha:nth-child(3)  .rd-nebulosa { animation-duration: 7.8s; animation-delay: -2.4s; }
-.rd-card-linha:nth-child(4)  .rd-nebulosa { animation-duration: 6.6s; animation-delay: -1.2s; }
-.rd-card-linha:nth-child(5)  .rd-nebulosa { animation-duration: 8.1s; animation-delay: -3.5s; }
-.rd-card-linha:nth-child(6)  .rd-nebulosa { animation-duration: 7.3s; animation-delay: -0.5s; }
-.rd-card-linha:nth-child(7)  .rd-nebulosa { animation-duration: 6.8s; animation-delay: -4.0s; }
-.rd-card-linha:nth-child(8)  .rd-nebulosa { animation-duration: 7.5s; animation-delay: -1.8s; }
-.rd-card-linha:nth-child(9)  .rd-nebulosa { animation-duration: 6.4s; animation-delay: -2.9s; }
-.rd-card-linha:nth-child(10) .rd-nebulosa { animation-duration: 8.3s; animation-delay: -0.3s; }
-.rd-card-linha:nth-child(11) .rd-nebulosa { animation-duration: 7.0s; animation-delay: -3.1s; }
-.rd-card-linha:nth-child(n+12) .rd-nebulosa { animation-duration: 7.2s; animation-delay: -1.5s; }
+.rd-card-linha:nth-child(2) .rd-nebulosa {
+  animation-duration: 6.2s;
+  animation-delay: -0.8s;
+}
+
+.rd-card-linha:nth-child(3) .rd-nebulosa {
+  animation-duration: 7.8s;
+  animation-delay: -2.4s;
+}
+
+.rd-card-linha:nth-child(4) .rd-nebulosa {
+  animation-duration: 6.6s;
+  animation-delay: -1.2s;
+}
+
+.rd-card-linha:nth-child(5) .rd-nebulosa {
+  animation-duration: 8.1s;
+  animation-delay: -3.5s;
+}
+
+.rd-card-linha:nth-child(6) .rd-nebulosa {
+  animation-duration: 7.3s;
+  animation-delay: -0.5s;
+}
+
+.rd-card-linha:nth-child(7) .rd-nebulosa {
+  animation-duration: 6.8s;
+  animation-delay: -4.0s;
+}
+
+.rd-card-linha:nth-child(8) .rd-nebulosa {
+  animation-duration: 7.5s;
+  animation-delay: -1.8s;
+}
+
+.rd-card-linha:nth-child(9) .rd-nebulosa {
+  animation-duration: 6.4s;
+  animation-delay: -2.9s;
+}
+
+.rd-card-linha:nth-child(10) .rd-nebulosa {
+  animation-duration: 8.3s;
+  animation-delay: -0.3s;
+}
+
+.rd-card-linha:nth-child(11) .rd-nebulosa {
+  animation-duration: 7.0s;
+  animation-delay: -3.1s;
+}
+
+.rd-card-linha:nth-child(n+12) .rd-nebulosa {
+  animation-duration: 7.2s;
+  animation-delay: -1.5s;
+}
 
 /* Pausa na flutuação ao hover — evita conflito com translateY do card */
 .rd-nebulosa:hover {
@@ -414,9 +559,17 @@
 }
 
 /* Variantes de glow por cor */
-.rd-nebulosa--verde  .rd-nebulosa__glow { background: radial-gradient(ellipse 75% 55% at 40% 50%, #00db79 0%, transparent 65%); }
-.rd-nebulosa--amarelo .rd-nebulosa__glow { background: radial-gradient(ellipse 75% 55% at 60% 45%, #ffd232 0%, transparent 65%); }
-.rd-nebulosa--roxo   .rd-nebulosa__glow { background: radial-gradient(ellipse 75% 55% at 50% 55%, #7c6ef0 0%, transparent 65%); }
+.rd-nebulosa--verde .rd-nebulosa__glow {
+  background: radial-gradient(ellipse 75% 55% at 40% 50%, #00db79 0%, transparent 65%);
+}
+
+.rd-nebulosa--amarelo .rd-nebulosa__glow {
+  background: radial-gradient(ellipse 75% 55% at 60% 45%, #ffd232 0%, transparent 65%);
+}
+
+.rd-nebulosa--roxo .rd-nebulosa__glow {
+  background: radial-gradient(ellipse 75% 55% at 50% 55%, #7c6ef0 0%, transparent 65%);
+}
 
 /*--------------------------------------------------------------
 # Partículas-estrela (geradas via JS — fallback puro CSS)
@@ -463,20 +616,49 @@
 }
 
 /* Fio de luz e borda esquerda por variante */
-.rd-nebulosa--verde  .rd-card::before { background: linear-gradient(to right, transparent, rgba(0, 219, 121, 0.35), transparent); }
-.rd-nebulosa--amarelo .rd-card::before { background: linear-gradient(to right, transparent, rgba(255, 210, 50, 0.35), transparent); }
-.rd-nebulosa--roxo   .rd-card::before { background: linear-gradient(to right, transparent, rgba(124, 110, 240, 0.35), transparent); }
+.rd-nebulosa--verde .rd-card::before {
+  background: linear-gradient(to right, transparent, rgba(0, 219, 121, 0.35), transparent);
+}
 
-.rd-nebulosa--verde  .rd-card { border-left: 2px solid rgba(0, 219, 121, 0.38); }
-.rd-nebulosa--amarelo .rd-card { border-left: 2px solid rgba(255, 210, 50, 0.38); }
-.rd-nebulosa--roxo   .rd-card { border-left: 2px solid rgba(124, 110, 240, 0.38); }
+.rd-nebulosa--amarelo .rd-card::before {
+  background: linear-gradient(to right, transparent, rgba(255, 210, 50, 0.35), transparent);
+}
+
+.rd-nebulosa--roxo .rd-card::before {
+  background: linear-gradient(to right, transparent, rgba(124, 110, 240, 0.35), transparent);
+}
+
+.rd-nebulosa--verde .rd-card {
+  border-left: 2px solid rgba(0, 219, 121, 0.38);
+}
+
+.rd-nebulosa--amarelo .rd-card {
+  border-left: 2px solid rgba(255, 210, 50, 0.38);
+}
+
+.rd-nebulosa--roxo .rd-card {
+  border-left: 2px solid rgba(124, 110, 240, 0.38);
+}
 
 /* Hover dos cards */
-.rd-nebulosa:hover .rd-card { transform: translateY(-3px); }
+.rd-nebulosa:hover .rd-card {
+  transform: translateY(-3px);
+}
 
-.rd-nebulosa--verde:hover  .rd-card { border-color: rgba(0, 219, 121, 0.32);   box-shadow: 0 12px 40px rgba(0, 219, 121, 0.12),   0 6px 32px rgba(0, 0, 0, 0.45); }
-.rd-nebulosa--amarelo:hover .rd-card { border-color: rgba(255, 210, 50, 0.32);  box-shadow: 0 12px 40px rgba(255, 210, 50, 0.12),  0 6px 32px rgba(0, 0, 0, 0.45); }
-.rd-nebulosa--roxo:hover   .rd-card { border-color: rgba(124, 110, 240, 0.32); box-shadow: 0 12px 40px rgba(124, 110, 240, 0.12), 0 6px 32px rgba(0, 0, 0, 0.45); }
+.rd-nebulosa--verde:hover .rd-card {
+  border-color: rgba(0, 219, 121, 0.32);
+  box-shadow: 0 12px 40px rgba(0, 219, 121, 0.12), 0 6px 32px rgba(0, 0, 0, 0.45);
+}
+
+.rd-nebulosa--amarelo:hover .rd-card {
+  border-color: rgba(255, 210, 50, 0.32);
+  box-shadow: 0 12px 40px rgba(255, 210, 50, 0.12), 0 6px 32px rgba(0, 0, 0, 0.45);
+}
+
+.rd-nebulosa--roxo:hover .rd-card {
+  border-color: rgba(124, 110, 240, 0.32);
+  box-shadow: 0 12px 40px rgba(124, 110, 240, 0.12), 0 6px 32px rgba(0, 0, 0, 0.45);
+}
 
 /*--------------------------------------------------------------
 # Header do card
@@ -502,9 +684,23 @@
 }
 
 /* Variantes do ícone por cor */
-.rd-card__icone-wrap--verde  { background: rgba(0, 219, 121, 0.10);   color: #00db79; box-shadow: 0 0 10px rgba(0, 219, 121, 0.25); }
-.rd-card__icone-wrap--amarelo { background: rgba(255, 210, 50, 0.10);  color: #ffd232; box-shadow: 0 0 10px rgba(255, 210, 50, 0.25); }
-.rd-card__icone-wrap--roxo   { background: rgba(124, 110, 240, 0.10); color: #7c6ef0; box-shadow: 0 0 10px rgba(124, 110, 240, 0.25); }
+.rd-card__icone-wrap--verde {
+  background: rgba(0, 219, 121, 0.10);
+  color: #00db79;
+  box-shadow: 0 0 10px rgba(0, 219, 121, 0.25);
+}
+
+.rd-card__icone-wrap--amarelo {
+  background: rgba(255, 210, 50, 0.10);
+  color: #ffd232;
+  box-shadow: 0 0 10px rgba(255, 210, 50, 0.25);
+}
+
+.rd-card__icone-wrap--roxo {
+  background: rgba(124, 110, 240, 0.10);
+  color: #7c6ef0;
+  box-shadow: 0 0 10px rgba(124, 110, 240, 0.25);
+}
 
 /* SVG interno */
 .rd-icone-svg {
@@ -514,9 +710,18 @@
 }
 
 /* Animações dos ícones SVG (keyframes em keyframes.css) */
-.rd-icone-svg--foguete  { animation: rdFoguete  4s ease-in-out infinite; transform-origin: center; }
-.rd-icone-svg--meteoro  { animation: rdMeteoro  3s ease-in-out infinite; }
-.rd-icone-svg--ovni     { animation: rdOvni     5s ease-in-out infinite; }
+.rd-icone-svg--foguete {
+  animation: rdFoguete 4s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.rd-icone-svg--meteoro {
+  animation: rdMeteoro 3s ease-in-out infinite;
+}
+
+.rd-icone-svg--ovni {
+  animation: rdOvni 5s ease-in-out infinite;
+}
 
 /* Título do card */
 .rd-card__titulo {
@@ -526,9 +731,17 @@
   letter-spacing: 0.8px;
 }
 
-.rd-card__titulo--verde  { color: #00db79; }
-.rd-card__titulo--amarelo { color: #ffd232; }
-.rd-card__titulo--roxo   { color: #7c6ef0; }
+.rd-card__titulo--verde {
+  color: #00db79;
+}
+
+.rd-card__titulo--amarelo {
+  color: #ffd232;
+}
+
+.rd-card__titulo--roxo {
+  color: #7c6ef0;
+}
 
 /*--------------------------------------------------------------
 # Lista de ações do card
@@ -562,9 +775,17 @@
   opacity: 0.55;
 }
 
-.rd-nebulosa--verde  .rd-card__item::before { background: #00db79; }
-.rd-nebulosa--amarelo .rd-card__item::before { background: #ffd232; }
-.rd-nebulosa--roxo   .rd-card__item::before { background: #7c6ef0; }
+.rd-nebulosa--verde .rd-card__item::before {
+  background: #00db79;
+}
+
+.rd-nebulosa--amarelo .rd-card__item::before {
+  background: #ffd232;
+}
+
+.rd-nebulosa--roxo .rd-card__item::before {
+  background: #7c6ef0;
+}
 
 .rd-card__item--vazio {
   color: color-mix(in srgb, var(--default-color), transparent 60%);
@@ -595,7 +816,7 @@
   letter-spacing: 0.5px;
   cursor: pointer;
   transition: color 0.25s ease, border-color 0.25s ease,
-              background 0.25s ease, transform 0.25s ease;
+    background 0.25s ease, transform 0.25s ease;
 }
 
 .rd-voltar-btn:hover {

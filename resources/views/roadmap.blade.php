@@ -42,17 +42,17 @@
                     </svg>
                 </div>
 
-                <button
-                  class="roadmap-scroll-hint"
-                  aria-label="Ir para a linha do tempo"
-                  onclick="window.scrollComOffset(document.getElementById('trilha'))"
-                >
-                    <span class="roadmap-scroll-hint__texto">ACOMPANHE NOSSO PROGRESSO</span>
-                    <div class="roadmap-scroll-hint__icone">
-                        <i class="bi bi-chevron-double-down"></i>
-                    </div>
-                </button>
             </div>
+            <button
+              class="roadmap-scroll-hint"
+              aria-label="Ir para a linha do tempo"
+              onclick="window.scrollComOffset(document.getElementById('trilha'))"
+            >
+                <span class="roadmap-scroll-hint__texto">ACOMPANHE NOSSO PROGRESSO</span>
+                <div class="roadmap-scroll-hint__icone">
+                    <i class="bi bi-chevron-double-down"></i>
+                </div>
+            </button>
         </section>
 
         <!-- Linha do tempo -->
