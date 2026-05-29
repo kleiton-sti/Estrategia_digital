@@ -16,14 +16,14 @@
 }
 
 section#hero {
-  position: relative;
-  color: var(--cor-texto);
-  min-height: 85dvh;
-  display: flex;
-  align-items: center;
-  overflow: visible !important;
-  scroll-margin-top: 90px;
-  z-index: 2;
+    position: relative;
+    color: var(--cor-texto);
+    min-height: clamp(600px, 69dvh, 1000px);
+    display: flex;
+    align-items: center;
+    overflow: visible !important;
+    scroll-margin-top: 90px;
+    z-index: 2;
 }
 
 section#hero .container {
