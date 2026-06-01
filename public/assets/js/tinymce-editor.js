@@ -11,7 +11,7 @@ tinymce.init({
         'fullscreen', 'insertdatetime', 'media', 'table', 'wordcount'
     ],
     toolbar: 'undo redo | blocks | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist | link image | code fullscreen',
-    images_upload_url: 'https://estrategiadigital.caraguatatuba.sp.gov.br/public/painel/upload/imagem',
+    images_upload_url: 'https://estrategiadigital.caraguatatuba.sp.gov.br/painel/upload/imagem',
     images_upload_credentials: true,
     automatic_uploads: true,
     setup: function (editor) {
