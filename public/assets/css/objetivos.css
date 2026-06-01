@@ -7,8 +7,8 @@
 /* ============================================================
    Seção Objetivos
    ============================================================ */
-section#objetivos {
-  gap: 0 !important;
+section.objetivos {
+  overflow: visible;
 }
 
 section#principios-details {
