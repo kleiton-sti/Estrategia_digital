@@ -40,7 +40,7 @@
     </defs>
 
     <!-- arestas inativas -->
-    @foreach($constelacao['arestas'] as $i => $aresta)
+    @foreach($constelacao['arestas'] as $aresta)
         @php
             $a = $constelacao['nos'][$aresta[0]];
             $b = $constelacao['nos'][$aresta[1]];
