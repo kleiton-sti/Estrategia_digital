@@ -13,6 +13,21 @@ use App\Http\Controllers\UploadController;
 
 /* Rotas públicas */
 Route::get('/', [EixoController::class, 'index'])->name('home');
+
+/* Redirects 301 — URLs antigas indexadas pelo Google */
+Route::redirect('/public/tabelas',              '/indicadores',      301);
+Route::redirect('/public/plano',                '/plano-diretor-ti', 301);
+Route::redirect('/public/roadmap',              '/roadmap',          301);
+Route::redirect('/public/produtos/all-hands',   '/produtos/all-hands', 301);
+Route::redirect('/public/regulamentacoes',      '/regulamentacoes',  301);
+Route::redirect('/public/artigos',              '/artigos',          301);
+Route::redirect('/tabelas',                     '/indicadores',      301);
+
+/* 410 Gone — recursos removidos permanentemente */
+Route::get('/public/eixos/{id}', fn() => abort(410));
+Route::get('/eixos/{id}',        fn() => abort(410));
+
+
 // Route::get('/eixos/{id}', [EixoController::class, 'show'])->name('eixos.show');
 Route::get('/indicadores', [AcoesInovacaoController::class, 'index'])->name('tabelas');
 Route::get('/roadmap', [RoadmapController::class, 'index'])->name('roadmap');
