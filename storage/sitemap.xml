@@ -61,6 +61,7 @@
     <loc>https://estrategiadigital.caraguatatuba.sp.gov.br/produtos/all-hands</loc>
     <lastmod>2026-06-02</lastmod>
   </url>
+
   <!-- artigos publicados -->
   <url>
     <loc>https://estrategiadigital.caraguatatuba.sp.gov.br/artigos/uma-gestao-municipal-digital-by-default-pode-fortalecer-a-educacao-publica</loc>
@@ -69,29 +70,5 @@
   <url>
     <loc>https://estrategiadigital.caraguatatuba.sp.gov.br/artigos/governo-digital-e-modernizacao-administrativa</loc>
     <lastmod>2026-05-18</lastmod>
-  </url>
-  <url>
-    <loc>//localhostrealizando-teste-novamente</loc>
-    <lastmod>2026-06-03T11:16:15-03:00</lastmod>
-  </url>
-  <url>
-    <loc>//localhostrealizando-teste-novamente-2</loc>
-    <lastmod>2026-06-03T12:05:46-03:00</lastmod>
-  </url>
-  <url>
-    <loc>//localhostrealizando-teste-novamente-3</loc>
-    <lastmod>2026-06-03T13:48:44-03:00</lastmod>
-  </url>
-  <url>
-    <loc>//localhost/realizando-teste-novamente-4</loc>
-    <lastmod>2026-06-03T13:49:38-03:00</lastmod>
-  </url>
-  <url>
-    <loc>//localhost/realizando-teste-novamente-5</loc>
-    <lastmod>2026-06-03T13:56:23-03:00</lastmod>
-  </url>
-  <url>
-    <loc>//localhost/artigos/artigo-para-teste</loc>
-    <lastmod>2026-06-03T14:28:16-03:00</lastmod>
   </url>
 </urlset>
