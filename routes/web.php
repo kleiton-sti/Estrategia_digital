@@ -58,3 +58,10 @@ Route::middleware('auth')->group(function () {
 });
 
 /* link para sitemap */
+Route::get('/sitemap.xml', function () {
+    $path = storage_path('sitemap.xml');
+    return response()->file($path, ['Content-Type' => 'application/xml']);
+});
+
+/* rota para o feed rss */
+Route::get('/feed', [FeedController::class, 'index']);

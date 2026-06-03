@@ -1,2 +1,7 @@
 User-agent: *
-Disallow:
+Disallow: /entrar
+Disallow: /painel/
+Disallow: /painel/artigos/
+Allow: /
+
+Sitemap: https://estrategiadigital.caraguatatuba.sp.gov.br/sitemap.xml

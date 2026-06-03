@@ -11,6 +11,11 @@
 
   <title>@yield('title', 'Estratégia Digital')</title>
 
+  <link
+        rel="alternate"
+        type="application/rss+xml"
+        title="Feed RSS - Estratégia Digital"
+        href="{{ url('/feed') }}">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="{{ asset('assets/img/favicon.png') }}">

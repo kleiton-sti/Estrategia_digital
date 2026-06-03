@@ -21,65 +21,77 @@
   ============================================================
 -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
   <!-- Home — raiz do portal, entrada principal -->
   <url>
     <loc>https://estrategiadigital.caraguatatuba.sp.gov.br/</loc>
     <lastmod>2026-06-02</lastmod>
   </url>
-
   <!-- Indicadores — dados de acompanhamento das iniciativas -->
   <url>
     <loc>https://estrategiadigital.caraguatatuba.sp.gov.br/indicadores</loc>
     <lastmod>2026-06-02</lastmod>
   </url>
-
   <!-- Roadmap — roteiro da transformação digital municipal -->
   <url>
     <loc>https://estrategiadigital.caraguatatuba.sp.gov.br/roadmap</loc>
     <lastmod>2026-06-02</lastmod>
   </url>
-
   <!-- Plano Diretor de TI -->
   <url>
     <loc>https://estrategiadigital.caraguatatuba.sp.gov.br/plano-diretor-ti</loc>
     <lastmod>2026-06-02</lastmod>
   </url>
-
   <!-- Regulamentações -->
   <url>
     <loc>https://estrategiadigital.caraguatatuba.sp.gov.br/regulamentacoes</loc>
     <lastmod>2026-06-02</lastmod>
   </url>
-
   <!-- Artigos — listagem geral -->
   <url>
     <loc>https://estrategiadigital.caraguatatuba.sp.gov.br/artigos</loc>
     <lastmod>2026-06-02</lastmod>
   </url>
-
   <!-- Produtos — STII em Números -->
   <url>
     <loc>https://estrategiadigital.caraguatatuba.sp.gov.br/produtos/stii-em-numeros</loc>
     <lastmod>2026-06-02</lastmod>
   </url>
-
   <!-- Produtos — All Hands -->
   <url>
     <loc>https://estrategiadigital.caraguatatuba.sp.gov.br/produtos/all-hands</loc>
     <lastmod>2026-06-02</lastmod>
   </url>
-
-
   <!-- artigos publicados -->
   <url>
     <loc>https://estrategiadigital.caraguatatuba.sp.gov.br/artigos/uma-gestao-municipal-digital-by-default-pode-fortalecer-a-educacao-publica</loc>
     <lastmod>2026-05-25</lastmod>
   </url>
-
   <url>
     <loc>https://estrategiadigital.caraguatatuba.sp.gov.br/artigos/governo-digital-e-modernizacao-administrativa</loc>
     <lastmod>2026-05-18</lastmod>
   </url>
-
-<url><loc>//localhostrealizando-teste-novamente</loc><lastmod>2026-06-03T11:16:15-03:00</lastmod></url></urlset>
+  <url>
+    <loc>//localhostrealizando-teste-novamente</loc>
+    <lastmod>2026-06-03T11:16:15-03:00</lastmod>
+  </url>
+  <url>
+    <loc>//localhostrealizando-teste-novamente-2</loc>
+    <lastmod>2026-06-03T12:05:46-03:00</lastmod>
+  </url>
+  <url>
+    <loc>//localhostrealizando-teste-novamente-3</loc>
+    <lastmod>2026-06-03T13:48:44-03:00</lastmod>
+  </url>
+  <url>
+    <loc>//localhost/realizando-teste-novamente-4</loc>
+    <lastmod>2026-06-03T13:49:38-03:00</lastmod>
+  </url>
+  <url>
+    <loc>//localhost/realizando-teste-novamente-5</loc>
+    <lastmod>2026-06-03T13:56:23-03:00</lastmod>
+  </url>
+  <url>
+    <loc>//localhost/artigos/artigo-para-teste</loc>
+    <lastmod>2026-06-03T14:28:16-03:00</lastmod>
+  </url>
+</urlset>

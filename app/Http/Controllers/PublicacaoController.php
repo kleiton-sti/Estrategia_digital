@@ -6,10 +6,12 @@ use App\Http\Requests\PublicacaoRequest;
 use App\Models\Artigo;
 use App\Services\PublicacaoService;
 use App\Services\ProdutosService;
+use DOMDocument;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\View\View;
+use League\CommonMark\Delimiter\Bracket;
 use XMLWriter;
 
 class PublicacaoController extends Controller
@@ -61,7 +63,6 @@ class PublicacaoController extends Controller
         }
     }
 
-
     public function editar(string $slug, int $id): View
     {
         try {
@@ -91,7 +92,7 @@ class PublicacaoController extends Controller
             $artigo->refresh();
 
             return redirect()
-                ->route('artigos.conteudo', ['slug' => $artigo->slug, 'id' => $artigo->id])
+                ->route('artigos.conteudo', ['slug' => $publicacao->slug, 'id' => $publicacao->id])
                 ->with('sucesso', 'Artigo atualizado com sucesso.');
         } catch (\Throwable $e) {
             Log::error('PublicacaoController@atualizar: ' . $e->getMessage());
@@ -117,41 +118,47 @@ class PublicacaoController extends Controller
 
     private function atualizarSitemap(bool $atualizar, Artigo $artigo): void
     {
+        $baseUrl = rtrim(config('app.url', 'https://estrategiadigital.caraguatatuba.sp.gov.br'), '/');
+        $artigoUrl = $baseUrl . '/artigos/' . $artigo->slug;
+        $path = storage_path('sitemap.xml');
+
+        $xml = simplexml_load_file($path);
+
         if ($atualizar === true) {
-
-            $baseUrl = rtrim(config('app.url', 'https://estrategiadigital.caraguatatuba.sp.gov.br'), '/');
-            $xml = simplexml_load_file(base_path('storage/sitemap.xml'));
-
             $existe = false;
 
             foreach ($xml->url as $url) {
 
-                if ($url->loc == $baseUrl . $artigo->slug) {
+                if ((string) $url->loc === $artigoUrl) {
                     $existe = true;
+                    break;
                 }
 
             }
 
             if (!$existe) {
-                $url = $xml->addChild('url');
-                $url->addChild('loc', $baseUrl . $artigo->slug);
-                $url->addChild('lastmod', $artigo->updated_at->toAtomString());
-
-                $xml->asXML(storage_path('sitemap.xml'));
+                $novo = $xml->addChild('url');
+                $novo->addChild('loc', $artigoUrl);
+                $novo->addChild('lastmod', $artigo->updated_at->toAtomString());
             }
 
-        }
-        else {
-            $xml = simplexml_load_file(base_path('storage/sitemap.xml'));
-
+        } else {
             foreach ($xml->url as $url) {
-                if ($url->loc == $artigo->slug) {
-                    $url->parent->remove();
+                if ((string) $url->loc === $artigoUrl) {
+                    $dom = dom_import_simplexml($url);
+                    $dom->parentNode->removeChild($dom);
+                    break;
                 }
             }
-
-            $xml->asXML(storage_path('sitemap.xml'));
         }
+
+        $dom = new DOMDocument('1.0', 'UTF-8');
+        $dom->preserveWhiteSpace = false;
+        $dom->formatOutput = true;
+        $dom->loadXML($xml->asXML());
+        $dom->save($path);
+
+
     }
 
 }
