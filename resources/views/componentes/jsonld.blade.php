@@ -137,6 +137,7 @@
             '@id'              => $artigoUrl . '#article',
             'headline'         => $artigo->titulo,
             'description'      => $artigo->subtitulo,
+            'articleBody'      => $artigo->corpo,
             'url'              => $artigoUrl,
             'datePublished'    => $artigo->created_at->toIso8601String(),
             'dateModified'     => ($artigo->updated_at ?? $artigo->created_at)->toIso8601String(),

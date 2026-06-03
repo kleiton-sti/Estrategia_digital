@@ -56,3 +56,5 @@ Route::middleware('auth')->group(function () {
     Route::delete('/painel/artigos/{slug}/{id}', [PublicacaoController::class, 'excluir'])->name('artigos.excluir');
     Route::post('/painel/upload/imagem', [UploadController::class, 'imagem'])->name('upload.imagem');
 });
+
+/* link para sitemap */

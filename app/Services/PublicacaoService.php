@@ -31,13 +31,14 @@ class PublicacaoService
             );
 
             return $artigo;
+
         } catch (\Throwable $e) {
             Log::error('PublicacaoService@publicar: ' . $e->getMessage());
             abort(500);
         }
     }
 
-    public function atualizar(Artigo $artigo, array $dados): void
+    public function atualizar(Artigo $artigo, array $dados): Artigo
     {
         try {
             $artigo->update([
@@ -55,6 +56,8 @@ class PublicacaoService
                 $artigo->id,
                 ['titulo' => $artigo->titulo]
             );
+
+            return $artigo;
         } catch (\Throwable $e) {
             Log::error('PublicacaoService@atualizar: ' . $e->getMessage());
             abort(500);
@@ -75,6 +78,15 @@ class PublicacaoService
             $artigo->delete();
         } catch (\Throwable $e) {
             Log::error('PublicacaoService@excluir: ' . $e->getMessage());
+            abort(500);
+        }
+    }
+
+    public function listarTodosArtigos() {
+        try {
+            return Artigo::all();
+        } catch (\Throwable $e) {
+            Log::error('PublicacaoService@listarTodosArtigos: ' . $e->getMessage());
             abort(500);
         }
     }

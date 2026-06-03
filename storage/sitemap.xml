@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ============================================================
+  sitemap.xml — Portal Estratégia Digital
+  Prefeitura Municipal de Caraguatatuba
+  Secretaria de Tecnologia da Informação e Inovação (STII)
+
+  Gerado em: 2026-06-02
+  Base URL:  https://estrategiadigital.caraguatatuba.sp.gov.br
+
+  Boas práticas aplicadas (Google Search Central, out/2014):
+  ✔ Encoding UTF-8 declarado
+  ✔ <lastmod> em formato W3C (YYYY-MM-DD)
+  ✔ <changefreq> e <priority> definidos por tipo de página
+  ✔ URLs absolutas (incluindo protocolo e domínio)
+  ✔ Máximo de 50.000 URLs por arquivo (limite Google)
+  ✔ URLs de redirecionamento 301 NÃO incluídas (apenas destino)
+  ✔ URLs de área autenticada (/painel/*) NÃO incluídas
+  ✔ URLs retornando 410 Gone NÃO incluídas (/eixos/{id})
+  ✔ Arquivo deve ser submetido via Google Search Console
+  ============================================================
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Home — raiz do portal, entrada principal -->
+  <url>
+    <loc>https://estrategiadigital.caraguatatuba.sp.gov.br/</loc>
+    <lastmod>2026-06-02</lastmod>
+  </url>
+
+  <!-- Indicadores — dados de acompanhamento das iniciativas -->
+  <url>
+    <loc>https://estrategiadigital.caraguatatuba.sp.gov.br/indicadores</loc>
+    <lastmod>2026-06-02</lastmod>
+  </url>
+
+  <!-- Roadmap — roteiro da transformação digital municipal -->
+  <url>
+    <loc>https://estrategiadigital.caraguatatuba.sp.gov.br/roadmap</loc>
+    <lastmod>2026-06-02</lastmod>
+  </url>
+
+  <!-- Plano Diretor de TI -->
+  <url>
+    <loc>https://estrategiadigital.caraguatatuba.sp.gov.br/plano-diretor-ti</loc>
+    <lastmod>2026-06-02</lastmod>
+  </url>
+
+  <!-- Regulamentações -->
+  <url>
+    <loc>https://estrategiadigital.caraguatatuba.sp.gov.br/regulamentacoes</loc>
+    <lastmod>2026-06-02</lastmod>
+  </url>
+
+  <!-- Artigos — listagem geral -->
+  <url>
+    <loc>https://estrategiadigital.caraguatatuba.sp.gov.br/artigos</loc>
+    <lastmod>2026-06-02</lastmod>
+  </url>
+
+  <!-- Produtos — STII em Números -->
+  <url>
+    <loc>https://estrategiadigital.caraguatatuba.sp.gov.br/produtos/stii-em-numeros</loc>
+    <lastmod>2026-06-02</lastmod>
+  </url>
+
+  <!-- Produtos — All Hands -->
+  <url>
+    <loc>https://estrategiadigital.caraguatatuba.sp.gov.br/produtos/all-hands</loc>
+    <lastmod>2026-06-02</lastmod>
+  </url>
+
+
+  <!-- artigos publicados -->
+  <url>
+    <loc>https://estrategiadigital.caraguatatuba.sp.gov.br/artigos/uma-gestao-municipal-digital-by-default-pode-fortalecer-a-educacao-publica</loc>
+    <lastmod>2026-05-25</lastmod>
+  </url>
+
+  <url>
+    <loc>https://estrategiadigital.caraguatatuba.sp.gov.br/artigos/governo-digital-e-modernizacao-administrativa</loc>
+    <lastmod>2026-05-18</lastmod>
+  </url>
+
+<url><loc>//localhostrealizando-teste-novamente</loc><lastmod>2026-06-03T11:16:15-03:00</lastmod></url></urlset>
