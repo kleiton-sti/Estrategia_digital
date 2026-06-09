@@ -18,9 +18,10 @@ tinymce.init({
             formData.append('file', blobInfo.blob(), blobInfo.filename());
 
             const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+            const uploadUrl = document.querySelector('meta[name="upload-imagem-url"]').getAttribute('content');
 
             const xhr = new XMLHttpRequest();
-            xhr.open('POST', '/painel/upload/imagem');
+            xhr.open('POST', uploadUrl);
             xhr.setRequestHeader('X-CSRF-TOKEN', csrfToken);
 
             xhr.upload.onprogress = function (e) {

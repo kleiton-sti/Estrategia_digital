@@ -98,6 +98,7 @@
 @endsection
 
 @push('scripts')
+<meta name="upload-imagem-url" content="{{ route('upload.imagem') }}">
 <script src="https://cdn.jsdelivr.net/npm/tinymce@7/tinymce.min.js" referrerpolicy="origin"></script>
 <script src="{{ asset('assets/js/tinymce-editor.js') }}"></script>
 @endpush
