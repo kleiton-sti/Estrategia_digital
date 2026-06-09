@@ -61,7 +61,6 @@
     <loc>https://estrategiadigital.caraguatatuba.sp.gov.br/produtos/all-hands</loc>
     <lastmod>2026-06-02</lastmod>
   </url>
-
   <!-- artigos publicados -->
   <url>
     <loc>https://estrategiadigital.caraguatatuba.sp.gov.br/artigos/uma-gestao-municipal-digital-by-default-pode-fortalecer-a-educacao-publica</loc>
@@ -70,5 +69,9 @@
   <url>
     <loc>https://estrategiadigital.caraguatatuba.sp.gov.br/artigos/governo-digital-e-modernizacao-administrativa</loc>
     <lastmod>2026-05-18</lastmod>
+  </url>
+  <url>
+    <loc>//localhost/artigos/transformacao-digital-de-dentro-pra-fora-uma-nova-fase-para-o-municipio-de-caraguatatuba</loc>
+    <lastmod>2026-06-09T13:09:04-03:00</lastmod>
   </url>
 </urlset>
