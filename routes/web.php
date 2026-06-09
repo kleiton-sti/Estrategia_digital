@@ -65,3 +65,10 @@ Route::get('/sitemap.xml', function () {
 
 /* rota para o feed rss */
 Route::get('/feed', [FeedController::class, 'index']);
+
+Route::get('/teste-fileinfo', function () {
+    return [
+        'php_version' => phpversion(),
+        'fileinfo' => extension_loaded('fileinfo'),
+    ];
+});
