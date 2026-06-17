@@ -80,10 +80,12 @@
 
           <li class="dropdown">
             <a href="#"><span>Produtos</span></a>
-            <div class="dropdown-subpaginas">
-              <ul>
+            <div>
+              <ul class="dropdown-subpaginas">
                 <li><a href="{{ route('produtos.all.hands') }}"><span>All Hands</span></a></li>
                 <li><a href="{{ route('produtos.stii.numeros') }}"><span>STII em números</span></a></li>
+                <li><a href="https://dadosabertos.caraguatatuba.sp.gov.br/" target="_blank"><span>Dados Abertos</span></a></li>
+                <li><a href="https://lgpd360.caraguatatuba.sp.gov.br/" target="_blank"><span>LGPD 360</span></a></li>
               </ul>
             </div>
           </li>

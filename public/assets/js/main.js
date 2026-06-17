@@ -360,6 +360,34 @@ function scrollComOffset(el, extra = 16) {
     });
   })();
 
+  /* ── Dropdown desktop — mouseenter/mouseleave com delay ── */
+  (function () {
+    if (window.innerWidth < 1200) return;
+
+    document.querySelectorAll('.navmenu .dropdown').forEach(function (item) {
+      var timer;
+
+      item.addEventListener('mouseenter', function () {
+        clearTimeout(timer);
+        item.classList.add('dropdown-open');
+      });
+
+      item.addEventListener('mouseleave', function () {
+        timer = setTimeout(function () {
+          item.classList.remove('dropdown-open');
+        }, 150);
+      });
+    });
+
+    window.addEventListener('resize', function () {
+      if (window.innerWidth < 1200) {
+        document.querySelectorAll('.navmenu .dropdown').forEach(function (item) {
+          item.classList.remove('dropdown-open');
+        });
+      }
+    });
+  })();
+
   /* ── Barra de progresso ── */
   document.addEventListener('DOMContentLoaded', () => {
     const progressBar = document.getElementById('progressBar');
