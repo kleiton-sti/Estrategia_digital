@@ -12,10 +12,10 @@ class AcoesInovacaoController extends Controller
     public function index()
     {
         try {
-            return view('tabelas', $this->acoesService->dadosTabelas());
+            return vie('tabelas', $this->acoesService->dadosTabelas());
         } catch (\Throwable $e) {
             Log::error('Erro ao carregar tabelas: ' . $e->getMessage());
-            abort(500);
+            return view('error.error500');
         }
     }
 }

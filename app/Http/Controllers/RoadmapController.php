@@ -17,7 +17,7 @@ class RoadmapController extends Controller
             return view('roadmap', compact('eixos'));
         } catch (\Throwable $e) {
             Log::error('Erro ao carregar roadmap: ' . $e->getMessage());
-            abort(500);
+            return view('error.error500');
         }
     }
 }

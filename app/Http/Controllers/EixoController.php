@@ -15,7 +15,7 @@ class EixoController extends Controller
             return view('home', $this->eixoService->dadosHome());
         } catch (\Throwable $e) {
             Log::error('Erro ao carregar home: ' . $e->getMessage());
-            abort(500);
+            return view('error.error500');
         }
     }
 

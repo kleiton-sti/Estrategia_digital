@@ -32,7 +32,7 @@ class PublicacaoController extends Controller
             return view('artigos', compact('artigos', 'categorias', 'categoriaSlug'));
         } catch (\Throwable $e) {
             Log::error('PublicacaoController@painel: ' . $e->getMessage());
-            abort(500);
+            return view('error.error500');
         }
     }
 
@@ -44,11 +44,11 @@ class PublicacaoController extends Controller
             return view('publicacao.publicar', compact('categorias'));
         } catch (\Throwable $e) {
             Log::error('PublicacaoController@criar: ' . $e->getMessage());
-            abort(500);
+            return view('error.error500');
         }
     }
 
-    public function salvar(PublicacaoRequest $request): RedirectResponse
+    public function salvar(PublicacaoRequest $request): RedirectResponse|View
     {
         try {
             $artigo = $this->publicacaoService->publicar($request->validated());
@@ -59,7 +59,7 @@ class PublicacaoController extends Controller
             return redirect()->route('artigos.painel')->with('sucesso', 'Artigo publicado com sucesso.');
         } catch (\Throwable $e) {
             Log::error('PublicacaoController@salvar: ' . $e->getMessage());
-            abort(500);
+            return view('error.error500');
         }
     }
 
@@ -72,11 +72,11 @@ class PublicacaoController extends Controller
             return view('publicacao.publicar', compact('artigo', 'categorias'));
         } catch (\Throwable $e) {
             Log::error('PublicacaoController@editar: ' . $e->getMessage());
-            abort(500);
+            return view('error.error500');
         }
     }
 
-    public function atualizar(PublicacaoRequest $request, string $slug, int $id): RedirectResponse
+    public function atualizar(PublicacaoRequest $request, string $slug, int $id): RedirectResponse|View
     {
         try {
             $artigo = Artigo::findOrFail($id);
@@ -96,11 +96,11 @@ class PublicacaoController extends Controller
                 ->with('sucesso', 'Artigo atualizado com sucesso.');
         } catch (\Throwable $e) {
             Log::error('PublicacaoController@atualizar: ' . $e->getMessage());
-            abort(500);
+            return view('error.error500');
         }
     }
 
-    public function excluir(string $slug, int $id): RedirectResponse
+    public function excluir(string $slug, int $id): RedirectResponse|View
     {
         try {
             $artigo = Artigo::findOrFail($id);
@@ -112,7 +112,7 @@ class PublicacaoController extends Controller
             return redirect()->route('artigos.painel')->with('sucesso', 'Artigo removido.');
         } catch (\Throwable $e) {
             Log::error('PublicacaoController@excluir: ' . $e->getMessage());
-            abort(500);
+            return view('error.error500');
         }
     }
 

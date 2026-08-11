@@ -17,7 +17,7 @@ class PlanoDiretorController extends Controller
             return view('planodiretor.plano', compact('eixos'));
         } catch (\Throwable $e) {
             Log::error('Erro ao carregar plano diretor: ' . $e->getMessage());
-            abort(500);
+            return view('error.error500');
         }
     }
 }

@@ -19,11 +19,11 @@ class AutenticacaoController extends Controller
             return view('autenticacao.login');
         } catch (\Throwable $e) {
             Log::error('Erro ao exibir login: ' . $e->getMessage());
-            abort(500);
+            return view('error.error500');
         }
     }
 
-    public function autenticar(AutenticacaoRequest $request): RedirectResponse
+    public function autenticar(AutenticacaoRequest $request): RedirectResponse|View
     {
         try {
             $autenticado = $this->autenticacaoService->autenticar($request->validated());
@@ -38,11 +38,11 @@ class AutenticacaoController extends Controller
             return redirect()->route('artigos.painel');
         } catch (\Throwable $e) {
             Log::error('Erro ao autenticar: ' . $e->getMessage());
-            abort(500);
+            return view('error.error500');
         }
     }
 
-    public function sair(Request $request): RedirectResponse
+    public function sair(Request $request): RedirectResponse|View
     {
         try {
             $this->autenticacaoService->encerrarSessao();
@@ -52,7 +52,7 @@ class AutenticacaoController extends Controller
             return redirect()->route('home');
         } catch (\Throwable $e) {
             Log::error('Erro ao encerrar sessão: ' . $e->getMessage());
-            abort(500);
+            return view('error.error500');
         }
     }
 }

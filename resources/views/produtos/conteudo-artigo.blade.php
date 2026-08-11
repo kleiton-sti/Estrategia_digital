@@ -58,9 +58,9 @@
                   <span class="conteudo-autor__label">Escrito por</span>
                   <div class="cargo-autor">
                     <span class="conteudo-autor__nome">
-                      {{ $artigo->user->nome ?? 'Autor desconhecido' }}
+                      {{ $artigo->user?->nome ?? 'Autor desconhecido' }}
                     </span>
-                    <span class="conteudo-autor__cargo">{{ $artigo->user->cargo }}</span>
+                    <span class="conteudo-autor__cargo">{{ $artigo->user?->cargo }}</span>
                   </div>
                   <time
                     class="conteudo-autor__data"

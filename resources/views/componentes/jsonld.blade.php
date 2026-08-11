@@ -144,7 +144,7 @@
             'inLanguage'       => 'pt-BR',
             'isPartOf'         => ['@id' => $websiteId],
             'publisher'        => ['@id' => $orgId],
-            'author'           => ['@type' => 'Person', 'name' => $artigo->user->nome ?? 'Equipe STII'],
+            'author'           => ['@type' => 'Person', 'name' => $artigo->user?->nome ?? 'Equipe STII'],
             'articleSection'   => $artigo->categorias->pluck('nome')->implode(', ') ?? 'Governo Digital',
             'keywords'         => $artigo->categorias->pluck('nome')->implode(', '),
             'mainEntityOfPage' => ['@id' => $artigoUrl . '#webpage'],

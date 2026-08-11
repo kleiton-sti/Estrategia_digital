@@ -21,7 +21,7 @@ class ProdutosController extends Controller
             return view('produtos.stii', compact('eixos'));
         } catch (\Throwable $e) {
             Log::error('Erro em numeros: ' . $e->getMessage());
-            abort(500);
+            return view('error.error500');
         }
     }
 
@@ -35,7 +35,7 @@ class ProdutosController extends Controller
             return view('produtos.hands', compact('eixos'));
         } catch (\Throwable $e) {
             Log::error('Erro em allHands: ' . $e->getMessage());
-            abort(500);
+            return view('error.error500');
         }
     }
 
@@ -49,7 +49,7 @@ class ProdutosController extends Controller
             return view('artigos', compact('artigos', 'categorias', 'categoriaSlug'));
         } catch (\Throwable $e) {
             Log::error('Erro ao exibir artigos: ' . $e->getMessage());
-            abort(500);
+            return view('error.error500');
         }
     }
 
@@ -61,7 +61,7 @@ class ProdutosController extends Controller
             return view('produtos.conteudo-artigo', compact('artigo'));
         } catch (\Throwable $e) {
             Log::error('Erro ao exibir conteúdo do artigo: ' . $e->getMessage());
-            abort(500);
+            return view('error.error500');
         }
     }
 }

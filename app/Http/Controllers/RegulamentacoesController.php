@@ -17,7 +17,7 @@ class RegulamentacoesController extends Controller
             return view('regulamentacoes', compact('regulamentacoes'));
         } catch (\Throwable $e) {
             Log::error('Erro ao carregar regulamentações: ' . $e->getMessage());
-            abort(500);
+            return view('error.error500');
         }
     }
 }

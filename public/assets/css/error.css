@@ -1,0 +1,191 @@
+   html,
+   body {
+       height: 100%;
+   }
+
+   body.erro-page {
+       min-height: 100dvh;
+       display: flex;
+       flex-direction: column;
+   }
+
+   .erro-page .header-container {
+       position: relative !important;
+       margin: 20px auto 0;
+       padding: 6px 26px;
+       width: fit-content;
+   }
+
+   .erro-wrap {
+       position: relative;
+       flex: 1;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       overflow: hidden;
+       padding: 6rem 1.5rem;
+       z-index: 2;
+   }
+
+   /* Reflexos de luz — mesma linguagem visual do hero */
+   .erro-glow-a,
+   .erro-glow-b {
+       position: absolute;
+       border-radius: 50%;
+       pointer-events: none;
+       z-index: -1;
+   }
+
+   .erro-glow-a {
+       width: 42vw;
+       height: 42vw;
+       max-width: 620px;
+       max-height: 620px;
+       background: radial-gradient(circle, rgba(4, 196, 217, 0.28) 0%, rgba(4, 196, 217, 0) 70%);
+       filter: blur(90px);
+       top: 7%;
+       left: 36%;
+       transform: translateX(-50%);
+       animation: flutua3 6s ease-in-out infinite;
+   }
+
+   .erro-content {
+       position: relative;
+       max-width: 640px;
+       text-align: center;
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       gap: 1.5rem;
+   }
+
+   .erro-codigo-wrap {
+       position: relative;
+       display: inline-flex;
+       align-items: center;
+       justify-content: center;
+   }
+
+   .erro-codigo {
+       font-family: var(--fonte-titulo);
+       font-weight: 800;
+       font-size: clamp(5rem, 14vw, 9rem);
+       line-height: 1;
+       letter-spacing: -2px;
+       background: linear-gradient(135deg, #a8f0f7 0%, #04c4d9 45%, #a938b3 100%);
+       -webkit-background-clip: text;
+       background-clip: text;
+       color: transparent;
+       filter: drop-shadow(0 0 28px rgba(4, 196, 217, 0.35));
+       animation: flutua1 5s ease-in-out infinite;
+   }
+
+   .erro-badge {
+       display: inline-flex;
+       align-items: center;
+       gap: 8px;
+       font-size: var(--tipo-xs);
+       font-weight: 700;
+       letter-spacing: 0.4px;
+       text-transform: uppercase;
+       padding: 6px 16px;
+       border-radius: 50px;
+       border: 1px solid rgba(225, 58, 29, 0.35);
+       background: rgba(225, 58, 29, 0.1);
+       color: #ff6a4a;
+   }
+
+   .erro-badge i {
+       font-size: 0.9rem;
+   }
+
+   .erro-titulo {
+       font-family: var(--fonte-titulo);
+       font-size: var(--tipo-2xl);
+       font-weight: 700;
+       color: var(--cor-titulo);
+       margin: 0;
+   }
+
+   .erro-desc {
+       font-size: var(--tipo-body);
+       line-height: var(--lh-amplo);
+       color: color-mix(in srgb, var(--cor-texto), transparent 25%);
+       margin: 0;
+   }
+
+   .erro-acoes {
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       gap: 14px;
+       flex-wrap: wrap;
+       margin-top: 0.5rem;
+   }
+
+   .erro-btn {
+       display: inline-flex;
+       align-items: center;
+       gap: 8px;
+       font-family: var(--fonte-nav);
+       font-size: var(--tipo-sm);
+       font-weight: 600;
+       padding: 12px 26px;
+       border-radius: 50px;
+       text-decoration: none;
+       transition: all 0.3s ease;
+       border: 1px solid transparent;
+   }
+
+   .erro-btn--primario {
+       background: linear-gradient(135deg, #04c4d9, #0288a8);
+       color: #ffffff;
+       box-shadow: 0 8px 24px rgba(4, 196, 217, 0.28);
+   }
+
+   .erro-btn--primario:hover {
+       color: #ffffff;
+       transform: translateY(-2px);
+       box-shadow: 0 12px 30px rgba(4, 196, 217, 0.4);
+   }
+
+   .erro-btn--secundario {
+       background: rgba(255, 255, 255, 0.04);
+       border-color: rgba(255, 255, 255, 0.14);
+       color: var(--cor-texto);
+   }
+
+   .erro-btn--secundario:hover {
+       background: rgba(255, 255, 255, 0.08);
+       color: #ffffff;
+       transform: translateY(-2px);
+   }
+
+   .erro-codigo-tecnico {
+       margin-top: 0.75rem;
+       font-size: var(--tipo-xs);
+       color: color-mix(in srgb, var(--cor-texto), transparent 55%);
+       font-family: monospace;
+       letter-spacing: 0.3px;
+   }
+
+   .erro-footer {
+       position: relative;
+       z-index: 2;
+       text-align: center;
+       padding: 1.5rem 1rem 2rem;
+       font-size: var(--tipo-xs);
+       color: color-mix(in srgb, var(--cor-texto), transparent 55%);
+   }
+
+   @media (max-width: 576px) {
+       .erro-acoes {
+           flex-direction: column;
+           width: 100%;
+       }
+
+       .erro-btn {
+           width: 100%;
+           justify-content: center;
+       }
+   }

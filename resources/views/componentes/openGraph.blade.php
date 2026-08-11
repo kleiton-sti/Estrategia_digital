@@ -6,7 +6,7 @@
         $titulo = Str::limit($artigo->titulo . ' — Estratégia Digital', 60);
         $descricao = $artigo->subtitulo ?? 'Leia mais sobre inovação em Caraguatatuba.';
         $url = $baseUrl . '/artigos/' . $artigo->slug;
-        $autor = $artigo->user->nome;
+        $autor = $artigo->user?->nome ?? 'Equipe STII';
         $imagem =  $imgPadrao;
         $ogType = 'article';
     } else {
