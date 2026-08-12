@@ -77,7 +77,7 @@
 
   if (btnAbrir && painel) {
     painel.style.display         = 'flex';
-    painel.style.transformOrigin = 'right';
+    painel.style.transformOrigin = 'left';
     painel.style.transition      = 'transform 0.25s cubic-bezier(0.34,1.56,0.64,1), opacity 0.22s ease, visibility 0s linear 0.25s';
     painel.style.transform       = 'scale(0.6) translateX(16px)';
     painel.style.opacity         = '0';

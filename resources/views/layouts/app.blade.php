@@ -226,10 +226,10 @@
       <div class="text-center mt-4">
         <div class="d-flex justify-content-center align-items-center footer-gap flex-wrap">
           <div class="d-flex gap-4 align-items-center">
-            <a href="https://www.facebook.com/prefeituradecaraguatatuba" class="text-white fs-5" aria-label="Facebook da Prefeitura de Caraguatatuba" target="_blank" rel="noopener noreferrer"><i class="bi bi-facebook" aria-hidden="true"></i></a>
-            <a href="https://www.instagram.com/caraguatatuba_oficial/" class="text-white fs-5" aria-label="Instagram da Prefeitura de Caraguatatuba" target="_blank" rel="noopener noreferrer"><i class="bi bi-instagram" aria-hidden="true"></i></a>
-            <a href="https://www.youtube.com/channel/UCH84Ukn-PabhE7vhXxhPUDw" class="text-white fs-5" aria-label="YouTube da Prefeitura de Caraguatatuba" target="_blank" rel="noopener noreferrer"><i class="bi bi-youtube" aria-hidden="true"></i></a>
-            <a href="https://www.flickr.com/photos/prefeituracaraguatatuba/albums" class="text-white fs-5" aria-label="Flickr da Prefeitura de Caraguatatuba" target="_blank" rel="noopener noreferrer"><i class="bi bi-image" aria-hidden="true"></i></a>
+            <a href="https://www.facebook.com/prefeituradecaraguatatuba" class="text-white fs-5" aria-label="Facebook da Prefeitura de Caraguatatuba" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-square-facebook" aria-hidden="true"></i></a>
+            <a href="https://www.instagram.com/caraguatatuba_oficial/" class="text-white fs-5" aria-label="Instagram da Prefeitura de Caraguatatuba" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-square-instagram" aria-hidden="true"></i></a>
+            <a href="https://www.youtube.com/channel/UCH84Ukn-PabhE7vhXxhPUDw" class="text-white fs-5" aria-label="YouTube da Prefeitura de Caraguatatuba" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-square-youtube" aria-hidden="true"></i></a>
+            <a href="https://www.flickr.com/photos/prefeituracaraguatatuba/albums" class="text-white fs-5" aria-label="Flickr da Prefeitura de Caraguatatuba" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-flickr" aria-hidden="true"></i></a>
           </div>
           <p class="small mb-0">© Copyright 2025 – Prefeitura Municipal de Caraguatatuba • CNPJ 46.482.840/0001-39</p>
           <p class="small footer-p mb-0">Feito com <i class="bi bi-heart heart-icon"></i> pela Secretaria de Tecnologia

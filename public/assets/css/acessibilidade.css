@@ -6,8 +6,8 @@
   --cst-cor-border-principal: #a8f0f7;
   --cst-cor-border-secundaria: #93c5fd;
   --cst-cor-aresta-ativa: #3B82F6;
-  --cst-cor-node-inativo: rgba(255,255,255,0.12);
-  --cst-cor-aresta-inativa: rgba(255,255,255,0.07);
+  --cst-cor-node-inativo: rgba(255, 255, 255, 0.12);
+  --cst-cor-aresta-inativa: rgba(255, 255, 255, 0.07);
 }
 
 /* Alto contraste */
@@ -17,8 +17,8 @@
   --cst-cor-border-principal: #fff;
   --cst-cor-border-secundaria: #fff;
   --cst-cor-aresta-ativa: #fff;
-  --cst-cor-node-inativo: rgba(255,255,255,0.25);
-  --cst-cor-aresta-inativa: rgba(255,255,255,0.15);
+  --cst-cor-node-inativo: rgba(255, 255, 255, 0.25);
+  --cst-cor-aresta-inativa: rgba(255, 255, 255, 0.15);
 }
 
 .constelacao-svg {
@@ -64,9 +64,10 @@
 #acessibilidade-widget {
   position: fixed;
   bottom: 41%;
-  right: 6px;
+  left: 6px;
   z-index: 999;
   display: flex;
+  flex-direction: row-reverse;
   gap: 8px;
   align-items: flex-end;
 }
@@ -74,7 +75,7 @@
 @media (max-width: 640px) {
   #acessibilidade-widget {
     bottom: 41%;
-    right: 6px;
+    left: 6px;
   }
 
   #btn-abrir-acessibilidade {
@@ -203,9 +204,8 @@
 --------------------------------------------------------------*/
 [vw] {
   position: fixed !important;
-  bottom: 41% !important;
-  left: 6px !important;
-  right: auto !important;
+  bottom: 48% !important;
+  right: 6px !important;
   z-index: 999 !important;
 }
 
@@ -231,7 +231,7 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
   position: fixed;
   bottom: 41%;
-  left: 6px;
+  right: 6px;
   z-index: 999;
   padding: 0;
 }
@@ -249,7 +249,7 @@
 
 #btn-vlibras:hover svg {
   color: #7c6ef0;
-} 
+}
 
 #btn-vlibras:hover {
   border-color: rgba(124, 110, 240, 0.55);
@@ -420,7 +420,7 @@ body.alto-contraste .navmenu .dropdown ul {
 body.alto-contraste #acessibilidade-widget {
   position: fixed !important;
   bottom: 41% !important;
-  right: 6px !important;
+  left: 6px !important;
   z-index: 999 !important;
 }
 
@@ -456,7 +456,7 @@ body.alto-contraste #btn-vlibras {
   border-color: #fff !important;
   position: fixed !important;
   bottom: 41% !important;
-  left: 6px !important;
+  right: 6px !important;
 }
 
 body.alto-contraste #btn-vlibras:hover {
@@ -472,17 +472,17 @@ body.alto-contraste .footer-back {
 }
 
 body.alto-contraste .ini-anel-trilha {
-    stroke: rgba(255, 255, 255, 0.2) !important;
+  stroke: rgba(255, 255, 255, 0.2) !important;
 }
 
 body.alto-contraste .ini-anel-progresso {
-    stroke: #fff !important;
-    filter: none !important;
+  stroke: #fff !important;
+  filter: none !important;
 }
 
 body.alto-contraste .ini-anel-numero {
-    color: #fff !important;
-    filter: none !important;
+  color: #fff !important;
+  filter: none !important;
 }
 
 /*--------------------------------------------------------------
@@ -548,7 +548,7 @@ body.alto-contraste .rd-nebulosa--roxo .rd-card {
 body.alto-contraste .rd-nebulosa--verde .rd-card::before,
 body.alto-contraste .rd-nebulosa--amarelo .rd-card::before,
 body.alto-contraste .rd-nebulosa--roxo .rd-card::before {
-  background: linear-gradient(to right, transparent, rgba(255,255,255,0.4), transparent) !important;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.4), transparent) !important;
 }
 
 /* Glow dos cards (remove blur colorido) */
@@ -562,7 +562,7 @@ body.alto-contraste .rd-nebulosa__glow {
 
 /* Barra de progresso do painel de eixo */
 body.alto-contraste .eixo-portal__progresso-barra {
-  background: rgba(255,255,255,0.15) !important;
+  background: rgba(255, 255, 255, 0.15) !important;
 }
 
 body.alto-contraste .eixo-portal__progresso-fill {
@@ -598,7 +598,7 @@ body.alto-contraste .ini-badge-nao {
 
 /* Fio de luz dos cards de eixo */
 body.alto-contraste .eixo-portal__fio {
-  background: linear-gradient(to right, transparent, rgba(255,255,255,0.45), transparent) !important;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.45), transparent) !important;
 }
 
 /* Número e badge do cabeçalho do card */
@@ -615,7 +615,7 @@ body.alto-contraste .eixo-portal__badge {
 
 /* Porcentagem e fill no rodapé do card de eixo */
 body.alto-contraste .eixo-portal__cta {
-  color: rgba(255,255,255,0.6) !important;
+  color: rgba(255, 255, 255, 0.6) !important;
 }
 
 body.alto-contraste .eixo-portal:hover .eixo-portal__cta {
@@ -651,10 +651,12 @@ body.alto-contraste .ini-badge-andamento {
   background: yellow !important;
   color: #000 !important;
 }
+
 body.alto-contraste .ini-badge-nao {
   background: red !important;
   color: #000 !important;
 }
+
 body.alto-contraste .ini-badge-concluida {
   background: green !important;
   color: #000 !important;
@@ -697,6 +699,6 @@ body.alto-contraste .timeline-content {
   color: #fff !important;
 }
 
-body.alto-contraste .navmenu > ul > li > a::before {
+body.alto-contraste .navmenu>ul>li>a::before {
   background: #fff !important;
 }

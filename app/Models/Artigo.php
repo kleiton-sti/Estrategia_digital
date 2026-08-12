@@ -69,7 +69,7 @@ class Artigo extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id')->withTrashed();
     }
 
     public function categorias()

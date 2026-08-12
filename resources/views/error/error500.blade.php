@@ -47,10 +47,9 @@
         <span class="erro-codigo">500</span>
       </div>
 
-      <h1 class="erro-titulo">Algo deu errado do nosso lado</h1>
+      <h1 class="erro-titulo">Algo deu errado do nosso lado</h1> 
       <p class="erro-desc">
-        Encontramos um problema inesperado ao processar sua solicitação. Nossa equipe já foi
-        notificada e está trabalhando para normalizar o serviço. Tente novamente em alguns instantes.
+        Entre em contato com o administrador do sistema ou tente novamente mais tarde.
       </p>
 
       <div class="erro-acoes">

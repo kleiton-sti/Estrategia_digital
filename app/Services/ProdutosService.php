@@ -40,7 +40,7 @@ class ProdutosService
     public function buscarArtigo(int $id): Artigo
     {
         try {
-            return Artigo::with(['categorias', 'user'])->findOrFail($id);
+            return Artigo::withTrashed()->with(['categorias', 'user'])->findOrFail($id);
         } catch (\Throwable $e) {
             Log::error('ProdutosService@buscarArtigo: ' . $e->getMessage());
             abort(500);
@@ -50,7 +50,8 @@ class ProdutosService
     public function buscarArtigoPorSlug(string $slug): Artigo
     {
         try {
-            return Artigo::with(['categorias', 'user'])->where('slug', $slug)->firstOrFail();
+             return Artigo::withTrashed()->with(['categorias', 'user'])->where('slug', $slug)->firstOrFail();
+
         } catch (\Throwable $e) {
             Log::error('ProdutosService@buscarArtigoPorSlug: ' . $e->getMessage());
             abort(404);

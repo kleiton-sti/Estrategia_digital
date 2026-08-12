@@ -57,8 +57,8 @@ class ProdutosController extends Controller
     {
         try {
             $artigo = $this->produtosService->buscarArtigoPorSlug($slug);
-
             return view('produtos.conteudo-artigo', compact('artigo'));
+            
         } catch (\Throwable $e) {
             Log::error('Erro ao exibir conteúdo do artigo: ' . $e->getMessage());
             return view('error.error500');
