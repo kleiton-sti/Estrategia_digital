@@ -206,12 +206,59 @@
   position: fixed !important;
   bottom: 48% !important;
   right: 6px !important;
-  z-index: 999 !important;
+  z-index: 998 !important;
 }
 
-/* Esconde o botão padrão do VLibras */
-[vw-access-button] {
+/* Ocultação completa do widget VLibras padrão */
+[vw],
+[vw] > * {
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+[vw-plugin-wrapper],
+[vw-plugin-wrapper] * {
   display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Esconde o botão padrão do VLibras — inclui o clone que o
+   vlibras-plugin.js injeta solto no <body> ao inicializar/ativar
+   (fora da hierarquia [vw] original), por isso o seletor cobre
+   qualquer elemento com o atributo, esteja ele onde estiver. */
+[vw-access-button],
+div[vw-access-button],
+body > div[vw-access-button] {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  pointer-events: none !important;
+  opacity: 0 !important;
+  clip-path: inset(50%) !important;
+  position: absolute !important;
+  left: -9999px !important;
+}
+
+/* Esconde o wrapper REAL do botão flutuante azul do VLibras.
+   Nas versões atuais do vlibras-plugin.js, o botão de acesso não
+   fica dentro de [vw] — o script cria, direto no <body>, um
+   #vlibras-access-wrapper que contém um Shadow DOM próprio
+   (#shadow-root) com o botão dentro. CSS não consegue estilizar
+   o conteúdo do shadow root de fora, mas o wrapper em si é um nó
+   normal do document e pode ser ocultado por aqui. */
+#vlibras-access-wrapper {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
 }
 
 /* Botão customizado do VLibras — injetado via JS */
@@ -232,7 +279,7 @@
   position: fixed;
   bottom: 41%;
   right: 6px;
-  z-index: 999;
+  z-index: 10001 !important;
   padding: 0;
 }
 
@@ -457,10 +504,20 @@ body.alto-contraste #btn-vlibras {
   position: fixed !important;
   bottom: 41% !important;
   right: 6px !important;
+  z-index: 10001 !important;
 }
 
 body.alto-contraste #btn-vlibras:hover {
   background: #111 !important;
+}
+
+/* Garante que o VLibras padrão não aparece em alto contraste */
+body.alto-contraste [vw],
+body.alto-contraste [vw] > * {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
 
 
